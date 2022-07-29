@@ -505,7 +505,7 @@ border-color: rgb(75,84,102);</string>
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap resource="Flask_Sqlachemy_RESTfulAPI_Codegen/res/images.qrc">:/background/background.png</pixmap>
+    <pixmap resource="res/images.qrc">:/background/background.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -556,8 +556,8 @@ QPushButton:pressed {
     <string/>
    </property>
    <property name="icon">
-    <iconset resource="Flask_Sqlachemy_RESTfulAPI_Codegen/res/images.qrc">
-     <normaloff>:/icons/最小化.png</normaloff>:/icons/最小化.png</iconset>
+    <iconset resource="res/images.qrc">
+     <normaloff>:/icons/minimize.png</normaloff>:/icons/minimize.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_close">
@@ -605,8 +605,8 @@ QPushButton:pressed {
     <string/>
    </property>
    <property name="icon">
-    <iconset resource="Flask_Sqlachemy_RESTfulAPI_Codegen/res/images.qrc">
-     <normaloff>:/icons/24gl-extractLeft.png</normaloff>:/icons/24gl-extractLeft.png</iconset>
+    <iconset resource="res/images.qrc">
+     <normaloff>:/icons/exit.png</normaloff>:/icons/exit.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_ncepu">
@@ -638,7 +638,7 @@ QPushButton:pressed {
   <zorder>pushButton_ncepu</zorder>
  </widget>
  <resources>
-  <include location="Flask_Sqlachemy_RESTfulAPI_Codegen/res/images.qrc"/>
+  <include location="res/images.qrc"/>
  </resources>
  <connections/>
 </ui>
