@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>asterisk.png</file>
+    <file>ncepu.png</file>
+    <file>exit.png</file>
+    <file>minimize.png</file>
+  </qresource>
+  <qresource prefix="background">
+    <file>background.png</file>
+  </qresource>
+</RCC>
