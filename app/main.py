@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-# file:dbconfig.py
+# file:main.py
 # author:Chen Qinyu
 # datetime:2022/8/23 17:22
 # software: PyCharm
@@ -9,6 +9,7 @@
 """
 this is function description
 """
+import pymysql
 from PySide6.QtCore import QFile
 from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtUiTools import QUiLoader
@@ -31,19 +32,70 @@ class Main:
 
         self.ui.Button_connect_test.clicked.connect(self.database_connect_test)
 
+        self.ui.Button_get_dbnames.clicked.connect(self.get_dbname)
+
+    def get_dbname(self):
+        """
+        获取数据库名
+        """
+        if len(host := self.ui.lineEdit_host.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写主机')
+            return
+        if len(port := self.ui.lineEdit_port.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写数据库端口')
+            return
+        if len(username := self.ui.lineEdit_user.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写账号')
+            return
+        if len(password := self.ui.lineEdit_password.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写密码')
+            return
+
+        # 清空下拉框
+        self.ui.comboBox_databases.clear()
+        conn = pymysql.connect(
+            host=host,
+            user=username,
+            passwd=password,
+            port=int(port),
+        )
+        cur = conn.cursor()
+        cur.execute('SHOW DATABASES')
+        dbnames = cur.fetchall()
+
+        # 将数据库名添加到下拉框中
+        for dbname in dbnames:
+            self.ui.comboBox_databases.addItem(dbname[0])
+
     def database_connect_test(self):
-        dialect = self.ui.lineEdit_dbtype.text()
-        username = self.ui.lineEdit_user.text()
-        password = self.ui.lineEdit_password.text()
-        host = self.ui.lineEdit_host.text()
-        port = self.ui.lineEdit_port.text()
-        database = self.ui.lineEdit_database.text()
-        print(dialect, username, password, host, port, database)
+        """
+        数据库连接测试
+        """
+        dialect = self.ui.comboBox_dbtype.currentText()
+        if len(host := self.ui.lineEdit_host.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写主机')
+            return
+        if len(port := self.ui.lineEdit_port.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写数据库端口')
+            return
+        if len(username := self.ui.lineEdit_user.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写账号')
+            return
+        if len(password := self.ui.lineEdit_password.text()) == 0:
+            QMessageBox.information(self.ui, '提示', '请填写密码')
+            return
+        if len(database := self.ui.comboBox_databases.currentText()) == 0:
+            QMessageBox.information(self.ui, '提示', '请选择数据库名')
+            return
+
         res = connection_check(dialect, username, password, host, port, database)
         if res.get('code'):
-            print('数据库连接成功')
+            QMessageBox.information(self.ui, '提示', '数据库连接成功!')
         else:
-            print(res.get('message'), res.get('error'))
+            QMessageBox.critical(self.ui, '错误', '数据库连接失败!')
+
+        # databases = check_sql_link(dialect, username, password, host, port, database)
+        # print(databases)
 
 
 app = QApplication([])
