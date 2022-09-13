@@ -34,8 +34,6 @@ class Main:
         # 比如 self.ui.button , self.ui.textEdit
         self.ui = QUiLoader().load(qfile_main)
 
-        self.ui.Button_connect_test.clicked.connect(self.database_connect_test)
-
         self.ui.Button_get_dbnames.clicked.connect(self.get_dbname)
 
         self.ui.Button_next.clicked.connect(self.next)
@@ -102,6 +100,7 @@ class Main:
 
         # databases = check_sql_link(dialect, username, password, host, port, database)
         # print(databases)
+
     def next(self):
         id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         dir = os.getcwd()
