@@ -12,8 +12,8 @@
 
 import keyword
 
-from utils.loggings import loggings
-from utils.tablesMetadata import TableMetadata
+from app.utils.loggings import loggings
+from app.utils.tablesMetadata import TableMetadata
 
 
 class CheckTable(object):
@@ -31,14 +31,12 @@ class CheckTable(object):
         invalid_tables = []
 
         for table in table_dict.values():
-            if table['is_view']:
-                # 是一个视图，不进行检查
-                continue
-            elif len(table['primaryKey']) == 0:
+
+            if len(table['primary_key_columns']) == 0:
                 # 表中没有主键
                 invalid_tables.append(table['table_name'])
                 loggings.warning(1, 'table {0} do not have a primary key'.format(table['table_name']))
-            # elif len(table['primaryKey']) > 1:
+            # elif len(table['primary_key_columns']) > 1:
             #     # 表中有复数个主键
             #     invalid_tables.append(table['table_name'])
             #     loggings.warning(1, 'table {0} has multiple primary keys'.format(table['table_name']))
@@ -60,10 +58,6 @@ class CheckTable(object):
         invalid_table = []
 
         for table in table_dict.values():
-
-            if table['is_view']:
-                # 是一个视图，不进行检查
-                continue
 
             flag = True
 
@@ -88,28 +82,33 @@ class CheckTable(object):
 
     # 入口函数定义
     @classmethod
-    def main(cls, metadata, reflection_views):
+    def main(cls, metadata, reflection_views, view=False):
         """
             建立数据库连接时对表进行检查，筛去没有唯一自增主键、表名/字段名与Python关键字有冲突的表
             :param metadata: 数据库元数据
-            :param reflection_views: 需要反射的视图名称列表
+            :param view: 是否为视图
         """
+        if view:
+            transformed_dict = TableMetadata.get_views_metadata(metadata, reflection_views)
+            return transformed_dict
+        else:
+            transformed_dict = TableMetadata.get_tables_metadata(metadata, reflection_views)
 
-        table_dict = TableMetadata.get_tables_metadata(metadata, reflection_views)
         invalid_tables = {}
-
         # check table primary key
-        available_table, invalid_table = cls.check_primary_key(table_dict)
+
+        available_table, invalid_table = cls.check_primary_key(transformed_dict)
         invalid_tables['primary_key'] = invalid_table
         for invalid in invalid_table:
-            table_dict.pop(invalid)
+            transformed_dict.pop(invalid)
 
         # check the keyword
-        available_table, invalid_table = cls.check_keyword_conflict(table_dict)
+
+        available_table, invalid_table = cls.check_keyword_conflict(transformed_dict)
         available_tables = available_table
         invalid_tables['keyword'] = invalid_table
         for invalid in invalid_table:
-            table_dict.pop(invalid)
+            transformed_dict.pop(invalid)
 
         if len(invalid_tables) > 0:
             loggings.warning(
@@ -117,14 +116,14 @@ class CheckTable(object):
                 "A total of {0} tables check passed."
                 "The following {1} tables do not meet the specifications and cannot be generated: {2}."
                     .format(
-                        len(available_tables),
-                        len(invalid_tables['primary_key'] + invalid_tables['keyword']),
-                        ",".join(invalid_tables['primary_key'] + invalid_tables['keyword'])
-                    )
+                    len(available_tables),
+                    len(invalid_tables['primary_key'] + invalid_tables['keyword']),
+                    ",".join(invalid_tables['primary_key'] + invalid_tables['keyword'])
+                ),
             )
 
-            return table_dict, invalid_tables
+            return transformed_dict, invalid_tables
 
         loggings.info(1, "All table checks passed, a total of {0} tables.".format(len(available_tables)))
 
-        return table_dict, invalid_tables
+        return transformed_dict, invalid_tables
