@@ -13,11 +13,11 @@
 # file write
 import os
 
-from codegen.resourcecodegen.codegenerator import CodeGenerator
-from utils.loggings import loggings
+from app.codegen.resourcecodegen.codegenerator import CodeGenerator
+from app.utils.loggings import loggings
 
 
-def main(table_dict, settings):
+def main(table_dict, settings, session_id, ip):
     """
     Generate resource layer code
     :return: None
@@ -30,9 +30,9 @@ def main(table_dict, settings):
         os.makedirs(api_dir := os.path.join(project_dir, 'api_' + api_version), exist_ok=True)
         os.makedirs(app_dir := os.path.join(project_dir, 'app'), exist_ok=True)
 
-        generator = CodeGenerator(settings)
+        generator = CodeGenerator(settings, session_id, ip)
         generator.resource_generator(api_dir, app_dir, table_dict)
         print(1)
 
     except Exception as e:
-        loggings.error(1, str(e))
+        loggings.error(1, str(e), session_id, ip)

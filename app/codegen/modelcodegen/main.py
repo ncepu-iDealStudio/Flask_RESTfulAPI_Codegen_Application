@@ -12,12 +12,12 @@
 
 import os
 
-from utils.common import str_to_little_camel_case
-from utils.loggings import loggings
+from app.utils.common import str_to_little_camel_case
+from app.utils.loggings import loggings
 from . import cmd
 
 
-def main(table_dict, settings):
+def main(table_dict, settings, session_id, ip):
     """
     model层代码的生成
     :return: None
@@ -39,7 +39,7 @@ def main(table_dict, settings):
 
         # 为每张表生成model层代码
         for table in tables:
-            loggings.info(1, "Model code for {0} table is being generated".format(table))
+            loggings.info(1, "Model code for {0} table is being generated".format(table), session_id, ip)
             command = cmd.format(
                 url=model_url,
                 schema="",
@@ -59,4 +59,4 @@ def main(table_dict, settings):
             os.system(command)
 
     except Exception as e:
-        loggings.exception(1, e)
+        loggings.exception(1, e, session_id, ip)

@@ -41,6 +41,7 @@ from flask_restful import Api
 api = Api({table_name_all_small}_blueprint)
 
 {resource}
+{other_resource}
 """
 
     urls_view = """#!/usr/bin/env python
@@ -259,30 +260,24 @@ class {className}OtherResource(Resource):
 from flask import Flask
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
-from . import setting
+from .setting import Settings
 
 # 数据库
 db = SQLAlchemy()
 
 
 # 工厂模式创建app应用对象
-def create_app(config_name):
+def create_app(run_mode):
     \"\"\"
     创建flask的应用对象
-    :param config_name: string 配置模式的名字  （"develop", "product", "test"）
+    :param run_mode: string 配置模式的名字  （"develop", "product", "test"）
     :return:
     \"\"\"
-    
-    config_mode = {{
-        'develop': 'DevelopSettings',
-        'product': 'ProductSettings',
-        'test': 'TestSettings'
-    }}
     
     app = Flask(__name__)
 
     # 根据配置模式的名字获取配置参数的类
-    app.config.from_object(getattr(setting, config_mode[config_name]))
+    app.config.from_object(Settings.get_setting(run_mode))
 
     # 使用app初始化db
     db.init_app(app)
@@ -290,14 +285,21 @@ def create_app(config_name):
     # 利用Flask_session将数据保存的session中
     Session(app)
 
-    '''
-      整个应用的蓝图加载和注册
-    '''
-    # apiversion blueprint register
-    {blueprint_register}
+    # 调用resource层中定义的方法，初始化所有路由(注册)蓝图
+    from api_{api_version} import init_router
+    init_router(app)
+    
     return app
 """
 
+    api_init = """#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+{imports}
+
+def init_router(app):
+{blueprint_register}
+"""
     api_version_init = """#!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
@@ -317,7 +319,7 @@ from api_{apiversion}.apiVersionResource.apiVersionResource import ApiVersionRes
 
 api = Api(apiversion_blueprint)
 
-api.add_resource(ApiVersionResource, '/apiversion', endpoint='apiversion')  # 测试接口，获取当前接口的版本
+api.add_resource(ApiVersionResource, '/apiversion', endpoint='Apiversion')  # 测试接口，获取当前接口的版本
 """
 
     api_version_resource = """#!/usr/bin/env python
@@ -362,6 +364,13 @@ manager.add_command("runserver", Server(use_debugger=True))
 
 
 # 创建全站拦截器,每个请求之前做处理
+@app.before_request
+def user_validation():
+    print(request.endpoint)  # 方便跟踪调试
+    
+    if not request.endpoint: # 如果请求点为空
+        return jsonify(code=RET.URLNOTFOUND, message="url not found", error="url not found")
+        
 @app.before_request
 def user_require_token():
     # 不需要token验证的请求点列表

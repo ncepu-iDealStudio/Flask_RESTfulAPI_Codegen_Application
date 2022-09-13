@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>795</width>
-    <height>702</height>
+    <width>787</width>
+    <height>689</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -268,19 +268,6 @@
           </property>
           <property name="text">
            <string>获取数据库名</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="Button_connect_test">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>连接测试</string>
           </property>
          </widget>
         </item>

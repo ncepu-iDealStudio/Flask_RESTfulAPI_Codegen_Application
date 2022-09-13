@@ -8,4 +8,7 @@
 """
 this is function  description 
 """
-# import module your need
+from app import main
+
+if __name__ == '__main__':
+    main.start()
