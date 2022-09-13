@@ -25,7 +25,7 @@ class Main:
 
     def __init__(self):
         # 从文件中加载UI定义
-        qfile_main = QFile('ui/database_config.ui')
+        qfile_main = QFile('app/ui/database_config.ui')
         qfile_main.open(QFile.ReadOnly)
         qfile_main.close()
 
@@ -71,41 +71,15 @@ class Main:
         for dbname in dbnames:
             self.ui.comboBox_databases.addItem(dbname[0])
 
-    def database_connect_test(self):
-        """
-        数据库连接测试
-        """
-        dialect = self.ui.comboBox_dbtype.currentText()
-        if len(host := self.ui.lineEdit_host.text()) == 0:
-            QMessageBox.information(self.ui, '提示', '请填写主机')
-            return
-        if len(port := self.ui.lineEdit_port.text()) == 0:
-            QMessageBox.information(self.ui, '提示', '请填写数据库端口')
-            return
-        if len(username := self.ui.lineEdit_user.text()) == 0:
-            QMessageBox.information(self.ui, '提示', '请填写账号')
-            return
-        if len(password := self.ui.lineEdit_password.text()) == 0:
-            QMessageBox.information(self.ui, '提示', '请填写密码')
-            return
-        if len(database := self.ui.comboBox_databases.currentText()) == 0:
-            QMessageBox.information(self.ui, '提示', '请选择数据库名')
-            return
-
-        res = SQLHandler.connection_check(dialect, username, password, host, port, database)
-        if res.get('code'):
-            QMessageBox.information(self.ui, '提示', '数据库连接成功!')
-        else:
-            QMessageBox.critical(self.ui, '错误', '数据库连接失败!')
-
-        # databases = check_sql_link(dialect, username, password, host, port, database)
-        # print(databases)
-
     def next(self):
+        """
+        下一步：进入数据库表的配置界面
+        """
         id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         dir = os.getcwd()
-        f = open(dir + "/config/config_" + str(id) + ".conf", "w")
+        f = open(dir + r"/app/config/config_" + str(id) + ".conf", "w")
         f.close()
+
         # 接收参数
         if len(host := self.ui.lineEdit_host.text()) == 0:
             QMessageBox.information(self.ui, '提示', '请填写主机')
@@ -126,11 +100,12 @@ class Main:
         database = self.ui.comboBox_databases.currentText()
         username = username
         password = password
+        
         # 检查数据库链接
         result_sql = SQLHandler.connect_sql_link(dialect, username, password, host, port, database)
         if result_sql['code']:
             # 填写配置文件
-            configfile = "config/config_" + str(id) + ".conf"
+            configfile = "app/config/config_" + str(id) + ".conf"
             conf = configparser.ConfigParser()  # 实例类
             conf.read(configfile, encoding='UTF-8')  # 读取配置文件
 
@@ -157,7 +132,8 @@ class Main:
             return
 
 
-app = QApplication([])
-stats = Main()
-stats.ui.show()
-app.exec()
+def start():
+    app = QApplication([])
+    stats = Main()
+    stats.ui.show()
+    app.exec()
