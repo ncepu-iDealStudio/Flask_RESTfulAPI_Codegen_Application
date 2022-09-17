@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>860</width>
     <height>600</height>
    </rect>
   </property>
@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="pushButton_next">
     <property name="geometry">
      <rect>
       <x>650</x>
@@ -27,7 +27,7 @@
      <string>下一步</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="pushButton_last">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -40,31 +40,289 @@
      <string>上一步</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QStackedWidget" name="stackedWidget_right">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>30</y>
-      <width>81</width>
-      <height>16</height>
+      <x>330</x>
+      <y>20</y>
+      <width>451</width>
+      <height>451</height>
      </rect>
     </property>
-    <property name="text">
-     <string>数据表准备</string>
+    <property name="currentIndex">
+     <number>1</number>
     </property>
+    <widget class="QWidget" name="page_1">
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>351</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_page1">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>请选择用于生成代码的数据表，并为每张表进行相应的配置</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="mouseTracking">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>数据表准备</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QWidget" name="verticalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>9</y>
+        <width>431</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_page2">
+       <item>
+        <widget class="QScrollArea" name="scrollArea_right">
+         <property name="whatsThis">
+          <string/>
+         </property>
+         <property name="accessibleName">
+          <string/>
+         </property>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_right">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-60</y>
+            <width>410</width>
+            <height>1000</height>
+           </rect>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>1000</height>
+           </size>
+          </property>
+          <widget class="QLabel" name="label_table_name">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>10</y>
+             <width>54</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>这是表名</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_set_key">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>140</y>
+             <width>151</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>业务主键设置</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_select_key">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>170</y>
+             <width>161</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>业务主键字段选择</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_select_key">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>190</y>
+             <width>161</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_set_key_2">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>220</y>
+             <width>161</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>业务主键生成规则</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_set_key">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>240</y>
+             <width>161</width>
+             <height>22</height>
+            </rect>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_code">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>310</y>
+             <width>161</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>请选择需要加密存储的字段</string>
+           </property>
+          </widget>
+          <widget class="QWidget" name="verticalLayoutWidget_5">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>340</y>
+             <width>401</width>
+             <height>311</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_code"/>
+          </widget>
+          <widget class="QLabel" name="label_isDelete">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>50</y>
+             <width>158</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>数据是否逻辑删除</string>
+           </property>
+          </widget>
+          <widget class="QComboBox" name="comboBox_isDelete">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>80</y>
+             <width>158</width>
+             <height>21</height>
+            </rect>
+           </property>
+           <item>
+            <property name="text">
+             <string>请选择逻辑删除标识字段</string>
+            </property>
+           </item>
+          </widget>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>60</y>
-      <width>351</width>
-      <height>16</height>
+      <x>40</x>
+      <y>40</y>
+      <width>279</width>
+      <height>439</height>
      </rect>
     </property>
-    <property name="text">
-     <string>请选择用于生成代码的数据表，并为每张表进行相应的配置</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_left">
+     <item>
+      <widget class="QScrollArea" name="scrollArea_left">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents_left">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>275</width>
+          <height>435</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <widget class="QWidget" name="horizontalLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>281</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_all" stretch="1,5">
+          <item>
+           <widget class="QCheckBox" name="checkBox_all">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_select_all">
+            <property name="text">
+             <string>全选</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -72,7 +330,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>860</width>
      <height>22</height>
     </rect>
    </property>
