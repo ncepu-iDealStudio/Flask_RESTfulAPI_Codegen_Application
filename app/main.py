@@ -12,16 +12,17 @@ this is function description
 import configparser
 import datetime
 import os
+import sys
 
 import pymysql
 from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QApplication, QMessageBox
+from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow
 from PySide6.QtUiTools import QUiLoader
-
+from PySide6.QtGui import QIcon
 from app.utils.checkSqlLink import SQLHandler
 
 
-class Main:
+class MainWindow:
 
     def __init__(self):
         # 从文件中加载UI定义
@@ -36,7 +37,8 @@ class Main:
 
         self.ui.Button_get_dbnames.clicked.connect(self.get_dbname)
 
-        self.ui.Button_next.clicked.connect(self.next)
+        self.ui.button_1_next.clicked.connect(self.next_to_tables)
+        self.ui.button_1_pre.clicked.connect(self.pre_to_connect)
 
     def get_dbname(self):
         """
@@ -57,21 +59,29 @@ class Main:
 
         # 清空下拉框
         self.ui.comboBox_databases.clear()
-        conn = pymysql.connect(
-            host=host,
-            user=username,
-            passwd=password,
-            port=int(port),
-        )
-        cur = conn.cursor()
-        cur.execute('SHOW DATABASES')
-        dbnames = cur.fetchall()
+        try:
 
-        # 将数据库名添加到下拉框中
-        for dbname in dbnames:
-            self.ui.comboBox_databases.addItem(dbname[0])
+            conn = pymysql.connect(
+                host=host,
+                user=username,
+                passwd=password,
+                port=int(port),
+            )
+            cur = conn.cursor()
+            cur.execute('SHOW DATABASES')
+            dbnames = cur.fetchall()
 
-    def next(self):
+            # 将数据库名添加到下拉框中
+            for dbname in dbnames:
+                self.ui.comboBox_databases.addItem(dbname[0])
+        except:
+            QMessageBox.critical(self.ui, '错误', '数据库连接失败!')
+            return
+
+    def pre_to_connect(self):
+        self.ui.tabWidget.setCurrentIndex(0)
+
+    def next_to_tables(self):
         """
         下一步：进入数据库表的配置界面
         """
@@ -100,7 +110,7 @@ class Main:
         database = self.ui.comboBox_databases.currentText()
         username = username
         password = password
-        
+
         # 检查数据库链接
         result_sql = SQLHandler.connect_sql_link(dialect, username, password, host, port, database)
         if result_sql['code']:
@@ -120,20 +130,23 @@ class Main:
             conf.set("DATABASE", "password", password)
             with open(configfile, "w") as f:
                 conf.write(f)
-            result_sql = SQLHandler.generate_tables_information()
-            print(result_sql)
-            if result_sql['code']:
-                return {'code': '2000', 'data': result_sql['data'], 'message': '数据库连接成功',
-                        'invalid': result_sql['invalid']}
-            else:
-                return {'code': '4000', 'data': [], 'message': result_sql['message']}
+            self.ui.tabWidget.setCurrentIndex(1)
+
+            tables_info = SQLHandler.generate_tables_information()
+            if tables_info['code']:
+                print(tables_info['data'])
+                # self.table_config_show(self, tables_info['data'])
         else:
             QMessageBox.critical(self.ui, '错误', '数据库读取失败!')
             return
 
+    def table_config_show(self, tables_info):
+        pass
+
 
 def start():
-    app = QApplication([])
-    stats = Main()
-    stats.ui.show()
-    app.exec()
+    app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon('app/ui/ncepu.jpg'))
+    main_window = MainWindow()
+    main_window.ui.show()
+    sys.exit(app.exec())
