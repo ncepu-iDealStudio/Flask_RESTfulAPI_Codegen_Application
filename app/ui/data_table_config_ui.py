@@ -20,7 +20,8 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QHBoxLayout,
     QScrollArea, QSizePolicy, QStackedWidget, QStatusBar,
     QVBoxLayout, QWidget)
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QObject):
+
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
@@ -69,7 +70,7 @@ class Ui_MainWindow(object):
         self.scrollArea_right.setWidgetResizable(True)
         self.scrollAreaWidgetContents_right = QWidget()
         self.scrollAreaWidgetContents_right.setObjectName(u"scrollAreaWidgetContents_right")
-        self.scrollAreaWidgetContents_right.setGeometry(QRect(0, -60, 410, 1000))
+        self.scrollAreaWidgetContents_right.setGeometry(QRect(0, 0, 410, 1000))
         self.scrollAreaWidgetContents_right.setMinimumSize(QSize(0, 1000))
         self.label_table_name = QLabel(self.scrollAreaWidgetContents_right)
         self.label_table_name.setObjectName(u"label_table_name")
@@ -110,13 +111,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_page2.addWidget(self.scrollArea_right)
 
         self.stackedWidget_right.addWidget(self.page_2)
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(40, 40, 279, 439))
-        self.verticalLayout_left = QVBoxLayout(self.widget)
+        self.layoutWidget = QWidget(self.centralwidget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(40, 40, 279, 439))
+        self.verticalLayout_left = QVBoxLayout(self.layoutWidget)
         self.verticalLayout_left.setObjectName(u"verticalLayout_left")
         self.verticalLayout_left.setContentsMargins(0, 0, 0, 0)
-        self.scrollArea_left = QScrollArea(self.widget)
+        self.scrollArea_left = QScrollArea(self.layoutWidget)
         self.scrollArea_left.setObjectName(u"scrollArea_left")
         self.scrollArea_left.setWidgetResizable(True)
         self.scrollAreaWidgetContents_left = QWidget()
@@ -131,7 +132,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_all.setContentsMargins(0, 0, 0, 0)
         self.checkBox_all = QCheckBox(self.horizontalLayoutWidget)
         self.checkBox_all.setObjectName(u"checkBox_all")
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.checkBox_all.sizePolicy().hasHeightForWidth())
@@ -140,13 +141,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_all.addWidget(self.checkBox_all)
 
-        self.label_select_all = QLabel(self.horizontalLayoutWidget)
-        self.label_select_all.setObjectName(u"label_select_all")
+        self.pushButton_all = QPushButton(self.horizontalLayoutWidget)
+        self.pushButton_all.setObjectName(u"pushButton_all")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.pushButton_all.sizePolicy().hasHeightForWidth())
+        self.pushButton_all.setSizePolicy(sizePolicy1)
 
-        self.horizontalLayout_all.addWidget(self.label_select_all)
+        self.horizontalLayout_all.addWidget(self.pushButton_all)
 
-        self.horizontalLayout_all.setStretch(0, 1)
-        self.horizontalLayout_all.setStretch(1, 5)
         self.scrollArea_left.setWidget(self.scrollAreaWidgetContents_left)
 
         self.verticalLayout_left.addWidget(self.scrollArea_left)
@@ -162,7 +166,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget_right.setCurrentIndex(0)
+        self.stackedWidget_right.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -189,7 +193,7 @@ class Ui_MainWindow(object):
         self.comboBox_isDelete.setItemText(0, QCoreApplication.translate("MainWindow", u"\u8bf7\u9009\u62e9\u903b\u8f91\u5220\u9664\u6807\u8bc6\u5b57\u6bb5", None))
 
         self.checkBox_all.setText("")
-        self.label_select_all.setText(QCoreApplication.translate("MainWindow", u"\u5168\u9009", None))
+        self.pushButton_all.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
     # retranslateUi
 
 # pyside6-uic data_table_config.ui > data_table_config_ui.py
