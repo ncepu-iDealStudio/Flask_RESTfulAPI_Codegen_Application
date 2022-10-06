@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1320</width>
-    <height>761</height>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -238,7 +238,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton_next">
+       <widget class="QPushButton" name="pushButton_last">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -251,7 +251,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_last">
+       <widget class="QPushButton" name="pushButton_next">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
