@@ -25,7 +25,7 @@ class MainWindow:
 
     def __init__(self):
         # 从文件中加载UI定义
-        qfile_main = QFile('app/ui/MainWindow.ui')
+        qfile_main = QFile('app/ui/MainWindow_copy2.ui')
         qfile_main.open(QFile.ReadOnly)
         qfile_main.close()
 

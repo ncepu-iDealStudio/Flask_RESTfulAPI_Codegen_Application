@@ -9,7 +9,7 @@
 this is function description
 '''
 # import module your need
-from app import window
+from app import window_copy1
 
 if __name__ == '__main__':
-    window.start()
+    window_copy1.start()
