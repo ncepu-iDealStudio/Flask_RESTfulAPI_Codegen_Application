@@ -10,6 +10,7 @@
 '''
 # import module your need
 import sys
+from functools import partial
 
 from app.ui.data_table_config import Ui_MainWindow
 from PySide6.QtWidgets import *
@@ -95,8 +96,11 @@ class table_ui(Ui_MainWindow):
 
         for pushButton in self.centralwidget.findChildren(QPushButton):
             print(pushButton.text())
-            pushButton.clicked.connect(self.pushButton_clicked(pushButton.text()))
-            # pushButton.clicked.connect(lambda text = 1: self.pushButton_clicked(text))
+
+            # pushButton.clicked.connect(self.pushButton_clicked(pushButton.text()))
+            # pushButton.clicked.connect(lambda text=text: self.pushButton_clicked(text))
+            pushButton.clicked.connect(partial(self.pushButton_clicked, pushButton.text()))
+
 
     def checkBox_all_select(self):
         '''
@@ -111,14 +115,11 @@ class table_ui(Ui_MainWindow):
             for checkBox in self.centralwidget.findChildren(QCheckBox):
                 checkBox.setChecked(False)
 
-    @Slot(str)
     def pushButton_clicked(self, text):
         print("绑定")
         self.stackedWidget_right.setCurrentIndex(1)
         print(text)
 
-
-        print(text)
 
     def test(self):
         print("yes")
