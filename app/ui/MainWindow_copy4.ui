@@ -227,7 +227,7 @@
                    </attribute>
                    <column>
                     <property name="text">
-                     <string>新建列</string>
+                     <string>表名</string>
                     </property>
                    </column>
                    <column>
