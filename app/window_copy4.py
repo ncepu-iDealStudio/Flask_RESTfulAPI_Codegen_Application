@@ -15,7 +15,7 @@ import sys
 
 import pymysql
 from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow
+from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow, QTableWidgetItem
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QIcon
 from app.utils.checkSqlLink import SQLHandler
@@ -231,18 +231,17 @@ class MainWindow:
         确认配置页主要代码
         :return:
         '''
-
         # 给出一个调试数据，正常情况应该使用self.sql_data数据
-        sql_data = {
+        self.sql_data = {
             'table': [
                 {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-                 'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
+                 'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': True},
                            {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
                  'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
                 {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
                  'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-                           {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-                           {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
+                           {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': True},
+                           {'field_name': 'age', 'field_type': 'int', 'field_encrypt': True},
                            {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
                  'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
                 {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
@@ -251,15 +250,48 @@ class MainWindow:
 
             'view': [
                 {'view': 'v_student_course_score',
-                 'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                                  {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
-                                  {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
-                 'ischecked': 'False'},
+                 'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': False},
+                                  {'field_name': 'studentID', 'field_type': 'str', 'ischecked': True},
+                                  {'field_name': 'classID', 'field_type': 'str', 'ischecked': False}],
+                 'ischecked': False},
                 {'view': 'v_test', 'filter_field': [
-                    {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                    {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
-                    {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
+                    {'field_name': 'autoID', 'field_type': 'int', 'ischecked': False},
+                    {'field_name': 'testID', 'field_type': 'str', 'ischecked': True},
+                    {'field_name': 'testName', 'field_type': 'str', 'ischecked': False}], 'ischecked': False}]
         }
+        # 数据表
+        self.ui.tableWidget_DB.setRowCount(len(self.sql_data['table']))
+        self.ui.tableWidget_DB.setColumnCount(5)
+        for i in range(len(self.sql_data['table'])):
+            item_name_1 = QTableWidgetItem(self.sql_data['table'][i]['table'])
+            str1 = ''
+            for x in self.sql_data['table'][i]['field']:
+                if x["field_encrypt"] == True:
+                    str1 = str1 + x["field_name"] + ","
+            item_name_2 = QTableWidgetItem(str1)
+            item_name_3 = QTableWidgetItem(self.sql_data['table'][i]['logicaldeletemark'])
+            item_name_4 = QTableWidgetItem(self.sql_data['table'][i]['businesskeyname'])
+            item_name_5 = QTableWidgetItem(self.sql_data['table'][i]['businesskeyrule'])
+            self.ui.tableWidget_DB.setItem(i, 0, item_name_1)
+            self.ui.tableWidget_DB.setItem(i, 1, item_name_2)
+            self.ui.tableWidget_DB.setItem(i, 2, item_name_3)
+            self.ui.tableWidget_DB.setItem(i, 3, item_name_4)
+            self.ui.tableWidget_DB.setItem(i, 4, item_name_5)
+            # 视图
+            self.ui.tableWidget_View.setRowCount(len(self.sql_data['view']))
+            self.ui.tableWidget_View.setColumnCount(2)
+            for i in range(len(self.sql_data['view'])):
+                item_name_1 = QTableWidgetItem(self.sql_data['view'][i]['view'])
+                str2 = ' '
+                for x in self.sql_data['view'][i]['filter_field']:
+                    if x["ischecked"] == True:
+                        str2 = str2 + x["field_name"] + ","
+                item_name_2 = QTableWidgetItem(str2)
+                self.ui.tableWidget_View.setItem(i, 0, item_name_1)
+                self.ui.tableWidget_View.setItem(i, 1, item_name_2)
+
+        # 给出一个调试数据，正常情况应该使用self.sql_data数据
+
         self.ui.stackedWidget.setCurrentIndex(2)
 
     def generate(self):
@@ -275,5 +307,6 @@ def start():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon('app/ui/ncepu.jpg'))
     main_window = MainWindow()
+    main_window.confirm_config()
     main_window.ui.show()
     sys.exit(app.exec())
