@@ -24,6 +24,7 @@ from app.utils.checkSqlLink import SQLHandler
 from PySide6.QtWidgets import *
 from PySide6.QtCore import *
 from functools import partial
+from app.static.utils import generate_id
 
 
 class MainWindow:
@@ -107,6 +108,61 @@ class MainWindow:
 
         self.table_number = 0   # 记录拿到表的序号
         self.selected_table = {}  # 被选中的表缓存数据
+        self.selected_field = {}  # 被选中的用于主键的字段缓存
+        self.businesskeyrule_to_rulename = [
+            {
+                'businesskeyrule': 'create_uid',
+                'rulename': 'uuid生成'
+            },
+            {
+                'businesskeyrule': 'create_hashlib_id',
+                'rulename': 'hashlib+时间'
+            },
+            {
+                'businesskeyrule': 'create_random_id',
+                'rulename': '时间戳+N位随机数'
+            },
+            {
+                'businesskeyrule': 'create_custom_id',
+                'rulename': '用户自定义主键生成规则'
+            }
+        ]   # 加密方法绑定加密名
+        self.typy_to_businesskeyrule = [
+            {
+                'field_type': 'int',
+                'businesskeyrule_to_rulename': [
+                    {
+                        'businesskeyrule': 'create_random_id',
+                        'rulename': '时间戳+N位随机数'
+                    },
+                    {
+                        'businesskeyrule': 'create_custom_id',
+                        'rulename': '用户自定义主键生成规则'
+                    }
+                ]
+            },
+            {
+                'field_type': 'others',
+                'businesskeyrule_to_rulename': [
+                    {
+                        'businesskeyrule': 'create_uid',
+                        'rulename': 'uuid生成'
+                    },
+                    {
+                        'businesskeyrule': 'create_hashlib_id',
+                        'rulename': 'hashlib+时间'
+                    },
+                    {
+                        'businesskeyrule': 'create_random_id',
+                        'rulename': '时间戳+N位随机数'
+                    },
+                    {
+                        'businesskeyrule': 'create_custom_id',
+                        'rulename': '用户自定义主键生成规则'
+                    }
+                ]
+            }
+        ]   # field_type绑定加密方法
 
         # 给全选按钮命名
         self.ui.pushButton_all_6.setText('全选')
@@ -127,6 +183,8 @@ class MainWindow:
         # 表对应的pushButton事件添加
         for pushButton in self.ui.scrollArea_left_6.findChildren(QPushButton):
             pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
+
+        self.add_field_encrypt_group(1)
 
     def view_config_init(self):
         '''
@@ -399,6 +457,8 @@ class MainWindow:
             # 清空配置框
             self.ui.comboBox_select_table_logicaldeletemark.clear()
             self.ui.comboBox_select_table_businesskeyname.clear()
+            self.ui.comboBox_select_table_logicaldeletemark.addItem('选择逻辑删除标识字段')
+            self.ui.comboBox_select_table_businesskeyname.addItem('选择业务主键')
 
             # 加载数据到配置框
 
@@ -407,31 +467,116 @@ class MainWindow:
                     self.selected_table = table
 
             self.ui.label_table_name_7.setText(button_text)  # 这里必须调用setText方法，直接对text赋值没用
-
-            self.ui.comboBox_select_table_logicaldeletemark.addItem('选择逻辑删除标识字段')
-            self.ui.comboBox_select_table_businesskeyname.addItem('选择业务主键')
             for field in self.selected_table['field']:
                 if field['field_type'] == 'int':
                     self.ui.comboBox_select_table_logicaldeletemark.addItem(field['field_name'])
                 self.ui.comboBox_select_table_businesskeyname.addItem(field['field_name'])
 
-            self.ui.comboBox_select_table_businesskeyname.currentIndexChanged.connect(partial(self.comboBob_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
+            self.ui.comboBox_select_table_businesskeyname.currentIndexChanged.connect(partial(self.comboBob_businesskeyname_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
 
-
-            # print(self.ui.comboBox_select_table_logicaldeletemark.currentText())
-
-    def comboBob_currentIndexChanged(self, comboBox_index):
+    def comboBob_businesskeyname_currentIndexChanged(self, comboBox_index):
         '''
         comboBox的item改变事件，目前为self.ui.comboBox_select_table_businesskeyname专属
         :param comboBox_index: 被选择的item索引
         :return:
         '''
 
-        businesskeyname = self.ui.comboBox_select_table_businesskeyname.currentText()
-        for filed in self.selected_table:
-            if filed['filed_name'] == businesskeyname:
-                pass
+        # 清空上次操作的缓存数据
+        self.selected_field = None
 
+        # 取到别选中的字段，并赋值给sql_data['table'][n]['businesskeyname']
+        businesskeyname = self.ui.comboBox_select_table_businesskeyname.currentText()
+        if businesskeyname == '选择业务主键':
+            businesskeyname = ''
+        for field in self.selected_table['field']:
+            if field['field_name'] == businesskeyname:
+                self.selected_field = field
+        self.selected_table['businesskeyname'] = businesskeyname
+
+        # 根据field_type拿到相应的主键生成规则
+        if self.selected_field == None:
+            self.businesskeyrule_to_rulename = []
+        else:
+            for businesskeyrule_to_rulename in self.typy_to_businesskeyrule:
+                if businesskeyrule_to_rulename['field_type'] == 'others':
+                    self.businesskeyrule_to_rulename = businesskeyrule_to_rulename['businesskeyrule_to_rulename']
+            for businesskeyrule_to_rulename in self.typy_to_businesskeyrule:
+                if businesskeyrule_to_rulename['field_type'] == self.selected_field['field_type']:
+                    self.businesskeyrule_to_rulename = businesskeyrule_to_rulename['businesskeyrule_to_rulename']
+
+        # 更新选择业务主键生成规则comboBox
+        self.ui.comboBox_select_table_businesskeyrule.clear()
+        self.ui.comboBox_select_table_businesskeyrule.addItem('选择业务主键生成规则')
+        for rule in self.businesskeyrule_to_rulename:
+            self.ui.comboBox_select_table_businesskeyrule.addItem(rule['rulename'])
+
+        #  绑定业务主键生成规则comboBox改变事件
+        self.ui.comboBox_select_table_businesskeyrule.currentIndexChanged.connect(
+            partial(self.comboBob_businesskeyrule_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
+
+    def comboBob_businesskeyrule_currentIndexChanged(self, comboBox_index):
+        '''
+        comboBox的item改变事件，目前为self.ui.comboBox_select_table_businesskeyrule专属
+        :param comboBox_index:
+        :return:
+        '''
+        rulename = self.ui.comboBox_select_table_businesskeyrule.currentText()
+        if rulename == '选择业务主键生成规则':
+            rulename = ''
+            self.selected_table['businesskeyrule'] = ''
+
+        for rule in self.businesskeyrule_to_rulename:
+            if rule['rulename'] == rulename:
+                self.selected_table['businesskeyrule'] = rule['businesskeyrule']
+        print(self.selected_table)
+
+    def add_field_encrypt_group(self, index):
+        '''
+        添加加密字段配置组件
+        :param index: 组件列表下标
+        :return:
+        '''
+
+        self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
+        self.ui.verticalLayoutWidget_add.setObjectName(u"verticalLayoutWidget_add" + str(index))
+        self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * index, 497, 41))
+        # self.verticalLayoutWidget_22.setGeometry(QRect(20, 320, 497, 41))
+
+        self.ui.horizontalLayout_add = QHBoxLayout(self.ui.verticalLayoutWidget_add)
+        self.ui.horizontalLayout_add.setObjectName(u"horizontalLayout_add" + str(index))
+        self.ui.horizontalLayout_add.setContentsMargins(0, 0, 0, 0)
+
+        self.ui.label_add = QLabel(self.ui.verticalLayoutWidget_add)
+        self.ui.label_add.setObjectName(u"label_field_add" + str(index))
+        self.ui.label_add.setText('字段选择')
+
+        self.ui.horizontalLayout_add.addWidget(self.ui.label_add)
+
+        self.ui.comboBox_select_table_field_encrypt_add = QComboBox(self.ui.verticalLayoutWidget_add)
+        self.ui.comboBox_select_table_field_encrypt_add.addItem("选择需要加密的字段")
+        self.ui.comboBox_select_table_field_encrypt_add.setObjectName(u"comboBox_select_table_field_encrypt_add" + str(index))
+        self.ui.comboBox_select_table_field_encrypt_add.setMinimumSize(QSize(150, 0))
+
+        self.ui.horizontalLayout_add.addWidget(self.ui.comboBox_select_table_field_encrypt_add)
+
+        self.ui.label_add = QLabel(self.ui.verticalLayoutWidget_add)
+        self.ui.label_add.setObjectName(u"label_encrypt_add" + str(index))
+        self.ui.label_add.setText('加密方式')
+
+        self.ui.horizontalLayout_add.addWidget(self.ui.label_add)
+
+        self.ui.comboBox_select_table_encrypt_type_add = QComboBox(self.ui.verticalLayoutWidget_add)
+        self.ui.comboBox_select_table_encrypt_type_add.addItem("选择加密方式")
+        self.ui.comboBox_select_table_encrypt_type_add.setObjectName(u"comboBox_select_table_encrypt_type_add" + str(index))
+        self.ui.comboBox_select_table_encrypt_type_add.setMinimumSize(QSize(150, 0))
+
+        self.ui.horizontalLayout_add.addWidget(self.ui.comboBox_select_table_encrypt_type_add)
+
+        self.ui.pushButton_delete_field_encrypt_add = QPushButton(self.ui.verticalLayoutWidget_add)
+        self.ui.pushButton_delete_field_encrypt_add.setObjectName(u"pushButton_delete_field_encrypt_add" + str(index))
+        self.ui.pushButton_delete_field_encrypt_add.setText('删除')
+
+        self.ui.horizontalLayout_add.addWidget(self.ui.pushButton_delete_field_encrypt_add)
 
 def start():
 
