@@ -108,7 +108,7 @@ class MainWindow:
 
         self.table_number = 0   # 记录拿到表的序号
         self.selected_table = {}  # 被选中的表缓存数据
-        self.selected_field = {}  # 被选中的用于主键的字段缓存
+        self.selected_field = None  # 被选中的用于主键的字段缓存
         self.businesskeyrule_to_rulename = [
             {
                 'businesskeyrule': 'create_uid',
@@ -126,7 +126,7 @@ class MainWindow:
                 'businesskeyrule': 'create_custom_id',
                 'rulename': '用户自定义主键生成规则'
             }
-        ]   # 加密方法绑定加密名
+        ]   # 生成方法绑定生成名
         self.typy_to_businesskeyrule = [
             {
                 'field_type': 'int',
@@ -162,7 +162,11 @@ class MainWindow:
                     }
                 ]
             }
-        ]   # field_type绑定加密方法
+        ]   # field_type绑定生成方法
+        self.encrypt_group_count = 0  # 字段加密组件总数
+        self.encrypt_group_number = 0  # 字段加密组件当前组件编号
+        self.field_encryptable = []  #  可加密的字段组成一个列表，目前字段类型为字符允许加密
+        self.encrypt_type_list = ['rsa', 'aes']
 
         # 给全选按钮命名
         self.ui.pushButton_all_6.setText('全选')
@@ -180,11 +184,17 @@ class MainWindow:
         # 全选CheckBox事件添加
         self.ui.centralwidget.findChild(QCheckBox, u"checkBox_all_6").clicked.connect(self.checkBox_all_select_clicked)
 
+        # 添加字段组件组事件添加
+        self.ui.pushButton_add_field_encrypt.clicked.connect(self.add_field_button_clicked)
+
         # 表对应的pushButton事件添加
         for pushButton in self.ui.scrollArea_left_6.findChildren(QPushButton):
             pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
 
-        self.add_field_encrypt_group(1)
+        # 加密组件初始化
+        self.add_field_encrypt_group_init()
+        for x in range(0):
+            self.add_field_encrypt_group()
 
     def view_config_init(self):
         '''
@@ -447,12 +457,25 @@ class MainWindow:
         :return:
         '''
 
+        print(1)
         if button_text == '全选':
             self.ui.stackedWidget_right.setCurrentIndex(0)
         else:
             self.ui.stackedWidget_right.setCurrentIndex(1)
 
             # 保存上个表配置的数据
+
+            # 清空数据缓存
+            self.field_encryptable = []
+
+            # 清除事件
+            self.ui.comboBox_select_table_businesskeyname.currentIndexChanged.connect(
+                partial(self.comboBob_businesskeyname_currentIndexChanged))
+            self.ui.comboBox_select_table_businesskeyname.currentIndexChanged.disconnect()
+
+            self.ui.comboBox_select_table_logicaldeletemark.currentIndexChanged.connect(
+                partial(self.comboBob_logicaldeletemark_currentIndexChanged))
+            self.ui.comboBox_select_table_logicaldeletemark.currentIndexChanged.disconnect()
 
             # 清空配置框
             self.ui.comboBox_select_table_logicaldeletemark.clear()
@@ -472,15 +495,103 @@ class MainWindow:
                     self.ui.comboBox_select_table_logicaldeletemark.addItem(field['field_name'])
                 self.ui.comboBox_select_table_businesskeyname.addItem(field['field_name'])
 
-            self.ui.comboBox_select_table_businesskeyname.currentIndexChanged.connect(partial(self.comboBob_businesskeyname_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
+                if field['field_type'] == 'str':
+                    self.field_encryptable.append(field)
 
-    def comboBob_businesskeyname_currentIndexChanged(self, comboBox_index):
+            # 事件添加（逻辑删除字段修改，主键修改）
+            self.ui.comboBox_select_table_logicaldeletemark.currentIndexChanged.connect(
+                partial(self.comboBob_logicaldeletemark_currentIndexChanged))
+
+            self.ui.comboBox_select_table_businesskeyname.currentIndexChanged.connect(partial(
+                self.comboBob_businesskeyname_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
+
+            # 初始化主键配置组件内容
+
+            # 初始化逻辑删除字段
+            for i in range(self.ui.comboBox_select_table_logicaldeletemark.count()):
+                if self.ui.comboBox_select_table_logicaldeletemark.itemText(i) == self.selected_table['logicaldeletemark']:
+                    self.ui.comboBox_select_table_logicaldeletemark.setCurrentIndex(i)
+
+            # 初始化主键字段
+            for i in range(self.ui.comboBox_select_table_businesskeyname.count()):
+                if self.ui.comboBox_select_table_businesskeyname.itemText(i) == self.selected_table['businesskeyname']:
+                    self.ui.comboBox_select_table_businesskeyname.setCurrentIndex(i)
+            self.comboBob_businesskeyname_currentIndexChanged()
+
+            # 根据field_type拿到相应的主键生成规则
+            if self.selected_field == None:
+                self.businesskeyrule_to_rulename = []
+            else:
+                for businesskeyrule_to_rulename in self.typy_to_businesskeyrule:
+                    if businesskeyrule_to_rulename['field_type'] == 'others':
+                        self.businesskeyrule_to_rulename = businesskeyrule_to_rulename['businesskeyrule_to_rulename']
+                for businesskeyrule_to_rulename in self.typy_to_businesskeyrule:
+                    if businesskeyrule_to_rulename['field_type'] == self.selected_field['field_type']:
+                        self.businesskeyrule_to_rulename = businesskeyrule_to_rulename['businesskeyrule_to_rulename']
+
+            # 根据生成规则字典和sql_data设置生成方式
+            for i in range(self.ui.comboBox_select_table_businesskeyrule.count()):
+                for rule in self.businesskeyrule_to_rulename:
+                    if rule['rulename'] == self.ui.comboBox_select_table_businesskeyrule.itemText(i):
+                        if self.selected_table['businesskeyrule'] == rule['businesskeyrule']:
+                            self.ui.comboBox_select_table_businesskeyrule.setCurrentIndex(i)
+
+            # 初始化加密组件
+
+            # 删除组件
+            del_encrypt_list = self.ui.verticalLayoutWidget_add.findChildren(QPushButton)
+            for del_encrypt in del_encrypt_list:
+                index = del_encrypt.objectName().replace('pushButton_delete_field_encrypt_add', '')
+                widget_del = self.ui.verticalLayoutWidget_add.findChild(QHBoxLayout, u"horizontalLayout_add" + index)
+                # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
+                while widget_del.count():
+                    item = widget_del.takeAt(0)
+                    widget = item.widget()
+                    if widget is not None:
+                        widget.deleteLater()
+                widget_del.deleteLater()
+
+            self.encrypt_group_count = 0
+
+            for field in self.field_encryptable:
+                if field['field_encrypt'] == True:
+                    self.add_field_button_clicked()
+                    name_comboBox = self.ui.verticalLayoutWidget_add.findChild(QComboBox, u"comboBox_select_table_field_encrypt_add" + str(self.encrypt_group_number - 1))
+                    name_comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
+                    name_comboBox.currentIndexChanged.disconnect()
+                    name_comboBox.addItem(field['field_name'])
+                    for i in range(name_comboBox.count()):
+                        if name_comboBox.itemText(i) == field['field_name']:
+                            name_comboBox.setCurrentIndex(i)
+
+                    encrypt_comboBox = self.ui.verticalLayoutWidget_add.findChild(QComboBox,
+                                                                               u"comboBox_select_table_encrypt_type_add" + str(
+                                                                                   self.encrypt_group_number - 1))
+                    encrypt_comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
+                    encrypt_comboBox.currentIndexChanged.disconnect()
+                    for i in range(encrypt_comboBox.count()):
+                        if encrypt_comboBox.itemText(i) == field['encrypt_type']:
+                            encrypt_comboBox.setCurrentIndex(i)
+
+                    name_comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
+                    encrypt_comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
+
+            self.comboBox_field_update()
+
+    def comboBob_logicaldeletemark_currentIndexChanged(self, comboBox_index = -1):
+        if self.ui.comboBox_select_table_logicaldeletemark.currentText() == '选择逻辑删除标识字段':
+            self.selected_table['logicaldeletemark'] = ''
+        else:
+            self.selected_table['logicaldeletemark'] = self.ui.comboBox_select_table_logicaldeletemark.currentText()
+
+    def comboBob_businesskeyname_currentIndexChanged(self, comboBox_index = -1):
         '''
         comboBox的item改变事件，目前为self.ui.comboBox_select_table_businesskeyname专属
         :param comboBox_index: 被选择的item索引
         :return:
         '''
 
+        print(2)
         # 清空上次操作的缓存数据
         self.selected_field = None
 
@@ -488,6 +599,7 @@ class MainWindow:
         businesskeyname = self.ui.comboBox_select_table_businesskeyname.currentText()
         if businesskeyname == '选择业务主键':
             businesskeyname = ''
+            self.selected_table['businesskeyrule'] = ''
         for field in self.selected_table['field']:
             if field['field_name'] == businesskeyname:
                 self.selected_field = field
@@ -505,12 +617,16 @@ class MainWindow:
                     self.businesskeyrule_to_rulename = businesskeyrule_to_rulename['businesskeyrule_to_rulename']
 
         # 更新选择业务主键生成规则comboBox
+        self.ui.comboBox_select_table_businesskeyrule.currentIndexChanged.connect(
+            partial(self.comboBob_businesskeyrule_currentIndexChanged))
+        self.ui.comboBox_select_table_businesskeyrule.currentIndexChanged.disconnect()
         self.ui.comboBox_select_table_businesskeyrule.clear()
         self.ui.comboBox_select_table_businesskeyrule.addItem('选择业务主键生成规则')
         for rule in self.businesskeyrule_to_rulename:
             self.ui.comboBox_select_table_businesskeyrule.addItem(rule['rulename'])
 
         #  绑定业务主键生成规则comboBox改变事件
+        # self.ui.disconnect(self.ui.comboBox_select_table_businesskeyrule)  # 注销事件
         self.ui.comboBox_select_table_businesskeyrule.currentIndexChanged.connect(
             partial(self.comboBob_businesskeyrule_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
 
@@ -520,6 +636,8 @@ class MainWindow:
         :param comboBox_index:
         :return:
         '''
+
+        print(3)
         rulename = self.ui.comboBox_select_table_businesskeyrule.currentText()
         if rulename == '选择业务主键生成规则':
             rulename = ''
@@ -528,55 +646,193 @@ class MainWindow:
         for rule in self.businesskeyrule_to_rulename:
             if rule['rulename'] == rulename:
                 self.selected_table['businesskeyrule'] = rule['businesskeyrule']
-        print(self.selected_table)
 
-    def add_field_encrypt_group(self, index):
+    def add_field_button_clicked(self):
         '''
-        添加加密字段配置组件
-        :param index: 组件列表下标
+        添加加密字段按钮点击事件
         :return:
         '''
 
-        self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
-        self.ui.verticalLayoutWidget_add.setObjectName(u"verticalLayoutWidget_add" + str(index))
-        self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * index, 497, 41))
-        # self.verticalLayoutWidget_22.setGeometry(QRect(20, 320, 497, 41))
+        # 添加一个选择加密字段组
+        self.add_field_encrypt_group()
 
-        self.ui.horizontalLayout_add = QHBoxLayout(self.ui.verticalLayoutWidget_add)
-        self.ui.horizontalLayout_add.setObjectName(u"horizontalLayout_add" + str(index))
+
+        # 绑定事件,初始化数据
+        button_delete = self.ui.verticalLayoutWidget_add.findChild(QWidget, u"pushButton_delete_field_encrypt_add" + str(self.encrypt_group_number - 1))
+        button_delete.clicked.connect(partial(self.del_field_encrypt_group, button_delete))
+
+        comboBox_field = self.ui.verticalLayoutWidget_add.findChild(QComboBox,
+                                                                    u"comboBox_select_table_field_encrypt_add" + str(
+                                                                        self.encrypt_group_number - 1))
+        for field in self.field_encryptable:
+            if field['field_encrypt'] == False:
+                comboBox_field.addItem(field['field_name'])
+        comboBox_field.currentIndexChanged.connect(partial(self.comboBox_field_update))
+
+        comboBox_encrypt_type = self.ui.verticalLayoutWidget_add.findChild(QComboBox,
+                                                                    u"comboBox_select_table_encrypt_type_add" + str(
+                                                                        self.encrypt_group_number - 1))
+        for encrypt_type in self.encrypt_type_list:
+            comboBox_encrypt_type.addItem(encrypt_type)
+        comboBox_encrypt_type.currentIndexChanged.connect(partial(self.comboBox_field_update))
+
+        # 更新加密组件，这里可以不更新
+        # self.comboBox_field_update()
+
+    def add_field_encrypt_group(self):
+        '''
+        添加加密字段配置组件
+        :param
+        :return:
+        '''
+
+        # 更新verticalLayoutWidget_add大小
+        self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
+
+        self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
+
+        self.ui.horizontalLayout_add = QHBoxLayout()
+        self.ui.horizontalLayout_add.setObjectName(u"horizontalLayout_add" + str(self.encrypt_group_number))
         self.ui.horizontalLayout_add.setContentsMargins(0, 0, 0, 0)
 
         self.ui.label_add = QLabel(self.ui.verticalLayoutWidget_add)
-        self.ui.label_add.setObjectName(u"label_field_add" + str(index))
+        self.ui.label_add.setObjectName(u"label_field_add" + str(self.encrypt_group_number))
         self.ui.label_add.setText('字段选择')
 
         self.ui.horizontalLayout_add.addWidget(self.ui.label_add)
 
         self.ui.comboBox_select_table_field_encrypt_add = QComboBox(self.ui.verticalLayoutWidget_add)
         self.ui.comboBox_select_table_field_encrypt_add.addItem("选择需要加密的字段")
-        self.ui.comboBox_select_table_field_encrypt_add.setObjectName(u"comboBox_select_table_field_encrypt_add" + str(index))
+        self.ui.comboBox_select_table_field_encrypt_add.setObjectName(u"comboBox_select_table_field_encrypt_add" + str(self.encrypt_group_number))
         self.ui.comboBox_select_table_field_encrypt_add.setMinimumSize(QSize(150, 0))
 
         self.ui.horizontalLayout_add.addWidget(self.ui.comboBox_select_table_field_encrypt_add)
 
         self.ui.label_add = QLabel(self.ui.verticalLayoutWidget_add)
-        self.ui.label_add.setObjectName(u"label_encrypt_add" + str(index))
+        self.ui.label_add.setObjectName(u"label_encrypt_add" + str(self.encrypt_group_number))
         self.ui.label_add.setText('加密方式')
 
         self.ui.horizontalLayout_add.addWidget(self.ui.label_add)
 
         self.ui.comboBox_select_table_encrypt_type_add = QComboBox(self.ui.verticalLayoutWidget_add)
-        self.ui.comboBox_select_table_encrypt_type_add.addItem("选择加密方式")
-        self.ui.comboBox_select_table_encrypt_type_add.setObjectName(u"comboBox_select_table_encrypt_type_add" + str(index))
+        # self.ui.comboBox_select_table_encrypt_type_add.addItem("选择加密方式")
+        self.ui.comboBox_select_table_encrypt_type_add.setObjectName(u"comboBox_select_table_encrypt_type_add" + str(self.encrypt_group_number))
         self.ui.comboBox_select_table_encrypt_type_add.setMinimumSize(QSize(150, 0))
 
         self.ui.horizontalLayout_add.addWidget(self.ui.comboBox_select_table_encrypt_type_add)
 
         self.ui.pushButton_delete_field_encrypt_add = QPushButton(self.ui.verticalLayoutWidget_add)
-        self.ui.pushButton_delete_field_encrypt_add.setObjectName(u"pushButton_delete_field_encrypt_add" + str(index))
+        self.ui.pushButton_delete_field_encrypt_add.setObjectName(u"pushButton_delete_field_encrypt_add" + str(self.encrypt_group_number))
         self.ui.pushButton_delete_field_encrypt_add.setText('删除')
 
         self.ui.horizontalLayout_add.addWidget(self.ui.pushButton_delete_field_encrypt_add)
+
+        self.encrypt_group_count += 1
+        self.encrypt_group_number += 1
+
+        self.ui.add_encrypt_group_layout.addLayout(self.ui.horizontalLayout_add)
+
+    def add_field_encrypt_group_init(self):
+        '''
+        加密字段组件面板初始化，（这里是由于添加组件时遇到无法显示bug不得已而使用）
+        :return:
+        '''
+
+        self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
+        self.ui.verticalLayoutWidget_add.setObjectName(u"verticalLayoutWidget_add" + str(self.encrypt_group_number))
+        # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
+
+        self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41))
+
+        self.ui.add_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add)
+
+        # 初始化滚动面板容量
+        self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
+
+    def del_field_encrypt_group(self, Qobject):
+        '''
+        删除一个加密组
+        :param Qobject: 加密组件
+        :return:
+        '''
+
+        index = Qobject.objectName().replace('pushButton_delete_field_encrypt_add', '')
+
+        self.encrypt_group_count -= 1
+
+        # 删除加密组
+        widget_del = self.ui.verticalLayoutWidget_add.findChild(QHBoxLayout, u"horizontalLayout_add" + index)
+
+        # ”deleteLater()“依赖于Qt的event loop机制。
+        # 如果在event loop启用前被调用, 那么event loop启用后对象才会被销毁;
+        # 如果在event loop结束后被调用, 那么对象不会被销毁;
+        # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
+        while widget_del.count():
+            item = widget_del.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
+        widget_del.deleteLater()
+
+        # 更新verticalLayoutWidget_add大小
+        self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
+
+        self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
+
+        # 更新加密组件
+        self.comboBox_field_update(layout_index=int(index))
+
+    def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
+        '''
+        更新已有comboBox组件
+        :return:
+        '''
+
+        # 重置加密字段
+        for field in self.field_encryptable:
+            field['field_encrypt'] = False
+
+        QComboBox_list = self.ui.verticalLayoutWidget_add.findChildren(QComboBox)
+
+        # 更新加密字段
+        comboBox_index = 0
+        for comboBox in QComboBox_list:
+            comboBox_index += 1
+            if comboBox_index % 2 != 0:
+
+                # 排除待删除删除的组件造成的影响
+                if layout_index != -1 and layout_index == int(
+                        comboBox.objectName().replace('comboBox_select_table_field_encrypt_add', '')):
+                    continue
+                if comboBox.currentText() != '选择需要加密的字段':
+                    for field in self.field_encryptable:
+                        if comboBox.currentText() == field['field_name']:
+                            field['field_encrypt'] = True
+                            field['encrypt_type'] = QComboBox_list[comboBox_index].currentText()
+
+        comboBox_index = 0
+        for comboBox in QComboBox_list:
+            comboBox_index += 1
+            if comboBox_index % 2 != 0:
+
+                # 清除事件，避免循环
+                comboBox.currentIndexChanged.disconnect()
+
+                text = comboBox.currentText()
+
+                # 更新comboBox
+                comboBox.clear()
+                if text != '选择需要加密的字段':
+                    comboBox.addItem('选择需要加密的字段')
+                comboBox.addItem(text)
+                for field in self.field_encryptable:
+                    if field['field_encrypt'] == False:
+                        comboBox.addItem(field['field_name'])
+                if comboBox.itemText(1) == text:
+                    comboBox.setCurrentIndex(1)
+
+                # 重新绑定事件
+                comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
 def start():
 
