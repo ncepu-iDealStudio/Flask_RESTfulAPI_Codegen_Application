@@ -218,26 +218,29 @@ def confirm_config_init(self):
     #             {'field_name': 'testID', 'field_type': 'str', 'ischecked': True},
     #             {'field_name': 'testName', 'field_type': 'str', 'ischecked': False}], 'ischecked': False}]
     # }
-
-    self.ui.tableWidget_DB.setRowCount(len(self.sql_data['table']))
+    new_table = []
+    for x in self.sql_data['table']:
+        if x['ischecked'] == True:
+            new_table.append(x)
+    self.ui.tableWidget_DB.setRowCount(len(new_table))
     self.ui.tableWidget_DB.setColumnCount(5)
-    for i in range(len(self.sql_data['table'])):
-        item_name_1 = QTableWidgetItem(self.sql_data['table'][i]['table'])
+    for i in range(len(new_table)):
+        item_name_1 = QTableWidgetItem(new_table[i]['table'])
         item_name_1.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         str1 = ''
-        for x in self.sql_data['table'][i]['field']:
+        for x in new_table[i]['field']:
             if x["field_encrypt"] == True:
                 str1 = str1 + x["field_name"] + ","
         if str1 == '':
             str1 = '/'
-        str2 = self.sql_data['table'][i]['logicaldeletemark']
-        if self.sql_data['table'][i]['logicaldeletemark'] == '':
+        str2 = new_table[i]['logicaldeletemark']
+        if new_table[i]['logicaldeletemark'] == '':
             str2 = "/"
         str3 = self.sql_data['table'][i]['businesskeyname']
-        if self.sql_data['table'][i]['businesskeyname'] == '':
+        if new_table[i]['businesskeyname'] == '':
             str3 = "/"
-        str4 = self.sql_data['table'][i]['businesskeyrule']
-        if self.sql_data['table'][i]['businesskeyrule'] == '':
+        str4 = new_table[i]['businesskeyrule']
+        if new_table[i]['businesskeyrule'] == '':
             str4 = "/"
         item_name_2 = QTableWidgetItem(str1)
         item_name_2.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
@@ -254,13 +257,17 @@ def confirm_config_init(self):
         self.ui.tableWidget_DB.setItem(i, 4, item_name_5)
         self.ui.tableWidget_DB.setEditTriggers(QAbstractItemView.NoEditTriggers)
     # 视图
-    self.ui.tableWidget_View.setRowCount(len(self.sql_data['view']))
+    new_view = []
+    for x in self.sql_data['view']:
+        if x["ischecked"] == True:
+            new_view.append(x)
+    self.ui.tableWidget_View.setRowCount(len(new_view))
     self.ui.tableWidget_View.setColumnCount(2)
-    for i in range(len(self.sql_data['view'])):
-        item_name_1 = QTableWidgetItem(self.sql_data['view'][i]['view'])
+    for i in range(len(new_view)):
+        item_name_1 = QTableWidgetItem(new_view[i]['view'])
         item_name_1.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
         str2 = ' '
-        for x in self.sql_data['view'][i]['filter_field']:
+        for x in new_view[i]['filter_field']:
             if x["ischecked"] == True:
                 str2 = str2 + x["field_name"] + ","
         if str2 == '':
