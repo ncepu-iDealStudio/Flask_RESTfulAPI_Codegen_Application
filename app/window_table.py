@@ -183,26 +183,25 @@ def table_config(self):
 
     # 获取选中的表数据
     checkBox_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QCheckBox)
+    for table in self.sql_data['table']:
+        table['ischecked'] = False
     for checkBox in checkBox_list:
         table_name = checkBox.objectName().replace('checkBox_', '')
         if table_name != 'select_all':
             if checkBox.isChecked() == True:
                 for table in self.sql_data['table']:
-                    table['ischecked'] = False
                     if table['table'] == table_name:
                         table['ischecked'] = True
-                        break
-
     # 获取视图数据
     view_info = SQLHandler.generate_views_information()
     if view_info['code']:
         print('视图')
         print(view_info['data'])
         # self.table_config_show(self, tables_info['data'])
-    print('数据')
-    print(self.sql_data)
 
     self.sql_data['view'] = view_info['data']['view']
+    print('数据')
+    print(self.sql_data)
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
     self.ui.stackedWidget.setCurrentIndex(3)
 
