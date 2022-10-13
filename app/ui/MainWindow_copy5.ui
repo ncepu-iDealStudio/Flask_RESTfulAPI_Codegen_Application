@@ -41,6 +41,9 @@
           <height>650</height>
          </size>
         </property>
+        <property name="currentIndex">
+         <number>3</number>
+        </property>
         <widget class="QWidget" name="page_1">
          <widget class="QScrollArea" name="scrollArea_1">
           <property name="geometry">
@@ -377,7 +380,7 @@
      <x>0</x>
      <y>0</y>
      <width>1316</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

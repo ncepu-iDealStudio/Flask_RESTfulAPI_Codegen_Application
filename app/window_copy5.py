@@ -57,7 +57,7 @@ class MainWindow:
         '''
         self.ui.pushButton_next.clicked.connect(self.button_next)
         self.ui.pushButton_last.clicked.connect(self.button_last)
-        self.ui.toolButton_file.clicked.connect(self.button_show_file)
+
 
     def db_config_init(self):
         '''
@@ -95,6 +95,7 @@ class MainWindow:
         self.ui.dig=QFileDialog()
         self.ui.dig.setFileMode(QFileDialog.AnyFile)
         self.ui.dig.setFilter(QDir.Files)
+        self.ui.toolButton_file.clicked.connect(self.button_show_file)
 
     def button_next(self):
         '''
@@ -286,7 +287,7 @@ class MainWindow:
         # fileName, fileType = dialog.getOpenFileName(self.ui, "选取文件", os.getcwd(),
         #                                                            "All Files(*);;Text Files(*.txt)")
         fileName = dialog.getExistingDirectory(self.ui, "选取文件", os.getcwd())
-        print(fileName)
+        # print(fileName)
         self.ui.lineEdit.setText(fileName)
 
 
