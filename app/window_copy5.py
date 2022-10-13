@@ -277,7 +277,8 @@ class MainWindow:
         # self.ui.dig = QFileDialog()
         # self.ui.dig.setFileMode(QFileDialog.AnyFile)
         # self.ui.dig.setFilter(QDir.Files)
-        codegen.start()
+        self.ui.stackedWidget.setCurrentIndex(3)
+        # codegen.start()
 
     def button_show_file(self):
         dialog=QtWidgets.QFileDialog
