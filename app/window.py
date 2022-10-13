@@ -57,6 +57,7 @@ class MainWindow:
         self.frame_init()
         self.window_init_for_table()
         self.db_config_init()
+        self.window_init_for_view()
         # self.view_config_init()
         # self.confirm_config_init()
         # self.generate_init()
@@ -132,6 +133,7 @@ class MainWindow:
         if self.ui.stackedWidget.currentIndex() == 1:
             self.confirm_config()
             self.generate_init()
+            self.ui.pushButton_next.setText('生成代码')
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
@@ -158,6 +160,7 @@ class MainWindow:
 
         if self.ui.stackedWidget.currentIndex() == 2:
             self.ui.stackedWidget.setCurrentIndex(1)
+            self.ui.pushButton_next.setText('下一步')
             return
 
     # def db_config(self):
