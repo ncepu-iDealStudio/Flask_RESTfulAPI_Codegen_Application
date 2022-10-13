@@ -74,38 +74,8 @@ class MainWindow:
         数据库表页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:
         '''
-        # 通过table_data创建按钮组
 
-        # 给出一个调试数据，正常情况应该使用self.sql_data数据
-        sql_data = {
-            'table': [
-                {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-                 'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
-                           {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
-                 'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-                {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
-                 'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-                           {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-                           {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
-                           {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
-                 'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-                {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
-                 'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
-                 'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False}],
-
-            'view': [
-                {'view': 'v_student_course_score',
-                 'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                                  {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
-                                  {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
-                 'ischecked': 'False'},
-                {'view': 'v_test', 'filter_field': [
-                    {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                    {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
-                    {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
-        }
-        self.sql_data = sql_data
-
+        # 变量初始化
         self.table_number = 0   # 记录拿到表的序号
         self.selected_table = {}  # 被选中的表缓存数据
         self.selected_field = None  # 被选中的用于主键的字段缓存
@@ -168,12 +138,54 @@ class MainWindow:
         self.field_encryptable = []  #  可加密的字段组成一个列表，目前字段类型为字符允许加密
         self.encrypt_type_list = ['rsa', 'aes']
 
-        # 给全选按钮命名
-        self.ui.pushButton_all_6.setText('全选')
+        # 添加表按钮等组件初始化
+        self.add_table_button_group_init()
+        self.add_table_button_group('select_all')
 
-        # 添加表按钮等组件
+        # 加密组件初始化
+        self.add_field_encrypt_group_init()
+
+        # 通过table_data创建按钮组
+
+        # 给出一个调试数据，正常情况应该使用self.sql_data数据
+        sql_data = {
+            'table': [
+                {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
+                 'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
+                           {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
+                 'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
+                {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
+                 'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
+                           {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
+                           {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
+                           {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
+                 'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
+                {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
+                 'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
+                 'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False},
+            ],
+
+            'view': [
+                {'view': 'v_student_course_score',
+                 'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
+                                  {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
+                                  {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
+                 'ischecked': 'False'},
+                {'view': 'v_test', 'filter_field': [
+                    {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
+                    {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
+                    {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
+        }
+        self.sql_data = sql_data
+
+        # # 给全选按钮命名
+        # self.ui.pushButton_all_6.setText('全选')
+
         for table in self.sql_data['table']:
             self.add_table_button_group(table.get('table'))
+
+        # 初始化全选按钮
+        self.ui.centralwidget.findChild(QPushButton, u"pushButton_select_all").setText('全选')
 
         # 测试用，添加组件
         # for x in range(17):
@@ -182,7 +194,7 @@ class MainWindow:
         #  事件初始化
 
         # 全选CheckBox事件添加
-        self.ui.centralwidget.findChild(QCheckBox, u"checkBox_all_6").clicked.connect(self.checkBox_all_select_clicked)
+        self.ui.centralwidget.findChild(QCheckBox, u"checkBox_select_all").clicked.connect(self.checkBox_all_select_clicked)
 
         # 添加字段组件组事件添加
         self.ui.pushButton_add_field_encrypt.clicked.connect(self.add_field_button_clicked)
@@ -190,11 +202,6 @@ class MainWindow:
         # 表对应的pushButton事件添加
         for pushButton in self.ui.scrollArea_left_6.findChildren(QPushButton):
             pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
-
-        # 加密组件初始化
-        self.add_field_encrypt_group_init()
-        for x in range(0):
-            self.add_field_encrypt_group()
 
     def view_config_init(self):
         '''
@@ -395,6 +402,25 @@ class MainWindow:
         '''
         pass
 
+    def add_table_button_group_init(self):
+        '''
+        表格按钮初始化
+        :return:
+        '''
+
+        self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
+        # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
+
+        self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
+
+        self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
+
+        # # 初始化滚动面板容量
+        # self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
+
+        # 设置scrollAreaWidgetContents大小
+        self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60 + self.table_number * 31))
+
     def add_table_button_group(self, table_name):
         '''
         添加单个按钮组件组，用于表配置页面
@@ -402,7 +428,7 @@ class MainWindow:
         :return:
         '''
 
-        self.ui.horizontalLayoutWidget1 = QWidget(self.ui.scrollAreaWidgetContents_left_6)
+        self.ui.horizontalLayoutWidget1 = QWidget()
         self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
         self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.table_number * 31, 281, 31))
 
@@ -415,7 +441,7 @@ class MainWindow:
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.ui.checkBox_all_6.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
         self.ui.checkBox_1.setSizePolicy(sizePolicy)
         self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
 
@@ -432,8 +458,14 @@ class MainWindow:
 
         self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
 
+        # 把组件添加到面板
+        self.ui.add_table_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
+
         # 设置scrollAreaWidgetContents大小
         self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60 + self.table_number * 31))
+
+        # 设置面板大小
+        self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 60 + self.table_number * 31))
 
         self.table_number += 1
 
@@ -442,7 +474,7 @@ class MainWindow:
         全选checkBox点击调用
         :return:
         '''
-        if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_all_6").isChecked():
+        if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_select_all").isChecked():
             for checkBox in self.ui.scrollArea_left_6.findChildren(QCheckBox):
                 checkBox.setChecked(True)
 
@@ -739,7 +771,6 @@ class MainWindow:
         '''
 
         self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
-        self.ui.verticalLayoutWidget_add.setObjectName(u"verticalLayoutWidget_add" + str(self.encrypt_group_number))
         # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
 
         self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41))

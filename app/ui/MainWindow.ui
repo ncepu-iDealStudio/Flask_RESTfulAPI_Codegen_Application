@@ -63,18 +63,277 @@
              <height>639</height>
             </rect>
            </property>
-           <widget class="QLabel" name="label">
+           <widget class="QWidget" name="layoutWidget_2">
             <property name="geometry">
              <rect>
-              <x>353</x>
-              <y>50</y>
-              <width>171</width>
-              <height>20</height>
+              <x>100</x>
+              <y>10</y>
+              <width>781</width>
+              <height>621</height>
              </rect>
             </property>
-            <property name="text">
-             <string>这是数据库配置页面</string>
-            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_15">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_13">
+               <property name="leftMargin">
+                <number>50</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_db_4">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>数据库配置</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_9">
+                 <property name="font">
+                  <font>
+                   <family>微软雅黑</family>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::NoFrame</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                 <property name="lineWidth">
+                  <number>2</number>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;请选择要生成接口项目代码的目标数据库，生成器将针对此数据库，生成一个分层设计基于Restful风格的Web接口项目&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="textFormat">
+                  <enum>Qt::AutoText</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_14">
+               <property name="spacing">
+                <number>50</number>
+               </property>
+               <property name="leftMargin">
+                <number>50</number>
+               </property>
+               <property name="topMargin">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>50</number>
+               </property>
+               <property name="bottomMargin">
+                <number>30</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_27">
+                 <item>
+                  <widget class="QLabel" name="label_db_type_5">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>数据库类型</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_db_type">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>mysql</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_28">
+                 <item>
+                  <widget class="QLabel" name="label_db_host_5">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>主机</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="text_host">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_29">
+                 <item>
+                  <widget class="QLabel" name="label_db_port_5">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>端口</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="text_port">
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_30">
+                 <item>
+                  <widget class="QLabel" name="label_db_user_5">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>账号</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="text_user">
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_31">
+                 <item>
+                  <widget class="QLabel" name="label_db_password_5">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>密码</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="text_password">
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="echoMode">
+                    <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                   </property>
+                   <property name="clearButtonEnabled">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_32">
+                 <item>
+                  <widget class="QLabel" name="label_tables_5">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>数据库</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_database">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>请先获取数据库名</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="button_get_db_names">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text">
+                    <string>获取数据库名</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
            </widget>
           </widget>
          </widget>
@@ -101,18 +360,147 @@
              <height>639</height>
             </rect>
            </property>
-           <widget class="QLabel" name="label_4">
+           <widget class="QWidget" name="layoutWidget_3">
             <property name="geometry">
              <rect>
-              <x>450</x>
-              <y>80</y>
-              <width>171</width>
-              <height>20</height>
+              <x>0</x>
+              <y>0</y>
+              <width>733</width>
+              <height>602</height>
              </rect>
             </property>
-            <property name="text">
-             <string>这是配置确认配置页面</string>
-            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; font-weight:600;&quot;&gt;数据库配置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>请检查要生成接口项目代码的目标数据库，生成器将针对此数据库生成一个分层设计的接口项目</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::Fixed</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QTabWidget" name="tabWidget">
+               <property name="currentIndex">
+                <number>1</number>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>50</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <widget class="QWidget" name="tab">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <attribute name="title">
+                 <string>数据表</string>
+                </attribute>
+                <layout class="QHBoxLayout" name="horizontalLayout_3">
+                 <item>
+                  <widget class="QTableWidget" name="tableWidget_DB">
+                   <attribute name="horizontalHeaderCascadingSectionResizes">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="horizontalHeaderStretchLastSection">
+                    <bool>true</bool>
+                   </attribute>
+                   <column>
+                    <property name="text">
+                     <string>表名</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>加密字段</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>逻辑删除字段</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>业务主键</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>业务主键生成规则</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+               <widget class="QWidget" name="tab_2">
+                <property name="minimumSize">
+                 <size>
+                  <width>725</width>
+                  <height>453</height>
+                 </size>
+                </property>
+                <attribute name="title">
+                 <string>视图</string>
+                </attribute>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QTableWidget" name="tableWidget_View">
+                   <attribute name="horizontalHeaderCascadingSectionResizes">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="horizontalHeaderStretchLastSection">
+                    <bool>true</bool>
+                   </attribute>
+                   <column>
+                    <property name="text">
+                     <string>表名</string>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>接口查询字段</string>
+                    </property>
+                   </column>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </widget>
          </widget>
@@ -227,6 +615,275 @@
             <property name="text">
              <string>这是数据库表配置页面</string>
             </property>
+           </widget>
+           <widget class="QStackedWidget" name="stackedWidget_right">
+            <property name="geometry">
+             <rect>
+              <x>280</x>
+              <y>0</y>
+              <width>711</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="page_23">
+             <widget class="QWidget" name="verticalLayoutWidget_20">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>10</y>
+                <width>351</width>
+                <height>91</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_page1_7">
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>请选择用于生成代码的数据表，并为每张表进行相应的配置</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="mouseTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>数据表准备</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_24">
+             <widget class="QWidget" name="verticalLayoutWidget_21">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>711</width>
+                <height>641</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_page2_7">
+               <item>
+                <widget class="QScrollArea" name="scrollArea_right_7">
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
+                 <property name="accessibleName">
+                  <string/>
+                 </property>
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents_right_7">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>690</width>
+                    <height>1000</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>1000</height>
+                   </size>
+                  </property>
+                  <widget class="QLabel" name="label_table_name_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>10</y>
+                     <width>54</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>这是表名</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_set_key_13">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>140</y>
+                     <width>151</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>业务主键设置</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_select_key_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>170</y>
+                     <width>161</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>业务主键字段选择</string>
+                   </property>
+                  </widget>
+                  <widget class="QComboBox" name="comboBox_select_table_businesskeyname">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>190</y>
+                     <width>161</width>
+                     <height>22</height>
+                    </rect>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>选择业务主键</string>
+                    </property>
+                   </item>
+                  </widget>
+                  <widget class="QLabel" name="label_set_key_14">
+                   <property name="geometry">
+                    <rect>
+                     <x>210</x>
+                     <y>170</y>
+                     <width>161</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>业务主键生成规则</string>
+                   </property>
+                  </widget>
+                  <widget class="QComboBox" name="comboBox_select_table_businesskeyrule">
+                   <property name="geometry">
+                    <rect>
+                     <x>210</x>
+                     <y>190</y>
+                     <width>161</width>
+                     <height>22</height>
+                    </rect>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>选择业务主键生成规则</string>
+                    </property>
+                   </item>
+                  </widget>
+                  <widget class="QLabel" name="label_code_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>250</y>
+                     <width>651</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>加密存储字段设置(为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储，如用户身份证号，手机号等)</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_isDelete_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>50</y>
+                     <width>158</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>数据是否逻辑删除</string>
+                   </property>
+                  </widget>
+                  <widget class="QComboBox" name="comboBox_select_table_logicaldeletemark">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>80</y>
+                     <width>158</width>
+                     <height>21</height>
+                    </rect>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>选择逻辑删除标识字段</string>
+                    </property>
+                   </item>
+                  </widget>
+                  <widget class="QPushButton" name="pushButton_add_field_encrypt">
+                   <property name="geometry">
+                    <rect>
+                     <x>540</x>
+                     <y>280</y>
+                     <width>75</width>
+                     <height>24</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>添加字段</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="layoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>279</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_left_6">
+             <item>
+              <widget class="QScrollArea" name="scrollArea_left_6">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_left_6">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>275</width>
+                  <height>637</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>281</width>
+                   <height>34</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_all_6" stretch=""/>
+                </widget>
+               </widget>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </widget>
          </widget>
