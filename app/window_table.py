@@ -33,7 +33,7 @@ def window_init_for_table(self):
     # 添加表按钮等组件初始化
     self.add_table_button_group_init()
     self.table_number = -1
-    self.add_table_button_group('select_all')
+    self.add_table_button_group('table_select_all')
     # 加密组件初始化
     self.add_field_encrypt_group_init()
 
@@ -146,7 +146,7 @@ def table_config_init(self):
     del_table_button_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QPushButton)
     for del_widget in del_table_button_list:
         table_name = del_widget.objectName().replace('pushButton_', '')
-        if table_name != 'select_all':
+        if table_name != 'table_select_all':
             widget_del = self.ui.verticalLayoutWidget_add_table_button.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
             # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
             widget_del.deleteLater()
@@ -157,7 +157,7 @@ def table_config_init(self):
         self.add_table_button_group(table.get('table'))
 
     # 初始化全选按钮
-    self.ui.centralwidget.findChild(QPushButton, u"pushButton_select_all").setText('全选')
+    self.ui.centralwidget.findChild(QPushButton, u"pushButton_table_select_all").setText('全选')
 
     # 测试用，添加组件
     # for x in range(17):
@@ -166,7 +166,7 @@ def table_config_init(self):
     #  事件初始化
 
     # 全选CheckBox事件添加
-    self.ui.centralwidget.findChild(QCheckBox, u"checkBox_select_all").clicked.connect(self.checkBox_all_select_clicked)
+    self.ui.centralwidget.findChild(QCheckBox, u"checkBox_table_select_all").clicked.connect(self.checkBox_all_select_clicked)
 
     # 添加字段组件组事件添加
     self.ui.pushButton_add_field_encrypt.clicked.connect(self.add_field_button_clicked)
@@ -187,7 +187,7 @@ def table_config(self):
         table['ischecked'] = False
     for checkBox in checkBox_list:
         table_name = checkBox.objectName().replace('checkBox_', '')
-        if table_name != 'select_all':
+        if table_name != 'table_select_all':
             if checkBox.isChecked() == True:
                 for table in self.sql_data['table']:
                     if table['table'] == table_name:
@@ -275,7 +275,7 @@ def checkBox_all_select_clicked(self):
     全选checkBox点击调用
     :return:
     '''
-    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_select_all").isChecked():
+    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_table_select_all").isChecked():
         for checkBox in self.ui.scrollArea_left_6.findChildren(QCheckBox):
             checkBox.setChecked(True)
 
