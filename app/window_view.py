@@ -91,15 +91,15 @@ def view_config_init(self):
     # 初始化全选按钮
     self.ui.centralwidget.findChild(QPushButton, u"pushButton_select_all").setText('全选')
     # # 全选CheckBox事件添加
-    # self.ui.verticalLayoutWidget_add_view_button.findChild(QCheckBox, u"checkBox_select_all").clicked.connect(self.view_checkBox_all_select_clicked)
+    self.ui.verticalLayoutWidget_add_view_button.findChild(QCheckBox, u"checkBox_select_all").clicked.connect(self.view_checkBox_all_select_clicked)
 
     # 视图页CheckBox事件添加
     for checkbox in self.ui.scrollArea_left_2.findChildren(QCheckBox):
-        checkbox.stateChanged.connect(partial(self.view_checkBox_clicked, checkbox, self.sql_data))
+        checkbox.stateChanged.connect(partial(self.view_checkBox_clicked, checkbox))
 
     # # 表对应的pushButton事件添加
     for pushButton in self.ui.scrollArea_left_2.findChildren(QPushButton):
-        pushButton.clicked.connect(partial(self.view_pushButton_clicked, pushButton.text(), self.sql_data))
+        pushButton.clicked.connect(partial(self.view_pushButton_clicked, pushButton.text()))
 
 def view_config(self):
     '''
@@ -208,13 +208,12 @@ def add_view_button_group(self,view_name):
     # 设置面板大小
     self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 60 + self.view_number * 31))
 
-def view_checkBox_clicked(self, checkbox, sql_data, index = -1):
+def view_checkBox_clicked(self, checkbox, index = -1):
     '''
     视图选择框里的checkbox事件注册
     :param checkbox: 复选框
     :return:
     '''
-    self.sql_data = sql_data
     if checkbox.isChecked():
         self.sql_data_view_ischecked_update(checkbox, True)
 
@@ -235,7 +234,7 @@ def view_checkBox_all_select_clicked(self):
     全选checkBox点击调用
     :return:
     '''
-    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_all_2").isChecked():
+    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_select_all").isChecked():
         for checkBox in self.ui.scrollArea_left_2.findChildren(QCheckBox):
             checkBox.setChecked(True)
 
@@ -243,14 +242,13 @@ def view_checkBox_all_select_clicked(self):
         for checkBox in self.ui.scrollArea_left_2.findChildren(QCheckBox):
             checkBox.setChecked(False)
 
-def view_pushButton_clicked(self,button_text,sql_data):
+def view_pushButton_clicked(self,button_text):
     '''
     视图配置，点击事件
     :param button_text: 视图名
     :return:
     '''
     print(2)
-    self.sql_data = sql_data
     self.view_field_number = 0
     if button_text == '全选':
         self.ui.stackedWidget_3.setCurrentIndex(0)
