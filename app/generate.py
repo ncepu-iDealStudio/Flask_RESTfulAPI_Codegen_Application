@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-# file:codegen.py
+# file:generate.py
 # author:JackieX
 # datetime:2022-05-13 15:55
 # software: PyCharm
@@ -12,19 +12,19 @@ this is function  description
 
 from sqlalchemy import create_engine, MetaData
 
-import codegen.controllercodegen.main
-import codegen.modelcodegen.main
-import codegen.resourcecodegen.main
-import codegen.servicecodegen.main
-import codegen.staticcodegen.main
-import codegen.testcodegen.main
+import app.codegen.controllercodegen.main
+import app.codegen.modelcodegen.main
+import app.codegen.resourcecodegen.main
+import app.codegen.servicecodegen.main
+import app.codegen.staticcodegen.main
+import app.codegen.testcodegen.main
 
-from utils.loggings import loggings
-from utils.response_code import RET, error_map
-from utils.tablesMetadata import TableMetadata
+from app.utils.loggings import loggings
+from app.utils.response_code import RET, error_map
+from app.utils.tablesMetadata import TableMetadata
 
 
-def start(table_config, session_id, ip):
+def start(table_config, session_id, project_path, ip):
     """
         步骤：
             零、 获取新的table_dict的值
@@ -37,8 +37,8 @@ def start(table_config, session_id, ip):
     """
     try:
         # 初始化配置文件
-        from config.setting import Settings
-        settings = Settings(session_id)
+        from app.config.setting import Settings
+        settings = Settings(session_id, project_path)
 
         # 参数初始化
         engine = create_engine(settings.MODEL_URL)
@@ -65,32 +65,32 @@ def start(table_config, session_id, ip):
         # 第一步
         loggings.info(1, "Start to build the Model layer code, please wait...", session_id, ip)
 
-        codegen.modelcodegen.main.main(table_dict, settings, session_id, ip)
+        app.codegen.modelcodegen.main.main(table_dict, settings, session_id, ip)
         loggings.info(1, "Model layer code build completed", session_id, ip)
 
         # 第二步
         loggings.info(1, "Start to build the Controller layer code, please wait...", session_id, ip)
-        codegen.controllercodegen.main.main(table_dict, settings, session_id, ip)
+        app.codegen.controllercodegen.main.main(table_dict, settings, session_id, ip)
         loggings.info(1, "Controller layer code build completed", session_id, ip)
 
         # 第三步
         loggings.info(1, "Start to build the Service layer code, please wait...", session_id, ip)
-        codegen.servicecodegen.main.main(table_dict, settings, session_id, ip)
+        app.codegen.servicecodegen.main.main(table_dict, settings, session_id, ip)
         loggings.info(1, "Service layer code build completed", session_id, ip)
 
         # 第四步
         loggings.info(1, "Start to build the Resource layer code, please wait...", session_id, ip)
-        codegen.resourcecodegen.main.main(table_dict, settings, session_id, ip)
+        app.codegen.resourcecodegen.main.main(table_dict, settings, session_id, ip)
         loggings.info(1, "Resource layer code build completed", session_id, ip)
 
         # 第五步
         loggings.info(1, "Start packing static files, please wait...", session_id, ip)
-        codegen.staticcodegen.main.main(settings, session_id, ip)
+        app.codegen.staticcodegen.main.main(settings, session_id, ip)
         loggings.info(1, "Static resource packaging is complete", session_id, ip)
 
         # 第六步
         loggings.info(1, "Start to build the Test layer code, please wait...", session_id, ip)
-        codegen.testcodegen.main.main(table_dict, settings, session_id, ip)
+        app.codegen.testcodegen.main.main(table_dict, settings, session_id, ip)
         loggings.info(1, "Test layer code build completed", session_id, ip)
 
         loggings.info(1, "Api project code generation completed", session_id, ip)

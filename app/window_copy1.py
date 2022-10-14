@@ -41,6 +41,10 @@ class MainWindow:
         self.view_config_init()
         self.confirm_config_init()
         self.generate_init()
+        import datetime
+        import random
+        random_number = random.sample('0123456789', 4)
+        self.id = datetime.datetime.now().strftime('%Y%m%d%H%M') + ''.join(random_number)
 
         # 定义主要数据sql_data
         self.sql_data = {
@@ -144,7 +148,7 @@ class MainWindow:
         """
         数据库配置页面主要代码，
         """
-        id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        id = self.id
         dir = os.getcwd()
         f = open(dir + r"/app/config/config_" + str(id) + ".conf", "w")
         f.close()

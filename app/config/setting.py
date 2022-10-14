@@ -19,7 +19,7 @@ os.chdir(os.path.dirname(os.path.dirname(__file__)))
 
 class Settings(object):
 
-    def __init__(self, session_id):
+    def __init__(self, session_id, project_path):
 
         # 配置文件目录
         CONFIG_DIR = "config/config_" + str(session_id) + ".conf"
@@ -30,17 +30,19 @@ class Settings(object):
 
         # 生成项目的名称
         self.PROJECT_NAME = CONFIG['PARAMETER']['PROJECT_NAME']
+
         # 项目生成的目标路径
-        self.BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        # 目标目录
-        self.TARGET_DIR = os.path.join(self.BASE_DIR, CONFIG['PARAMETER']['TARGET_DIR']) + "/" + CONFIG['PARAMETER'][
-            'TARGET_DIR'] + "_" + str(session_id)
+        # self.BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # # 目标目录
+        # self.TARGET_DIR = os.path.join(self.BASE_DIR, CONFIG['PARAMETER']['TARGET_DIR']) + "/" + CONFIG['PARAMETER'][
+        #     'TARGET_DIR'] + "_" + str(session_id)
+
         # 项目目录
-        self.PROJECT_DIR = os.path.join(self.TARGET_DIR, self.PROJECT_NAME)
+        self.PROJECT_DIR = os.path.join(project_path, self.PROJECT_NAME)
         # 生成项目API的版本
         self.API_VERSION = CONFIG['PARAMETER']['API_VERSION'].replace('.', '_')
         # 定义静态资源文件路径
-        self.STATIC_RESOURCE_DIR = os.path.join(self.BASE_DIR, 'static')
+        self.STATIC_RESOURCE_DIR = os.path.join(project_path, 'static')
 
         # 数据库dialect到driver的映射
         driver_dict = {

@@ -9,6 +9,7 @@
 this is function description
 '''
 # import module your need
+import configparser
 import os
 import sys
 
@@ -20,6 +21,9 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QIcon
 
 from types import MethodType
+
+import app.generate
+from app import generate
 
 
 # 将自己负责的函数复制到此处
@@ -33,6 +37,7 @@ def generate_init(self):
     self.ui.dig.setFilter(QDir.Files)
     self.ui.toolButton_file.clicked.connect(self.button_show_file)
 
+
 def generate(self):
     '''
     代码生成页主要代码
@@ -43,8 +48,36 @@ def generate(self):
     # self.ui.dig = QFileDialog()
     # self.ui.dig.setFileMode(QFileDialog.AnyFile)
     # self.ui.dig.setFilter(QDir.Files)
-    # self.ui.stackedWidget.setCurrentIndex(3)
-    # codegen.start()
+
+    # codegen.start(self.sql_data, 1, "127.0.0.1")
+    self.ui.stackedWidget.setCurrentIndex(3)
+
+    session_id = '123'
+    # session_id = self.id
+    # 获取用户填写的数据，并将其赋值给变量
+    path = self.ui.lineEdit.text()
+    name = self.ui.lineEdit_2.text()
+    version = self.ui.lineEdit_3.text()
+
+    project_path = path
+    project_name = name
+    interface_version = version
+
+    configfile = "app/config/config_" + str(session_id) + ".conf"
+    conf = configparser.ConfigParser()  # 实例类
+    conf.read(configfile, encoding='UTF-8')  # 读取配置文件
+
+    if not conf.has_section('PARAMETER'):
+        conf.add_section('PARAMETER')
+
+    conf.set("PARAMETER", "target_dir", project_path)  # 第一个参数为组名，第二个参数为属性名，第三个参数为属性的值
+    conf.set("PARAMETER", "project_name", project_name)
+    conf.set("PARAMETER", "api_version", interface_version)
+    with open(configfile, "w") as f:
+        conf.write(f)
+
+    app.generate.start(self.sql_data, session_id, project_path, "127.0.0.1")
+
 
 def button_show_file(self):
     dialog = QtWidgets.QFileDialog
@@ -52,7 +85,6 @@ def button_show_file(self):
     # fileName, fileType = dialog.getOpenFileName(self.ui, "选取文件", os.getcwd(),
     #                                                            "All Files(*);;Text Files(*.txt)")
     fileName = dialog.getExistingDirectory(self.ui, "选取文件", os.getcwd())
-    print(fileName)
     self.ui.lineEdit.setText(fileName)
 
 # 将函数添加到对象中
