@@ -30,14 +30,14 @@ def db_config_init(self):
     :return:
     '''
     self.ui.button_get_db_names.clicked.connect(self.get_dbname)
+    self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
 def db_config(self):
     """
     数据库配置页面主要代码，
     """
-    id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     dir = os.getcwd()
-    f = open(dir + r"/app/config/config_" + str(id) + ".conf", "w")
+    f = open(dir + r"/app/config/config_" + str(self.id) + ".conf", "w")
     f.close()
 
     # 接收参数
@@ -65,7 +65,7 @@ def db_config(self):
     result_sql = SQLHandler.connect_sql_link(dialect, username, password, host, port, database)
     if result_sql['code']:
         # 填写配置文件
-        configfile = "app/config/config_" + str(id) + ".conf"
+        configfile = "app/config/config_" + str(self.id) + ".conf"
         conf = configparser.ConfigParser()  # 实例类
         conf.read(configfile, encoding='UTF-8')  # 读取配置文件
 

@@ -16,7 +16,7 @@ import sys
 import pymysql
 from PySide6 import QtWidgets
 from PySide6.QtCore import QFile, QDir
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow,QFileDialog
+from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow, QFileDialog
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtGui import QIcon
 
@@ -38,7 +38,7 @@ def generate_init(self):
     self.ui.toolButton_file.clicked.connect(self.button_show_file)
 
 
-def generate(self):
+def code_generate(self):
     '''
     代码生成页主要代码
     :return:
@@ -50,10 +50,8 @@ def generate(self):
     # self.ui.dig.setFilter(QDir.Files)
 
     # codegen.start(self.sql_data, 1, "127.0.0.1")
-    self.ui.stackedWidget.setCurrentIndex(3)
 
-    session_id = '123'
-    # session_id = self.id
+    session_id = self.id
     # 获取用户填写的数据，并将其赋值给变量
     path = self.ui.lineEdit.text()
     name = self.ui.lineEdit_2.text()
@@ -76,7 +74,7 @@ def generate(self):
     with open(configfile, "w") as f:
         conf.write(f)
 
-    app.generate.start(self.sql_data, session_id, project_path, "127.0.0.1")
+    generate.start(self.sql_data, session_id, project_path, "127.0.0.1")
 
 
 def button_show_file(self):
@@ -85,7 +83,9 @@ def button_show_file(self):
     # fileName, fileType = dialog.getOpenFileName(self.ui, "选取文件", os.getcwd(),
     #                                                            "All Files(*);;Text Files(*.txt)")
     fileName = dialog.getExistingDirectory(self.ui, "选取文件", os.getcwd())
+    # print(fileName)
     self.ui.lineEdit.setText(fileName)
+
 
 # 将函数添加到对象中
 def add_func(self):
@@ -95,5 +95,5 @@ def add_func(self):
     :return:
     '''
     self.generate_init = MethodType(generate_init, self)
-    self.generate = MethodType(generate, self)
+    self.generate = MethodType(code_generate, self)
     self.button_show_file = MethodType(button_show_file, self)
