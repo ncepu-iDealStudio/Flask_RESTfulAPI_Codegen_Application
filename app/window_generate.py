@@ -39,19 +39,13 @@ def generate_init(self):
 
 
 def code_generate(self):
-    '''
+    """
     代码生成页主要代码
     :return:
-    '''
-    # file_name = QFileDialog.getOpenFileName(self, "open file dialog", "C:","Txt files(*.txt)")
-    # ##"open file Dialog "为文件对话框的标题，第三个是打开的默认路径，第四个是文件类型过滤器
-    # self.ui.dig = QFileDialog()
-    # self.ui.dig.setFileMode(QFileDialog.AnyFile)
-    # self.ui.dig.setFilter(QDir.Files)
-
-    # codegen.start(self.sql_data, 1, "127.0.0.1")
+    """
 
     session_id = self.id
+
     # 获取用户填写的数据，并将其赋值给变量
     path = self.ui.lineEdit.text()
     name = self.ui.lineEdit_2.text()
@@ -74,7 +68,21 @@ def code_generate(self):
     with open(configfile, "w") as f:
         conf.write(f)
 
-    generate.start(self.sql_data, session_id, project_path, "127.0.0.1")
+    # 过滤掉未勾选的表和视图
+    table_config = {
+        'table': [],
+        'view': []
+    }
+    for table in self.sql_data.get('table'):
+        if table.get('ischecked'):
+            table_config['table'].append(table)
+
+    for view in self.sql_data.get('view'):
+        if view.get('ischecked'):
+            table_config['view'].append(view)
+
+    # 开始生成代码
+    generate.start(table_config, session_id, "127.0.0.1")
 
 
 def button_show_file(self):
@@ -83,7 +91,7 @@ def button_show_file(self):
     # fileName, fileType = dialog.getOpenFileName(self.ui, "选取文件", os.getcwd(),
     #                                                            "All Files(*);;Text Files(*.txt)")
     fileName = dialog.getExistingDirectory(self.ui, "选取文件", os.getcwd())
-    # print(fileName)
+
     self.ui.lineEdit.setText(fileName)
 
 

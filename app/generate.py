@@ -24,7 +24,7 @@ from app.utils.response_code import RET, error_map
 from app.utils.tablesMetadata import TableMetadata
 
 
-def start(table_config, session_id, project_path, ip):
+def start(table_config, session_id, ip):
     """
         步骤：
             零、 获取新的table_dict的值
@@ -38,7 +38,7 @@ def start(table_config, session_id, project_path, ip):
     try:
         # 初始化配置文件
         from app.config.setting import Settings
-        settings = Settings(session_id, project_path)
+        settings = Settings(session_id)
 
         # 参数初始化
         engine = create_engine(settings.MODEL_URL)
