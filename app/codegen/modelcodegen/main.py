@@ -56,6 +56,7 @@ def main(table_dict, settings, session_id, ip):
                 nocomments="",
                 ignore_cols=""
             )
+            print(command)
             os.system(command)
 
     except Exception as e:

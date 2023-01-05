@@ -289,9 +289,9 @@ class MainWindow:
         session_id = '123'
         # session_id = self.id
         # 获取用户填写的数据，并将其赋值给变量
-        path=self.ui.lineEdit.text()
-        name=self.ui.lineEdit_2.text()
-        version=self.ui.lineEdit_3.text()
+        path = self.ui.lineEdit.text()
+        name = self.ui.lineEdit_2.text()
+        version = self.ui.lineEdit_3.text()
 
         project_path = path
         project_name = name

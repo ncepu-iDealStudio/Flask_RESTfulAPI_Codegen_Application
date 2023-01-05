@@ -9,3 +9,4 @@ app/config/
 app/ui/__pycache__/data_table_config_ui.cpython-39.pyc
 app/ui/data_table_config/__pycache__/__init__.cpython-39.pyc
 *.pyc
+dist/
