@@ -2,14 +2,10 @@
 # coding=utf-8
 # @project : Flask_RESTfulAPI_Codegen_Application
 # @author  : ChengKai
-# @file   : start_window.py
+# @file   : __init__.py.py
 # @ide    : PyCharm
-# @time   : 2022-10-06 09:31:27
+# @time   : 2023-01-09 07:18:26
 '''
 this is function description
 '''
 # import module your need
-from app import window_copy2
-
-if __name__ == '__main__':
-    window_copy2.start()

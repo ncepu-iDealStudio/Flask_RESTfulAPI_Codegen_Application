@@ -1,14 +1,15 @@
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-
-# file:start.py
-# author:JackieX
-# datetime:2022-05-13 15:50
-# software: PyCharm
-"""
-this is function  description 
-"""
-from app import main
+# !/user/bin/env python
+# coding=utf-8
+# @project : Flask_RESTfulAPI_Codegen_Application
+# @author  : ChengKai
+# @file   : start.py
+# @ide    : PyCharm
+# @time   : 2022-10-06 09:31:27
+'''
+this is function description
+'''
+# import module your need
+from app import window
 
 if __name__ == '__main__':
-    main.start()
+    window.start()
