@@ -51,6 +51,20 @@ def code_generate(self):
     name = self.ui.lineEdit_2.text()
     version = self.ui.lineEdit_3.text()
 
+    # 检查用户填写的数据是否正确
+    if len(path) == 0:
+        QMessageBox.information(self.ui, '提示', '生成路径不能为空')
+        return
+    if not os.path.isdir(path):
+        QMessageBox.information(self.ui, '提示', '生成路径有误,该路径不是一个文件夹')
+        return
+    if len(name) == 0:
+        QMessageBox.information(self.ui, '提示', '项目名不能为空')
+        return
+    if len(version) == 0:
+        QMessageBox.information(self.ui, '提示', '版本号不能为空')
+        return
+
     project_path = path
     project_name = name
     interface_version = version
