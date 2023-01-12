@@ -120,23 +120,23 @@ class MainWindow:
             self.table_config_init()
             return
 
-        if self.ui.stackedWidget.currentIndex() == 4:
+        if self.ui.stackedWidget.currentIndex() == 1:
             self.table_config()
             self.view_config_init()
             return
 
-        if self.ui.stackedWidget.currentIndex() == 3:
+        if self.ui.stackedWidget.currentIndex() == 2:
             self.view_config()
             self.confirm_config_init()
             return
 
-        if self.ui.stackedWidget.currentIndex() == 1:
+        if self.ui.stackedWidget.currentIndex() == 3:
             self.confirm_config()
             self.generate_init()
             self.ui.pushButton_next.setText('生成代码')
             return
 
-        if self.ui.stackedWidget.currentIndex() == 2:
+        if self.ui.stackedWidget.currentIndex() == 4:
             self.generate()
             return
 
@@ -147,20 +147,20 @@ class MainWindow:
         '''
 
         if self.ui.stackedWidget.currentIndex() == 4:
-            self.ui.stackedWidget.setCurrentIndex(0)
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.pushButton_next.setText('下一步')
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
-            self.ui.stackedWidget.setCurrentIndex(4)
-            return
-
-        if self.ui.stackedWidget.currentIndex() == 1:
-            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.stackedWidget.setCurrentIndex(2)
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
             self.ui.stackedWidget.setCurrentIndex(1)
-            self.ui.pushButton_next.setText('下一步')
+            return
+
+        if self.ui.stackedWidget.currentIndex() == 1:
+            self.ui.stackedWidget.setCurrentIndex(0)
             return
 
     # def db_config(self):

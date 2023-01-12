@@ -203,7 +203,7 @@ def table_config(self):
     print('数据')
     print(self.sql_data)
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
-    self.ui.stackedWidget.setCurrentIndex(3)
+    self.ui.stackedWidget.setCurrentIndex(2)
 
 def add_table_button_group_init(self):
     '''

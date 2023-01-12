@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1320</width>
-    <height>768</height>
+    <height>777</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,11 +16,418 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
        <widget class="QStackedWidget" name="stackedWidget_2">
-        <widget class="QWidget" name="page_13"/>
-        <widget class="QWidget" name="page_14"/>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>1000</width>
+          <height>25</height>
+         </size>
+        </property>
+        <widget class="QWidget" name="page_step_1">
+         <widget class="QWidget" name="layoutWidget_4">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>511</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_step1">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	
+	color: rgb(85, 85, 255);
+}</string>
+             </property>
+             <property name="text">
+              <string>①数据库配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step2">
+             <property name="text">
+              <string>②表配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>③视图配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step4">
+             <property name="text">
+              <string>④配置确认</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step5">
+             <property name="text">
+              <string>⑤代码生成</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_step_2">
+         <widget class="QWidget" name="layoutWidget_5">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>511</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QLabel" name="label_step1_3">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>①数据库配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step2_3">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	
+	color: rgb(85, 85, 255);
+}</string>
+             </property>
+             <property name="text">
+              <string>②表配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step3_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>③视图配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step4_3">
+             <property name="text">
+              <string>④配置确认</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step5_3">
+             <property name="text">
+              <string>⑤代码生成</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_step_3">
+         <widget class="QWidget" name="layoutWidget_6">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>511</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="label_step1_4">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>①数据库配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step2_4">
+             <property name="text">
+              <string>②表配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step3_4">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	
+	color: rgb(85, 85, 255);
+}</string>
+             </property>
+             <property name="text">
+              <string>③视图配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step4_4">
+             <property name="text">
+              <string>④配置确认</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step5_4">
+             <property name="text">
+              <string>⑤代码生成</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_step_4">
+         <widget class="QWidget" name="layoutWidget_7">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>511</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QLabel" name="label_step1_5">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>①数据库配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step2_5">
+             <property name="text">
+              <string>②表配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step3_5">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>③视图配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step4_5">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	
+	color: rgb(85, 85, 255);
+}</string>
+             </property>
+             <property name="text">
+              <string>④配置确认</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step5_5">
+             <property name="text">
+              <string>⑤代码生成</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_step_5">
+         <widget class="QWidget" name="layoutWidget_8">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>511</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QLabel" name="label_step1_6">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string>①数据库配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step2_6">
+             <property name="text">
+              <string>②表配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step3_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>③视图配置</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step4_6">
+             <property name="text">
+              <string>④配置确认</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_step5_6">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	
+	color: rgb(85, 85, 255);
+}</string>
+             </property>
+             <property name="text">
+              <string>⑤代码生成</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
        </widget>
       </item>
      </layout>
@@ -338,6 +745,512 @@
           </widget>
          </widget>
         </widget>
+        <widget class="QWidget" name="page_2">
+         <widget class="QScrollArea" name="scrollArea_2">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>991</width>
+            <height>641</height>
+           </rect>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>989</width>
+             <height>639</height>
+            </rect>
+           </property>
+           <widget class="QLabel" name="label_2">
+            <property name="geometry">
+             <rect>
+              <x>390</x>
+              <y>70</y>
+              <width>171</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>这是数据库表配置页面</string>
+            </property>
+           </widget>
+           <widget class="QStackedWidget" name="stackedWidget_right">
+            <property name="geometry">
+             <rect>
+              <x>280</x>
+              <y>0</y>
+              <width>711</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <property name="currentIndex">
+             <number>1</number>
+            </property>
+            <widget class="QWidget" name="page_23">
+             <widget class="QWidget" name="verticalLayoutWidget_20">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>10</y>
+                <width>351</width>
+                <height>91</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_page1_7">
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>请选择用于生成代码的数据表，并为每张表进行相应的配置</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_19">
+                 <property name="mouseTracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>数据表准备</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_24">
+             <widget class="QWidget" name="verticalLayoutWidget_21">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>711</width>
+                <height>641</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_page2_7">
+               <item>
+                <widget class="QScrollArea" name="scrollArea_right_7">
+                 <property name="whatsThis">
+                  <string/>
+                 </property>
+                 <property name="accessibleName">
+                  <string/>
+                 </property>
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents_right_7">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>690</width>
+                    <height>1000</height>
+                   </rect>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>1000</height>
+                   </size>
+                  </property>
+                  <widget class="QLabel" name="label_table_name_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>10</y>
+                     <width>54</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>这是表名</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_set_key_13">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>140</y>
+                     <width>151</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>业务主键设置</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_select_key_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>170</y>
+                     <width>161</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>业务主键字段选择</string>
+                   </property>
+                  </widget>
+                  <widget class="QComboBox" name="comboBox_select_table_businesskeyname">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>190</y>
+                     <width>161</width>
+                     <height>22</height>
+                    </rect>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>选择业务主键</string>
+                    </property>
+                   </item>
+                  </widget>
+                  <widget class="QLabel" name="label_set_key_14">
+                   <property name="geometry">
+                    <rect>
+                     <x>210</x>
+                     <y>170</y>
+                     <width>161</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>业务主键生成规则</string>
+                   </property>
+                  </widget>
+                  <widget class="QComboBox" name="comboBox_select_table_businesskeyrule">
+                   <property name="geometry">
+                    <rect>
+                     <x>210</x>
+                     <y>190</y>
+                     <width>161</width>
+                     <height>22</height>
+                    </rect>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>选择业务主键生成规则</string>
+                    </property>
+                   </item>
+                  </widget>
+                  <widget class="QLabel" name="label_code_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>250</y>
+                     <width>651</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>加密存储字段设置(为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储，如用户身份证号，手机号等)</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_isDelete_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>50</y>
+                     <width>158</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>数据是否逻辑删除</string>
+                   </property>
+                  </widget>
+                  <widget class="QComboBox" name="comboBox_select_table_logicaldeletemark">
+                   <property name="geometry">
+                    <rect>
+                     <x>20</x>
+                     <y>80</y>
+                     <width>158</width>
+                     <height>21</height>
+                    </rect>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>选择逻辑删除标识字段</string>
+                    </property>
+                   </item>
+                  </widget>
+                  <widget class="QPushButton" name="pushButton_add_field_encrypt">
+                   <property name="geometry">
+                    <rect>
+                     <x>540</x>
+                     <y>280</y>
+                     <width>75</width>
+                     <height>24</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>添加字段</string>
+                   </property>
+                  </widget>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </widget>
+           <widget class="QWidget" name="layoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>279</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_left_6">
+             <item>
+              <widget class="QScrollArea" name="scrollArea_left_6">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_left_6">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>275</width>
+                  <height>637</height>
+                 </rect>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget_6">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>281</width>
+                   <height>34</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_all_6"/>
+                </widget>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="page_3">
+         <widget class="QScrollArea" name="scrollArea_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>991</width>
+            <height>641</height>
+           </rect>
+          </property>
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_6">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>989</width>
+             <height>639</height>
+            </rect>
+           </property>
+           <widget class="QLabel" name="label_3">
+            <property name="geometry">
+             <rect>
+              <x>350</x>
+              <y>70</y>
+              <width>171</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>这是视图表配置页面</string>
+            </property>
+           </widget>
+           <widget class="QWidget" name="verticalLayoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>0</y>
+              <width>281</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_left_2">
+             <item>
+              <widget class="QScrollArea" name="scrollArea_left_2">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_left_2">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>277</width>
+                  <height>637</height>
+                 </rect>
+                </property>
+                <widget class="QWidget" name="horizontalLayoutWidget">
+                 <property name="geometry">
+                  <rect>
+                   <x>0</x>
+                   <y>0</y>
+                   <width>281</width>
+                   <height>41</height>
+                  </rect>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_all_2">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                 </layout>
+                </widget>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QStackedWidget" name="stackedWidget_3">
+            <property name="geometry">
+             <rect>
+              <x>280</x>
+              <y>0</y>
+              <width>711</width>
+              <height>641</height>
+             </rect>
+            </property>
+            <widget class="QWidget" name="page">
+             <widget class="QWidget" name="verticalLayoutWidget_2">
+              <property name="geometry">
+               <rect>
+                <x>30</x>
+                <y>10</y>
+                <width>411</width>
+                <height>131</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <item>
+                <widget class="QLabel" name="label_12">
+                 <property name="font">
+                  <font>
+                   <pointsize>12</pointsize>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>视图准备</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>请选择用于生成代码的视图，并为每张表进行相应配置。</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="page_6">
+             <widget class="QWidget" name="verticalLayoutWidget_3">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>711</width>
+                <height>641</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <item>
+                <widget class="QScrollArea" name="scrollArea_6">
+                 <property name="widgetResizable">
+                  <bool>true</bool>
+                 </property>
+                 <widget class="QWidget" name="scrollAreaWidgetContents_4">
+                  <property name="geometry">
+                   <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>707</width>
+                    <height>637</height>
+                   </rect>
+                  </property>
+                  <widget class="QLabel" name="label_view">
+                   <property name="geometry">
+                    <rect>
+                     <x>30</x>
+                     <y>30</y>
+                     <width>201</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>TextLabel</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_14">
+                   <property name="geometry">
+                    <rect>
+                     <x>30</x>
+                     <y>90</y>
+                     <width>121</width>
+                     <height>16</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>接口查询字段选择</string>
+                   </property>
+                  </widget>
+                  <widget class="QTableWidget" name="tableWidget">
+                   <property name="geometry">
+                    <rect>
+                     <x>30</x>
+                     <y>130</y>
+                     <width>651</width>
+                     <height>271</height>
+                    </rect>
+                   </property>
+                  </widget>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </widget>
+          </widget>
+         </widget>
+        </widget>
         <widget class="QWidget" name="page_4">
          <widget class="QScrollArea" name="scrollArea_4">
           <property name="geometry">
@@ -642,512 +1555,6 @@
             <property name="text">
              <string>要生成的目标接口项目基本配置</string>
             </property>
-           </widget>
-          </widget>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="page_3">
-         <widget class="QScrollArea" name="scrollArea_3">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>991</width>
-            <height>641</height>
-           </rect>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_6">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>989</width>
-             <height>639</height>
-            </rect>
-           </property>
-           <widget class="QLabel" name="label_3">
-            <property name="geometry">
-             <rect>
-              <x>350</x>
-              <y>70</y>
-              <width>171</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>这是视图表配置页面</string>
-            </property>
-           </widget>
-           <widget class="QWidget" name="verticalLayoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>281</width>
-              <height>641</height>
-             </rect>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_left_2">
-             <item>
-              <widget class="QScrollArea" name="scrollArea_left_2">
-               <property name="widgetResizable">
-                <bool>true</bool>
-               </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents_left_2">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>277</width>
-                  <height>637</height>
-                 </rect>
-                </property>
-                <widget class="QWidget" name="horizontalLayoutWidget">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>281</width>
-                   <height>41</height>
-                  </rect>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_all_2" stretch="">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                 </layout>
-                </widget>
-               </widget>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-           <widget class="QStackedWidget" name="stackedWidget_3">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>0</y>
-              <width>711</width>
-              <height>641</height>
-             </rect>
-            </property>
-            <widget class="QWidget" name="page">
-             <widget class="QWidget" name="verticalLayoutWidget_2">
-              <property name="geometry">
-               <rect>
-                <x>30</x>
-                <y>10</y>
-                <width>411</width>
-                <height>131</height>
-               </rect>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_5">
-               <item>
-                <widget class="QLabel" name="label_12">
-                 <property name="font">
-                  <font>
-                   <pointsize>12</pointsize>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>视图准备</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_13">
-                 <property name="text">
-                  <string>请选择用于生成代码的视图，并为每张表进行相应配置。</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="page_6">
-             <widget class="QWidget" name="verticalLayoutWidget_3">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>711</width>
-                <height>641</height>
-               </rect>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_6">
-               <item>
-                <widget class="QScrollArea" name="scrollArea_6">
-                 <property name="widgetResizable">
-                  <bool>true</bool>
-                 </property>
-                 <widget class="QWidget" name="scrollAreaWidgetContents_4">
-                  <property name="geometry">
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>707</width>
-                    <height>637</height>
-                   </rect>
-                  </property>
-                  <widget class="QLabel" name="label_view">
-                   <property name="geometry">
-                    <rect>
-                     <x>30</x>
-                     <y>30</y>
-                     <width>201</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>TextLabel</string>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_14">
-                   <property name="geometry">
-                    <rect>
-                     <x>30</x>
-                     <y>90</y>
-                     <width>121</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>接口查询字段选择</string>
-                   </property>
-                  </widget>
-                  <widget class="QTableWidget" name="tableWidget">
-                   <property name="geometry">
-                    <rect>
-                     <x>30</x>
-                     <y>130</y>
-                     <width>651</width>
-                     <height>271</height>
-                    </rect>
-                   </property>
-                  </widget>
-                 </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-           </widget>
-          </widget>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="page_2">
-         <widget class="QScrollArea" name="scrollArea_2">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>991</width>
-            <height>641</height>
-           </rect>
-          </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_2">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>989</width>
-             <height>639</height>
-            </rect>
-           </property>
-           <widget class="QLabel" name="label_2">
-            <property name="geometry">
-             <rect>
-              <x>390</x>
-              <y>70</y>
-              <width>171</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>这是数据库表配置页面</string>
-            </property>
-           </widget>
-           <widget class="QStackedWidget" name="stackedWidget_right">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>0</y>
-              <width>711</width>
-              <height>641</height>
-             </rect>
-            </property>
-            <property name="currentIndex">
-             <number>1</number>
-            </property>
-            <widget class="QWidget" name="page_23">
-             <widget class="QWidget" name="verticalLayoutWidget_20">
-              <property name="geometry">
-               <rect>
-                <x>30</x>
-                <y>10</y>
-                <width>351</width>
-                <height>91</height>
-               </rect>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_page1_7">
-               <item>
-                <widget class="QLabel" name="label_18">
-                 <property name="text">
-                  <string>请选择用于生成代码的数据表，并为每张表进行相应的配置</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="label_19">
-                 <property name="mouseTracking">
-                  <bool>false</bool>
-                 </property>
-                 <property name="text">
-                  <string>数据表准备</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-            <widget class="QWidget" name="page_24">
-             <widget class="QWidget" name="verticalLayoutWidget_21">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>711</width>
-                <height>641</height>
-               </rect>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_page2_7">
-               <item>
-                <widget class="QScrollArea" name="scrollArea_right_7">
-                 <property name="whatsThis">
-                  <string/>
-                 </property>
-                 <property name="accessibleName">
-                  <string/>
-                 </property>
-                 <property name="widgetResizable">
-                  <bool>true</bool>
-                 </property>
-                 <widget class="QWidget" name="scrollAreaWidgetContents_right_7">
-                  <property name="geometry">
-                   <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>690</width>
-                    <height>1000</height>
-                   </rect>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>1000</height>
-                   </size>
-                  </property>
-                  <widget class="QLabel" name="label_table_name_7">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>10</y>
-                     <width>54</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>这是表名</string>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_set_key_13">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>140</y>
-                     <width>151</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>业务主键设置</string>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_select_key_7">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>170</y>
-                     <width>161</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>业务主键字段选择</string>
-                   </property>
-                  </widget>
-                  <widget class="QComboBox" name="comboBox_select_table_businesskeyname">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>190</y>
-                     <width>161</width>
-                     <height>22</height>
-                    </rect>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>选择业务主键</string>
-                    </property>
-                   </item>
-                  </widget>
-                  <widget class="QLabel" name="label_set_key_14">
-                   <property name="geometry">
-                    <rect>
-                     <x>210</x>
-                     <y>170</y>
-                     <width>161</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>业务主键生成规则</string>
-                   </property>
-                  </widget>
-                  <widget class="QComboBox" name="comboBox_select_table_businesskeyrule">
-                   <property name="geometry">
-                    <rect>
-                     <x>210</x>
-                     <y>190</y>
-                     <width>161</width>
-                     <height>22</height>
-                    </rect>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>选择业务主键生成规则</string>
-                    </property>
-                   </item>
-                  </widget>
-                  <widget class="QLabel" name="label_code_7">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>250</y>
-                     <width>651</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>加密存储字段设置(为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储，如用户身份证号，手机号等)</string>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_isDelete_7">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>50</y>
-                     <width>158</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>数据是否逻辑删除</string>
-                   </property>
-                  </widget>
-                  <widget class="QComboBox" name="comboBox_select_table_logicaldeletemark">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>80</y>
-                     <width>158</width>
-                     <height>21</height>
-                    </rect>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>选择逻辑删除标识字段</string>
-                    </property>
-                   </item>
-                  </widget>
-                  <widget class="QPushButton" name="pushButton_add_field_encrypt">
-                   <property name="geometry">
-                    <rect>
-                     <x>540</x>
-                     <y>280</y>
-                     <width>75</width>
-                     <height>24</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>添加字段</string>
-                   </property>
-                  </widget>
-                 </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </widget>
-           </widget>
-           <widget class="QWidget" name="layoutWidget">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>0</y>
-              <width>279</width>
-              <height>641</height>
-             </rect>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_left_6">
-             <item>
-              <widget class="QScrollArea" name="scrollArea_left_6">
-               <property name="widgetResizable">
-                <bool>true</bool>
-               </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents_left_6">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>275</width>
-                  <height>637</height>
-                 </rect>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <widget class="QWidget" name="horizontalLayoutWidget_6">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>281</width>
-                   <height>34</height>
-                  </rect>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_all_6"/>
-                </widget>
-               </widget>
-              </widget>
-             </item>
-            </layout>
            </widget>
           </widget>
          </widget>
