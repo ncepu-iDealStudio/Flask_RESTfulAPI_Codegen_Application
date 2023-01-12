@@ -287,6 +287,7 @@ def confirm_config(self):
     # 给出一个调试数据，正常情况应该使用self.sql_data数据
 
     self.ui.stackedWidget.setCurrentIndex(4)
+    self.ui.stackedWidget_step.setCurrentIndex(4)
 
 
 

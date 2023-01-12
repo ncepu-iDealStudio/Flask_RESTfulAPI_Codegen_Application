@@ -148,19 +148,23 @@ class MainWindow:
 
         if self.ui.stackedWidget.currentIndex() == 4:
             self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.stackedWidget_step.setCurrentIndex(3)
             self.ui.pushButton_next.setText('下一步')
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
             self.ui.stackedWidget.setCurrentIndex(2)
+            self.ui.stackedWidget_step.setCurrentIndex(2)
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
             self.ui.stackedWidget.setCurrentIndex(1)
+            self.ui.stackedWidget_step.setCurrentIndex(1)
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
             self.ui.stackedWidget.setCurrentIndex(0)
+            self.ui.stackedWidget_step.setCurrentIndex(0)
             return
 
     # def db_config(self):

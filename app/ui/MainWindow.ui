@@ -18,7 +18,7 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
-       <widget class="QStackedWidget" name="stackedWidget_2">
+       <widget class="QStackedWidget" name="stackedWidget_step">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -850,7 +850,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>690</width>
+                    <width>98</width>
                     <height>1000</height>
                    </rect>
                   </property>
@@ -1023,8 +1023,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>275</width>
-                  <height>637</height>
+                  <width>98</width>
+                  <height>28</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
@@ -1107,8 +1107,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>277</width>
-                  <height>637</height>
+                  <width>98</width>
+                  <height>28</height>
                  </rect>
                 </property>
                 <widget class="QWidget" name="horizontalLayoutWidget">
@@ -1195,8 +1195,8 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>707</width>
-                    <height>637</height>
+                    <width>98</width>
+                    <height>28</height>
                    </rect>
                   </property>
                   <widget class="QLabel" name="label_view">

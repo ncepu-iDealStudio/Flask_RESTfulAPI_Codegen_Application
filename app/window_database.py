@@ -92,6 +92,7 @@ def db_config(self):
     self.sql_data['table'] = tables_info['data']['table']
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
     self.ui.stackedWidget.setCurrentIndex(1)
+    self.ui.stackedWidget_step.setCurrentIndex(1)
 
 def get_dbname(self):
     """
