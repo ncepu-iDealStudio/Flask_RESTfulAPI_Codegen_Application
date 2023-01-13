@@ -24,6 +24,10 @@ from types import MethodType
 
 import app.generate
 from app import generate
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+from tkinter import messagebox
+
 
 
 # 将自己负责的函数复制到此处
@@ -96,7 +100,9 @@ def code_generate(self):
             table_config['view'].append(view)
 
     # 开始生成代码
-    generate.start(table_config, session_id, "127.0.0.1")
+    info = generate.start(table_config, session_id, "127.0.0.1")
+    messagebox.showinfo(info)
+
 
 
 def button_show_file(self):

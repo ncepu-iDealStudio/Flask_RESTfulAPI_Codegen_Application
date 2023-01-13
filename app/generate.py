@@ -92,8 +92,9 @@ def start(table_config, session_id, ip):
         loggings.info(1, "Start to build the Test layer code, please wait...", session_id, ip)
         app.codegen.testcodegen.main.main(table_dict, settings, session_id, ip)
         loggings.info(1, "Test layer code build completed", session_id, ip)
-
         loggings.info(1, "Api project code generation completed", session_id, ip)
+
+
 
         if session_id and ip:
             log_path = "logs/log_user_info/codegen_log_{user_ip}_{session_id}.log".format(

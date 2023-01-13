@@ -6,12 +6,130 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1320</width>
-    <height>777</height>
+    <width>1326</width>
+    <height>796</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>代码生成器</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton
+{
+    text-align:center;
+    background-color: #456dff;
+    border:2px solid #5F92B2;
+    border-radius:5px;
+    color:white;
+    width:89px;
+    height:24px
+}
+ 
+QPushButton:hover
+{
+    background-color: rgb(0,130,150);
+    border:2px solid #5F92B2;
+    border-radius:5px;
+    color:white;
+}
+
+QLabel {
+     text-align:center;
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 18px;
+    color: #BDC8E2;
+    font-weight: bold;
+}
+
+
+#label_db_4{
+	font-size: 30px;
+
+}
+
+
+QPushButton:hover:pressed
+{
+    background-color:rgb(85,170,255);
+    border:2px solid #3C80B1;
+    border-radius:5px;
+    color:white;
+}
+
+
+QComboBox
+{
+    border: 1px solid #A0A0A0;
+    color:black;      
+     text-align:center;             
+    min-height: 30px;              
+    min-width: 60px;
+    border-radius: 3px;    
+    background-color: #F2F2F2;                  
+    selection-background-color: #F2F2F2;
+}
+ 
+QComboBox QAbstractItemView
+{
+    font:14px;                  
+    selection-color:#F2F2F2;;            
+    selection-background-color:#F2F2F2; 
+    background-color:#F2F2F2;;    
+}
+ 
+QComboBox QAbstractItemView::item
+{
+    color:black;                
+    min-height: 30px;             
+    min-width: 60px;              
+}
+ 
+
+ 
+QComboBox::drop-down
+{
+    border:0px;                
+    min-width: 40px;              
+}
+
+
+QLineEdit {
+	border: 1px solid #A0A0A0; /* 边框宽度为1px，颜色为#A0A0A0 */
+	border-radius: 3px; /* 边框圆角 */
+	padding-left: 5px; /* 文本距离左边界有5px */
+	background-color: #F2F2F2; /* 背景颜色 */
+	color: #A0A0A0; /* 文本颜色 */
+	selection-background-color: #A0A0A0; /* 选中文本的背景颜色 */
+	selection-color: #F2F2F2; /* 选中文本的颜色 */
+	font-family: &quot;Microsoft YaHei&quot;; /* 文本字体族 */
+	font-size: 10pt; /* 文本字体大小 */
+    height:32px;
+}
+
+QLineEdit:hover { /* 鼠标悬浮在QLineEdit时的状态 */
+	border: 1px solid #298DFF;
+	border-radius: 3px;
+	background-color: #F2F2F2;
+	color: #298DFF;
+	selection-background-color: #298DFF;
+	selection-color: #F2F2F2;
+}
+
+QLineEdit[echoMode=&quot;2&quot;] { /* QLineEdit有输入掩码时的状态 */
+	lineedit-password-character: 9679;
+	lineedit-password-mask-delay: 2000;
+}
+
+QLineEdit:disabled { /* QLineEdit在禁用时的状态 */
+	border: 1px solid #CDCDCD;
+	background-color: #CDCDCD;
+	color: #B4B4B4;
+}
+
+QLineEdit:read-only { /* QLineEdit在只读时的状态 */
+	background-color: #CDCDCD;
+	color: #F2F2F2;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -37,8 +155,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>511</width>
-            <height>22</height>
+            <width>530</width>
+            <height>27</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -115,7 +233,7 @@
             <x>0</x>
             <y>0</y>
             <width>511</width>
-            <height>22</height>
+            <height>27</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -195,7 +313,7 @@
             <x>0</x>
             <y>0</y>
             <width>511</width>
-            <height>22</height>
+            <height>27</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -275,7 +393,7 @@
             <x>0</x>
             <y>0</y>
             <width>511</width>
-            <height>22</height>
+            <height>27</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -355,7 +473,7 @@
             <x>0</x>
             <y>0</y>
             <width>511</width>
-            <height>22</height>
+            <height>27</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_12">
@@ -470,273 +588,289 @@
              <height>639</height>
             </rect>
            </property>
-           <widget class="QWidget" name="layoutWidget_2">
+           <widget class="QRadioButton" name="radioButton">
             <property name="geometry">
              <rect>
-              <x>100</x>
-              <y>10</y>
-              <width>781</width>
-              <height>621</height>
+              <x>66</x>
+              <y>604</y>
+              <width>72</width>
+              <height>19</height>
              </rect>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_15">
+            <property name="text">
+             <string>记住我</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_db_4">
+            <property name="geometry">
+             <rect>
+              <x>66</x>
+              <y>14</y>
+              <width>171</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei</family>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>数据库配置</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_9">
+            <property name="geometry">
+             <rect>
+              <x>66</x>
+              <y>88</y>
+              <width>792</width>
+              <height>19</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <family>Microsoft YaHei</family>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>2</number>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;请选择要生成接口项目代码的目标数据库，生成器将针对此数据库，生成一个分层设计基于Restful风格的Web接口项目&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::AutoText</enum>
+            </property>
+           </widget>
+           <widget class="QWidget" name="">
+            <property name="geometry">
+             <rect>
+              <x>66</x>
+              <y>122</y>
+              <width>891</width>
+              <height>471</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout">
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_13">
-               <property name="leftMargin">
-                <number>50</number>
-               </property>
-               <property name="rightMargin">
-                <number>0</number>
-               </property>
-               <property name="bottomMargin">
-                <number>10</number>
-               </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_27">
                <item>
-                <widget class="QLabel" name="label_db_4">
+                <widget class="QLabel" name="label_db_type_5">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <property name="font">
                   <font>
-                   <pointsize>12</pointsize>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
                   </font>
                  </property>
                  <property name="text">
-                  <string>数据库配置</string>
+                  <string>数据库类型</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_9">
+                <widget class="QComboBox" name="comboBox_db_type">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>mysql</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_28">
+               <item>
+                <widget class="QLabel" name="label_db_host_5">
                  <property name="font">
                   <font>
-                   <family>微软雅黑</family>
-                   <pointsize>10</pointsize>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
                   </font>
                  </property>
-                 <property name="frameShape">
-                  <enum>QFrame::NoFrame</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Plain</enum>
-                 </property>
-                 <property name="lineWidth">
-                  <number>2</number>
-                 </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;请选择要生成接口项目代码的目标数据库，生成器将针对此数据库，生成一个分层设计基于Restful风格的Web接口项目&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>主机</string>
                  </property>
-                 <property name="textFormat">
-                  <enum>Qt::AutoText</enum>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="text_host">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="clearButtonEnabled">
+                  <bool>true</bool>
                  </property>
                 </widget>
                </item>
               </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_14">
-               <property name="spacing">
-                <number>50</number>
-               </property>
-               <property name="leftMargin">
-                <number>50</number>
-               </property>
-               <property name="topMargin">
-                <number>0</number>
-               </property>
-               <property name="rightMargin">
-                <number>50</number>
-               </property>
-               <property name="bottomMargin">
-                <number>30</number>
-               </property>
+              <layout class="QHBoxLayout" name="horizontalLayout_29">
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_27">
-                 <item>
-                  <widget class="QLabel" name="label_db_type_5">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>数据库类型</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox_db_type">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>1</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>mysql</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                </layout>
+                <widget class="QLabel" name="label_db_port_5">
+                 <property name="font">
+                  <font>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>端口</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_28">
-                 <item>
-                  <widget class="QLabel" name="label_db_host_5">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>主机</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="text_host">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="clearButtonEnabled">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <widget class="QLineEdit" name="text_port">
+                 <property name="clearButtonEnabled">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_30">
+               <item>
+                <widget class="QLabel" name="label_db_user_5">
+                 <property name="font">
+                  <font>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>账号</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_29">
-                 <item>
-                  <widget class="QLabel" name="label_db_port_5">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>端口</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="text_port">
-                   <property name="clearButtonEnabled">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <widget class="QLineEdit" name="text_user">
+                 <property name="clearButtonEnabled">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_31">
+               <item>
+                <widget class="QLabel" name="label_db_password_5">
+                 <property name="font">
+                  <font>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>密码</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_30">
-                 <item>
-                  <widget class="QLabel" name="label_db_user_5">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>账号</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QLineEdit" name="text_user">
-                   <property name="clearButtonEnabled">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <widget class="QLineEdit" name="text_password">
+                 <property name="inputMask">
+                  <string/>
+                 </property>
+                 <property name="echoMode">
+                  <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                 </property>
+                 <property name="clearButtonEnabled">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_32">
+               <item>
+                <widget class="QLabel" name="label_tables_5">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="text">
+                  <string>数据库</string>
+                 </property>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_31">
+                <widget class="QComboBox" name="comboBox_database">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
                  <item>
-                  <widget class="QLabel" name="label_db_password_5">
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>密码</string>
-                   </property>
-                  </widget>
+                  <property name="text">
+                   <string>请先获取数据库名</string>
+                  </property>
                  </item>
-                 <item>
-                  <widget class="QLineEdit" name="text_password">
-                   <property name="inputMask">
-                    <string/>
-                   </property>
-                   <property name="echoMode">
-                    <enum>QLineEdit::PasswordEchoOnEdit</enum>
-                   </property>
-                   <property name="clearButtonEnabled">
-                    <bool>true</bool>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                </widget>
                </item>
                <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_32">
-                 <item>
-                  <widget class="QLabel" name="label_tables_5">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <pointsize>12</pointsize>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>数据库</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox_database">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <item>
-                    <property name="text">
-                     <string>请先获取数据库名</string>
-                    </property>
-                   </item>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="button_get_db_names">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="text">
-                    <string>获取数据库名</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
+                <widget class="QPushButton" name="button_get_db_names">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text">
+                  <string>获取数据库名</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -798,7 +932,7 @@
                <rect>
                 <x>30</x>
                 <y>10</y>
-                <width>351</width>
+                <width>470</width>
                 <height>91</height>
                </rect>
               </property>
@@ -850,7 +984,7 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>98</width>
+                    <width>686</width>
                     <height>1000</height>
                    </rect>
                   </property>
@@ -904,8 +1038,8 @@
                     <rect>
                      <x>20</x>
                      <y>190</y>
-                     <width>161</width>
-                     <height>22</height>
+                     <width>121</width>
+                     <height>52</height>
                     </rect>
                    </property>
                    <item>
@@ -932,8 +1066,8 @@
                     <rect>
                      <x>210</x>
                      <y>190</y>
-                     <width>161</width>
-                     <height>22</height>
+                     <width>181</width>
+                     <height>52</height>
                     </rect>
                    </property>
                    <item>
@@ -941,19 +1075,6 @@
                      <string>选择业务主键生成规则</string>
                     </property>
                    </item>
-                  </widget>
-                  <widget class="QLabel" name="label_code_7">
-                   <property name="geometry">
-                    <rect>
-                     <x>20</x>
-                     <y>250</y>
-                     <width>651</width>
-                     <height>16</height>
-                    </rect>
-                   </property>
-                   <property name="text">
-                    <string>加密存储字段设置(为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储，如用户身份证号，手机号等)</string>
-                   </property>
                   </widget>
                   <widget class="QLabel" name="label_isDelete_7">
                    <property name="geometry">
@@ -973,8 +1094,8 @@
                     <rect>
                      <x>20</x>
                      <y>80</y>
-                     <width>158</width>
-                     <height>21</height>
+                     <width>181</width>
+                     <height>52</height>
                     </rect>
                    </property>
                    <item>
@@ -987,13 +1108,27 @@
                    <property name="geometry">
                     <rect>
                      <x>540</x>
-                     <y>280</y>
-                     <width>75</width>
-                     <height>24</height>
+                     <y>310</y>
+                     <width>131</width>
+                     <height>50</height>
                     </rect>
                    </property>
                    <property name="text">
                     <string>添加字段</string>
+                   </property>
+                  </widget>
+                  <widget class="QLabel" name="label_code_7">
+                   <property name="geometry">
+                    <rect>
+                     <x>10</x>
+                     <y>250</y>
+                     <width>911</width>
+                     <height>51</height>
+                    </rect>
+                   </property>
+                   <property name="text">
+                    <string>加密存储字段设置(为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储，
+如用户身份证号，手机号等)</string>
                    </property>
                   </widget>
                  </widget>
@@ -1023,8 +1158,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>98</width>
-                  <height>28</height>
+                  <width>275</width>
+                  <height>637</height>
                  </rect>
                 </property>
                 <property name="minimumSize">
@@ -1107,8 +1242,8 @@
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>98</width>
-                  <height>28</height>
+                  <width>277</width>
+                  <height>637</height>
                  </rect>
                 </property>
                 <widget class="QWidget" name="horizontalLayoutWidget">
@@ -1146,7 +1281,7 @@
                <rect>
                 <x>30</x>
                 <y>10</y>
-                <width>411</width>
+                <width>452</width>
                 <height>131</height>
                </rect>
               </property>
@@ -1155,7 +1290,9 @@
                 <widget class="QLabel" name="label_12">
                  <property name="font">
                   <font>
-                   <pointsize>12</pointsize>
+                   <family>Microsoft YaHei</family>
+                   <pointsize>-1</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1195,8 +1332,8 @@
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>98</width>
-                    <height>28</height>
+                    <width>707</width>
+                    <height>637</height>
                    </rect>
                   </property>
                   <widget class="QLabel" name="label_view">
@@ -1210,7 +1347,9 @@
                    </property>
                    <property name="font">
                     <font>
-                     <pointsize>12</pointsize>
+                     <family>Microsoft YaHei</family>
+                     <pointsize>-1</pointsize>
+                     <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -1278,8 +1417,8 @@
              <rect>
               <x>0</x>
               <y>0</y>
-              <width>733</width>
-              <height>602</height>
+              <width>758</width>
+              <height>620</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1446,7 +1585,7 @@
               <x>140</x>
               <y>210</y>
               <width>551</width>
-              <height>41</height>
+              <height>50</height>
              </rect>
             </property>
            </widget>
@@ -1456,7 +1595,7 @@
               <x>140</x>
               <y>310</y>
               <width>551</width>
-              <height>41</height>
+              <height>50</height>
              </rect>
             </property>
            </widget>
@@ -1471,7 +1610,10 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>11</pointsize>
+              <family>Microsoft YaHei</family>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -1502,7 +1644,10 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>11</pointsize>
+              <family>Microsoft YaHei</family>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -1515,7 +1660,7 @@
               <x>140</x>
               <y>110</y>
               <width>551</width>
-              <height>41</height>
+              <height>50</height>
              </rect>
             </property>
            </widget>
@@ -1530,7 +1675,10 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>11</pointsize>
+              <family>Microsoft YaHei</family>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
@@ -1548,7 +1696,9 @@
             </property>
             <property name="font">
              <font>
-              <pointsize>16</pointsize>
+              <family>Microsoft YaHei</family>
+              <pointsize>-1</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1600,8 +1750,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1320</width>
-     <height>22</height>
+     <width>1326</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
