@@ -8,17 +8,9 @@
 '''
 this is function description
 '''
-# import module your need
-import configparser
-import datetime
-import os
-import sys
 
-import pymysql
-from PySide6.QtCore import QFile, Qt
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow, QTableWidgetItem, QAbstractItemView
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QTableWidgetItem, QAbstractItemView
 
 
 from types import MethodType

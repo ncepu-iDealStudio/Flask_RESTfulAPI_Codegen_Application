@@ -12,13 +12,10 @@ this is function description
 import configparser
 import datetime
 import os
-import sys
 
 import pymysql
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QMessageBox
+
 from app.utils.checkSqlLink import SQLHandler
 
 from types import MethodType
@@ -31,6 +28,18 @@ def db_config_init(self):
     '''
     self.ui.button_get_db_names.clicked.connect(self.get_dbname)
     self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+
+    # 加载用户上一次使用的配置
+    user_configfile = "app/config/user_config.conf"
+    if os.path.isfile(user_configfile):
+        user_conf = configparser.ConfigParser()  # 实例类
+        user_conf.read(user_configfile, encoding='UTF-8')  # 读取配置文件
+        if user_conf.has_section('DATABASE'):
+            self.ui.text_host.setText(user_conf['DATABASE']['host'])
+            self.ui.text_port.setText(user_conf['DATABASE']['port'])
+            self.ui.text_user.setText(user_conf['DATABASE']['username'])
+            self.ui.text_password.setText(user_conf['DATABASE']['password'])
+            self.ui.radioButton.setChecked(1)
 
 def db_config(self):
     """
@@ -52,6 +61,9 @@ def db_config(self):
         return
     if len(password := self.ui.text_password.text()) == 0:
         QMessageBox.information(self.ui, '提示', '请填写密码')
+        return
+    if self.ui.comboBox_database.currentText() == '请先获取数据库名':
+        QMessageBox.information(self.ui, '提示', '请先获取数据库名')
         return
 
     dialect = self.ui.comboBox_db_type.currentText()

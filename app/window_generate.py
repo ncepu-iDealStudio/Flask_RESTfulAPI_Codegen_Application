@@ -11,18 +11,13 @@ this is function description
 # import module your need
 import configparser
 import os
-import sys
 
-import pymysql
 from PySide6 import QtWidgets
-from PySide6.QtCore import QFile, QDir
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow, QFileDialog
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
+from PySide6.QtCore import QDir
+from PySide6.QtWidgets import  QMessageBox, QFileDialog
 
 from types import MethodType
 
-import app.generate
 from app import generate
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
@@ -40,6 +35,17 @@ def generate_init(self):
     self.ui.dig.setFileMode(QFileDialog.AnyFile)
     self.ui.dig.setFilter(QDir.Files)
     self.ui.toolButton_file.clicked.connect(self.button_show_file)
+
+    # 加载用户上一次使用的配置
+    user_configfile = "app/config/user_config.conf"
+    if os.path.isfile(user_configfile):
+        user_conf = configparser.ConfigParser()  # 实例类
+        user_conf.read(user_configfile, encoding='UTF-8')  # 读取配置文件
+        if user_conf.has_section('PARAMETER'):
+            self.ui.lineEdit.setText(user_conf['PARAMETER']['target_dir'])
+            self.ui.lineEdit_2.setText(user_conf['PARAMETER']['project_name'])
+            self.ui.lineEdit_3.setText(user_conf['PARAMETER']['api_version'])
+
 
 
 def code_generate(self):
@@ -73,7 +79,8 @@ def code_generate(self):
     project_name = name
     interface_version = version
 
-    configfile = "app/config/config_" + str(session_id) + ".conf"
+    configfile = "app/config/config_" + str(session_id) + ".conf"  # 配置文件路径
+    user_configfile = "app/config/user_config.conf"  # 用户配置文件路径
     conf = configparser.ConfigParser()  # 实例类
     conf.read(configfile, encoding='UTF-8')  # 读取配置文件
 
@@ -85,6 +92,14 @@ def code_generate(self):
     conf.set("PARAMETER", "api_version", interface_version)
     with open(configfile, "w") as f:
         conf.write(f)
+
+    # 是否保存用户配置
+    if self.ui.radioButton.isChecked():
+        with open(user_configfile, "w") as f:
+            conf.write(f)
+    else:
+        with open(user_configfile, "w") as f:
+            f.truncate()
 
     # 过滤掉未勾选的表和视图
     table_config = {
@@ -101,7 +116,7 @@ def code_generate(self):
 
     # 开始生成代码
     info = generate.start(table_config, session_id, "127.0.0.1")
-    messagebox.showinfo("codegen_generate","Api project code generation completed");
+    messagebox.showinfo(info)
 
 
 

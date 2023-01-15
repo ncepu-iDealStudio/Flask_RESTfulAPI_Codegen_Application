@@ -11,11 +11,9 @@ this is function description
 # import module your need
 import sys
 
-from PySide6 import QtCore, QtWidgets, QtGui
-from PySide6.QtCore import QFile, QRect, QSize
-from PySide6.QtGui import QIcon
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtWidgets import QApplication, QCheckBox, QPushButton, QWidget, QHBoxLayout, QSizePolicy, QVBoxLayout
+from PySide6 import QtCore, QtWidgets
+from PySide6.QtCore import QRect, QSize
+from PySide6.QtWidgets import QCheckBox, QPushButton, QWidget, QHBoxLayout, QSizePolicy, QVBoxLayout
 
 from functools import partial
 
