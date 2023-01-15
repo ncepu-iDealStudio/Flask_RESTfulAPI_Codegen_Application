@@ -36,6 +36,17 @@ def generate_init(self):
     self.ui.dig.setFilter(QDir.Files)
     self.ui.toolButton_file.clicked.connect(self.button_show_file)
 
+    # 加载用户上一次使用的配置
+    user_configfile = "app/config/user_config.conf"
+    if os.path.isfile(user_configfile):
+        user_conf = configparser.ConfigParser()  # 实例类
+        user_conf.read(user_configfile, encoding='UTF-8')  # 读取配置文件
+        if user_conf.has_section('PARAMETER'):
+            self.ui.lineEdit.setText(user_conf['PARAMETER']['target_dir'])
+            self.ui.lineEdit_2.setText(user_conf['PARAMETER']['project_name'])
+            self.ui.lineEdit_3.setText(user_conf['PARAMETER']['api_version'])
+
+
 
 def code_generate(self):
     """
@@ -68,7 +79,8 @@ def code_generate(self):
     project_name = name
     interface_version = version
 
-    configfile = "app/config/config_" + str(session_id) + ".conf"
+    configfile = "app/config/config_" + str(session_id) + ".conf"  # 配置文件路径
+    user_configfile = "app/config/user_config.conf"  # 用户配置文件路径
     conf = configparser.ConfigParser()  # 实例类
     conf.read(configfile, encoding='UTF-8')  # 读取配置文件
 
@@ -80,6 +92,14 @@ def code_generate(self):
     conf.set("PARAMETER", "api_version", interface_version)
     with open(configfile, "w") as f:
         conf.write(f)
+
+    # 是否保存用户配置
+    if self.ui.radioButton.isChecked():
+        with open(user_configfile, "w") as f:
+            conf.write(f)
+    else:
+        with open(user_configfile, "w") as f:
+            f.truncate()
 
     # 过滤掉未勾选的表和视图
     table_config = {
