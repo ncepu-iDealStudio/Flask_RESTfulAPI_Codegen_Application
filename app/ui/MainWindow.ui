@@ -25,7 +25,7 @@ QPushButton
 {
     background-color:rgba(198,198,198);/*背景色*/
     border-style:solid;/*边框样式 solid实线 none无边框 inset/outset 3D边框*/
-    border-width:4px; /*边框宽度像素*/
+    border-width:1px; /*边框宽度像素*/
     border-radius:10px;/*边框圆角半径像素*/
     border-color:rgba(205,205,205);/*边框颜色*/
     font-size:12pt;/*字体 字体大小*/
@@ -49,10 +49,9 @@ QPushButton:hover
 QLineEdit
 {
     background-color:rgb(240,240,240);/*背景色*/
-    min-height:30px; /*最小高度*/
-    min-width:180px; /*最小宽度*/
+	height:20px;
     border-style:solid;/*边框样式 solid实线 none无边框 inset/outset 3D边框*/
-    border-width:4px; /*边框宽度像素*/
+    border-width:1px; /*边框宽度像素*/
     border-radius:10px;/*边框圆角半径像素*/
     border-color:rgba(205,205,205);/*边框颜色*/
     font-size:12pt;/*字体 字体大小*/
@@ -69,10 +68,9 @@ QComboBox
     background-color:rgb(240,240,240);
     color: black;/*字体颜色*/
     border-style:solid;/*边框样式 solid实线 none无边框 inset/outset 3D边框*/
-    border-width:4px;/*边框宽度像素*/
+    border-width:1px;/*边框宽度像素*/
     border-radius:10px;/*边框圆角半径像素*/
     border-color:rgba(205,205,205);/*边框颜色*/
-    min-height:35px; /*最小高度*/
     font-size:12pt;
 }
 /*向下的三角形箭头样式*/
@@ -1610,7 +1608,7 @@ QTreeWidget,QTreeView
               <x>160</x>
               <y>210</y>
               <width>551</width>
-              <height>50</height>
+              <height>34</height>
              </rect>
             </property>
            </widget>
@@ -1620,7 +1618,7 @@ QTreeWidget,QTreeView
               <x>160</x>
               <y>310</y>
               <width>551</width>
-              <height>50</height>
+              <height>34</height>
              </rect>
             </property>
            </widget>
@@ -1683,9 +1681,9 @@ QTreeWidget,QTreeView
             <property name="geometry">
              <rect>
               <x>160</x>
-              <y>110</y>
+              <y>120</y>
               <width>551</width>
-              <height>50</height>
+              <height>34</height>
              </rect>
             </property>
            </widget>
