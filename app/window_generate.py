@@ -101,7 +101,7 @@ def code_generate(self):
 
     # 开始生成代码
     info = generate.start(table_config, session_id, "127.0.0.1")
-    messagebox.showinfo(info)
+    messagebox.showinfo("codegen_generate","Api project code generation completed");
 
 
 
