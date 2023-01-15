@@ -11,18 +11,13 @@ this is function description
 # import module your need
 import configparser
 import os
-import sys
 
-import pymysql
 from PySide6 import QtWidgets
-from PySide6.QtCore import QFile, QDir
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow, QFileDialog
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
+from PySide6.QtCore import QDir
+from PySide6.QtWidgets import  QMessageBox, QFileDialog
 
 from types import MethodType
 
-import app.generate
 from app import generate
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
@@ -101,7 +96,7 @@ def code_generate(self):
 
     # 开始生成代码
     info = generate.start(table_config, session_id, "127.0.0.1")
-    messagebox.showinfo("codegen_generate","Api project code generation completed");
+    messagebox.showinfo(info)
 
 
 

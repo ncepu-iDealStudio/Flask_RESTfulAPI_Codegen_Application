@@ -9,21 +9,12 @@
 this is function description
 '''
 # import module your need
-import configparser
-import datetime
-import os
-import sys
 
-import pymysql
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
 from app.utils.checkSqlLink import SQLHandler
 
 # 表配置页导入的包
-from PySide6.QtWidgets import *
-from PySide6.QtCore import *
+from PySide6.QtWidgets import QPushButton, QWidget, QCheckBox, QVBoxLayout, QSizePolicy, QHBoxLayout, QComboBox, QLabel
+from PySide6.QtCore import QSize, QRect
 from functools import partial
 
 from types import MethodType

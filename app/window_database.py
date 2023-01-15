@@ -12,13 +12,10 @@ this is function description
 import configparser
 import datetime
 import os
-import sys
 
 import pymysql
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QApplication, QMessageBox, QMainWindow
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QMessageBox
+
 from app.utils.checkSqlLink import SQLHandler
 
 from types import MethodType
