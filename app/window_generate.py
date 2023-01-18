@@ -115,8 +115,11 @@ def code_generate(self):
             table_config['view'].append(view)
 
     # 开始生成代码
-    info = generate.start(table_config, session_id, "127.0.0.1")
-    messagebox.showinfo(info)
+    self.loadData.sig_load_generate.connect(self.loadData.load_generate)
+    self.loadData.sig_load_generate_comp.connect(self.load_generate_comp)
+    self.loadData.sig_load_generate.emit(table_config, session_id)
+
+    self.dialog_fault.open()
 
 
 
@@ -130,6 +133,12 @@ def button_show_file(self):
     self.ui.lineEdit.setText(fileName)
 
 
+def load_generate_comp(self, result):
+    self.dialog_fault.close()
+    QMessageBox.information(self.ui, '提示', str(result))
+    return
+
+
 # 将函数添加到对象中
 def add_func(self):
     '''
@@ -140,3 +149,4 @@ def add_func(self):
     self.generate_init = MethodType(generate_init, self)
     self.generate = MethodType(code_generate, self)
     self.button_show_file = MethodType(button_show_file, self)
+    self.load_generate_comp = MethodType(load_generate_comp, self)

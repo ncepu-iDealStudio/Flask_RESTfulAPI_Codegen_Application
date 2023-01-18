@@ -12,13 +12,19 @@ this is function description
 import configparser
 import datetime
 import os
+import time
 
 import pymysql
-from PySide6.QtWidgets import QMessageBox
+from PySide6 import QtCore
+from PySide6.QtCore import QSize, QThread, QObject
+from PySide6.QtGui import QPixmap, QMovie
+from PySide6.QtWidgets import QMessageBox, QDialog, QLabel, QPushButton, QFrame
 
 from app.utils.checkSqlLink import SQLHandler
 
 from types import MethodType
+
+from threading import Thread
 
 # 将自己负责的函数复制到此处
 def db_config_init(self):
@@ -93,18 +99,16 @@ def db_config(self):
         with open(configfile, "w") as f:
             conf.write(f)
 
-        tables_info = SQLHandler.generate_tables_information()
-        if tables_info['code']:
-            print(tables_info['data'])
-            # self.table_config_show(self, tables_info['data'])
+        self.loadData.sig_load_table.connect(self.loadData.load_tables)
+        self.loadData.sig_load_table_comp.connect(self.load_table_comp)
+        self.loadData.sig_load_table.emit()
+
+        self.dialog_fault.open()  # 阻塞当前窗口，避免用户违规操作
+        return
+
     else:
         QMessageBox.critical(self.ui, '错误', '数据库读取失败!')
         return
-
-    self.sql_data['table'] = tables_info['data']['table']
-    # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
-    self.ui.stackedWidget.setCurrentIndex(1)
-    self.ui.stackedWidget_step.setCurrentIndex(1)
 
 def get_dbname(self):
     """
@@ -144,6 +148,22 @@ def get_dbname(self):
         QMessageBox.critical(self.ui, '错误', '数据库连接失败!')
         return
 
+
+# 数据处理结束
+def load_table_comp(self, tables_info):
+    print('comp')
+    print(tables_info)
+    self.sql_data['table'] = tables_info['data']['table']
+    self.next_step()
+    self.dialog_fault.close()
+
+
+# 数据加载后调用
+@QtCore.Slot()
+def load_OK(self):
+    print('OK')
+
+
 # 将函数添加到对象中
 def add_func(self):
     '''
@@ -154,3 +174,5 @@ def add_func(self):
     self.db_config_init = MethodType(db_config_init, self)
     self.db_config = MethodType(db_config, self)
     self.get_dbname = MethodType(get_dbname, self)
+    self.load_OK = MethodType(load_OK, self)
+    self.load_table_comp = MethodType(load_table_comp, self)

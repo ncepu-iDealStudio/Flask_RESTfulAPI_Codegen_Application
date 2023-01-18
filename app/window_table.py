@@ -183,19 +183,14 @@ def table_config(self):
                 for table in self.sql_data['table']:
                     if table['table'] == table_name:
                         table['ischecked'] = True
-    # 获取视图数据
-    view_info = SQLHandler.generate_views_information()
-    if view_info['code']:
-        print('视图')
-        print(view_info['data'])
-        # self.table_config_show(self, tables_info['data'])
 
-    self.sql_data['view'] = view_info['data']['view']
-    print('数据')
-    print(self.sql_data)
+    self.loadData.sig_load_view.connect(self.loadData.load_views)
+    self.loadData.sig_load_view_comp.connect(self.load_view_comp)
+    self.loadData.sig_load_view.emit()
+
+    self.dialog_fault.open()
+
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
-    self.ui.stackedWidget.setCurrentIndex(2)
-    self.ui.stackedWidget_step.setCurrentIndex(2)
 
 def add_table_button_group_init(self):
     '''
@@ -655,6 +650,12 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
             # 重新绑定事件
             comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
+# 数据处理结束
+def load_view_comp(self, view_info):
+    self.sql_data['view'] = view_info['data']['view']
+    self.next_step()
+    self.dialog_fault.close()
+
 # 将函数添加到对象中
 def add_func(self):
     '''
@@ -677,3 +678,4 @@ def add_func(self):
     self.add_field_encrypt_group_init = MethodType(add_field_encrypt_group_init, self)
     self.del_field_encrypt_group = MethodType(del_field_encrypt_group, self)
     self.comboBox_field_update = MethodType(comboBox_field_update, self)
+    self.load_view_comp = MethodType(load_view_comp, self)

@@ -8,12 +8,13 @@
 '''
 this is function description
 '''
+import os
 import sys
 
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QApplication
+from PySide6.QtCore import QFile, QSize, QThread
+from PySide6.QtWidgets import QApplication, QFrame, QLabel, QPushButton, QDialog
 from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QMovie
 
 # 以下为各页面模块
 from app import window_database
@@ -34,6 +35,37 @@ class MainWindow:
         # 注意：里面的控件对象也成为窗口对象的属性了
         # 比如 self.ui.button , self.ui.textEdit
         self.ui = QUiLoader().load(qfile_main)
+
+        # 初始化加载中弹窗
+        self.dialog_fault = QDialog()
+        self.label_loading = QLabel(self.dialog_fault)  # 弹窗
+        self.label_loading.setText('')
+        self.label_loading.setGeometry(110, 10, 230, 230)
+
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        image_path = os.path.join(base_dir, 'app', 'ui', 'static', 'loading.gif')
+        label_pic = QLabel(self.label_loading)  # loading动图label
+        label_pic.setGeometry(55, 10, 120, 120)
+        pic = QMovie(image_path)  # loading动图
+        pic.setScaledSize(QSize(label_pic.width(), label_pic.height()))
+        pic.start()
+        label_pic.setMovie(pic)
+
+        label_text = QLabel(self.dialog_fault)  # 弹窗提示
+        label_text.setGeometry(175, 130, 220, 50)
+        label_text.setText("加载中,请稍候...")
+
+        cancel_pbt = QPushButton(self.dialog_fault)
+        cancel_pbt.setText("取消")
+        cancel_pbt.setGeometry(150, 180, 180, 35)
+
+        # 初始化数据处理线程
+
+        from .load_data import LoadData
+        self.loadData = LoadData()
+        self.load_thread = QThread()
+        self.loadData.moveToThread(self.load_thread)
+        self.load_thread.start()
 
         # 定义主要数据sql_data
         self.sql_data = {
@@ -65,43 +97,6 @@ class MainWindow:
         self.ui.pushButton_next.clicked.connect(self.button_next)
         self.ui.pushButton_last.clicked.connect(self.button_last)
 
-    # def db_config_init(self):
-    #     '''
-    #     数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
-    #     :return:
-    #     '''
-    #     pass
-
-    # def table_config_init(self):
-    #     '''
-    #     数据库表页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
-    #     :return:
-    #     '''
-    #
-    #     from app import window_table
-    #     window_table.add_func(self)
-    #     window_table.table_config_init(self)
-
-    # def view_config_init(self):
-    #     '''
-    #     视图页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
-    #     :return:
-    #     '''
-    #     pass
-    #
-    # def confirm_config_init(self):
-    #     '''
-    #     确认配置页初始化初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
-    #     :return:
-    #     '''
-    #     pass
-    #
-    # def generate_init(self):
-    #     '''
-    #     代码生成页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
-    #     :return:
-    #     '''
-    #     pass
 
     def button_next(self):
         '''
@@ -112,22 +107,18 @@ class MainWindow:
         # 对不同页面给出不同的操作分支，各自完善相关方法
         if self.ui.stackedWidget.currentIndex() == 0:
             self.db_config()
-            self.table_config_init()
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
             self.table_config()
-            self.view_config_init()
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
             self.view_config()
-            self.confirm_config_init()
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
             self.confirm_config()
-            self.generate_init()
             self.ui.pushButton_next.setText('生成代码')
             return
 
@@ -160,6 +151,37 @@ class MainWindow:
         if self.ui.stackedWidget.currentIndex() == 1:
             self.ui.stackedWidget.setCurrentIndex(0)
             self.ui.stackedWidget_step.setCurrentIndex(0)
+            return
+
+    # 当前页面的操作完成后，调用该函数进入下一步
+    def next_step(self):
+        if self.ui.stackedWidget.currentIndex() == 0:
+            self.table_config_init()
+            self.ui.stackedWidget.setCurrentIndex(1)
+            self.ui.stackedWidget_step.setCurrentIndex(1)
+            return
+
+        if self.ui.stackedWidget.currentIndex() == 1:
+            self.view_config_init()
+            self.ui.stackedWidget.setCurrentIndex(2)
+            self.ui.stackedWidget_step.setCurrentIndex(2)
+            return
+
+        if self.ui.stackedWidget.currentIndex() == 2:
+            self.confirm_config_init()
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.stackedWidget_step.setCurrentIndex(3)
+            return
+
+        if self.ui.stackedWidget.currentIndex() == 3:
+            self.generate_init()
+            self.ui.pushButton_next.setText('生成代码')
+            self.ui.stackedWidget.setCurrentIndex(4)
+            self.ui.stackedWidget_step.setCurrentIndex(4)
+            return
+
+        if self.ui.stackedWidget.currentIndex() == 4:
+            self.generate()
             return
 
     # def db_config(self):

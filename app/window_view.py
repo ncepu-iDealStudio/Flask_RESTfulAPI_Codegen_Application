@@ -136,9 +136,9 @@ def view_config(self):
 
     print('view页  数据：')
     print(self.sql_data)
+    self.next_step()
+
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
-    self.ui.stackedWidget.setCurrentIndex(3)
-    self.ui.stackedWidget_step.setCurrentIndex(3)
 
 def add_view_button_group_init(self):
     '''
