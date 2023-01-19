@@ -161,8 +161,8 @@ def table_config_init(self):
     self.ui.centralwidget.findChild(QPushButton, u"pushButton_table_select_all").setText('全选')
 
     # 测试用，添加组件
-    for x in range(11):
-        self.add_table_button_group(str(x))
+    # for x in range(11):
+    #     #     self.add_table_button_group(str(x))
 
     #  事件初始化
 
