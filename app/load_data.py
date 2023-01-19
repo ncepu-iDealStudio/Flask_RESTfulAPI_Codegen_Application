@@ -32,6 +32,7 @@ class LoadData(QObject):
     def load_tables(self):
         table_info = SQLHandler.generate_tables_information()
         self.sig_load_table_comp.emit(table_info)
+        print('load_tables_comp')
         return
 
     @QtCore.Slot()

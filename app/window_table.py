@@ -28,6 +28,10 @@ def window_init_for_table(self):
     # 加密组件初始化
     self.add_field_encrypt_group_init()
 
+    # 初始化多线程信号与槽
+    self.loadData.sig_load_view.connect(self.loadData.load_views)
+    self.loadData.sig_load_view_comp.connect(self.load_view_comp)
+
 def table_config_init(self):
     '''
     数据库表页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
@@ -144,6 +148,12 @@ def table_config_init(self):
 
     self.table_number = 0
 
+    # 设置scrollAreaWidgetContents大小
+    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
+
+    # 设置面板大小
+    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
+
     for table in self.sql_data['table']:
         self.add_table_button_group(table.get('table'))
 
@@ -151,8 +161,8 @@ def table_config_init(self):
     self.ui.centralwidget.findChild(QPushButton, u"pushButton_table_select_all").setText('全选')
 
     # 测试用，添加组件
-    # for x in range(17):
-    #     self.add_table_button_group(str(x))
+    for x in range(11):
+        self.add_table_button_group(str(x))
 
     #  事件初始化
 
@@ -184,8 +194,6 @@ def table_config(self):
                     if table['table'] == table_name:
                         table['ischecked'] = True
 
-    self.loadData.sig_load_view.connect(self.loadData.load_views)
-    self.loadData.sig_load_view_comp.connect(self.load_view_comp)
     self.loadData.sig_load_view.emit()
 
     self.dialog_fault.open()
@@ -252,10 +260,10 @@ def add_table_button_group(self, table_name):
     self.table_number += 1
 
     # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60 + self.table_number * 31))
+    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
 
     # 设置面板大小
-    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 60 + self.table_number * 31))
+    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
 
 def checkBox_all_select_clicked(self):
     '''

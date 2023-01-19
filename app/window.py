@@ -55,9 +55,9 @@ class MainWindow:
         label_text.setGeometry(175, 130, 220, 50)
         label_text.setText("加载中,请稍候...")
 
-        cancel_pbt = QPushButton(self.dialog_fault)
-        cancel_pbt.setText("取消")
-        cancel_pbt.setGeometry(150, 180, 180, 35)
+        # cancel_pbt = QPushButton(self.dialog_fault)
+        # cancel_pbt.setText("取消")
+        # cancel_pbt.setGeometry(150, 180, 180, 35)
 
         # 初始化数据处理线程
 
@@ -82,12 +82,11 @@ class MainWindow:
 
         # 对各个页面进行初始化
         self.frame_init()
+        self.window_init_for_database()
         self.window_init_for_table()
-        self.db_config_init()
         self.window_init_for_view()
-        # self.view_config_init()
-        # self.confirm_config_init()
-        # self.generate_init()
+        self.window_init_for_confirm()
+        self.window_init_for_generate()
 
     def frame_init(self):
         '''
@@ -183,106 +182,6 @@ class MainWindow:
         if self.ui.stackedWidget.currentIndex() == 4:
             self.generate()
             return
-
-    # def db_config(self):
-    #     '''
-    #     数据库配置页面主要代码，
-    #     :return:
-    #     '''
-    #
-    #     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
-    #     self.ui.stackedWidget.setCurrentIndex(4)
-
-    # def table_config(self):
-    #     '''
-    #     数据库表配置页主要代码
-    #     :return:
-    #     '''
-    #
-    #     from app import window_table
-    #     window_table.table_config(self)
-
-    # def view_config(self):
-    #     '''
-    #     视图配置页主要代码
-    #     :return:
-    #     '''
-    #
-    #     # 给出一个调试数据，正常情况应该使用self.sql_data数据
-    #     sql_data = {
-    #         'table': [
-    #             {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-    #              'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
-    #                        {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
-    #              'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-    #             {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
-    #              'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-    #                        {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-    #                        {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
-    #                        {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
-    #              'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-    #             {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
-    #              'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
-    #              'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False}],
-    #
-    #         'view': [
-    #             {'view': 'v_student_course_score',
-    #              'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-    #                               {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
-    #                               {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
-    #              'ischecked': 'False'},
-    #             {'view': 'v_test', 'filter_field': [
-    #                 {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-    #                 {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
-    #                 {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
-    #     }
-    #
-    #
-    #     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
-    #     self.ui.stackedWidget.setCurrentIndex(1)
-    #
-    # def confirm_config(self):
-    #     '''
-    #     确认配置页主要代码
-    #     :return:
-    #     '''
-    #
-    #     # 给出一个调试数据，正常情况应该使用self.sql_data数据
-    #     sql_data = {
-    #         'table': [
-    #             {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-    #              'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
-    #                        {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
-    #              'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-    #             {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
-    #              'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-    #                        {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-    #                        {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
-    #                        {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
-    #              'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-    #             {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
-    #              'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
-    #              'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False}],
-    #
-    #         'view': [
-    #             {'view': 'v_student_course_score',
-    #              'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-    #                               {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
-    #                               {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
-    #              'ischecked': 'False'},
-    #             {'view': 'v_test', 'filter_field': [
-    #                 {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-    #                 {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
-    #                 {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
-    #     }
-    #     self.ui.stackedWidget.setCurrentIndex(2)
-    #
-    # def generate(self):
-    #     '''
-    #     代码生成页主要代码
-    #     :return:
-    #     '''
-    #     pass
 
 
 def start():

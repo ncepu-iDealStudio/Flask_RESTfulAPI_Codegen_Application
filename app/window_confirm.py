@@ -17,6 +17,10 @@ from types import MethodType
 
 
 # 将自己负责的函数复制到此处
+def window_init_for_confirm(self):
+    pass
+
+
 def confirm_config_init(self):
     '''
     确认配置页初始化初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
@@ -291,3 +295,4 @@ def add_func(self):
     '''
     self.confirm_config_init = MethodType(confirm_config_init, self)
     self.confirm_config = MethodType(confirm_config, self)
+    self.window_init_for_confirm = MethodType(window_init_for_confirm, self)

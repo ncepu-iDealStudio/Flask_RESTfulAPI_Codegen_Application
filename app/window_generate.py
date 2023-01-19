@@ -26,6 +26,18 @@ from tkinter import messagebox
 
 
 # 将自己负责的函数复制到此处
+def window_init_for_generate(self):
+    '''
+    数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
+    :return:
+    '''
+
+    # 初始化多线程信号与槽
+    self.loadData.sig_load_generate.connect(self.loadData.load_generate)
+    self.loadData.sig_load_generate_comp.connect(self.load_generate_comp)
+    return
+
+
 def generate_init(self):
     '''
     代码生成页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
@@ -80,7 +92,9 @@ def code_generate(self):
     interface_version = version
 
     configfile = "app/config/config_" + str(session_id) + ".conf"  # 配置文件路径
+    configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), configfile)
     user_configfile = "app/config/user_config.conf"  # 用户配置文件路径
+    user_configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), user_configfile)
     conf = configparser.ConfigParser()  # 实例类
     conf.read(configfile, encoding='UTF-8')  # 读取配置文件
 
@@ -115,8 +129,6 @@ def code_generate(self):
             table_config['view'].append(view)
 
     # 开始生成代码
-    self.loadData.sig_load_generate.connect(self.loadData.load_generate)
-    self.loadData.sig_load_generate_comp.connect(self.load_generate_comp)
     self.loadData.sig_load_generate.emit(table_config, session_id)
 
     self.dialog_fault.open()
@@ -136,7 +148,6 @@ def button_show_file(self):
 def load_generate_comp(self, result):
     self.dialog_fault.close()
     QMessageBox.information(self.ui, '提示', str(result))
-    return
 
 
 # 将函数添加到对象中
@@ -150,3 +161,4 @@ def add_func(self):
     self.generate = MethodType(code_generate, self)
     self.button_show_file = MethodType(button_show_file, self)
     self.load_generate_comp = MethodType(load_generate_comp, self)
+    self.window_init_for_generate = MethodType(window_init_for_generate, self)

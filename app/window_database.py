@@ -27,13 +27,17 @@ from types import MethodType
 from threading import Thread
 
 # 将自己负责的函数复制到此处
-def db_config_init(self):
+def window_init_for_database(self):
     '''
     数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
     :return:
     '''
     self.ui.button_get_db_names.clicked.connect(self.get_dbname)
     self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+
+    # 初始化多线程信号与槽
+    self.loadData.sig_load_table.connect(self.loadData.load_tables)
+    self.loadData.sig_load_table_comp.connect(self.load_table_comp)
 
     # 加载用户上一次使用的配置
     user_configfile = "app/config/user_config.conf"
@@ -47,11 +51,12 @@ def db_config_init(self):
             self.ui.text_password.setText(user_conf['DATABASE']['password'])
             self.ui.radioButton.setChecked(1)
 
+
 def db_config(self):
     """
     数据库配置页面主要代码，
     """
-    dir = os.getcwd()
+    dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     f = open(dir + r"/app/config/config_" + str(self.id) + ".conf", "w")
     f.close()
 
@@ -84,6 +89,7 @@ def db_config(self):
     if result_sql['code']:
         # 填写配置文件
         configfile = "app/config/config_" + str(self.id) + ".conf"
+        configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), configfile)
         conf = configparser.ConfigParser()  # 实例类
         conf.read(configfile, encoding='UTF-8')  # 读取配置文件
 
@@ -99,8 +105,6 @@ def db_config(self):
         with open(configfile, "w") as f:
             conf.write(f)
 
-        self.loadData.sig_load_table.connect(self.loadData.load_tables)
-        self.loadData.sig_load_table_comp.connect(self.load_table_comp)
         self.loadData.sig_load_table.emit()
 
         self.dialog_fault.open()  # 阻塞当前窗口，避免用户违规操作
@@ -109,6 +113,7 @@ def db_config(self):
     else:
         QMessageBox.critical(self.ui, '错误', '数据库读取失败!')
         return
+
 
 def get_dbname(self):
     """
@@ -151,17 +156,11 @@ def get_dbname(self):
 
 # 数据处理结束
 def load_table_comp(self, tables_info):
-    print('comp')
+    print('comp_table')
     print(tables_info)
     self.sql_data['table'] = tables_info['data']['table']
     self.next_step()
     self.dialog_fault.close()
-
-
-# 数据加载后调用
-@QtCore.Slot()
-def load_OK(self):
-    print('OK')
 
 
 # 将函数添加到对象中
@@ -171,8 +170,7 @@ def add_func(self):
     :param self: 添加函数的对象
     :return:
     '''
-    self.db_config_init = MethodType(db_config_init, self)
+    self. window_init_for_database = MethodType( window_init_for_database, self)
     self.db_config = MethodType(db_config, self)
     self.get_dbname = MethodType(get_dbname, self)
-    self.load_OK = MethodType(load_OK, self)
     self.load_table_comp = MethodType(load_table_comp, self)
