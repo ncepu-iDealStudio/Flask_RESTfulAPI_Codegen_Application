@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2023-01-17 21:20:49
 '''
-this is function description
+数据处理，LoadData类将通过多线程进行复杂的数据处理，避免页面阻塞
 '''
 # import module your need
 import time
@@ -19,24 +19,33 @@ from app import generate
 from app.utils.checkSqlLink import SQLHandler
 
 
+# 创建该类的实例后，通过moveToThread使得其方法可以通过多线程的方式进行
 class LoadData(QObject):
 
-    sig_load_table = Signal()
-    sig_load_table_comp = Signal(dict)
-    sig_load_view = Signal()
-    sig_load_view_comp = Signal(dict)
-    sig_load_generate = Signal(dict, str)
-    sig_load_generate_comp = Signal(dict)
+    # 实例化信号
+    sig_load_table = Signal()  # 开始加载表数据信号
+    sig_load_table_comp = Signal(dict)  # 表数据加载完成信号
+    sig_load_view = Signal()  # 开始加载视图信号
+    sig_load_view_comp = Signal(dict)  # 视图加载完成信号
+    sig_load_generate = Signal(dict, str)  # 开始生成代码信号
+    sig_load_generate_comp = Signal(dict)  # 代码生成完成信号
 
     @QtCore.Slot()
     def load_tables(self):
+        '''
+        加载表数据
+        :return:
+        '''
         table_info = SQLHandler.generate_tables_information()
         self.sig_load_table_comp.emit(table_info)
-        print('load_tables_comp')
         return
 
     @QtCore.Slot()
     def load_views(self):
+        '''
+        加载视图数据
+        :return:
+        '''
         view_info = SQLHandler.generate_views_information()
         self.sig_load_view_comp.emit(view_info)
 
@@ -46,20 +55,13 @@ class LoadData(QObject):
 
     @QtCore.Slot()
     def load_generate(self, table_config, session_id):
+        '''
+        生成代码
+        :param table_config:
+        :param session_id:
+        :return:
+        '''
         result = generate.start(table_config, session_id, "127.0.0.1")
         self.sig_load_generate_comp.emit(result)
 
-
-class LoadThreada(QObject):
-    signal = Signal()
-
-class LoadThread(QThread):
-
-
-    la = LoadThreada()
-
-    def run(self):
-        tables_info = SQLHandler.generate_tables_information()
-        print(tables_info)
-        self.la.signal.emit()
 

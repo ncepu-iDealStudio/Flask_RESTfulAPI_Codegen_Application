@@ -24,8 +24,6 @@ from app import generate
 from tkinter import messagebox
 
 
-
-# 将自己负责的函数复制到此处
 def window_init_for_generate(self):
     '''
     数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
@@ -57,7 +55,6 @@ def generate_init(self):
             self.ui.lineEdit.setText(user_conf['PARAMETER']['target_dir'])
             self.ui.lineEdit_2.setText(user_conf['PARAMETER']['project_name'])
             self.ui.lineEdit_3.setText(user_conf['PARAMETER']['api_version'])
-
 
 
 def code_generate(self):
@@ -134,18 +131,25 @@ def code_generate(self):
     self.dialog_fault.open()
 
 
-
 def button_show_file(self):
+    '''
+    选择生成地址
+    :param self:
+    :return:
+    '''
     dialog = QtWidgets.QFileDialog
-    # dialog.setFileMode(dialog.AnyFile)
-    # fileName, fileType = dialog.getOpenFileName(self.ui, "选取文件", os.getcwd(),
-    #                                                            "All Files(*);;Text Files(*.txt)")
     fileName = dialog.getExistingDirectory(self.ui, "选取文件", os.getcwd())
 
     self.ui.lineEdit.setText(fileName)
 
 
 def load_generate_comp(self, result):
+    '''
+    代码生成完成
+    :param self:
+    :param result:
+    :return:
+    '''
     self.dialog_fault.close()
     QMessageBox.information(self.ui, '提示', str(result))
 

@@ -33,38 +33,6 @@ def view_config_init(self):
     :return:
     '''
 
-    self.ui.stackedWidget_3.setCurrentIndex(0)
-
-    # 给出一个调试数据，正常情况应该使用self.sql_data数据
-    sql_data = {
-        'table': [
-            {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-            {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
-                       {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-            {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False}],
-
-        'view': [
-            {'view': 'v_student_course_score',
-             'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': False},
-                              {'field_name': 'studentID', 'field_type': 'str', 'ischecked': False},
-                              {'field_name': 'classID', 'field_type': 'str', 'ischecked': False}],
-             'ischecked': False},
-            {'view': 'v_test', 'filter_field': [
-                {'field_name': 'autoID', 'field_type': 'int', 'ischecked': False},
-                {'field_name': 'testID', 'field_type': 'str', 'ischecked': False},
-                {'field_name': 'testName', 'field_type': 'str', 'ischecked': False}], 'ischecked': False}]
-    }
-    # self.sql_data = sql_data
-
     self.view_number = 0  # 记录视图序号
     self.selected_view = {}  # 被选中的视图的缓存数据
     self.selected_field = {}  # 被选中的视图的字段
@@ -82,6 +50,12 @@ def view_config_init(self):
             widget_del.deleteLater()
 
     self.view_number = 0
+
+    # 设置scrollAreaWidgetContents大小
+    self.ui.scrollAreaWidgetContents_left_2.setMinimumSize(QSize(0, 45 + self.view_number * 31))
+
+    # 设置面板大小
+    self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 45 + self.view_number * 31))
     # 视图选择按钮
     for view in self.sql_data['view']:
         self.add_view_button_group(view.get('view'))
@@ -104,38 +78,6 @@ def view_config(self):
     视图配置页主要代码
     :return:
     '''
-
-    # 给出一个调试数据，正常情况应该使用self.sql_data数据
-    sql_data = {
-        'table': [
-            {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-            {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
-                       {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-            {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False}],
-
-        'view': [
-            {'view': 'v_student_course_score',
-             'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                              {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
-                              {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
-             'ischecked': 'False'},
-            {'view': 'v_test', 'filter_field': [
-                {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
-                {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
-    }
-
-    print('view页  数据：')
-    print(self.sql_data)
     self.next_step()
 
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
@@ -202,10 +144,10 @@ def add_view_button_group(self,view_name):
     self.view_number += 1
 
     # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_2.setMinimumSize(QSize(0, 60 + self.view_number * 31))
+    self.ui.scrollAreaWidgetContents_left_2.setMinimumSize(QSize(0, 45 + self.view_number * 31))
 
     # 设置面板大小
-    self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 60 + self.view_number * 31))
+    self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 45 + self.view_number * 31))
 
 def view_checkBox_clicked(self, checkbox, index = -1):
     '''
@@ -247,7 +189,6 @@ def view_pushButton_clicked(self,button_text):
     :param button_text: 视图名
     :return:
     '''
-    print(2)
     self.view_field_number = 0
     if button_text == '全选':
         self.ui.stackedWidget_3.setCurrentIndex(0)

@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2022-10-06 09:17:22
 '''
-this is function description
+窗口主文件，负责对窗口进行初始化以及对各个子页面的整体调度
 '''
 import os
 import sys
@@ -55,7 +55,7 @@ class MainWindow:
         label_text.setGeometry(175, 130, 220, 50)
         label_text.setText("加载中,请稍候...")
 
-        # cancel_pbt = QPushButton(self.dialog_fault)
+        # cancel_pbt = QPushButton(self.dialog_fault)  # 取消按钮
         # cancel_pbt.setText("取消")
         # cancel_pbt.setGeometry(150, 180, 180, 35)
 
@@ -154,6 +154,10 @@ class MainWindow:
 
     # 当前页面的操作完成后，调用该函数进入下一步
     def next_step(self):
+        '''
+        通过判断当前所在页面，进行相应操作并跳转到对应页面
+        :return:
+        '''
         if self.ui.stackedWidget.currentIndex() == 0:
             self.table_config_init()
             self.ui.stackedWidget.setCurrentIndex(1)

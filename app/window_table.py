@@ -19,8 +19,12 @@ from functools import partial
 
 from types import MethodType
 
-# 将自己负责的函数复制到此处
 def window_init_for_table(self):
+    '''
+    针对表配置页面，对窗口进行初始化，在程序启动时执行
+    :param self:
+    :return:
+    '''
     # 添加表按钮等组件初始化
     self.add_table_button_group_init()
     self.table_number = -1
@@ -32,9 +36,10 @@ def window_init_for_table(self):
     self.loadData.sig_load_view.connect(self.loadData.load_views)
     self.loadData.sig_load_view_comp.connect(self.load_view_comp)
 
+
 def table_config_init(self):
     '''
-    数据库表页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
+    数据库表页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义，在进入当前页面前执行
     :return:
     '''
 
@@ -101,42 +106,6 @@ def table_config_init(self):
     self.field_encryptable = []  # 可加密的字段组成一个列表，目前字段类型为字符允许加密
     self.encrypt_type_list = ['rsa', 'aes']
 
-    # 通过table_data创建按钮组
-
-    # 给出一个调试数据，正常情况应该使用self.sql_data数据
-    sql_data = {
-        'table': [
-            {'table': 'course', 'businesskeyname': 'Cno', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'Cname', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'hours', 'field_type': 'str', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-            {'table': 'student', 'businesskeyname': 'Sno', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'Sname', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'sex', 'field_type': 'str', 'field_encrypt': False},
-                       {'field_name': 'age', 'field_type': 'int', 'field_encrypt': False},
-                       {'field_name': 'dept', 'field_type': 'str', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': 'str', 'issave': False},
-            {'table': 'sc', 'businesskeyname': '', 'businesskeyrule': '', 'logicaldeletemark': '',
-             'field': [{'field_name': 'grade', 'field_type': 'int', 'field_encrypt': False}],
-             'businesskeyuneditable': True, 'businesskeytype': '', 'issave': False},
-        ],
-
-        'view': [
-            {'view': 'v_student_course_score',
-             'filter_field': [{'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                              {'field_name': 'studentID', 'field_type': 'str', 'ischecked': 'False'},
-                              {'field_name': 'classID', 'field_type': 'str', 'ischecked': 'False'}],
-             'ischecked': 'False'},
-            {'view': 'v_test', 'filter_field': [
-                {'field_name': 'autoID', 'field_type': 'int', 'ischecked': 'False'},
-                {'field_name': 'testID', 'field_type': 'str', 'ischecked': 'False'},
-                {'field_name': 'testName', 'field_type': 'str', 'ischecked': 'False'}], 'ischecked': 'False'}]
-    }
-    # self.sql_data = sql_data
-
-    # # 给全选按钮命名
-    # self.ui.pushButton_all_6.setText('全选')
-
     # 清空按钮并添加新按钮
     del_table_button_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QPushButton)
     for del_widget in del_table_button_list:
@@ -160,12 +129,7 @@ def table_config_init(self):
     # 初始化全选按钮
     self.ui.centralwidget.findChild(QPushButton, u"pushButton_table_select_all").setText('全选')
 
-    # 测试用，添加组件
-    # for x in range(11):
-    #     #     self.add_table_button_group(str(x))
-
     #  事件初始化
-
     # 全选CheckBox事件添加
     self.ui.centralwidget.findChild(QCheckBox, u"checkBox_table_select_all").clicked.connect(self.checkBox_all_select_clicked)
 
@@ -176,9 +140,10 @@ def table_config_init(self):
     for pushButton in self.ui.scrollArea_left_6.findChildren(QPushButton):
         pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
 
+
 def table_config(self):
     '''
-    数据库表配置页主要代码
+    数据库表配置页主要代码，点击下一步时调用
     :return:
     '''
 
@@ -194,11 +159,12 @@ def table_config(self):
                     if table['table'] == table_name:
                         table['ischecked'] = True
 
+    # 发送加载视图信号，通过多线程加载书籍
     self.loadData.sig_load_view.emit()
 
+    # 显示加载中弹窗
     self.dialog_fault.open()
 
-    # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
 
 def add_table_button_group_init(self):
     '''
@@ -207,15 +173,14 @@ def add_table_button_group_init(self):
     '''
 
     self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
-    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
 
     self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
 
     self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
 
-
     # 设置scrollAreaWidgetContents大小
     self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60))
+
 
 def add_table_button_group(self, table_name):
     '''
@@ -265,6 +230,7 @@ def add_table_button_group(self, table_name):
     # 设置面板大小
     self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
 
+
 def checkBox_all_select_clicked(self):
     '''
     全选checkBox点击调用
@@ -278,6 +244,7 @@ def checkBox_all_select_clicked(self):
         for checkBox in self.ui.scrollArea_left_6.findChildren(QCheckBox):
             checkBox.setChecked(False)
 
+
 def table_pushButton_clicked(self, button_text):
     '''
     表配置页按钮点击事件函数
@@ -285,7 +252,6 @@ def table_pushButton_clicked(self, button_text):
     :return:
     '''
 
-    print(1)
     if button_text == '全选':
         self.ui.stackedWidget_right.setCurrentIndex(0)
     else:
@@ -406,11 +372,13 @@ def table_pushButton_clicked(self, button_text):
 
         self.comboBox_field_update()
 
+
 def comboBob_logicaldeletemark_currentIndexChanged(self, comboBox_index = -1):
     if self.ui.comboBox_select_table_logicaldeletemark.currentText() == '选择逻辑删除标识字段':
         self.selected_table['logicaldeletemark'] = ''
     else:
         self.selected_table['logicaldeletemark'] = self.ui.comboBox_select_table_logicaldeletemark.currentText()
+
 
 def comboBob_businesskeyname_currentIndexChanged(self, comboBox_index = -1):
     '''
@@ -419,7 +387,6 @@ def comboBob_businesskeyname_currentIndexChanged(self, comboBox_index = -1):
     :return:
     '''
 
-    print(2)
     # 清空上次操作的缓存数据
     self.selected_field = None
 
@@ -458,6 +425,7 @@ def comboBob_businesskeyname_currentIndexChanged(self, comboBox_index = -1):
     self.ui.comboBox_select_table_businesskeyrule.currentIndexChanged.connect(
         partial(self.comboBob_businesskeyrule_currentIndexChanged))  # 这里的currentIndexChanged.connect会自动传入一个参数index
 
+
 def comboBob_businesskeyrule_currentIndexChanged(self, comboBox_index):
     '''
     comboBox的item改变事件，目前为self.ui.comboBox_select_table_businesskeyrule专属
@@ -465,7 +433,6 @@ def comboBob_businesskeyrule_currentIndexChanged(self, comboBox_index):
     :return:
     '''
 
-    print(3)
     rulename = self.ui.comboBox_select_table_businesskeyrule.currentText()
     if rulename == '选择业务主键生成规则':
         rulename = ''
@@ -474,6 +441,7 @@ def comboBob_businesskeyrule_currentIndexChanged(self, comboBox_index):
     for rule in self.businesskeyrule_to_rulename:
         if rule['rulename'] == rulename:
             self.selected_table['businesskeyrule'] = rule['businesskeyrule']
+
 
 def add_field_button_clicked(self):
     '''
@@ -506,6 +474,7 @@ def add_field_button_clicked(self):
 
     # 更新加密组件，这里可以不更新
     # self.comboBox_field_update()
+
 
 def add_field_encrypt_group(self):
     '''
@@ -560,6 +529,7 @@ def add_field_encrypt_group(self):
 
     self.ui.add_encrypt_group_layout.addLayout(self.ui.horizontalLayout_add)
 
+
 def add_field_encrypt_group_init(self):
     '''
     加密字段组件面板初始化，（这里是由于添加组件时遇到无法显示bug不得已而使用）
@@ -572,6 +542,7 @@ def add_field_encrypt_group_init(self):
     self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41))
 
     self.ui.add_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add)
+
 
 def del_field_encrypt_group(self, Qobject):
     '''
@@ -605,6 +576,7 @@ def del_field_encrypt_group(self, Qobject):
 
     # 更新加密组件
     self.comboBox_field_update(layout_index=int(index))
+
 
 def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
     '''
@@ -658,11 +630,13 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
             # 重新绑定事件
             comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
+
 # 数据处理结束
 def load_view_comp(self, view_info):
     self.sql_data['view'] = view_info['data']['view']
     self.next_step()
     self.dialog_fault.close()
+
 
 # 将函数添加到对象中
 def add_func(self):

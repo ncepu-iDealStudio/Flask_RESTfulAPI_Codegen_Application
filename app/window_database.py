@@ -26,7 +26,6 @@ from types import MethodType
 
 from threading import Thread
 
-# 将自己负责的函数复制到此处
 def window_init_for_database(self):
     '''
     数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
@@ -156,8 +155,6 @@ def get_dbname(self):
 
 # 数据处理结束
 def load_table_comp(self, tables_info):
-    print('comp_table')
-    print(tables_info)
     self.sql_data['table'] = tables_info['data']['table']
     self.next_step()
     self.dialog_fault.close()
