@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1326</width>
-    <height>796</height>
+    <height>787</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -164,7 +164,7 @@ QTreeWidget,QTreeView
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_3">
+   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0,0,1">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
@@ -583,6 +583,35 @@ QTreeWidget,QTreeView
      </layout>
     </item>
     <item>
+     <layout class="QVBoxLayout" name="verticalLayout_12">
+      <item alignment="Qt::AlignHCenter">
+       <widget class="Line" name="main_line">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>1100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>1100</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
        <widget class="QStackedWidget" name="stackedWidget">
@@ -608,6 +637,9 @@ QTreeWidget,QTreeView
             <height>641</height>
            </rect>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -616,8 +648,8 @@ QTreeWidget,QTreeView
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>989</width>
-             <height>639</height>
+             <width>991</width>
+             <height>641</height>
             </rect>
            </property>
            <widget class="QRadioButton" name="radioButton">
@@ -646,7 +678,6 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -667,7 +698,6 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -711,7 +741,6 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -745,7 +774,6 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -777,7 +805,6 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -803,7 +830,6 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -829,7 +855,6 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -867,7 +892,6 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -921,6 +945,9 @@ QTreeWidget,QTreeView
             <height>641</height>
            </rect>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -929,8 +956,8 @@ QTreeWidget,QTreeView
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>989</width>
-             <height>639</height>
+             <width>991</width>
+             <height>641</height>
             </rect>
            </property>
            <widget class="QLabel" name="label_2">
@@ -1016,7 +1043,7 @@ QTreeWidget,QTreeView
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>686</width>
+                    <width>690</width>
                     <height>1000</height>
                    </rect>
                   </property>
@@ -1052,7 +1079,7 @@ QTreeWidget,QTreeView
                     <string>加密存储字段设置(为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储，如用户身份证号，手机号等)</string>
                    </property>
                   </widget>
-                  <widget class="QWidget" name="">
+                  <widget class="QWidget" name="layoutWidget">
                    <property name="geometry">
                     <rect>
                      <x>20</x>
@@ -1091,7 +1118,7 @@ QTreeWidget,QTreeView
                     </item>
                    </layout>
                   </widget>
-                  <widget class="QWidget" name="">
+                  <widget class="QWidget" name="layoutWidget">
                    <property name="geometry">
                     <rect>
                      <x>20</x>
@@ -1220,6 +1247,9 @@ QTreeWidget,QTreeView
             <height>641</height>
            </rect>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -1228,8 +1258,8 @@ QTreeWidget,QTreeView
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>989</width>
-             <height>639</height>
+             <width>991</width>
+             <height>641</height>
             </rect>
            </property>
            <widget class="QLabel" name="label_3">
@@ -1312,7 +1342,6 @@ QTreeWidget,QTreeView
                <font>
                 <family>Microsoft YaHei</family>
                 <pointsize>12</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1355,8 +1384,8 @@ QTreeWidget,QTreeView
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>707</width>
-                    <height>637</height>
+                    <width>98</width>
+                    <height>28</height>
                    </rect>
                   </property>
                   <widget class="QLabel" name="label_view">
@@ -1372,7 +1401,6 @@ QTreeWidget,QTreeView
                     <font>
                      <family>Microsoft YaHei</family>
                      <pointsize>12</pointsize>
-                     <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -1423,6 +1451,9 @@ QTreeWidget,QTreeView
             <height>641</height>
            </rect>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -1431,8 +1462,8 @@ QTreeWidget,QTreeView
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>989</width>
-             <height>639</height>
+             <width>991</width>
+             <height>641</height>
             </rect>
            </property>
            <widget class="QWidget" name="layoutWidget_3">
@@ -1590,6 +1621,9 @@ QTreeWidget,QTreeView
             <height>641</height>
            </rect>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -1598,8 +1632,8 @@ QTreeWidget,QTreeView
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>989</width>
-             <height>639</height>
+             <width>991</width>
+             <height>641</height>
             </rect>
            </property>
            <widget class="QLineEdit" name="lineEdit_2">
@@ -1635,7 +1669,6 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1669,7 +1702,6 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1700,7 +1732,6 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1721,7 +1752,6 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1774,7 +1804,7 @@ QTreeWidget,QTreeView
      <x>0</x>
      <y>0</y>
      <width>1326</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
