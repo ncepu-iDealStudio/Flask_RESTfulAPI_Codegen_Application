@@ -13,7 +13,8 @@ this is function description
 from app.utils.checkSqlLink import SQLHandler
 
 # 表配置页导入的包
-from PySide6.QtWidgets import QPushButton, QWidget, QCheckBox, QVBoxLayout, QSizePolicy, QHBoxLayout, QComboBox, QLabel
+from PySide6.QtWidgets import QPushButton, QWidget, QCheckBox, QVBoxLayout, QSizePolicy, QHBoxLayout, QComboBox, QLabel, \
+    QListWidgetItem, QListWidget
 from PySide6.QtCore import QSize, QRect
 from functools import partial
 
@@ -25,10 +26,15 @@ def window_init_for_table(self):
     :param self:
     :return:
     '''
+    # 测试
+    self.add_table_list_item('test')
+
+
     # 添加表按钮等组件初始化
     self.add_table_button_group_init()
     self.table_number = -1
     self.add_table_button_group('table_select_all')
+
     # 加密组件初始化
     self.add_field_encrypt_group_init()
 
@@ -107,37 +113,41 @@ def table_config_init(self):
     self.encrypt_type_list = ['rsa', 'aes']
 
     # 清空按钮并添加新按钮
-    del_table_button_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QPushButton)
-    for del_widget in del_table_button_list:
-        table_name = del_widget.objectName().replace('pushButton_', '')
-        if table_name != 'table_select_all':
-            widget_del = self.ui.verticalLayoutWidget_add_table_button.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
-            # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
-            widget_del.deleteLater()
+    # del_table_button_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QPushButton)
+    # for del_widget in del_table_button_list:
+    #     table_name = del_widget.objectName().replace('pushButton_', '')
+    #     if table_name != 'table_select_all':
+    #         widget_del = self.ui.verticalLayoutWidget_add_table_button.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
+    #         # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
+    #         widget_del.deleteLater()
 
     self.table_number = 0
 
-    # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
+    # # 设置scrollAreaWidgetContents大小
+    # self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
+    #
+    # # 设置面板大小
+    # self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
+    #
+    # for table in self.sql_data['table']:
+    #     self.add_table_button_group(table.get('table'))
 
-    # 设置面板大小
-    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
-
-    for table in self.sql_data['table']:
-        self.add_table_button_group(table.get('table'))
+    # test  添加list_items
+    self.add_table_list()
+    self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").itemClicked.connect(self.table_list_item_clicked)
 
     # 初始化全选按钮
-    self.ui.centralwidget.findChild(QPushButton, u"pushButton_table_select_all").setText('全选')
+    self.ui.centralwidget.findChild(QPushButton, u"pushButton_tsall").setText('全选')
 
     #  事件初始化
     # 全选CheckBox事件添加
-    self.ui.centralwidget.findChild(QCheckBox, u"checkBox_table_select_all").clicked.connect(self.checkBox_all_select_clicked)
+    self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").clicked.connect(self.checkBox_all_select_clicked)
 
     # 添加字段组件组事件添加
     self.ui.pushButton_add_field_encrypt.clicked.connect(self.add_field_button_clicked)
 
     # 表对应的pushButton事件添加
-    for pushButton in self.ui.scrollArea_left_6.findChildren(QPushButton):
+    for pushButton in self.ui.listWidget_table.findChildren(QPushButton):
         pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
 
 
@@ -148,7 +158,7 @@ def table_config(self):
     '''
 
     # 获取选中的表数据
-    checkBox_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QCheckBox)
+    checkBox_list = self.ui.listWidget_table.findChildren(QCheckBox)
     for table in self.sql_data['table']:
         table['ischecked'] = False
     for checkBox in checkBox_list:
@@ -159,7 +169,7 @@ def table_config(self):
                     if table['table'] == table_name:
                         table['ischecked'] = True
 
-    # 发送加载视图信号，通过多线程加载书籍
+    # 发送加载视图信号，通过多线程加载数据
     self.loadData.sig_load_view.emit()
 
     # 显示加载中弹窗
@@ -172,14 +182,14 @@ def add_table_button_group_init(self):
     :return:
     '''
 
-    self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
-
-    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
-
-    self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
-
-    # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60))
+    # self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
+    #
+    # self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
+    #
+    # self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
+    #
+    # # 设置scrollAreaWidgetContents大小
+    # self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60))
 
 
 def add_table_button_group(self, table_name):
@@ -189,46 +199,46 @@ def add_table_button_group(self, table_name):
     :return:
     '''
 
-    self.ui.horizontalLayoutWidget1 = QWidget()
-    self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
-    self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.table_number * 31, 281, 31))
-
-    self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
-    self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + table_name)
-    self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
-    self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget_6)
-    self.ui.checkBox_1.setObjectName(u"checkBox_" + table_name)
-
-    sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-    sizePolicy.setHorizontalStretch(0)
-    sizePolicy.setVerticalStretch(0)
-    sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
-    self.ui.checkBox_1.setSizePolicy(sizePolicy)
-    self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
-
-    self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
-
-    self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget_6)
-    self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
-    self.ui.pushButton_1.setText(table_name)
-    sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-    sizePolicy1.setHorizontalStretch(0)
-    sizePolicy1.setVerticalStretch(0)
-    sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
-    self.ui.pushButton_1.setSizePolicy(sizePolicy1)
-
-    self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
-
-    # 把组件添加到面板
-    self.ui.add_table_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
-
-    self.table_number += 1
-
-    # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
-
-    # 设置面板大小
-    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
+    # self.ui.horizontalLayoutWidget1 = QWidget()
+    # self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
+    # self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.table_number * 31, 281, 31))
+    #
+    # self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
+    # self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + table_name)
+    # self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
+    # self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget_6)
+    # self.ui.checkBox_1.setObjectName(u"checkBox_" + table_name)
+    #
+    # sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+    # sizePolicy.setHorizontalStretch(0)
+    # sizePolicy.setVerticalStretch(0)
+    # sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
+    # self.ui.checkBox_1.setSizePolicy(sizePolicy)
+    # self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
+    #
+    # self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
+    #
+    # self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget_6)
+    # self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
+    # self.ui.pushButton_1.setText(table_name)
+    # sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+    # sizePolicy1.setHorizontalStretch(0)
+    # sizePolicy1.setVerticalStretch(0)
+    # sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
+    # self.ui.pushButton_1.setSizePolicy(sizePolicy1)
+    #
+    # self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
+    #
+    # # 把组件添加到面板
+    # self.ui.add_table_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
+    #
+    # self.table_number += 1
+    #
+    # # 设置scrollAreaWidgetContents大小
+    # self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
+    #
+    # # 设置面板大小
+    # self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
 
 
 def checkBox_all_select_clicked(self):
@@ -236,12 +246,13 @@ def checkBox_all_select_clicked(self):
     全选checkBox点击调用
     :return:
     '''
-    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_table_select_all").isChecked():
-        for checkBox in self.ui.scrollArea_left_6.findChildren(QCheckBox):
+
+    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").isChecked():
+        for checkBox in self.ui.listWidget_table.findChildren(QCheckBox):
             checkBox.setChecked(True)
 
     else:
-        for checkBox in self.ui.scrollArea_left_6.findChildren(QCheckBox):
+        for checkBox in self.ui.listWidget_table.findChildren(QCheckBox):
             checkBox.setChecked(False)
 
 
@@ -332,11 +343,17 @@ def table_pushButton_clicked(self, button_text):
 
         # 初始化加密组件
 
-        # 删除组件
-        del_encrypt_list = self.ui.verticalLayoutWidget_add.findChildren(QPushButton)
+        # 删除加密组件
+        del_encrypt_list = self.ui.centralwidget.findChildren(QPushButton)
+        del_encrypt_list1 = []
+        for del_encrypt in del_encrypt_list:
+            if 'pushButton_delete_field_encrypt_add' in del_encrypt.objectName():
+                del_encrypt_list1.append(del_encrypt)
+        del_encrypt_list = del_encrypt_list1
+
         for del_encrypt in del_encrypt_list:
             index = del_encrypt.objectName().replace('pushButton_delete_field_encrypt_add', '')
-            widget_del = self.ui.verticalLayoutWidget_add.findChild(QHBoxLayout, u"horizontalLayout_add" + index)
+            widget_del = self.ui.centralwidget.findChild(QHBoxLayout, u"horizontalLayout_add" + index)
             # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
             while widget_del.count():
                 item = widget_del.takeAt(0)
@@ -346,11 +363,13 @@ def table_pushButton_clicked(self, button_text):
             widget_del.deleteLater()
 
         self.encrypt_group_count = 0
+        self.ui.listWidget_encrypt.clear()
 
+        # 按照后台数据添加组件到加密字段组件列表
         for field in self.field_encryptable:
             if field['field_encrypt'] == True:
                 self.add_field_button_clicked()
-                name_comboBox = self.ui.verticalLayoutWidget_add.findChild(QComboBox, u"comboBox_select_table_field_encrypt_add" + str(self.encrypt_group_number - 1))
+                name_comboBox = self.ui.centralwidget.findChild(QComboBox, u"comboBox_select_table_field_encrypt_add" + str(self.encrypt_group_number - 1))
                 name_comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
                 name_comboBox.currentIndexChanged.disconnect()
                 name_comboBox.addItem(field['field_name'])
@@ -358,7 +377,7 @@ def table_pushButton_clicked(self, button_text):
                     if name_comboBox.itemText(i) == field['field_name']:
                         name_comboBox.setCurrentIndex(i)
 
-                encrypt_comboBox = self.ui.verticalLayoutWidget_add.findChild(QComboBox,
+                encrypt_comboBox = self.ui.centralwidget.findChild(QComboBox,
                                                                            u"comboBox_select_table_encrypt_type_add" + str(
                                                                                self.encrypt_group_number - 1))
                 encrypt_comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
@@ -454,10 +473,10 @@ def add_field_button_clicked(self):
 
 
     # 绑定事件,初始化数据
-    button_delete = self.ui.verticalLayoutWidget_add.findChild(QWidget, u"pushButton_delete_field_encrypt_add" + str(self.encrypt_group_number - 1))
+    button_delete = self.ui.listWidget_encrypt.findChild(QWidget, u"pushButton_delete_field_encrypt_add" + str(self.encrypt_group_number - 1))
     button_delete.clicked.connect(partial(self.del_field_encrypt_group, button_delete))
 
-    comboBox_field = self.ui.verticalLayoutWidget_add.findChild(QComboBox,
+    comboBox_field = self.ui.listWidget_encrypt.findChild(QComboBox,
                                                                 u"comboBox_select_table_field_encrypt_add" + str(
                                                                     self.encrypt_group_number - 1))
     for field in self.field_encryptable:
@@ -465,7 +484,7 @@ def add_field_button_clicked(self):
             comboBox_field.addItem(field['field_name'])
     comboBox_field.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
-    comboBox_encrypt_type = self.ui.verticalLayoutWidget_add.findChild(QComboBox,
+    comboBox_encrypt_type = self.ui.listWidget_encrypt.findChild(QComboBox,
                                                                 u"comboBox_select_table_encrypt_type_add" + str(
                                                                     self.encrypt_group_number - 1))
     for encrypt_type in self.encrypt_type_list:
@@ -483,12 +502,21 @@ def add_field_encrypt_group(self):
     :return:
     '''
 
+    table_item = QListWidgetItem()
+    table_item.setText("encrypt_itme_" + str(self.encrypt_group_number))
+    self.ui.listWidget_encrypt.addItem(table_item)
+    # self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, table_checkBox)
+
+    self.ui.encrypt_widget = QWidget()
+    self.ui.encrypt_widget.setObjectName(u"horizontalLayoutWidget_" + str(self.encrypt_group_number))
+
+
     # 更新verticalLayoutWidget_add大小
-    self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
+    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
+    #
+    # self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
 
-    self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
-
-    self.ui.horizontalLayout_add = QHBoxLayout()
+    self.ui.horizontalLayout_add = QHBoxLayout(self.ui.encrypt_widget)
     self.ui.horizontalLayout_add.setObjectName(u"horizontalLayout_add" + str(self.encrypt_group_number))
     self.ui.horizontalLayout_add.setContentsMargins(0, 0, 0, 0)
 
@@ -527,7 +555,10 @@ def add_field_encrypt_group(self):
     self.encrypt_group_count += 1
     self.encrypt_group_number += 1
 
-    self.ui.add_encrypt_group_layout.addLayout(self.ui.horizontalLayout_add)
+    # self.ui.add_encrypt_group_layout.addLayout(self.ui.horizontalLayout_add)
+    self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_encrypt").setItemWidget(table_item,
+                                                                                   self.ui.encrypt_widget)
+
 
 
 def add_field_encrypt_group_init(self):
@@ -539,7 +570,7 @@ def add_field_encrypt_group_init(self):
     self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
     # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
 
-    self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41))
+    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41))
 
     self.ui.add_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add)
 
@@ -551,12 +582,10 @@ def del_field_encrypt_group(self, Qobject):
     :return:
     '''
 
-    index = Qobject.objectName().replace('pushButton_delete_field_encrypt_add', '')
-
-    self.encrypt_group_count -= 1
+    index = int(Qobject.objectName().replace('pushButton_delete_field_encrypt_add', ''))
 
     # 删除加密组
-    widget_del = self.ui.verticalLayoutWidget_add.findChild(QHBoxLayout, u"horizontalLayout_add" + index)
+    widget_del = self.ui.listWidget_encrypt.findChild(QHBoxLayout, u"horizontalLayout_add" + str(index))
 
     # ”deleteLater()“依赖于Qt的event loop机制。
     # 如果在event loop启用前被调用, 那么event loop启用后对象才会被销毁;
@@ -570,17 +599,30 @@ def del_field_encrypt_group(self, Qobject):
     widget_del.deleteLater()
 
     # 更新verticalLayoutWidget_add大小
-    self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
+    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
+    #
+    # self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
 
-    self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
+    # 删除item
+    d_item = self.ui.listWidget_encrypt.item(index)
+    for i in range(self.encrypt_group_count):
+        if self.ui.listWidget_encrypt.item(i).text() == "encrypt_itme_" + str(index):
+            d_item = self.ui.listWidget_encrypt.takeItem(i)
+            break
+
+    self.ui.listWidget_encrypt.removeItemWidget(d_item)
+    del d_item
 
     # 更新加密组件
     self.comboBox_field_update(layout_index=int(index))
 
+    # 更新总组件数量
+    self.encrypt_group_count -= 1
+
 
 def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
     '''
-    更新已有comboBox组件
+    更新已有comboBox组件,同步组件数据与后台数据
     :return:
     '''
 
@@ -588,15 +630,22 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
     for field in self.field_encryptable:
         field['field_encrypt'] = False
 
-    QComboBox_list = self.ui.verticalLayoutWidget_add.findChildren(QComboBox)
+    QComboBox_list = self.ui.centralwidget.findChildren(QComboBox)
+    QComboBox_list1 = []
+    for combobox in QComboBox_list:
+        if 'comboBox_select_table_field_encrypt_add' in combobox.objectName():
+            QComboBox_list1.append(combobox)
+    QComboBox_list = QComboBox_list1
+
 
     # 更新加密字段
     comboBox_index = 0
     for comboBox in QComboBox_list:
         comboBox_index += 1
-        if comboBox_index % 2 != 0:
+        # if comboBox_index % 2 != 0:
+        if True:
 
-            # 排除待删除删除的组件造成的影响
+            # 排除待删除的组件造成的影响
             if layout_index != -1 and layout_index == int(
                     comboBox.objectName().replace('comboBox_select_table_field_encrypt_add', '')):
                 continue
@@ -604,7 +653,7 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
                 for field in self.field_encryptable:
                     if comboBox.currentText() == field['field_name']:
                         field['field_encrypt'] = True
-                        field['encrypt_type'] = QComboBox_list[comboBox_index].currentText()
+                        field['encrypt_type'] = comboBox.currentText()
 
     comboBox_index = 0
     for comboBox in QComboBox_list:
@@ -629,6 +678,68 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
 
             # 重新绑定事件
             comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
+
+
+def add_table_list_item(self,table_name):
+    table_item = QListWidgetItem()
+    table_item.setSizeHint(QSize(0, 22))
+    table_item.setText(table_name)
+    table_checkBox = QCheckBox()
+    table_checkBox.setText(table_name)
+    self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").addItem(table_item)
+    # self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, table_checkBox)
+
+    self.ui.horizontalLayoutWidget1 = QWidget()
+    self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
+
+    self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
+    self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + table_name)
+    self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
+    self.ui.checkBox_1 = QCheckBox()
+    self.ui.checkBox_1.setObjectName(u"checkBox_" + table_name)
+
+    sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+    sizePolicy.setHorizontalStretch(0)
+    sizePolicy.setVerticalStretch(0)
+    sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
+    self.ui.checkBox_1.setSizePolicy(sizePolicy)
+    self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
+
+    self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
+
+    self.ui.pushButton_1 = QPushButton()
+    self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
+    self.ui.pushButton_1.setText(table_name)
+    sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+    sizePolicy1.setHorizontalStretch(0)
+    sizePolicy1.setVerticalStretch(0)
+    sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
+    self.ui.pushButton_1.setSizePolicy(sizePolicy1)
+
+    self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
+
+    # 把组件添加到面板
+
+    self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, self.ui.horizontalLayoutWidget1)
+
+
+def add_table_list(self):
+    self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").clear()
+    self.add_table_list_item("tsall")
+    for table in self.sql_data['table']:
+        self.add_table_list_item(table.get('table'))
+
+
+def table_list_item_clicked(self, item):
+    '''
+    表配置页listWidgetItem点击事件函数
+    :param item: 被点击的listWidgetItem
+    :return:
+    '''
+
+    # 调用按钮点击方法，使得点击不同的位置效果相同
+    table_pushButton_clicked(self, self.ui.centralwidget.findChild(QPushButton, 'pushButton_' + item.text()).text())
+
 
 
 # 数据处理结束
@@ -661,3 +772,8 @@ def add_func(self):
     self.del_field_encrypt_group = MethodType(del_field_encrypt_group, self)
     self.comboBox_field_update = MethodType(comboBox_field_update, self)
     self.load_view_comp = MethodType(load_view_comp, self)
+
+    # test
+    self.add_table_list_item = MethodType(add_table_list_item, self)
+    self.add_table_list = MethodType(add_table_list, self)
+    self.table_list_item_clicked = MethodType(table_list_item_clicked, self)

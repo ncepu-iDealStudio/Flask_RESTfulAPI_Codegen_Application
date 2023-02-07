@@ -181,6 +181,9 @@ QTreeWidget,QTreeView
           <height>25</height>
          </size>
         </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <widget class="QWidget" name="page_step_1">
          <widget class="QWidget" name="layoutWidget_4">
           <property name="geometry">
@@ -627,6 +630,9 @@ QTreeWidget,QTreeView
           <height>650</height>
          </size>
         </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
         <widget class="QWidget" name="page_1">
          <widget class="QScrollArea" name="scrollArea_1">
           <property name="geometry">
@@ -983,7 +989,7 @@ QTreeWidget,QTreeView
              </rect>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="page_23">
              <widget class="QWidget" name="verticalLayoutWidget_20">
@@ -1043,7 +1049,7 @@ QTreeWidget,QTreeView
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>690</width>
+                    <width>98</width>
                     <height>1000</height>
                    </rect>
                   </property>
@@ -1181,6 +1187,25 @@ QTreeWidget,QTreeView
                     </item>
                    </layout>
                   </widget>
+                  <widget class="QWidget" name="verticalLayoutWidget_2">
+                   <property name="geometry">
+                    <rect>
+                     <x>9</x>
+                     <y>520</y>
+                     <width>671</width>
+                     <height>451</height>
+                    </rect>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item>
+                     <widget class="QListWidget" name="listWidget_encrypt">
+                      <property name="frameShape">
+                       <enum>QFrame::NoFrame</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
                  </widget>
                 </widget>
                </item>
@@ -1199,37 +1224,101 @@ QTreeWidget,QTreeView
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_left_6">
              <item>
-              <widget class="QScrollArea" name="scrollArea_left_6">
-               <property name="widgetResizable">
-                <bool>true</bool>
+              <widget class="QListWidget" name="listWidget_table">
+               <property name="batchSize">
+                <number>105</number>
                </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents_left_6">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>275</width>
-                  <height>637</height>
-                 </rect>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
                 </property>
-                <widget class="QWidget" name="horizontalLayoutWidget_6">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>281</width>
-                   <height>34</height>
-                  </rect>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_all_6"/>
-                </widget>
-               </widget>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+                <property name="checkState">
+                 <enum>Unchecked</enum>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+                <property name="checkState">
+                 <enum>PartiallyChecked</enum>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -1286,35 +1375,17 @@ QTreeWidget,QTreeView
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_left_2">
              <item>
-              <widget class="QScrollArea" name="scrollArea_left_2">
-               <property name="widgetResizable">
-                <bool>true</bool>
-               </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents_left_2">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>0</y>
-                  <width>277</width>
-                  <height>637</height>
-                 </rect>
+              <widget class="QListWidget" name="listWidget_view">
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
                 </property>
-                <widget class="QWidget" name="horizontalLayoutWidget">
-                 <property name="geometry">
-                  <rect>
-                   <x>0</x>
-                   <y>0</y>
-                   <width>281</width>
-                   <height>41</height>
-                  </rect>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_all_2">
-                  <property name="spacing">
-                   <number>0</number>
-                  </property>
-                 </layout>
-                </widget>
-               </widget>
+               </item>
+               <item>
+                <property name="text">
+                 <string>新建项目</string>
+                </property>
+               </item>
               </widget>
              </item>
             </layout>
@@ -1327,6 +1398,9 @@ QTreeWidget,QTreeView
               <width>711</width>
               <height>641</height>
              </rect>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
             </property>
             <widget class="QWidget" name="page">
              <widget class="QLabel" name="label_12">
