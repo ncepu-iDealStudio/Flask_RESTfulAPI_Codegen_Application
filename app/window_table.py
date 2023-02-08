@@ -503,6 +503,7 @@ def add_field_encrypt_group(self):
     '''
 
     table_item = QListWidgetItem()
+    table_item.setSizeHint(QSize(0, 40))
     table_item.setText("encrypt_itme_" + str(self.encrypt_group_number))
     self.ui.listWidget_encrypt.addItem(table_item)
     # self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, table_checkBox)
