@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1326</width>
-    <height>787</height>
+    <height>797</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -631,7 +631,7 @@ QTreeWidget,QTreeView
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_1">
          <widget class="QScrollArea" name="scrollArea_1">
@@ -684,6 +684,7 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -704,6 +705,7 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -747,6 +749,7 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -780,6 +783,7 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -811,6 +815,7 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -836,6 +841,7 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -861,6 +867,7 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -898,6 +905,7 @@ QTreeWidget,QTreeView
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1225,6 +1233,12 @@ QTreeWidget,QTreeView
             <layout class="QVBoxLayout" name="verticalLayout_left_6">
              <item>
               <widget class="QListWidget" name="listWidget_table">
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+border:none;
+text-align:left;
+}</string>
+               </property>
                <property name="batchSize">
                 <number>105</number>
                </property>
@@ -1416,6 +1430,7 @@ QTreeWidget,QTreeView
                <font>
                 <family>Microsoft YaHei</family>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1475,6 +1490,7 @@ QTreeWidget,QTreeView
                     <font>
                      <family>Microsoft YaHei</family>
                      <pointsize>12</pointsize>
+                     <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -1743,6 +1759,7 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1776,6 +1793,7 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1806,6 +1824,7 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1826,6 +1845,7 @@ QTreeWidget,QTreeView
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1878,7 +1898,7 @@ QTreeWidget,QTreeView
      <x>0</x>
      <y>0</y>
      <width>1326</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
