@@ -682,7 +682,7 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
 
 def add_table_list_item(self,table_name):
     table_item = QListWidgetItem()
-    table_item.setSizeHint(QSize(0, 22))
+    table_item.setSizeHint(QSize(0, 40))
     table_item.setText(table_name)
     table_checkBox = QCheckBox()
     table_checkBox.setText(table_name)

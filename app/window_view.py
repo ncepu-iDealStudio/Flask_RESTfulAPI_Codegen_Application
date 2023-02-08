@@ -293,7 +293,7 @@ def add_field_button_group(self,field_name,button_text):
 
 def add_view_list_item(self,view_name):
     view_item = QListWidgetItem()
-    view_item.setSizeHint(QSize(0, 22))
+    view_item.setSizeHint(QSize(0, 40))
     view_item.setText(view_name)
     view_checkBox = QCheckBox()
     view_checkBox.setText(view_name)
