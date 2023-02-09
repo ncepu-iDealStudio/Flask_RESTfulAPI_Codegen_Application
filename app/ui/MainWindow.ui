@@ -333,9 +333,97 @@ QRadioButton::indicator:checked {
     background: 3px solid #bd93f9;
 	border: 3px solid #bd93f9;	
 }
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+ScrollBars */
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 8px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: rgb(189, 147, 249);
+    min-width: 25px;
+	border-radius: 4px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 8px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {	
+	background: rgb(189, 147, 249);
+    min-height: 25px;
+	border-radius: 4px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+/* Bottom Bar */
+#bottomBar { background-color: #495474; }
+#bottomBar QLabel { 
+	background-color: #495474;
+	font-size: 11px; color: #f8f8f2;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 2px; }
 </string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0,0,1">
+   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="1,0,0,1,0">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
       <item>
@@ -802,7 +890,7 @@ QRadioButton::indicator:checked {
          </size>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_1">
          <widget class="QScrollArea" name="scrollArea_1">
@@ -855,7 +943,6 @@ QRadioButton::indicator:checked {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -876,7 +963,6 @@ QRadioButton::indicator:checked {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>-1</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -923,7 +1009,6 @@ QRadioButton::indicator:checked {
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -957,7 +1042,6 @@ QRadioButton::indicator:checked {
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -992,7 +1076,6 @@ QRadioButton::indicator:checked {
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1021,7 +1104,6 @@ QRadioButton::indicator:checked {
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1047,7 +1129,6 @@ QRadioButton::indicator:checked {
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1085,7 +1166,6 @@ QRadioButton::indicator:checked {
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1240,7 +1320,7 @@ QRadioButton::indicator:checked {
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>686</width>
+                    <width>699</width>
                     <height>1000</height>
                    </rect>
                   </property>
@@ -1417,18 +1497,84 @@ QRadioButton::indicator:checked {
              <item>
               <widget class="QListWidget" name="listWidget_table">
                <property name="styleSheet">
-                <string notr="true">QPushButton{
-border:none;
-text-align:left;
+                <string notr="true">
+.QWidget{
+background-color: #6272a4;
 }
 
-QPushButton:hover{
-background-color: #7082b6;
+.QWidget {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
 }
-QPushButton:pressed{
-background-color: #546391;
-color:#546391}
-QListWidgetItem{background-color:red;color:red;}</string>
+.QWidget:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}
+.QWidget:pressed {	
+	background-color: #546391;
+	border: 2px solid #ff79c6;
+}
+
+
+/*按钮正常状态*/
+/*
+QPushButton {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QPushButton:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}
+
+
+QPushButton:pressed {	
+	background-color: #546391;
+	border: 2px solid #ff79c6;
+}
+
+*/
+
+QPushButton {
+	border:none;
+	background-color: #6272a4;
+    color: #f8f8f2;
+	background: transparent;
+}
+
+QPushButton:pressed {	
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+	background: transparent;
+}
+
+QPushButton:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+	background: transparent;
+}
+
+QCheckBox {
+    border: 3px solid rgb(52, 59, 72);
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+    background: rgb(44, 49, 60);
+}
+QCheckBox:hover {
+    border: 3px solid rgb(58, 66, 81);
+}
+QCheckBox:checked {
+    background: 3px solid rgb(52, 59, 72);
+	border: 3px solid rgb(52, 59, 72);	
+	background-image: url(:/icons/images/icons/cil-check-alt.png);
+}</string>
                </property>
                <property name="batchSize">
                 <number>105</number>
@@ -1635,7 +1781,6 @@ QListWidgetItem{background-color:red;color:red;}</string>
                <font>
                 <family>Microsoft YaHei</family>
                 <pointsize>12</pointsize>
-                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1695,7 +1840,6 @@ QListWidgetItem{background-color:red;color:red;}</string>
                     <font>
                      <family>Microsoft YaHei</family>
                      <pointsize>12</pointsize>
-                     <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -1999,7 +2143,6 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2020,7 +2163,6 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2041,7 +2183,6 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2062,7 +2203,6 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
-              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2089,7 +2229,6 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Segoe UI</family>
               <pointsize>12</pointsize>
-              <weight>50</weight>
               <italic>false</italic>
               <bold>false</bold>
              </font>
@@ -2104,7 +2243,7 @@ QTableWidget::horizontalHeader {
              <string>Open</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../qss/resources.qrc">
+             <iconset>
               <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
             </property>
            </widget>
@@ -2228,6 +2367,104 @@ height:30px;</string>
       </item>
      </layout>
     </item>
+    <item>
+     <widget class="QFrame" name="bottomBar">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>22</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>22</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="creditsLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>-1</pointsize>
+           <italic>false</italic>
+           <bold>false</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>By: NCEPU-bj-iDeal</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="version">
+         <property name="text">
+          <string>v1.0.3</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_size_grip">
+         <property name="minimumSize">
+          <size>
+           <width>20</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>20</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -2236,7 +2473,7 @@ height:30px;</string>
      <x>0</x>
      <y>0</y>
      <width>1326</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
