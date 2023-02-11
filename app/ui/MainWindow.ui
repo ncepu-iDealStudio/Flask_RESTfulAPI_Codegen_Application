@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1326</width>
-    <height>838</height>
+    <width>1487</width>
+    <height>855</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -437,11 +437,26 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
         <property name="minimumSize">
          <size>
           <width>1000</width>
-          <height>25</height>
+          <height>35</height>
          </size>
         </property>
+        <property name="styleSheet">
+         <string notr="true">
+
+QLabel {
+	width:100px;
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+        </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="page_step_1">
          <widget class="QWidget" name="layoutWidget_4">
@@ -459,8 +474,19 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
              <property name="styleSheet">
               <string notr="true">QLabel
 {
-	
+	border:1px solid black;
 	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
 }</string>
              </property>
              <property name="text">
@@ -473,6 +499,24 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            </item>
            <item>
             <widget class="QLabel" name="label_step2">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>②表配置</string>
              </property>
@@ -484,10 +528,28 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            <item>
             <widget class="QLabel" name="label_step3">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>③视图配置</string>
@@ -499,6 +561,24 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            </item>
            <item>
             <widget class="QLabel" name="label_step4">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>④配置确认</string>
              </property>
@@ -509,6 +589,30 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            </item>
            <item>
             <widget class="QLabel" name="label_step5">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>⑤代码生成</string>
              </property>
@@ -521,20 +625,35 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          </widget>
         </widget>
         <widget class="QWidget" name="page_step_2">
-         <widget class="QWidget" name="layoutWidget_5">
+         <widget class="QWidget" name="layoutWidget_9">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>530</width>
-            <height>27</height>
+            <width>855</width>
+            <height>35</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
            <item>
             <widget class="QLabel" name="label_step1_3">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>①数据库配置</string>
@@ -549,8 +668,19 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
              <property name="styleSheet">
               <string notr="true">QLabel
 {
-	
+	border:1px solid black;
 	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
 }</string>
              </property>
              <property name="text">
@@ -564,10 +694,28 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            <item>
             <widget class="QLabel" name="label_step3_3">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>③视图配置</string>
@@ -579,6 +727,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            </item>
            <item>
             <widget class="QLabel" name="label_step4_3">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+    width:100px;
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>④配置确认</string>
              </property>
@@ -589,6 +756,30 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
            </item>
            <item>
             <widget class="QLabel" name="label_step5_3">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>⑤代码生成</string>
              </property>
@@ -601,20 +792,35 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          </widget>
         </widget>
         <widget class="QWidget" name="page_step_3">
-         <widget class="QWidget" name="layoutWidget_6">
+         <widget class="QWidget" name="layoutWidget_10">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>530</width>
-            <height>27</height>
+            <width>855</width>
+            <height>35</height>
            </rect>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
            <item>
-            <widget class="QLabel" name="label_step1_4">
+            <widget class="QLabel" name="label_step1_7">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>①数据库配置</string>
@@ -625,7 +831,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step2_4">
+            <widget class="QLabel" name="label_step2_7">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>②表配置</string>
              </property>
@@ -635,9 +859,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step3_4">
+            <widget class="QLabel" name="label_step3_7">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -645,8 +869,19 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
              <property name="styleSheet">
               <string notr="true">QLabel
 {
-	
+	border:1px solid black;
 	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
 }</string>
              </property>
              <property name="text">
@@ -658,7 +893,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step4_4">
+            <widget class="QLabel" name="label_step4_7">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>④配置确认</string>
              </property>
@@ -668,7 +921,31 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step5_4">
+            <widget class="QLabel" name="label_step5_7">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>⑤代码生成</string>
              </property>
@@ -681,20 +958,35 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          </widget>
         </widget>
         <widget class="QWidget" name="page_step_4">
-         <widget class="QWidget" name="layoutWidget_7">
+         <widget class="QWidget" name="layoutWidget_11">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>530</width>
-            <height>27</height>
+            <width>855</width>
+            <height>35</height>
            </rect>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_11">
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
            <item>
-            <widget class="QLabel" name="label_step1_5">
+            <widget class="QLabel" name="label_step1_4">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>①数据库配置</string>
@@ -705,7 +997,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step2_5">
+            <widget class="QLabel" name="label_step2_4">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>②表配置</string>
              </property>
@@ -715,12 +1025,30 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step3_5">
+            <widget class="QLabel" name="label_step3_4">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>③视图配置</string>
@@ -731,12 +1059,23 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step4_5">
+            <widget class="QLabel" name="label_step4_4">
              <property name="styleSheet">
               <string notr="true">QLabel
 {
-	
+	border:1px solid black;
 	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
 }</string>
              </property>
              <property name="text">
@@ -748,7 +1087,31 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step5_5">
+            <widget class="QLabel" name="label_step5_4">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>⑤代码生成</string>
              </property>
@@ -761,20 +1124,35 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          </widget>
         </widget>
         <widget class="QWidget" name="page_step_5">
-         <widget class="QWidget" name="layoutWidget_8">
+         <widget class="QWidget" name="layoutWidget_12">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>530</width>
-            <height>27</height>
+            <width>855</width>
+            <height>35</height>
            </rect>
           </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <layout class="QHBoxLayout" name="horizontalLayout_15">
            <item>
-            <widget class="QLabel" name="label_step1_6">
+            <widget class="QLabel" name="label_step1_8">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>①数据库配置</string>
@@ -785,7 +1163,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step2_6">
+            <widget class="QLabel" name="label_step2_8">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>②表配置</string>
              </property>
@@ -795,12 +1191,30 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step3_6">
+            <widget class="QLabel" name="label_step3_8">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
              </property>
              <property name="text">
               <string>③视图配置</string>
@@ -811,7 +1225,25 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step4_6">
+            <widget class="QLabel" name="label_step4_8">
+             <property name="styleSheet">
+              <string notr="true">QLabel
+{
+	border:1px solid black;
+	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}</string>
+             </property>
              <property name="text">
               <string>④配置确认</string>
              </property>
@@ -821,12 +1253,29 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_step5_6">
+            <widget class="QLabel" name="label_step5_8">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel
 {
-	
+	border:1px solid black;
 	color: rgb(85, 85, 255);
+}
+
+QLabel {
+	border: 2px solid #6272a4;
+	border-radius: 5px;	
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QLabel:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
 }</string>
              </property>
              <property name="text">
@@ -849,15 +1298,15 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
       <item alignment="Qt::AlignHCenter">
        <widget class="Line" name="main_line">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>1100</width>
-          <height>0</height>
+          <width>1300</width>
+          <height>5</height>
          </size>
         </property>
         <property name="maximumSize">
@@ -865,6 +1314,21 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
           <width>1100</width>
           <height>16777215</height>
          </size>
+        </property>
+        <property name="font">
+         <font>
+          <weight>50</weight>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-top: 1px solid #808080;background-color: #495474; </string>
+        </property>
+        <property name="lineWidth">
+         <number>5</number>
+        </property>
+        <property name="midLineWidth">
+         <number>5</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -890,7 +1354,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
          </size>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>4</number>
         </property>
         <widget class="QWidget" name="page_1">
          <widget class="QScrollArea" name="scrollArea_1">
@@ -943,6 +1407,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -963,6 +1428,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>-1</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -1009,6 +1475,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1042,6 +1509,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1076,6 +1544,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1104,6 +1573,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1129,6 +1599,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1166,6 +1637,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
                   <font>
                    <family>Microsoft YaHei</family>
                    <pointsize>12</pointsize>
+                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -1781,6 +2253,7 @@ QListWidgetItem{background-color:red;color:red;}</string>
                <font>
                 <family>Microsoft YaHei</family>
                 <pointsize>12</pointsize>
+                <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
@@ -1823,8 +2296,8 @@ QListWidgetItem{background-color:red;color:red;}</string>
                    <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>707</width>
-                    <height>637</height>
+                    <width>98</width>
+                    <height>28</height>
                    </rect>
                   </property>
                   <widget class="QLabel" name="label_view">
@@ -1840,6 +2313,7 @@ QListWidgetItem{background-color:red;color:red;}</string>
                     <font>
                      <family>Microsoft YaHei</family>
                      <pointsize>12</pointsize>
+                     <weight>75</weight>
                      <bold>true</bold>
                     </font>
                    </property>
@@ -2143,6 +2617,7 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2163,6 +2638,7 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2183,6 +2659,7 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2203,6 +2680,7 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Microsoft YaHei</family>
               <pointsize>12</pointsize>
+              <weight>75</weight>
               <bold>true</bold>
              </font>
             </property>
@@ -2229,6 +2707,7 @@ QTableWidget::horizontalHeader {
              <font>
               <family>Segoe UI</family>
               <pointsize>12</pointsize>
+              <weight>50</weight>
               <italic>false</italic>
               <bold>false</bold>
              </font>
@@ -2243,7 +2722,7 @@ QTableWidget::horizontalHeader {
              <string>Open</string>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="../../../qss/resources.qrc">
               <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
             </property>
            </widget>
@@ -2418,6 +2897,7 @@ height:30px;</string>
           <font>
            <family>Segoe UI</family>
            <pointsize>-1</pointsize>
+           <weight>50</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
@@ -2472,8 +2952,8 @@ height:30px;</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1326</width>
-     <height>22</height>
+     <width>1487</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
