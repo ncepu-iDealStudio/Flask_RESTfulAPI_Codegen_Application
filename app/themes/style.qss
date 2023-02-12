@@ -1,0 +1,280 @@
+/*top*/
+#contentTopBg{
+	background-color: #6272a4;
+}
+#contentBottom{
+	border-top: 3px solid #bd93f9;
+}
+#titleRightInfo{
+    color: #f8f8f2;
+	background-color: #6272a4;
+}
+#leftBox{
+	background-color: #6272a4;
+}
+
+#rightButtons{
+	background-color: #6272a4;
+}
+
+/* Top Buttons */
+#rightButtons .QPushButton { background-color: rgba(255, 255, 255, 0); border: none;  border-radius: 5px; }
+#rightButtons .QPushButton:hover { background-color: #bd93f9; border-style: solid; border-radius: 4px; }
+#rightButtons .QPushButton:pressed { background-color: #ff79c6; border-style: solid; border-radius: 4px; }
+
+/*灰色*/
+QWidget
+{
+    background-color: rgb(221, 221, 221); /*背景色*/
+    color: black;  /*字体颜色*/
+}
+/*按钮正常状态*/
+QPushButton {
+	border: 2px solid #6272a4;
+	border-radius: 5px;
+	background-color: #6272a4;
+    color: #f8f8f2;
+}
+QPushButton:hover {
+	background-color: #7082b6;
+	border: 2px solid #7082b6;
+}
+QPushButton:pressed {
+	background-color: #546391;
+	border: 2px solid #ff79c6;
+}
+QLineEdit {
+	background-color: #6272a4;
+	border-radius: 5px;
+	border: 2px solid #6272a4;
+	padding-left: 10px;
+	selection-color: rgb(255, 255, 255);
+	selection-background-color: rgb(255, 121, 198);
+    color: #f8f8f2;
+}
+QLineEdit:hover {
+	border: 2px solid rgb(64, 71, 88);
+}
+QLineEdit:focus {
+	border: 2px solid #ff79c6;
+}
+QCheckBox
+{
+    color:black;/*字体颜色*/
+    background-color:rgb(240,240,240);/*背景色*/
+}
+QComboBox{
+	background-color: #6272a4;
+	border-radius: 5px;
+	border: 2px solid #6272a4;
+	padding: 5px;
+	padding-left: 10px;
+    color: #f8f8f2;
+}
+QComboBox:hover{
+	border: 2px solid #7284b9;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 25px;
+	border-left-width: 3px;
+	border-left-color: #6272a4;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	background-image: url(:/icons/images/icons/cil-arrow-bottom.png);
+	background-position: center;
+	background-repeat: no-reperat;
+ }
+QComboBox QAbstractItemView {
+	color: rgb(255, 121, 198);
+	background-color: #6272a4;
+	padding: 10px;
+	selection-background-color: #6272a4;
+}
+
+QLabel
+{
+text-align:justify;
+color: black;/*字体颜色*/
+font-size:12pt;
+border:none;/*边框样式*/
+}
+QTableWidget {
+	background-color: transparent;
+	padding: 10px;
+	border-radius: 5px;
+	gridline-color: #9faeda;
+    outline: none;
+}
+QTableWidget::item{
+	border-color: #9faeda;
+	padding-left: 5px;
+	padding-right: 5px;
+	gridline-color: #9faeda;
+}
+QTableWidget::item:selected{
+	background-color: rgb(189, 147, 249);
+    color: #f8f8f2;
+}
+QHeaderView::section{
+	background-color: #6272a4;
+	max-width: 30px;
+	border: none;
+	border-style: none;
+}
+QTableWidget::horizontalHeader {
+	background-color: #6272a4;
+}
+QTabBar::tab
+{
+    background-color: rgb(240,240,240); /*背景色*/
+    color: black;/*字体颜色*/
+    font-size:12pt;/*字体大小*/
+    height:30px; /*高度*/
+    min-width:100px;/*宽度*/
+    border-top-left-radius:4px;/*左上边框圆角半径像素*/
+    border-top-right-radius:4px;/*右上边框圆角半径像素*/
+    margin-right: 5px;/*右边距  右外边距*/
+    padding-left:5px;/*左填充--左内边距*/
+    padding-right:5px;/*右填充--右内边距*/
+}
+QTabBar::tab:hover
+{
+    background-color: rgb(198,198,208); /*背景色*/
+}
+QTabBar::tab:selected
+{
+    background-color: rgb(198,198,198); /*背景色*/
+}
+QTableView,QTableWidget{
+    background-color: rgb(240,240,240); /*背景色*/
+    color: black;/*字体颜色*/
+    selection-background-color:rgba(192,221,244);/*背景色*/;/*点击选中颜色*/
+    border:1px solid #E0DDDC;/*边框为1像素，灰色*/
+    gridline-color:lightgray;/*这个是表格的格子线的颜色，为亮灰*/
+    font:bold 12pt;/*字体 字体大小*/
+}
+/*表格表头样式*/
+QHeaderView::section{
+    background-color:rgb(240,240,240); /*背景色*/
+    border:0px solid #E0DDDC;/*先把边框宽度设为0，即隐藏所有表头边框*/
+    border-bottom:1px solid #E0DDDC;/*然后只显示下边框，因为上边框和左右边框是整个Table的边框，都显示会有2px的边框宽度*/
+    min-height:30px;;/*表头高度*/
+    font-size:12pt;/*字体大小*/
+}
+QTreeWidget,QTreeView
+{
+    background-color: rgb(240,240,240); /*背景色*/
+    color: rgb(79,129,168);/*字体颜色*/
+    selection-background-color:rgba(5,23,200);/*点击选中颜色*/
+    font-size:12pt;/*字体大小*/
+}
+
+#label_table_name_7,#label_set_key_13{font-size:30px;}
+
+#pushButton_last{}
+
+QRadioButton::indicator {
+    border: 3px solid #6272a4;
+	width: 15px;
+	height: 15px;
+	border-radius: 10px;
+    background: #6272a4;
+}
+QRadioButton::indicator:hover {
+    border: 3px solid rgb(119, 136, 187);
+}
+QRadioButton::indicator:checked {
+    background: 3px solid #bd93f9;
+	border: 3px solid #bd93f9;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+ScrollBars */
+QScrollBar:horizontal {
+    border: none;
+    background: rgb(52, 59, 72);
+    height: 8px;
+    margin: 0px 21px 0 21px;
+	border-radius: 0px;
+}
+QScrollBar::handle:horizontal {
+    background: rgb(189, 147, 249);
+    min-width: 25px;
+	border-radius: 4px
+}
+QScrollBar::add-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    subcontrol-position: right;
+    subcontrol-origin: margin;
+}
+QScrollBar::sub-line:horizontal {
+    border: none;
+    background: rgb(55, 63, 77);
+    width: 20px;
+	border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    subcontrol-position: left;
+    subcontrol-origin: margin;
+}
+QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal
+{
+     background: none;
+}
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal
+{
+     background: none;
+}
+ QScrollBar:vertical {
+	border: none;
+    background: rgb(52, 59, 72);
+    width: 8px;
+    margin: 21px 0 21px 0;
+	border-radius: 0px;
+ }
+ QScrollBar::handle:vertical {
+	background: rgb(189, 147, 249);
+    min-height: 25px;
+	border-radius: 4px
+ }
+ QScrollBar::add-line:vertical {
+     border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+     subcontrol-position: bottom;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::sub-line:vertical {
+	border: none;
+    background: rgb(55, 63, 77);
+     height: 20px;
+	border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+     subcontrol-position: top;
+     subcontrol-origin: margin;
+ }
+ QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
+     background: none;
+ }
+
+ QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+     background: none;
+ }
+
+/* Bottom Bar */
+#bottomBar { background-color: #495474; }
+#bottomBar QLabel {
+	background-color: #495474;
+	font-size: 11px; color: #f8f8f2;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 2px; }

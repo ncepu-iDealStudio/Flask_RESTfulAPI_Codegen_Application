@@ -63,7 +63,9 @@ def view_config_init(self):
     self.ui.centralwidget.findChild(QListWidget, u"listWidget_view").itemClicked.connect(self.view_list_item_clicked)
 
     # 初始化全选按钮
-    self.ui.centralwidget.findChild(QPushButton, u"pushButton_vsall").setText('全选')
+    # 全选按钮已经在添加时初始化，此处初始化取消
+
+
     # 全选CheckBox事件添加
     self.ui.listWidget_view.findChild(QCheckBox, u"checkBox_vsall").clicked.connect(self.view_checkBox_all_select_clicked)
 
@@ -169,7 +171,7 @@ def sql_data_view_ischecked_update(self, checkbox, bool):
     :return:
     '''
     for view_num in range(len(self.sql_data['view'])):
-        if self.sql_data['view'][view_num]['view'] == checkbox.text():
+        if self.sql_data['view'][view_num]['view'] == checkbox.objectName().replace('checkBox_', ''):
                 self.sql_data['view'][view_num]['ischecked'] = bool
 
 def view_checkBox_all_select_clicked(self):
@@ -302,14 +304,13 @@ def add_view_list_item(self,view_name):
 
     self.ui.horizontalLayoutWidget1 = QWidget()
     self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + view_name)
-    self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.view_number * 31, 281, 31))
 
     self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
     self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + view_name)
     self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
-    self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget1)
+    self.ui.checkBox_1 = QCheckBox()
     self.ui.checkBox_1.setObjectName(u"checkBox_" + view_name)
-    self.ui.checkBox_1.setText(view_name)
+    self.ui.checkBox_1.setText('')
 
     sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
     sizePolicy.setHorizontalStretch(0)
@@ -317,13 +318,15 @@ def add_view_list_item(self,view_name):
     sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
     self.ui.checkBox_1.setSizePolicy(sizePolicy)
     self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
-    self.ui.checkBox_1.setMaximumSize(QSize(13, 13))
 
     self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
 
-    self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget1)
+    self.ui.pushButton_1 = QPushButton()
     self.ui.pushButton_1.setObjectName(u"pushButton_" + view_name)
     self.ui.pushButton_1.setText(view_name)
+    if view_name == 'vsall':
+        self.ui.pushButton_1.setText('全选')
+
     sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
     sizePolicy1.setHorizontalStretch(0)
     sizePolicy1.setVerticalStretch(0)

@@ -9,6 +9,7 @@
 this is function description
 '''
 # import module your need
+from PySide6.QtGui import QColor
 
 from app.utils.checkSqlLink import SQLHandler
 
@@ -26,10 +27,6 @@ def window_init_for_table(self):
     :param self:
     :return:
     '''
-    # 测试
-    self.add_table_list_item('test')
-
-
     # 添加表按钮等组件初始化
     self.add_table_button_group_init()
     self.table_number = -1
@@ -112,8 +109,8 @@ def table_config_init(self):
     self.field_encryptable = []  # 可加密的字段组成一个列表，目前字段类型为字符允许加密
     self.encrypt_type_list = ['rsa', 'aes']
 
-    # 清空按钮并添加新按钮
-    # del_table_button_list = self.ui.verticalLayoutWidget_add_table_button.findChildren(QPushButton)
+    # # 清空按钮并添加新按钮
+    # del_table_button_list = self.ui.verticalLayout_left_6.findChildren(QPushButton)
     # for del_widget in del_table_button_list:
     #     table_name = del_widget.objectName().replace('pushButton_', '')
     #     if table_name != 'table_select_all':
@@ -132,12 +129,12 @@ def table_config_init(self):
     # for table in self.sql_data['table']:
     #     self.add_table_button_group(table.get('table'))
 
-    # test  添加list_items
+    # 添加list_items
     self.add_table_list()
     self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").itemClicked.connect(self.table_list_item_clicked)
 
     # 初始化全选按钮
-    self.ui.centralwidget.findChild(QPushButton, u"pushButton_tsall").setText('全选')
+    # 全选按钮已经在添加时初始化，此处初始化取消
 
     #  事件初始化
     # 全选CheckBox事件添加
@@ -561,7 +558,6 @@ def add_field_encrypt_group(self):
                                                                                    self.ui.encrypt_widget)
 
 
-
 def add_field_encrypt_group_init(self):
     '''
     加密字段组件面板初始化，（这里是由于添加组件时遇到无法显示bug不得已而使用）
@@ -684,6 +680,7 @@ def comboBox_field_update(self, comboBox_item_index = 0, layout_index = -1):
 def add_table_list_item(self,table_name):
     table_item = QListWidgetItem()
     table_item.setSizeHint(QSize(0, 40))
+
     table_item.setText(table_name)
     table_checkBox = QCheckBox()
     table_checkBox.setText(table_name)
@@ -691,6 +688,7 @@ def add_table_list_item(self,table_name):
     # self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, table_checkBox)
 
     self.ui.horizontalLayoutWidget1 = QWidget()
+
     self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
 
     self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
@@ -709,8 +707,13 @@ def add_table_list_item(self,table_name):
     self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
 
     self.ui.pushButton_1 = QPushButton()
+    # self.ui.pushButton_1.setFlat(True)
     self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
+
     self.ui.pushButton_1.setText(table_name)
+    if table_name == 'tsall':
+        self.ui.pushButton_1.setText('全选')
+
     sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
     sizePolicy1.setHorizontalStretch(0)
     sizePolicy1.setVerticalStretch(0)
@@ -774,7 +777,6 @@ def add_func(self):
     self.comboBox_field_update = MethodType(comboBox_field_update, self)
     self.load_view_comp = MethodType(load_view_comp, self)
 
-    # test
     self.add_table_list_item = MethodType(add_table_list_item, self)
     self.add_table_list = MethodType(add_table_list, self)
     self.table_list_item_clicked = MethodType(table_list_item_clicked, self)

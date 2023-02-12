@@ -23,6 +23,8 @@ from app import generate
 # -*- coding:utf-8 -*-
 from tkinter import messagebox
 
+from app.utils.checkChinese import is_chinese
+
 
 def window_init_for_generate(self):
     '''
@@ -75,13 +77,16 @@ def code_generate(self):
         QMessageBox.information(self.ui, '提示', '生成路径不能为空')
         return
     if not os.path.isdir(path):
-        QMessageBox.information(self.ui, '提示', '生成路径有误,该路径不是一个文件夹')
+        QMessageBox.information(self, '提示', '生成路径有误,该路径不是一个文件夹')
+        return
+    if is_chinese(path):
+        QMessageBox.information(self, '提示', '生成路径不能包含中文字符')
         return
     if len(name) == 0:
-        QMessageBox.information(self.ui, '提示', '项目名不能为空')
+        QMessageBox.information(self, '提示', '项目名不能为空')
         return
     if len(version) == 0:
-        QMessageBox.information(self.ui, '提示', '版本号不能为空')
+        QMessageBox.information(self, '提示', '版本号不能为空')
         return
 
     project_path = path
@@ -105,7 +110,7 @@ def code_generate(self):
         conf.write(f)
 
     # 是否保存用户配置
-    if self.ui.radioButton.isChecked():
+    if self.ui.checkBox_re.isChecked():
         with open(user_configfile, "w") as f:
             conf.write(f)
     else:
@@ -138,7 +143,7 @@ def button_show_file(self):
     :return:
     '''
     dialog = QtWidgets.QFileDialog
-    fileName = dialog.getExistingDirectory(self.ui, "选取文件", os.getcwd())
+    fileName = dialog.getExistingDirectory(self, "选取文件", os.getcwd())
 
     self.ui.lineEdit.setText(fileName)
 
@@ -151,7 +156,11 @@ def load_generate_comp(self, result):
     :return:
     '''
     self.dialog_fault.close()
-    QMessageBox.information(self.ui, '提示', str(result))
+    if result.get('code') == '2000':
+        QMessageBox.information(self, '提示', '代码生成成功!\n即将退出')
+    else:
+        QMessageBox.critical(self, '错误', '代码生成失败失败\n即将退出!')
+    self.close_window()
 
 
 # 将函数添加到对象中
