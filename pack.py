@@ -13,6 +13,7 @@ import os
 # nuitka打包
 cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6  --windows-icon-from-ico=E:\MyProject\StudySource\git_pro\ncepu_huadian\api\icon.ico --include-package=sqlalchemy  start.py'
 
-cmd2 = ''
+# ui文件转py文件
+cmd2 = 'pyside6-uic MainWindow.ui -o MainWindow.py'
 
 os.popen()

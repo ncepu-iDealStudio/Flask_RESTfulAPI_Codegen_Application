@@ -8,6 +8,7 @@
 '''
 窗口主文件，负责对窗口进行初始化以及对各个子页面的整体调度
 '''
+import configparser
 import os
 import sys
 
@@ -60,6 +61,23 @@ class MainWindow(QMainWindow):
         # STANDARD TITLE BAR 去除窗口标题栏
         # self.setWindowFlags(Qt.FramelessWindowHint)    # 去除标题栏后不可改变大小
         self.setWindowFlags(Qt.CustomizeWindowHint)      # 去除标题栏后可以改变大小
+
+        # 加载软件版权信息配置
+        app_configfile = "app/config/app_config.conf"
+        if os.path.isfile(app_configfile):
+            app_conf = configparser.ConfigParser()  # 实例类
+            app_conf.read(app_configfile, encoding='UTF-8')  # 读取配置文件
+            author = app_conf['PARAMETER']['author']
+            version = app_conf['PARAMETER']['version']
+            app_name = app_conf['PARAMETER']['app_name']
+
+            title = app_name
+            description = app_name
+            # APPLY TEXTS
+            self.setWindowTitle(title)
+            self.ui.titleRightInfo.setText(description)
+            self.ui.creditsLabel.setText('By:' + author)
+            self.ui.version.setText('v' + version)
 
 
         # 鼠标双击事件
@@ -304,6 +322,9 @@ class MainWindow(QMainWindow):
 
     def close_window(self):
         self.dialog_fault.close()
+        self.load_thread.quit()
+        self.load_thread.wait()
+        del self.load_thread
         self.close()
 
     # def resize_grips(self):
