@@ -74,7 +74,7 @@ def code_generate(self):
 
     # 检查用户填写的数据是否正确
     if len(path) == 0:
-        QMessageBox.information(self.ui, '提示', '生成路径不能为空')
+        QMessageBox.information(self, '提示', '生成路径不能为空')
         return
     if not os.path.isdir(path):
         QMessageBox.information(self, '提示', '生成路径有误,该路径不是一个文件夹')
