@@ -65,7 +65,7 @@ def start(table_config, session_id, ip):
         # 第一步
         loggings.info(1, "Start to build the Model layer code, please wait...", session_id, ip)
 
-        app.codegen.modelcodegen.main.main(table_dict, settings, session_id, ip)
+        app.codegen.modelcodegen.main.generate_model_layer(table_dict, settings, session_id, ip)
         loggings.info(1, "Model layer code build completed", session_id, ip)
 
         # 第二步

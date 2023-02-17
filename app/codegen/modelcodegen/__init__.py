@@ -10,6 +10,6 @@
     初始化model层所需参数
 """
 
-cmd = "flask-sqlacodegen {url}{schema}{tables}{noviews}{noindexes}" \
-      " {noconstraints}{nojoined}{noinflect}{noclasses}{notables}{outfile}{nobackrefs}" \
+cmd = "sqlalchemy-codegen {url}{schema}{tables}{noviews}{noindexes}" \
+      " {noconstraints}{nojoined}{noinflect}{noclasses}{notables}--models_layer{outdir}{nobackrefs}" \
       " {nocomments}{ignore_cols} --flask"
