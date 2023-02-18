@@ -32,7 +32,7 @@ GLOBAL_STATE = False
 class MainWindow(QMainWindow):
 
     def __init__(self):
-        # # 从文件中加载UI定义
+        # # 从.ui文件中加载UI定义
         # qfile_main = QFile('app/ui/MainWindow.ui')
         # qfile_main.open(QFile.ReadOnly)
         # qfile_main.close()
@@ -43,6 +43,8 @@ class MainWindow(QMainWindow):
         # self.ui = QUiLoader().load(qfile_main)
 
         QMainWindow.__init__(self)
+
+        # 从.py文件加载UI定义
 
         # # SET AS GLOBAL WIDGETS
         # # ///////////////////////////////////////////////////////////////

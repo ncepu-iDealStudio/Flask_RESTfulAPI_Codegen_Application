@@ -167,21 +167,21 @@ QTreeWidget,QTreeView
    <property name="styleSheet">
     <string notr="true">/*top*/
 #contentTopBg{
-	background-color: #6272a4;
+	background-color: #1E90FF ;
 }
 #contentBottom{
 	border-top: 3px solid #bd93f9;
 }
 #titleRightInfo{
     color: #f8f8f2;
-	background-color: #6272a4;
+	background-color: #1E90FF ;
 }
 #leftBox{
-	background-color: #6272a4;
+	background-color:#1E90FF ;
 }
 
 #rightButtons{
-	background-color: #6272a4;
+	background-color: #1E90FF ;
 }
 
 /* Top Buttons */
@@ -190,6 +190,7 @@ QTreeWidget,QTreeView
 #rightButtons .QPushButton:pressed { background-color: #ff79c6; border-style: solid; border-radius: 4px; }
 
 /*灰色*/
+/*背景色*/
 QWidget
 {
     background-color: rgb(221, 221, 221); /*背景色*/
@@ -197,9 +198,9 @@ QWidget
 }
 /*按钮正常状态*/
 QPushButton {
-	border: 2px solid #6272a4;
+	border: 2px solid #1E90FF;
 	border-radius: 5px;
-	background-color: #6272a4;
+	background-color: #1E90FF;
     color: #f8f8f2;
 }
 QPushButton:hover {
@@ -1623,7 +1624,7 @@ QLabel {
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="page_1">
           <widget class="QScrollArea" name="scrollArea_1">
@@ -2081,8 +2082,8 @@ QCheckBox::indicator:checked {
                    <property name="geometry">
                     <rect>
                      <x>0</x>
-                     <y>-239</y>
-                     <width>699</width>
+                     <y>0</y>
+                     <width>90</width>
                      <height>1000</height>
                     </rect>
                    </property>
@@ -2666,8 +2667,8 @@ QCheckBox::indicator:checked {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>707</width>
-                     <height>547</height>
+                     <width>98</width>
+                     <height>28</height>
                     </rect>
                    </property>
                    <widget class="QLabel" name="label_view">

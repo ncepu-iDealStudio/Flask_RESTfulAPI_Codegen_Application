@@ -17,6 +17,7 @@ cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-p
 cmd2 = 'pyside6-uic MainWindow.ui -o MainWindow.py'
 
 # cx_Freeze打包
+cmd4 = 'pip install cx_Freeze idna'
 cmd3 = 'python setup.py build'
 
 os.popen()
