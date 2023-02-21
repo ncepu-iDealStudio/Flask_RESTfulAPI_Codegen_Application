@@ -18,12 +18,11 @@ from PySide6.QtWidgets import  QMessageBox, QFileDialog
 
 from types import MethodType
 
-from app import generate
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from tkinter import messagebox
 
-from app.utils.checkChinese import is_chinese
+from utils.checkChinese import is_chinese
 
 
 def window_init_for_generate(self):
@@ -49,7 +48,7 @@ def generate_init(self):
     self.ui.toolButton_file.clicked.connect(self.button_show_file)
 
     # 加载用户上一次使用的配置
-    user_configfile = "app/config/user_config.conf"
+    user_configfile = "config/user_config.conf"
     if os.path.isfile(user_configfile):
         user_conf = configparser.ConfigParser()  # 实例类
         user_conf.read(user_configfile, encoding='UTF-8')  # 读取配置文件
@@ -93,9 +92,9 @@ def code_generate(self):
     project_name = name
     interface_version = version
 
-    configfile = "app/config/config_" + str(session_id) + ".conf"  # 配置文件路径
+    configfile = "config/config_" + str(session_id) + ".conf"  # 配置文件路径
     configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), configfile)
-    user_configfile = "app/config/user_config.conf"  # 用户配置文件路径
+    user_configfile = "config/user_config.conf"  # 用户配置文件路径
     user_configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), user_configfile)
     conf = configparser.ConfigParser()  # 实例类
     conf.read(configfile, encoding='UTF-8')  # 读取配置文件

@@ -9,9 +9,6 @@
 this is function description
 '''
 # import module your need
-from PySide6.QtGui import QColor
-
-from app.utils.checkSqlLink import SQLHandler
 
 # 表配置页导入的包
 from PySide6.QtWidgets import QPushButton, QWidget, QCheckBox, QVBoxLayout, QSizePolicy, QHBoxLayout, QComboBox, QLabel, \

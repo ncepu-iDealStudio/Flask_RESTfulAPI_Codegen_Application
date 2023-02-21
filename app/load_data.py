@@ -16,8 +16,7 @@ from PySide6 import QtCore
 
 from PySide6.QtCore import QObject, QThread, Signal
 
-from app import generate
-from app.utils.checkSqlLink import SQLHandler
+from utils.checkSqlLink import SQLHandler
 
 
 # 创建该类的实例后，通过moveToThread使得其方法可以通过多线程的方式进行
@@ -81,7 +80,9 @@ class LoadData(QObject):
         :param session_id:
         :return:
         '''
-        result = generate.start(table_config, session_id, "127.0.0.1")
+
+        from codegenerate.main import start
+        result = start(table_config, session_id, "127.0.0.1")
         self.sig_load_generate_comp.emit(result)
 
 

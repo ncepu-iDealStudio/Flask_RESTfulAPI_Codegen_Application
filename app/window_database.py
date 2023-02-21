@@ -20,7 +20,7 @@ from PySide6.QtCore import QSize, QThread, QObject
 from PySide6.QtGui import QPixmap, QMovie
 from PySide6.QtWidgets import QMessageBox, QDialog, QLabel, QPushButton, QFrame
 
-from app.utils.checkSqlLink import SQLHandler
+from utils.checkSqlLink import SQLHandler
 
 from types import MethodType
 
@@ -41,7 +41,7 @@ def window_init_for_database(self):
     self.loadData.sig_load_dbname_comp.connect(self.load_dbname_comp)
 
     # 加载用户上一次使用的配置
-    user_configfile = "app/config/user_config.conf"
+    user_configfile = "config/user_config.conf"
     if os.path.isfile(user_configfile):
         user_conf = configparser.ConfigParser()  # 实例类
         user_conf.read(user_configfile, encoding='UTF-8')  # 读取配置文件
@@ -58,7 +58,7 @@ def db_config(self):
     数据库配置页面主要代码，
     """
     dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    f = open(dir + r"/app/config/config_" + str(self.id) + ".conf", "w")
+    f = open(dir + r"/config/config_" + str(self.id) + ".conf", "w")
     f.close()
 
     # 接收参数
@@ -91,7 +91,7 @@ def db_config(self):
     result_sql = SQLHandler.connect_sql_link(dialect, username, password, host, port, database)
     if result_sql['code']:
         # 填写配置文件
-        configfile = "app/config/config_" + str(self.id) + ".conf"
+        configfile = "config/config_" + str(self.id) + ".conf"
         configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), configfile)
         conf = configparser.ConfigParser()  # 实例类
         conf.read(configfile, encoding='UTF-8')  # 读取配置文件
