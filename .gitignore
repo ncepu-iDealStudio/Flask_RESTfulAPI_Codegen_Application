@@ -12,3 +12,4 @@ app/ui/data_table_config/__pycache__/__init__.cpython-39.pyc
 dist/
 /config/config_20230221200733.conf
 config/config_20230221201012.conf
+/config/user_config.conf
