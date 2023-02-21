@@ -154,11 +154,12 @@ def load_generate_comp(self, result):
     :param result:
     :return:
     '''
+
     self.dialog_fault.close()
     if result.get('code') == '2000':
         QMessageBox.information(self, '提示', '代码生成成功!\n即将退出')
     else:
-        QMessageBox.critical(self, '错误', '代码生成失败失败\n即将退出!')
+        QMessageBox.critical(self, '错误', '代码生成失败\n即将退出!')
     self.close_window()
 
 

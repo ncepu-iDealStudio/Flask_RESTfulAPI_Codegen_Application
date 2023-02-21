@@ -32,7 +32,6 @@ def generate_resource_layer(table_dict, settings, session_id, ip):
 
         generator = CodeGenerator(settings, session_id, ip)
         generator.resource_generator(api_dir, app_dir, table_dict)
-        print(1)
 
     except Exception as e:
         loggings.error(1, str(e), session_id, ip)

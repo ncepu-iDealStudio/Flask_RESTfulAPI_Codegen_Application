@@ -57,6 +57,7 @@ class Loggings(object):
         else:
             log_path = "logs/codegen_log.log"
 
+        location = 2
         # 日志和控制台都出现
         if location == 1:
             logger.remove()

@@ -3,3 +3,5 @@
 3.window版model层通过调用函数的方式生成，web版通过命令行方式生成
 4.window版目标代码生成路径可变，web版不可变，所以，两个版本的config/setting文件有区别
 5.由于window版的目标代码路径可变，而该路径不能包含中文字符，所以window版的utils文件夹下多了一个checkChinese文件用于判断中文字符
+6.window版需要打包为无控制台的.exe程序，所以命令行不能有输入输出，在utils/loggings.py中关闭命令行输出--直接强制location = 2
+7.接6web版的codegenerate/resourcecodegen/main.py中有一个print(1)，需要删除
