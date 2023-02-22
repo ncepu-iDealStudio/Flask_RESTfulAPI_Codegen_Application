@@ -523,7 +523,7 @@ background-color:transparent;</string>
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../template/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/icons/images/icons/icon_settings.png</normaloff>:/icons/images/icons/icon_settings.png</iconset>
             </property>
             <property name="iconSize">
@@ -558,7 +558,7 @@ background-color:transparent;</string>
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../template/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/icons/images/icons/icon_minimize.png</normaloff>:/icons/images/icons/icon_minimize.png</iconset>
             </property>
             <property name="iconSize">
@@ -602,7 +602,7 @@ background-color:transparent;</string>
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../template/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/icons/images/icons/icon_maximize.png</normaloff>:/icons/images/icons/icon_maximize.png</iconset>
             </property>
             <property name="iconSize">
@@ -637,7 +637,7 @@ background-color:transparent;</string>
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../../template/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/icons/images/icons/icon_close.png</normaloff>:/icons/images/icons/icon_close.png</iconset>
             </property>
             <property name="iconSize">
@@ -1957,7 +1957,7 @@ QCheckBox::indicator:checked {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>699</width>
+                     <width>90</width>
                      <height>1000</height>
                     </rect>
                    </property>
@@ -2604,8 +2604,8 @@ QCheckBox::indicator:checked {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>707</width>
-                     <height>547</height>
+                     <width>98</width>
+                     <height>28</height>
                     </rect>
                    </property>
                    <widget class="QLabel" name="label_view">
@@ -3025,7 +3025,7 @@ QTableWidget::horizontalHeader {
                    <string>Open</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../../../template/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc">
+                   <iconset resource="resources.qrc">
                     <normaloff>:/icons/images/icons/cil-folder-open.png</normaloff>:/icons/images/icons/cil-folder-open.png</iconset>
                   </property>
                  </widget>
@@ -3261,7 +3261,7 @@ height:30px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="../../../qss/resources.qrc"/>
+  <include location="resources.qrc"/>
   <include location="../../../template/Modern_GUI_PyDracula_PySide6_or_PyQt6/resources.qrc"/>
  </resources>
  <connections/>
