@@ -1,5 +1,4 @@
 Flask==2.2.2
-flask_sqlalchemy==3.0.2
 loguru==0.6.0
 pycryptodome==3.15.0
 PyMySQL==1.0.2
