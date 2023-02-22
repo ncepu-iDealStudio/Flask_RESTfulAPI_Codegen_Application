@@ -55,9 +55,9 @@ class MainWindow(QMainWindow):
         self.setStyleSheet('')  # 这里不设计样式就会出现bug,因为主窗口已经在qtDesigner中设计过样式了
 
         # 加载样式
-        file = "app/themes/style.qss"
-        str = open(file, 'r', encoding='UTF-8').read()
-        self.ui.centralwidget.setStyleSheet(str)
+        # file = "app/themes/style.qss"
+        # str = open(file, 'r', encoding='UTF-8').read()
+        # self.ui.centralwidget.setStyleSheet(str)
 
 
         # STANDARD TITLE BAR 去除窗口标题栏

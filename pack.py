@@ -14,7 +14,7 @@ import os
 cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6  --windows-icon-from-ico=icon.ico --include-package=sqlalchemy,sqlalchemy_codegen  start.py'
 
 # ui文件转py文件
-cmd2 = 'pyside6-uic MainWindow.ui -o MainWindow.py'
+cmd2 = 'pyside6-uic app/ui/MainWindow.ui -o app/ui/MainWindow.py'
 
 # cx_Freeze打包
 cmd4 = 'pip install cx_Freeze idna'
