@@ -47,8 +47,26 @@ def generate_init(self):
     self.ui.dig.setFilter(QDir.Files)
     self.ui.toolButton_file.clicked.connect(self.button_show_file)
 
+    # 添加默认配置
+    session_id = self.id
+    configfile = "config/config_" + str(session_id) + ".conf"  # 配置文件路径
+    configfile = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), configfile)
+    conf = configparser.ConfigParser()  # 实例类
+    conf.read(configfile, encoding='UTF-8')  # 读取配置文件
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # 项目根目录
+    target_dir = os.path.join(base_dir, 'dist')  # 默认目标目录
+    if not os.path.isdir(target_dir):
+        os.mkdir(target_dir)
+
+    self.ui.lineEdit.setText(target_dir)
+    self.ui.lineEdit_2.setText(conf['DATABASE']['database'])
+    self.ui.lineEdit_3.setText('1.0')
+
     # 加载用户上一次使用的配置
     user_configfile = "config/user_config.conf"
+
+    # 如果能够加载用户配置器
     if os.path.isfile(user_configfile):
         user_conf = configparser.ConfigParser()  # 实例类
         user_conf.read(user_configfile, encoding='UTF-8')  # 读取配置文件
@@ -56,6 +74,7 @@ def generate_init(self):
             self.ui.lineEdit.setText(user_conf['PARAMETER']['target_dir'])
             self.ui.lineEdit_2.setText(user_conf['PARAMETER']['project_name'])
             self.ui.lineEdit_3.setText(user_conf['PARAMETER']['api_version'])
+
 
 
 def code_generate(self):
