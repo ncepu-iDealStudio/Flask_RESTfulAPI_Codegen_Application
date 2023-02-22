@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'MainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.4.0
+## Created by: Qt User Interface Compiler version 6.3.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -21,8 +21,9 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
     QScrollArea, QSizePolicy, QSpacerItem, QStackedWidget,
     QTabWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
     QWidget)
-import resources_rc
-import resources_rc
+
+import app.ui.resources_rc
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -88,12 +89,14 @@ class Ui_MainWindow(object):
 "}\n"
 "QLineEdit {\n"
 "	background-color: #6272a4;\n"
+"	height:25px;\n"
 "	border-radius: 5px;\n"
 "	border: 2px solid #6272a4;\n"
 "	padding-left: 10px;\n"
 "	selection-color: rgb(255, 255, 255);\n"
 "	selection-background-color: rgb(255, 121, 198);\n"
 "    color: black;\n"
+"	highth:10px;\n"
 "}\n"
 "QLineEdit:hover {\n"
 "	border: 2px solid rgb(64, 71, 88);\n"
@@ -107,14 +110,15 @@ class Ui_MainWindow(object):
 "    color:black;/*\u5b57\u4f53\u989c\u8272*/\n"
 "    background-color:rgb(240,240,240);/*\u80cc\u666f\u8272*/\n"
 "}\n"
-"QComboBox{\n"
+"QComboBo"
+                        "x{\n"
 "	background-color: #6272a4;\n"
-""
-                        "	border-radius: 5px;\n"
+"	border-radius: 5px;\n"
 "	border: 2px solid #6272a4;\n"
 "	padding: 5px;\n"
 "	padding-left: 10px;\n"
 "    color: black;\n"
+"	height:20px;\n"
 "}\n"
 "QComboBox:hover{\n"
 "	border: 2px solid #7284b9;\n"
@@ -147,10 +151,10 @@ class Ui_MainWindow(object):
 "font-size:12pt;\n"
 "border:none;/*\u8fb9\u6846\u6837\u5f0f*/\n"
 "}\n"
-"QTableWidget {\n"
-"	background-color: transparent;\n"
 ""
-                        "	padding: 10px;\n"
+                        "QTableWidget {\n"
+"	background-color: transparent;\n"
+"	padding: 10px;\n"
 "	border-radius: 5px;\n"
 "	gridline-color: #9faeda;\n"
 "    outline: none;\n"
@@ -182,9 +186,9 @@ class Ui_MainWindow(object):
 "    height:30px; /*\u9ad8\u5ea6*/\n"
 "    min-width:100px;/*\u5bbd\u5ea6*/\n"
 "    border-top-left-radius:4px;/*\u5de6\u4e0a\u8fb9\u6846\u5706\u89d2\u534a\u5f84\u50cf\u7d20*/\n"
-"    border-top-right-radius:4px;/*\u53f3\u4e0a\u8fb9\u6846\u5706\u89d2\u534a\u5f84\u50cf\u7d20*/\n"
-" "
-                        "   margin-right: 5px;/*\u53f3\u8fb9\u8ddd  \u53f3\u5916\u8fb9\u8ddd*/\n"
+"    border-top-right-radius:4px;/*\u53f3\u4e0a\u8fb9"
+                        "\u6846\u5706\u89d2\u534a\u5f84\u50cf\u7d20*/\n"
+"    margin-right: 5px;/*\u53f3\u8fb9\u8ddd  \u53f3\u5916\u8fb9\u8ddd*/\n"
 "    padding-left:5px;/*\u5de6\u586b\u5145--\u5de6\u5185\u8fb9\u8ddd*/\n"
 "    padding-right:5px;/*\u53f3\u586b\u5145--\u53f3\u5185\u8fb9\u8ddd*/\n"
 "}\n"
@@ -202,10 +206,10 @@ class Ui_MainWindow(object):
 "    selection-background-color:rgba(192,221,244);/*\u80cc\u666f\u8272*/;/*\u70b9\u51fb\u9009\u4e2d\u989c\u8272*/\n"
 "    border:1px solid #E0DDDC;/*\u8fb9\u6846\u4e3a1\u50cf\u7d20\uff0c\u7070\u8272*/\n"
 "    gridline-color:lightgray;/*\u8fd9\u4e2a\u662f\u8868\u683c\u7684\u683c\u5b50\u7ebf\u7684\u989c\u8272\uff0c\u4e3a\u4eae\u7070*/\n"
-"    font:bold 8pt;/*\u5b57\u4f53 \u5b57\u4f53\u5927\u5c0f*/\n"
-"}\n"
-"/*\u8868\u683c\u8868\u5934\u6837\u5f0f"
+"    font:bold 8pt;/*\u5b57\u4f53 \u5b57\u4f53\u5927\u5c0f"
                         "*/\n"
+"}\n"
+"/*\u8868\u683c\u8868\u5934\u6837\u5f0f*/\n"
 "QHeaderView::section{\n"
 "    background-color:rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
 "    border:0px solid #E0DDDC;/*\u5148\u628a\u8fb9\u6846\u5bbd\u5ea6\u8bbe\u4e3a0\uff0c\u5373\u9690\u85cf\u6240\u6709\u8868\u5934\u8fb9\u6846*/\n"
@@ -221,11 +225,11 @@ class Ui_MainWindow(object):
 "    font-size:12pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
 "\n"
-"#label_table_name_7,#label_set_key_13{font-size:30px;}\n"
+"#label_table_name_7,#label_set_key"
+                        "_13{font-size:30px;}\n"
 "\n"
 "#pushButton_last{}\n"
-""
-                        "\n"
+"\n"
 "QRadioButton::indicator {\n"
 "    border: 3px solid #6272a4;\n"
 "	width: 15px;\n"
@@ -261,9 +265,9 @@ class Ui_MainWindow(object):
 "    background: rgb(55, 63, 77);\n"
 "    width: 20px;\n"
 "	border-top-right-radius: 4px;\n"
-"    border-bottom-right-radius: 4px;\n"
-"    subcontrol-position"
-                        ": right;\n"
+"    border-"
+                        "bottom-right-radius: 4px;\n"
+"    subcontrol-position: right;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
 "QScrollBar::sub-line:horizontal {\n"
@@ -299,10 +303,10 @@ class Ui_MainWindow(object):
 " QScrollBar::add-line:vertical {\n"
 "     border: none;\n"
 "    /*background: rgb(55, 63, 77);*/\n"
-"	background: #909399;\n"
+"	backg"
+                        "round: #909399;\n"
 "     height: 20px;\n"
-"	border-bo"
-                        "ttom-left-radius: 4px;\n"
+"	border-bottom-left-radius: 4px;\n"
 "    border-bottom-right-radius: 4px;\n"
 "     subcontrol-position: bottom;\n"
 "     subcontrol-origin: margin;\n"
@@ -335,10 +339,10 @@ class Ui_MainWindow(object):
 "	padding-bottom: 2px; }\n"
 "\n"
 "\n"
-"/*\u5bf9\u4e3b\u9875\u9762\u7684\u6309\u94ae\u91cd\u65b0\u8fdb\u884c\u8bbe\u8ba1*/\n"
+"/*\u5bf9\u4e3b\u9875\u9762\u7684\u6309\u94ae\u91cd\u65b0\u8fdb"
+                        "\u884c\u8bbe\u8ba1*/\n"
 "#main_page QPushButton {\n"
-""
-                        "	border-radius: 5px;\n"
+"	border-radius: 5px;\n"
 "	border: 2px solid #6272a4;\n"
 "    color: black;\n"
 "}\n"
@@ -2057,7 +2061,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget_step.setCurrentIndex(0)
+        self.stackedWidget_step.setCurrentIndex(1)
         self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_right.setCurrentIndex(0)
         self.stackedWidget_3.setCurrentIndex(0)
