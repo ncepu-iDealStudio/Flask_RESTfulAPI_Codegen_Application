@@ -53,12 +53,12 @@ def view_config_init(self):
     self.view_number = 0
     self.ui.listWidget_view.clear()
 
-    # # 设置scrollAreaWidgetContents大小
-    # self.ui.scrollAreaWidgetContents_left_2.setMinimumSize(QSize(0, 45 + self.view_number * 31))
+    # 此处存在第二次加载时上一个组件没有销毁，同时存在多个同名组件的问题，最终会导致多选按钮的点击事件无效
+    # 先通过改变组件名解决问题
+    if self.ui.listWidget_view.findChild(QCheckBox, u"checkBox_vsall"):
+        self.ui.listWidget_view.findChild(QCheckBox, u"checkBox_vsall").setObjectName(u"checkBox_vsall1")
 
-    # # 设置面板大小
-    # self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 45 + self.view_number * 31))
-    # 视图选择按钮
+    # 添加视图选择按钮
     self.add_view_list()
     self.ui.centralwidget.findChild(QListWidget, u"listWidget_view").itemClicked.connect(self.view_list_item_clicked)
 

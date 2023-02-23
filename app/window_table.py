@@ -120,6 +120,11 @@ def table_config_init(self):
     #         # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
     #         widget_del.deleteLater()
 
+    # 此处存在第二次加载时上一个组件没有销毁，同时存在多个同名组件的问题，最终会导致多选按钮的点击事件无效
+    # 先通过改变组件名解决问题
+    if self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall"):
+        self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").setObjectName(u"checkBox_tsall1")
+
     # 添加list_items
     self.add_table_list()
     self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").itemClicked.connect(self.table_list_item_clicked)
@@ -129,6 +134,7 @@ def table_config_init(self):
 
     #  事件初始化
     # 全选CheckBox事件添加
+
     self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").clicked.connect(self.checkBox_all_select_clicked)
 
     # 添加字段组件组事件添加
