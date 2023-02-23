@@ -25,9 +25,9 @@ def window_init_for_table(self):
     :return:
     '''
     # 添加表按钮等组件初始化
-    self.add_table_button_group_init()
+    # self.add_table_button_group_init()
     self.table_number = -1
-    self.add_table_button_group('table_select_all')
+    # self.add_table_button_group('table_select_all')
 
     # 加密组件初始化
     self.add_field_encrypt_group_init()
@@ -35,6 +35,8 @@ def window_init_for_table(self):
     # 初始化多线程信号与槽
     self.loadData.sig_load_view.connect(self.loadData.load_views)
     self.loadData.sig_load_view_comp.connect(self.load_view_comp)
+
+    # 初始化表配置页使用的全域变量
 
 
 def table_config_init(self):
@@ -106,25 +108,17 @@ def table_config_init(self):
     self.field_encryptable = []  # 可加密的字段组成一个列表，目前字段类型为字符允许加密
     self.encrypt_type_list = ['rsa', 'aes']
 
-    # # 清空按钮并添加新按钮
-    # del_table_button_list = self.ui.verticalLayout_left_6.findChildren(QPushButton)
-    # for del_widget in del_table_button_list:
-    #     table_name = del_widget.objectName().replace('pushButton_', '')
-    #     if table_name != 'table_select_all':
-    #         widget_del = self.ui.verticalLayoutWidget_add_table_button.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
-    #         # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
-    #         widget_del.deleteLater()
-
     self.table_number = 0
 
-    # # 设置scrollAreaWidgetContents大小
-    # self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
-    #
-    # # 设置面板大小
-    # self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
-    #
-    # for table in self.sql_data['table']:
-    #     self.add_table_button_group(table.get('table'))
+    # 清空item
+    # del_table_item_list = self.ui.listWidget_table.findChildren(QPushButton)
+    # for del_widget in del_table_item_list:
+    #     table_name = del_widget.objectName().replace('pushButton_', '')
+    #     print(table_name)
+    #     if table_name != 'select_all':
+    #         widget_del = self.ui.listWidget_view.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
+    #         # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
+    #         widget_del.deleteLater()
 
     # 添加list_items
     self.add_table_list()
@@ -142,6 +136,8 @@ def table_config_init(self):
 
     # 表对应的pushButton事件添加
     for pushButton in self.ui.listWidget_table.findChildren(QPushButton):
+        pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
+        pushButton.clicked.disconnect()
         pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
 
 
@@ -176,14 +172,14 @@ def add_table_button_group_init(self):
     :return:
     '''
 
-    # self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
-    #
-    # self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
-    #
-    # self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
-    #
-    # # 设置scrollAreaWidgetContents大小
-    # self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60))
+    self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
+
+    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
+
+    self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
+
+    # 设置scrollAreaWidgetContents大小
+    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60))
 
 
 def add_table_button_group(self, table_name):
@@ -193,46 +189,46 @@ def add_table_button_group(self, table_name):
     :return:
     '''
 
-    # self.ui.horizontalLayoutWidget1 = QWidget()
-    # self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
-    # self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.table_number * 31, 281, 31))
-    #
-    # self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
-    # self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + table_name)
-    # self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
-    # self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget_6)
-    # self.ui.checkBox_1.setObjectName(u"checkBox_" + table_name)
-    #
-    # sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-    # sizePolicy.setHorizontalStretch(0)
-    # sizePolicy.setVerticalStretch(0)
-    # sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
-    # self.ui.checkBox_1.setSizePolicy(sizePolicy)
-    # self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
-    #
-    # self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
-    #
-    # self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget_6)
-    # self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
-    # self.ui.pushButton_1.setText(table_name)
-    # sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-    # sizePolicy1.setHorizontalStretch(0)
-    # sizePolicy1.setVerticalStretch(0)
-    # sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
-    # self.ui.pushButton_1.setSizePolicy(sizePolicy1)
-    #
-    # self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
-    #
-    # # 把组件添加到面板
-    # self.ui.add_table_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
-    #
-    # self.table_number += 1
-    #
-    # # 设置scrollAreaWidgetContents大小
-    # self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
-    #
-    # # 设置面板大小
-    # self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
+    self.ui.horizontalLayoutWidget1 = QWidget()
+    self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
+    self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.table_number * 31, 281, 31))
+
+    self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
+    self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + table_name)
+    self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
+    self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget_6)
+    self.ui.checkBox_1.setObjectName(u"checkBox_" + table_name)
+
+    sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+    sizePolicy.setHorizontalStretch(0)
+    sizePolicy.setVerticalStretch(0)
+    sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
+    self.ui.checkBox_1.setSizePolicy(sizePolicy)
+    self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
+
+    self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
+
+    self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget_6)
+    self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
+    self.ui.pushButton_1.setText(table_name)
+    sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+    sizePolicy1.setHorizontalStretch(0)
+    sizePolicy1.setVerticalStretch(0)
+    sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
+    self.ui.pushButton_1.setSizePolicy(sizePolicy1)
+
+    self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
+
+    # 把组件添加到面板
+    self.ui.add_table_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
+
+    self.table_number += 1
+
+    # 设置scrollAreaWidgetContents大小
+    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
+
+    # 设置面板大小
+    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
 
 
 def checkBox_all_select_clicked(self):

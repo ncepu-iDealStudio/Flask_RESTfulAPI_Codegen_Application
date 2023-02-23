@@ -186,6 +186,10 @@ class MainWindow(QMainWindow):
         self.window_init_for_confirm()
         self.window_init_for_generate()
 
+        # 设置初始页面为第一页
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget_step.setCurrentIndex(0)
+
     def frame_init(self):
         '''
         框架初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
