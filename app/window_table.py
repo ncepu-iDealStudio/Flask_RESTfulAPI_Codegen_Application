@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2022-10-12 15:19:00
 '''
-this is function description
+表配置页面主要操作
 '''
 # import module your need
 
@@ -17,6 +17,7 @@ from PySide6.QtCore import QSize, QRect
 from functools import partial
 
 from types import MethodType
+
 
 def window_init_for_table(self):
     '''
@@ -149,7 +150,7 @@ def table_config_init(self):
 
 def table_config(self):
     '''
-    数据库表配置页主要代码，点击下一步时调用
+    数据库表配置页主要代码，进入下一步前调用
     :return:
     '''
 
@@ -484,7 +485,6 @@ def add_field_button_clicked(self):
     # 添加一个选择加密字段组
     self.add_field_encrypt_group()
 
-
     # 绑定事件,初始化数据
     button_delete = self.ui.listWidget_encrypt.findChild(QWidget, u"pushButton_delete_field_encrypt_add" + str(self.encrypt_group_number - 1))
     button_delete.clicked.connect(partial(self.del_field_encrypt_group, button_delete))
@@ -519,16 +519,9 @@ def add_field_encrypt_group(self):
     table_item.setSizeHint(QSize(0, 40))
     table_item.setText("encrypt_itme_" + str(self.encrypt_group_number))
     self.ui.listWidget_encrypt.addItem(table_item)
-    # self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, table_checkBox)
 
     self.ui.encrypt_widget = QWidget()
     self.ui.encrypt_widget.setObjectName(u"horizontalLayoutWidget_" + str(self.encrypt_group_number))
-
-
-    # 更新verticalLayoutWidget_add大小
-    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
-    #
-    # self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
 
     self.ui.horizontalLayout_add = QHBoxLayout(self.ui.encrypt_widget)
     self.ui.horizontalLayout_add.setObjectName(u"horizontalLayout_add" + str(self.encrypt_group_number))
@@ -569,7 +562,7 @@ def add_field_encrypt_group(self):
     self.encrypt_group_count += 1
     self.encrypt_group_number += 1
 
-    # self.ui.add_encrypt_group_layout.addLayout(self.ui.horizontalLayout_add)
+    # 将整个按钮组添加到listWidget_encrypt
     self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_encrypt").setItemWidget(table_item,
                                                                                    self.ui.encrypt_widget)
 
@@ -581,10 +574,6 @@ def add_field_encrypt_group_init(self):
     '''
 
     self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
-    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
-
-    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41))
-
     self.ui.add_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add)
 
 
@@ -610,11 +599,6 @@ def del_field_encrypt_group(self, Qobject):
         if widget is not None:
             widget.deleteLater()
     widget_del.deleteLater()
-
-    # 更新verticalLayoutWidget_add大小
-    # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320, 497, 41 * (self.encrypt_group_count + 1)))
-    #
-    # self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
 
     # 删除item
     d_item = self.ui.listWidget_encrypt.item(index)
@@ -744,6 +728,11 @@ def add_table_list_item(self,table_name):
 
 
 def add_table_list(self):
+    '''
+    添加数据库表列表
+    :param self:
+    :return:
+    '''
     self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").clear()
     self.add_table_list_item("tsall")
     for table in self.sql_data['table']:
@@ -761,15 +750,18 @@ def table_list_item_clicked(self, item):
     table_pushButton_clicked(self, self.ui.centralwidget.findChild(QPushButton, 'pushButton_' + item.text()).text())
 
 
-
-# 数据处理结束
 def load_view_comp(self, view_info):
+    '''
+    加载视图数据完成
+    :param self:
+    :param view_info:
+    :return:
+    '''
     self.sql_data['view'] = view_info['data']['view']
     self.next_step()
     self.dialog_fault.close()
 
 
-# 将函数添加到对象中
 def add_func(self):
     '''
     添加该.py文件的方法到对象中

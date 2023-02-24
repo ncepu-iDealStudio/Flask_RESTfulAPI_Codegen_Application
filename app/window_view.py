@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2022-10-12 16:14:17
 '''
-this is function description
+视图配置页面主要操作
 '''
 # import module your need
 import sys

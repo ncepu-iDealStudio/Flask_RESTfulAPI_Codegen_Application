@@ -21,6 +21,8 @@ def nuitaka_pack():
     # 目标程序包含的该目录--include-plugin-directory=app
     cmd = 'python -m nuitka --windows-disable-console --include-plugin-directory=app,config --follow-imports --standalone --show-progress --enable-plugin=pyside6 --include-plugin-directory=app --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
     os.system(cmd)
+    # 目前无法正确打包资源文件，打包后需要手动复制到相应目录
+
 
 
 def cx_Freeze_pack():

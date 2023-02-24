@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2022-10-12 16:15:38
 '''
-this is function description
+代码生成页面主要操作
 '''
 # import module your need
 import configparser
