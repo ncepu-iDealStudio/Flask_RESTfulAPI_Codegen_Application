@@ -251,6 +251,7 @@ def checkBox_all_select_clicked(self):
         for checkBox in self.ui.listWidget_table.findChildren(QCheckBox):
             checkBox.setChecked(False)
 
+
 def table_checkBox_clicked(self, checkbox, index = -1):
     '''
     视图选择框里的checkbox事件注册
@@ -258,8 +259,9 @@ def table_checkBox_clicked(self, checkbox, index = -1):
     :return:
     '''
 
-    # 点击checkbox时同时调用点击PushButton事件
-    self.table_pushButton_clicked(checkbox.objectName().replace('checkBox_', ''))
+    # # 点击checkbox时同时调用点击PushButton事件
+    # self.table_pushButton_clicked(checkbox.objectName().replace('checkBox_', ''))
+
 
 def table_pushButton_clicked(self, button_text):
     '''

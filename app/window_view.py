@@ -164,8 +164,8 @@ def view_checkBox_clicked(self, checkbox, index = -1):
     :return:
     '''
 
-    # 点击checkbox时同时调用点击PushButton事件
-    self.view_pushButton_clicked(checkbox.objectName().replace('checkBox_', ''))
+    # # 点击checkbox时同时调用点击PushButton事件
+    # self.view_pushButton_clicked(checkbox.objectName().replace('checkBox_', ''))
 
     if checkbox.isChecked():
         self.sql_data_view_ischecked_update(checkbox, True)
