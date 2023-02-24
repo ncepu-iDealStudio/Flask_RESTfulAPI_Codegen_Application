@@ -15,7 +15,11 @@ import os
 
 def nuitaka_pack():
     # nuitka打包
+<<<<<<< HEAD
     cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
+=======
+    cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-disable-console --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
+>>>>>>> 1e4cc9842fb4b747de3fb7d4d0ae9ab44cbf9ffb
     os.system(cmd)
 
 
