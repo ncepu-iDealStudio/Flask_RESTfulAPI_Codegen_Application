@@ -34,6 +34,9 @@ def view_config_init(self):
     :return:
     '''
 
+    # 进页面前调整控件初始状态
+    self.ui.stackedWidget_3.setCurrentIndex(0)
+
     self.view_number = 0  # 记录视图序号
     self.selected_view = {}  # 被选中的视图的缓存数据
     self.selected_field = {}  # 被选中的视图的字段
@@ -45,8 +48,7 @@ def view_config_init(self):
     for del_widget in del_view_button_list:
         table_name = del_widget.objectName().replace('pushButton_', '')
         if table_name != 'select_all':
-            widget_del = self.ui.listWidget_view.findChild(QWidget,
-                                                                                 u"horizontalLayoutWidget_" + table_name)
+            widget_del = self.ui.listWidget_view.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
             # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
             widget_del.deleteLater()
 
@@ -159,6 +161,10 @@ def view_checkBox_clicked(self, checkbox, index = -1):
     :param checkbox: 复选框
     :return:
     '''
+
+    # 点击checkbox时同时调用点击PushButton事件
+    self.view_pushButton_clicked(checkbox.objectName().replace('checkBox_', ''))
+
     if checkbox.isChecked():
         self.sql_data_view_ischecked_update(checkbox, True)
 

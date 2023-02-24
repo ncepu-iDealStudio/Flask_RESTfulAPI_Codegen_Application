@@ -45,6 +45,9 @@ def table_config_init(self):
     :return:
     '''
 
+    # 进页面前调整控件初始状态
+    self.ui.stackedWidget_right.setCurrentIndex(0)
+
     # 变量初始化
     self.table_number = 0  # 记录拿到表的序号
     self.selected_table = {}  # 被选中的表缓存数据
@@ -106,19 +109,11 @@ def table_config_init(self):
     self.encrypt_group_count = 0  # 字段加密组件总数
     self.encrypt_group_number = 0  # 字段加密组件当前组件编号
     self.field_encryptable = []  # 可加密的字段组成一个列表，目前字段类型为字符允许加密
-    self.encrypt_type_list = ['rsa', 'aes']
+    self.encrypt_type_list = ['rsa', 'aes']  # 加密方式
+
+    selected_itme = None  # 数据库表被选中的item
 
     self.table_number = 0
-
-    # 清空item
-    # del_table_item_list = self.ui.listWidget_table.findChildren(QPushButton)
-    # for del_widget in del_table_item_list:
-    #     table_name = del_widget.objectName().replace('pushButton_', '')
-    #     print(table_name)
-    #     if table_name != 'select_all':
-    #         widget_del = self.ui.listWidget_view.findChild(QWidget, u"horizontalLayoutWidget_" + table_name)
-    #         # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
-    #         widget_del.deleteLater()
 
     # 此处存在第二次加载时上一个组件没有销毁，同时存在多个同名组件的问题，最终会导致多选按钮的点击事件无效
     # 先通过改变组件名解决问题
@@ -134,10 +129,15 @@ def table_config_init(self):
 
     #  事件初始化
     # 全选CheckBox事件添加
-
     self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").clicked.connect(self.checkBox_all_select_clicked)
 
+    # 其他CheckBox事件添加
+    for checkbox in self.ui.listWidget_table.findChildren(QCheckBox):
+        checkbox.stateChanged.connect(partial(self.table_checkBox_clicked, checkbox))
+
     # 添加字段组件组事件添加
+    self.ui.pushButton_add_field_encrypt.clicked.connect(self.add_field_button_clicked)
+    self.ui.pushButton_add_field_encrypt.clicked.disconnect()
     self.ui.pushButton_add_field_encrypt.clicked.connect(self.add_field_button_clicked)
 
     # 表对应的pushButton事件添加
@@ -251,6 +251,15 @@ def checkBox_all_select_clicked(self):
         for checkBox in self.ui.listWidget_table.findChildren(QCheckBox):
             checkBox.setChecked(False)
 
+def table_checkBox_clicked(self, checkbox, index = -1):
+    '''
+    视图选择框里的checkbox事件注册
+    :param checkbox: 复选框
+    :return:
+    '''
+
+    # 点击checkbox时同时调用点击PushButton事件
+    self.table_pushButton_clicked(checkbox.objectName().replace('checkBox_', ''))
 
 def table_pushButton_clicked(self, button_text):
     '''
@@ -779,3 +788,5 @@ def add_func(self):
     self.add_table_list_item = MethodType(add_table_list_item, self)
     self.add_table_list = MethodType(add_table_list, self)
     self.table_list_item_clicked = MethodType(table_list_item_clicked, self)
+
+    self.table_checkBox_clicked = MethodType(table_checkBox_clicked, self)

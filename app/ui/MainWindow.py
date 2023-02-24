@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'MainWindow.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+## Created by: Qt User Interface Compiler version 6.4.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -24,7 +24,6 @@ from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
 
 import app.ui.resources_rc
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
@@ -35,9 +34,13 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.centralwidget.setStyleSheet(u"/*\u4e3b\u9875\u9762stackedWidget\u4ee5\u53ca\u5b50\u63a7\u4ef6\u80cc\u666f\u8272*/\n"
 "#stackedWidget *{\n"
-"	background-color: #ecf5ff;\n"
+"	background-color: #f4f4f5;\n"
 "}\n"
 "\n"
+"/*\u6b65\u9aa4\u6761\u80cc\u666f*/\n"
+"#stackedWidget_step *{\n"
+"	background-color: #e4e7ed;\n"
+"}\n"
 "\n"
 "\n"
 "/*top*/\n"
@@ -65,33 +68,33 @@ class Ui_MainWindow(object):
 "#rightButtons .QPushButton:pressed { background-color: #ff79c6; border-style: solid; border-radius: 4px; }\n"
 "\n"
 "/*\u7070\u8272\u767d\u8272*/\n"
-"/*\u6574\u4f53\u80cc\u666f\u8272*/\n"
+"/*\u6574\u4f53\u80cc\u666f\u8272"
+                        "*/\n"
 "QWidget\n"
 "{\n"
 "    background-color: rgb(255, 255, 255); /*\u80cc\u666f\u8272*/\n"
-"    colo"
-                        "r: black;  /*\u5b57\u4f53\u989c\u8272*/\n"
+"    color: black;  /*\u5b57\u4f53\u989c\u8272*/\n"
 "}\n"
 "/*\u6309\u94ae\u6b63\u5e38\u72b6\u6001*/\n"
 "QPushButton {\n"
-"	border: 2px solid #1E90FF;\n"
+"	border: 2px solid #1a73e8;\n"
 "	border-radius: 5px;\n"
-"	background-color: #1E90FF;\n"
-"    color: black;\n"
+"	background-color: #1a73e8;\n"
+"    color: #ffffff;\n"
 "}\n"
 "QPushButton:hover {\n"
-"	background-color: #7082b6;\n"
-"	border: 2px solid #7082b6;\n"
+"	background-color: rgb(72, 143, 237);\n"
+"	border: 2px solid rgb(72, 143, 237);\n"
 "}\n"
 "QPushButton:pressed {\n"
-"	background-color: #546391;\n"
+"	background-color: #1a73e8;\n"
 "	/*border: 2px solid #ff79c6;*/\n"
 "}\n"
 "QLineEdit {\n"
 "	background-color: #6272a4;\n"
 "	height:25px;\n"
 "	border-radius: 5px;\n"
-"	border: 2px solid #6272a4;\n"
+"	border: 1px solid #909399;\n"
 "	padding-left: 10px;\n"
 "	selection-color: rgb(255, 255, 255);\n"
 "	selection-background-color: rgb(255, 121, 198);\n"
@@ -99,7 +102,7 @@ class Ui_MainWindow(object):
 "	highth:10px;\n"
 "}\n"
 "QLineEdit:hover {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
+"	border: 2px solid #909399;\n"
 "}\n"
 "QLineEdit:focus {\n"
 "	/*border: 2px solid #ff79c6;*/\n"
@@ -107,28 +110,28 @@ class Ui_MainWindow(object):
 "}\n"
 "QCheckBox\n"
 "{\n"
-"    color:black;/*\u5b57\u4f53\u989c\u8272*/\n"
+"    color:bl"
+                        "ack;/*\u5b57\u4f53\u989c\u8272*/\n"
 "    background-color:rgb(240,240,240);/*\u80cc\u666f\u8272*/\n"
 "}\n"
-"QComboBo"
-                        "x{\n"
+"QComboBox{\n"
 "	background-color: #6272a4;\n"
 "	border-radius: 5px;\n"
-"	border: 2px solid #6272a4;\n"
+"	border: 1px solid #909399;\n"
 "	padding: 5px;\n"
 "	padding-left: 10px;\n"
 "    color: black;\n"
 "	height:20px;\n"
 "}\n"
 "QComboBox:hover{\n"
-"	border: 2px solid #7284b9;\n"
+"	border: 2px solid #909399;\n"
 "}\n"
 "QComboBox::drop-down {\n"
 "	subcontrol-origin: padding;\n"
 "	subcontrol-position: top right;\n"
 "	width: 25px;\n"
-"	border-left-width: 3px;\n"
-"	border-left-color: #6272a4;\n"
+"	border-left-width: 1px;\n"
+"	border-left-color: #909399;\n"
 "	border-left-style: solid;\n"
 "	border-top-right-radius: 3px;\n"
 "	border-bottom-right-radius: 3px;\n"
@@ -147,12 +150,13 @@ class Ui_MainWindow(object):
 "QLabel\n"
 "{\n"
 "text-align:justify;\n"
-"color: black;/*\u5b57\u4f53\u989c\u8272*/\n"
+""
+                        "color: black;/*\u5b57\u4f53\u989c\u8272*/\n"
 "font-size:12pt;\n"
 "border:none;/*\u8fb9\u6846\u6837\u5f0f*/\n"
 "}\n"
-""
-                        "QTableWidget {\n"
+"\n"
+"QTableWidget {\n"
 "	background-color: transparent;\n"
 "	padding: 10px;\n"
 "	border-radius: 5px;\n"
@@ -166,8 +170,8 @@ class Ui_MainWindow(object):
 "	gridline-color: #9faeda;\n"
 "}\n"
 "QTableWidget::item:selected{\n"
-"	background-color: rgb(189, 147, 249);\n"
-"    color: #f8f8f2;\n"
+"	/*gridline-color: #409eff;*/\n"
+"	color:#409eff;\n"
 "}\n"
 "QHeaderView::section{\n"
 "	background-color: #6272a4;\n"
@@ -178,6 +182,19 @@ class Ui_MainWindow(object):
 "QTableWidget::horizontalHeader {\n"
 "	background-color: #6272a4;\n"
 "}\n"
+"\n"
+"/*QTableView \u5de6\u4e0a\u89d2\u6837\u5f0f*/\n"
+"QTableView QTableCornerButton::section {\n"
+"    color: white;/*\u6587\u5b57\u989c\u8272*/\n"
+"    background-color:rgb(240,240,240);/*\u80cc\u666f\u8272*/\n"
+"    border: 5px solid rgb(240,240,240);/*\u8fb9\u6846*/\n"
+"    border-radius:0px;/*\u8fb9\u6846"
+                        "\u5706\u89d2*/\n"
+"    border-color: rgb(240,240,240);/*\u8fb9\u6846\u989c\u8272*/\n"
+"    font: bold 11pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
+"    padding:12px 0 0 10px;/*\u5185\u8fb9\u8ddd*/\n"
+" }\n"
+"\n"
 "QTabBar::tab\n"
 "{\n"
 "    background-color: rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
@@ -186,8 +203,7 @@ class Ui_MainWindow(object):
 "    height:30px; /*\u9ad8\u5ea6*/\n"
 "    min-width:100px;/*\u5bbd\u5ea6*/\n"
 "    border-top-left-radius:4px;/*\u5de6\u4e0a\u8fb9\u6846\u5706\u89d2\u534a\u5f84\u50cf\u7d20*/\n"
-"    border-top-right-radius:4px;/*\u53f3\u4e0a\u8fb9"
-                        "\u6846\u5706\u89d2\u534a\u5f84\u50cf\u7d20*/\n"
+"    border-top-right-radius:4px;/*\u53f3\u4e0a\u8fb9\u6846\u5706\u89d2\u534a\u5f84\u50cf\u7d20*/\n"
 "    margin-right: 5px;/*\u53f3\u8fb9\u8ddd  \u53f3\u5916\u8fb9\u8ddd*/\n"
 "    padding-left:5px;/*\u5de6\u586b\u5145--\u5de6\u5185\u8fb9\u8ddd*/\n"
 "    padding-right:5px;/*\u53f3\u586b\u5145--\u53f3\u5185\u8fb9\u8ddd*/\n"
@@ -196,7 +212,8 @@ class Ui_MainWindow(object):
 "{\n"
 "    background-color: rgb(198,198,208); /*\u80cc\u666f\u8272*/\n"
 "}\n"
-"QTabBar::tab:selected\n"
+"QTabBar::tab:sel"
+                        "ected\n"
 "{\n"
 "    background-color: rgb(198,198,198); /*\u80cc\u666f\u8272*/\n"
 "}\n"
@@ -206,14 +223,14 @@ class Ui_MainWindow(object):
 "    selection-background-color:rgba(192,221,244);/*\u80cc\u666f\u8272*/;/*\u70b9\u51fb\u9009\u4e2d\u989c\u8272*/\n"
 "    border:1px solid #E0DDDC;/*\u8fb9\u6846\u4e3a1\u50cf\u7d20\uff0c\u7070\u8272*/\n"
 "    gridline-color:lightgray;/*\u8fd9\u4e2a\u662f\u8868\u683c\u7684\u683c\u5b50\u7ebf\u7684\u989c\u8272\uff0c\u4e3a\u4eae\u7070*/\n"
-"    font:bold 8pt;/*\u5b57\u4f53 \u5b57\u4f53\u5927\u5c0f"
-                        "*/\n"
+"    font:bold 8pt;/*\u5b57\u4f53 \u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
 "/*\u8868\u683c\u8868\u5934\u6837\u5f0f*/\n"
 "QHeaderView::section{\n"
 "    background-color:rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
 "    border:0px solid #E0DDDC;/*\u5148\u628a\u8fb9\u6846\u5bbd\u5ea6\u8bbe\u4e3a0\uff0c\u5373\u9690\u85cf\u6240\u6709\u8868\u5934\u8fb9\u6846*/\n"
-"    border-bottom:1px solid #E0DDDC;/*\u7136\u540e\u53ea\u663e\u793a\u4e0b\u8fb9\u6846\uff0c\u56e0\u4e3a\u4e0a\u8fb9\u6846\u548c\u5de6\u53f3\u8fb9\u6846\u662f\u6574\u4e2aTable\u7684\u8fb9\u6846\uff0c\u90fd\u663e\u793a\u4f1a\u67092px\u7684\u8fb9\u6846\u5bbd\u5ea6*/\n"
+"    border-bottom:1px solid #E0DDDC;/*\u7136\u540e\u53ea\u663e\u793a\u4e0b\u8fb9\u6846\uff0c\u56e0"
+                        "\u4e3a\u4e0a\u8fb9\u6846\u548c\u5de6\u53f3\u8fb9\u6846\u662f\u6574\u4e2aTable\u7684\u8fb9\u6846\uff0c\u90fd\u663e\u793a\u4f1a\u67092px\u7684\u8fb9\u6846\u5bbd\u5ea6*/\n"
 "    min-height:30px;;/*\u8868\u5934\u9ad8\u5ea6*/\n"
 "    font-size:12pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
@@ -225,8 +242,7 @@ class Ui_MainWindow(object):
 "    font-size:12pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
 "\n"
-"#label_table_name_7,#label_set_key"
-                        "_13{font-size:30px;}\n"
+"#label_table_name_7,#label_set_key_13{font-size:30px;}\n"
 "\n"
 "#pushButton_last{}\n"
 "\n"
@@ -242,7 +258,8 @@ class Ui_MainWindow(object):
 "}\n"
 "QRadioButton::indicator:checked {\n"
 "    background: 3px solid #bd93f9;\n"
-"	border: 3px solid #bd93f9;\n"
+"	border: "
+                        "3px solid #bd93f9;\n"
 "}\n"
 "\n"
 "\n"
@@ -256,27 +273,30 @@ class Ui_MainWindow(object):
 "	border-radius: 0px;\n"
 "}\n"
 "QScrollBar::handle:horizontal {\n"
-"    background: rgb(189, 147, 249);\n"
+"    /*background: rgb(189, 147, 249);*/\n"
+"	background: #909399;\n"
 "    min-width: 25px;\n"
 "	border-radius: 4px\n"
 "}\n"
 "QScrollBar::add-line:horizontal {\n"
 "    border: none;\n"
-"    background: rgb(55, 63, 77);\n"
+"    /*background: rgb(55, 63, 77);*/\n"
+"	background: #909399;\n"
 "    width: 20px;\n"
 "	border-top-right-radius: 4px;\n"
-"    border-"
-                        "bottom-right-radius: 4px;\n"
+"    border-bottom-right-radius: 4px;\n"
 "    subcontrol-position: right;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
 "QScrollBar::sub-line:horizontal {\n"
 "    border: none;\n"
-"    background: rgb(55, 63, 77);\n"
+"    /*background: rgb(55, 63, 77);*/\n"
+"	background: #909399;\n"
 "    width: 20px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-bottom-left-radius: 4px;\n"
-"    subcontrol-position: left;\n"
+"    su"
+                        "bcontrol-position: left;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
 "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
@@ -303,8 +323,7 @@ class Ui_MainWindow(object):
 " QScrollBar::add-line:vertical {\n"
 "     border: none;\n"
 "    /*background: rgb(55, 63, 77);*/\n"
-"	backg"
-                        "round: #909399;\n"
+"	background: #909399;\n"
 "     height: 20px;\n"
 "	border-bottom-left-radius: 4px;\n"
 "    border-bottom-right-radius: 4px;\n"
@@ -314,7 +333,8 @@ class Ui_MainWindow(object):
 " QScrollBar::sub-line:vertical {\n"
 "	border: none;\n"
 "    /*background: rgb(55, 63, 77);*/\n"
-"	background: #909399;\n"
+"	backg"
+                        "round: #909399;\n"
 "     height: 20px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-top-right-radius: 4px;\n"
@@ -339,20 +359,45 @@ class Ui_MainWindow(object):
 "	padding-bottom: 2px; }\n"
 "\n"
 "\n"
-"/*\u5bf9\u4e3b\u9875\u9762\u7684\u6309\u94ae\u91cd\u65b0\u8fdb"
-                        "\u884c\u8bbe\u8ba1*/\n"
+"/*\u5bf9\u4e3b\u9875\u9762\u7684\u6309\u94ae\u91cd\u65b0\u8fdb\u884c\u8bbe\u8ba1*/\n"
 "#main_page QPushButton {\n"
 "	border-radius: 5px;\n"
-"	border: 2px solid #6272a4;\n"
+"	border: 1px solid #909399;\n"
 "    color: black;\n"
+"	height:30px;\n"
 "}\n"
 "\n"
 "#main_page QPushButton:hover {\n"
-"	border: 2px solid rgb(64, 71, 88);\n"
+"	border: 2px solid #909399;\n"
 "}\n"
 "\n"
 "#main_page QPushButton:pressed {\n"
-"	background-color: #546391;\n"
+"	border: 2px solid #409eff;"
+                        "\n"
+"	background-color: #409eff;\n"
+"}\n"
+"\n"
+"/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
+"CheckBox */\n"
+"\n"
+"QCheckBox{\n"
+"	background-color:transparent;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    border: 1px solid #c0c4cc;\n"
+"	width: 15px;\n"
+"	height: 15px;\n"
+"	border-radius: 8px;\n"
+"    background: transparent;\n"
+"}\n"
+"QCheckBox::indicator:hover {\n"
+"    border: 1px solid #1a73e8;\n"
+"}\n"
+"QCheckBox::indicator:checked {\n"
+"    background: 1px solid #1a73e8;\n"
+"	border: 1px solid #1a73e8;	\n"
+"	background-image: url(:/icons/images/icons/cil-check-alt.png);\n"
 "}")
         self.verticalLayout_3 = QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setSpacing(0)
@@ -422,26 +467,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setSpacing(5)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
-        self.settingsTopBtn = QPushButton(self.rightButtons)
-        self.settingsTopBtn.setObjectName(u"settingsTopBtn")
-        self.settingsTopBtn.setMinimumSize(QSize(28, 28))
-        self.settingsTopBtn.setMaximumSize(QSize(28, 28))
-        self.settingsTopBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon = QIcon()
-        icon.addFile(u":/icons/images/icons/icon_settings.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.settingsTopBtn.setIcon(icon)
-        self.settingsTopBtn.setIconSize(QSize(20, 20))
-
-        self.horizontalLayout_12.addWidget(self.settingsTopBtn)
-
         self.minimizeAppBtn = QPushButton(self.rightButtons)
         self.minimizeAppBtn.setObjectName(u"minimizeAppBtn")
         self.minimizeAppBtn.setMinimumSize(QSize(28, 28))
         self.minimizeAppBtn.setMaximumSize(QSize(28, 28))
         self.minimizeAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/images/icons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimizeAppBtn.setIcon(icon1)
+        icon = QIcon()
+        icon.addFile(u":/icons/images/icons/icon_minimize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimizeAppBtn.setIcon(icon)
         self.minimizeAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_12.addWidget(self.minimizeAppBtn)
@@ -458,9 +491,9 @@ class Ui_MainWindow(object):
         font1.setStyleStrategy(QFont.PreferDefault)
         self.maximizeRestoreAppBtn.setFont(font1)
         self.maximizeRestoreAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.maximizeRestoreAppBtn.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.maximizeRestoreAppBtn.setIcon(icon1)
         self.maximizeRestoreAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_12.addWidget(self.maximizeRestoreAppBtn)
@@ -470,9 +503,9 @@ class Ui_MainWindow(object):
         self.closeAppBtn.setMinimumSize(QSize(28, 28))
         self.closeAppBtn.setMaximumSize(QSize(28, 28))
         self.closeAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.closeAppBtn.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.closeAppBtn.setIcon(icon2)
         self.closeAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_12.addWidget(self.closeAppBtn)
@@ -495,7 +528,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.stackedWidget_step.sizePolicy().hasHeightForWidth())
         self.stackedWidget_step.setSizePolicy(sizePolicy2)
         self.stackedWidget_step.setMinimumSize(QSize(1000, 30))
-        self.stackedWidget_step.setStyleSheet(u"background-color: #DCDCDC;")
+        self.stackedWidget_step.setStyleSheet(u"")
         self.page_step_1 = QWidget()
         self.page_step_1.setObjectName(u"page_step_1")
         self.layoutWidget_4 = QWidget(self.page_step_1)
@@ -1263,28 +1296,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
         self.checkBox_re = QCheckBox(self.layoutWidget)
         self.checkBox_re.setObjectName(u"checkBox_re")
-        self.checkBox_re.setStyleSheet(u"/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
-"CheckBox */\n"
-"\n"
-"QCheckBox{\n"
-"	background-color:transparent;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    border: 1px solid #c0c4cc;\n"
-"	width: 15px;\n"
-"	height: 15px;\n"
-"	border-radius: 8px;\n"
-"    background: transparent;\n"
-"}\n"
-"QCheckBox::indicator:hover {\n"
-"    border: 1px solid #1a73e8;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"    background: 1px solid #1a73e8;\n"
-"	border: 1px solid #1a73e8;	\n"
-"	background-image: url(:/icons/images/icons/cil-check-alt.png);\n"
-"}")
+        self.checkBox_re.setStyleSheet(u"")
 
         self.horizontalLayout_33.addWidget(self.checkBox_re)
 
@@ -1342,14 +1354,14 @@ class Ui_MainWindow(object):
         self.scrollArea_right_7.setWidgetResizable(True)
         self.scrollAreaWidgetContents_right_7 = QWidget()
         self.scrollAreaWidgetContents_right_7.setObjectName(u"scrollAreaWidgetContents_right_7")
-        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 90, 1000))
+        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 699, 1000))
         self.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 1000))
         self.pushButton_add_field_encrypt = QPushButton(self.scrollAreaWidgetContents_right_7)
         self.pushButton_add_field_encrypt.setObjectName(u"pushButton_add_field_encrypt")
-        self.pushButton_add_field_encrypt.setGeometry(QRect(530, 440, 100, 36))
+        self.pushButton_add_field_encrypt.setGeometry(QRect(560, 450, 100, 31))
         self.label_code_7 = QLabel(self.scrollAreaWidgetContents_right_7)
         self.label_code_7.setObjectName(u"label_code_7")
-        self.label_code_7.setGeometry(QRect(20, 370, 660, 51))
+        self.label_code_7.setGeometry(QRect(20, 360, 660, 41))
         self.layoutWidget1 = QWidget(self.scrollAreaWidgetContents_right_7)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
         self.layoutWidget1.setGeometry(QRect(20, 10, 311, 121))
@@ -1438,6 +1450,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_13.addWidget(self.listWidget_encrypt)
 
+        self.label_code_8 = QLabel(self.scrollAreaWidgetContents_right_7)
+        self.label_code_8.setObjectName(u"label_code_8")
+        self.label_code_8.setGeometry(QRect(20, 390, 660, 51))
+        self.label_set_key_15 = QLabel(self.scrollAreaWidgetContents_right_7)
+        self.label_set_key_15.setObjectName(u"label_set_key_15")
+        self.label_set_key_15.setGeometry(QRect(20, 350, 479, 31))
         self.scrollArea_right_7.setWidget(self.scrollAreaWidgetContents_right_7)
 
         self.verticalLayout_page2_7.addWidget(self.scrollArea_right_7)
@@ -1677,7 +1695,7 @@ class Ui_MainWindow(object):
 
         self.stackedWidget_3 = QStackedWidget(self.scrollAreaWidgetContents_6)
         self.stackedWidget_3.setObjectName(u"stackedWidget_3")
-        self.stackedWidget_3.setGeometry(QRect(280, 0, 711, 641))
+        self.stackedWidget_3.setGeometry(QRect(290, 0, 701, 641))
         self.page = QWidget()
         self.page.setObjectName(u"page")
         self.verticalLayoutWidget_22 = QWidget(self.page)
@@ -1711,7 +1729,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 98, 28))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 707, 547))
         self.label_view = QLabel(self.scrollAreaWidgetContents_4)
         self.label_view.setObjectName(u"label_view")
         self.label_view.setGeometry(QRect(30, 20, 221, 61))
@@ -1722,27 +1740,7 @@ class Ui_MainWindow(object):
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents_4)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(30, 150, 651, 271))
-        self.tableWidget.setStyleSheet(u"/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
-"CheckBox */\n"
-"QCheckBox{\n"
-"	background-color:transparent;\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    border: 3px solid rgb(44, 49, 58);\n"
-"	width: 15px;\n"
-"	height: 15px;\n"
-"	border-radius: 10px;\n"
-"    background: rgb(221, 221, 221);\n"
-"}\n"
-"QCheckBox::indicator:hover {\n"
-"    border: 3px solid #ff79c6;\n"
-"}\n"
-"QCheckBox::indicator:checked {\n"
-"    background: 3px solid #bd93f9;\n"
-"	border: 3px solid #bd93f9;	\n"
-"	background-image: url(:/icons/images/icons/cil-check-alt.png);\n"
-"}")
+        self.tableWidget.setStyleSheet(u"")
         self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_4)
 
         self.verticalLayout_6.addWidget(self.scrollArea_6)
@@ -1802,7 +1800,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem4 = QTableWidgetItem()
         self.tableWidget_DB.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget_DB.setObjectName(u"tableWidget_DB")
-        self.tableWidget_DB.setStyleSheet(u"QTableWidget {	\n"
+        self.tableWidget_DB.setStyleSheet(u"/*QTableWidget {	\n"
 "	background-color: transparent;\n"
 "\n"
 "	border-radius: 5px;\n"
@@ -1826,7 +1824,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QTableWidget::horizontalHeader {	\n"
 "	background-color: #6272a4;\n"
-"}")
+"}*/")
         self.tableWidget_DB.horizontalHeader().setCascadingSectionResizes(True)
         self.tableWidget_DB.horizontalHeader().setProperty("showSortIndicator", True)
         self.tableWidget_DB.horizontalHeader().setStretchLastSection(True)
@@ -1847,32 +1845,7 @@ class Ui_MainWindow(object):
         __qtablewidgetitem6 = QTableWidgetItem()
         self.tableWidget_View.setHorizontalHeaderItem(1, __qtablewidgetitem6)
         self.tableWidget_View.setObjectName(u"tableWidget_View")
-        self.tableWidget_View.setStyleSheet(u"QTableWidget {	\n"
-"	background-color: transparent;\n"
-"	padding: 10px;\n"
-"	border-radius: 5px;\n"
-"	gridline-color: #9faeda;\n"
-"    outline: none;\n"
-"}\n"
-"QTableWidget::item{\n"
-"	border-color: #9faeda;\n"
-"	padding-left: 5px;\n"
-"	padding-right: 5px;\n"
-"	gridline-color: #9faeda;\n"
-"}\n"
-"QTableWidget::item:selected{\n"
-"	background-color: rgb(189, 147, 249);\n"
-"    color: #f8f8f2;\n"
-"}\n"
-"QHeaderView::section{\n"
-"	background-color: transparent;\n"
-"	max-width: 30px;\n"
-"	border: none;\n"
-"	border-style: none;\n"
-"}\n"
-"QTableWidget::horizontalHeader {	\n"
-"	background-color: transparent;\n"
-"}")
+        self.tableWidget_View.setStyleSheet(u"")
         self.tableWidget_View.horizontalHeader().setCascadingSectionResizes(True)
         self.tableWidget_View.horizontalHeader().setProperty("showSortIndicator", True)
         self.tableWidget_View.horizontalHeader().setStretchLastSection(True)
@@ -1926,9 +1899,9 @@ class Ui_MainWindow(object):
         self.toolButton_file.setFont(font)
         self.toolButton_file.setCursor(QCursor(Qt.PointingHandCursor))
         self.toolButton_file.setStyleSheet(u"")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.toolButton_file.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.toolButton_file.setIcon(icon3)
 
         self.horizontalLayout_34.addWidget(self.toolButton_file)
 
@@ -2062,10 +2035,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.stackedWidget_step.setCurrentIndex(1)
-        self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_right.setCurrentIndex(0)
-        self.stackedWidget_3.setCurrentIndex(0)
-        self.tabWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget_right.setCurrentIndex(1)
+        self.stackedWidget_3.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2073,11 +2046,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"\u4ee3\u7801\u751f\u6210\u5668", None))
-        self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"PyDracula APP - Theme with colors based on Dracula for Python.", None))
-#if QT_CONFIG(tooltip)
-        self.settingsTopBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Settings", None))
-#endif // QT_CONFIG(tooltip)
-        self.settingsTopBtn.setText("")
+        self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"Flask_RESTfulAPI_Codegen_Application", None))
 #if QT_CONFIG(tooltip)
         self.minimizeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
 #endif // QT_CONFIG(tooltip)
@@ -2140,7 +2109,7 @@ class Ui_MainWindow(object):
         self.scrollArea_right_7.setAccessibleName("")
 #endif // QT_CONFIG(accessibility)
         self.pushButton_add_field_encrypt.setText(QCoreApplication.translate("MainWindow", u"\u6dfb\u52a0\u5b57\u6bb5", None))
-        self.label_code_7.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u5bc6\u5b58\u50a8\u5b57\u6bb5\u8bbe\u7f6e(\u4e3a\u6ee1\u8db3\u5b89\u5168\u5ba1\u8ba1\u9700\u8981,\u4e00\u4e9b\u654f\u611f\u5b57\u6bb5\u53ef\u80fd\u9700\u8981\u5728\u6570\u636e\u5e93\u4e2d\u52a0\u5bc6\u5b58\u50a8\uff0c\u5982\u7528\u6237\u8eab\u4efd\u8bc1\u53f7\uff0c\u624b\u673a\u53f7\u7b49)", None))
+        self.label_code_7.setText("")
         self.label_table_name_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">\u8fd9\u662f\u8868\u540d</span></p></body></html>", None))
         self.label_isDelete_7.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u662f\u5426\u903b\u8f91\u5220\u9664", None))
         self.comboBox_select_table_logicaldeletemark.setItemText(0, QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u903b\u8f91\u5220\u9664\u6807\u8bc6\u5b57\u6bb5", None))
@@ -2152,11 +2121,13 @@ class Ui_MainWindow(object):
         self.label_set_key_14.setText(QCoreApplication.translate("MainWindow", u"\u4e1a\u52a1\u4e3b\u952e\u751f\u6210\u89c4\u5219", None))
         self.comboBox_select_table_businesskeyrule.setItemText(0, QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u4e1a\u52a1\u4e3b\u952e\u751f\u6210\u89c4\u5219", None))
 
+        self.label_code_8.setText(QCoreApplication.translate("MainWindow", u"\u4e3a\u6ee1\u8db3\u5b89\u5168\u5ba1\u8ba1\u9700\u8981,\u4e00\u4e9b\u654f\u611f\u5b57\u6bb5\u53ef\u80fd\u9700\u8981\u5728\u6570\u636e\u5e93\u4e2d\u52a0\u5bc6\u5b58\u50a8\u3002\u5982\u7528\u6237\u8eab\u4efd\u8bc1\u53f7\uff0c\u624b\u673a\u53f7\u7b49", None))
+        self.label_set_key_15.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">\u52a0\u5bc6\u5b58\u50a8\u5b57\u6bb5\u8bbe\u7f6e</span></p></body></html>", None))
 
         __sortingEnabled = self.listWidget_table.isSortingEnabled()
         self.listWidget_table.setSortingEnabled(False)
         ___qlistwidgetitem = self.listWidget_table.item(0)
-        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u65b0\u5efa\u9879\u76ee", None));
+        ___qlistwidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u591a\u6dfb\u52a0\u51e0\u884c\u6d4b\u8bd5\u4e0b\u62c9\u6761", None));
         ___qlistwidgetitem1 = self.listWidget_table.item(1)
         ___qlistwidgetitem1.setText(QCoreApplication.translate("MainWindow", u"\u65b0\u5efa\u9879\u76ee", None));
         ___qlistwidgetitem2 = self.listWidget_table.item(2)
