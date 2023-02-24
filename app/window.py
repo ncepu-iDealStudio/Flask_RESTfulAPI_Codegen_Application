@@ -61,8 +61,8 @@ class MainWindow(QMainWindow):
 
 
         # STANDARD TITLE BAR 去除窗口标题栏
-        # self.setWindowFlags(Qt.FramelessWindowHint)    # 去除标题栏后不可改变大小
-        self.setWindowFlags(Qt.CustomizeWindowHint)      # 去除标题栏后可以改变大小
+        self.setWindowFlags(Qt.FramelessWindowHint)    # 去除标题栏后不可改变大小
+        # self.setWindowFlags(Qt.CustomizeWindowHint)      # 去除标题栏后可以改变大小
 
         # 加载软件版权信息配置
         app_configfile = "app/config/app_config.conf"
@@ -131,7 +131,7 @@ class MainWindow(QMainWindow):
 
         # MAXIMIZE/RESTORE
         # 最大化
-        self.ui.maximizeRestoreAppBtn.clicked.connect(lambda: self.maximize_restore())
+        # self.ui.maximizeRestoreAppBtn.clicked.connect(lambda: self.maximize_restore())
 
         # CLOSE APPLICATION
         # 关闭
