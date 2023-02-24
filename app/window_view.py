@@ -27,12 +27,17 @@ def window_init_for_view(self):
     self.add_view_button_group_init()
     self.view_number = -1
     self.add_view_button_group('select_all')
+    self.view_is_config = False
 
 def view_config_init(self):
     '''
     视图页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
     :return:
     '''
+
+    # 如果本次需要配置的数据库与上一次配置的相同，则跳过初始化操作，直接开始配置
+    if self.view_is_config:
+        return
 
     # 进页面前调整控件初始状态
     self.ui.stackedWidget_3.setCurrentIndex(0)
@@ -80,6 +85,8 @@ def view_config_init(self):
     # # 表对应的pushButton事件添加
     for pushButton in self.ui.listWidget_view.findChildren(QPushButton):
         pushButton.clicked.connect(partial(self.view_pushButton_clicked, pushButton.text()))
+
+    self.view_is_config = True
 
 def view_config(self):
     '''

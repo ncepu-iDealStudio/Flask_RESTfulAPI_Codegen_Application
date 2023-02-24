@@ -157,6 +157,10 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.stackedWidget_step.setCurrentIndex(0)
 
+        # 定义所有页面公有变量
+        self.last_db = ''  # 上一次使用的数据库名
+        self.this_db = ''  # 本次使用的数据库名
+
     def frame_init(self):
         '''
         框架初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
@@ -216,6 +220,8 @@ class MainWindow(QMainWindow):
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
+            self.last_db = self.this_db
+            self.view_is_config = False
             self.ui.stackedWidget.setCurrentIndex(0)
             self.ui.stackedWidget_step.setCurrentIndex(0)
             return
