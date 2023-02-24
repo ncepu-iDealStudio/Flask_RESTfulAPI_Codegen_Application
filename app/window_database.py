@@ -86,8 +86,6 @@ def db_config(self):
     password = password
 
     # 检查数据库链接
-
-    # 这里并不能正常检查数据库连接，该bug难以修复
     result_sql = SQLHandler.connect_sql_link(dialect, username, password, host, port, database)
     if result_sql['code']:
         # 填写配置文件
@@ -108,7 +106,8 @@ def db_config(self):
         with open(configfile, "w") as f:
             conf.write(f)
 
-        self.loadData.sig_load_table.emit()
+        self.this_db = database
+        self.loadData.sig_load_table.emit()  # 启用多线程加载数据
 
         self.dialog_fault.open()  # 阻塞当前窗口，避免用户违规操作
         return
@@ -161,8 +160,6 @@ def load_dbname_comp(self, result):
         QMessageBox.critical(self, '错误', '数据库连接失败!')
 
 
-
-# 数据处理结束
 def load_table_comp(self, tables_info):
     if tables_info.get('code'):
         self.sql_data['table'] = tables_info['data']['table']

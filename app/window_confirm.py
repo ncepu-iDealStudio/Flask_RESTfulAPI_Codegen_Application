@@ -43,7 +43,9 @@ def confirm_config_init(self):
         str2 = new_table[i]['logicaldeletemark']
         if new_table[i]['logicaldeletemark'] == '':
             str2 = "/"
-        str3 = self.sql_data['table'][i]['businesskeyname']
+
+        print()
+        str3 = new_table[i]['businesskeyname']
         if new_table[i]['businesskeyname'] == '':
             str3 = "/"
         str4 = new_table[i]['businesskeyrule']
