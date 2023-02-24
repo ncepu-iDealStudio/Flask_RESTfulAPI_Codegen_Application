@@ -10,7 +10,7 @@ Python接口项目代码生成器桌面应用程序
 基本接口已经生成，用户只需要在此基础上进行扩展增加和具体商业逻辑相关的接口即可；
 
 ## 软件架构
-![img.png](img.png)
+![img.png](image/img.png)
 1. 项目架构满足分层设计规范，分为实体层，控制器层和资源层(接口层)，
 2. 用户可以添加服务层，作为商业逻辑层；
 3. 资源层(接口层)，生成了满足restful风格规范的接口，发布后，可以直接让前端调用；
@@ -62,23 +62,23 @@ Python接口项目代码生成器桌面应用程序
 暂定
 ### 安装
 #### 运行安装程序
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img_1.png](image/img_1.png)
+![img_2.png](image/img_2.png)
 
 #### 选择安装路径
-![img_3.png](img_3.png)
+![img_3.png](image/img_3.png)
 #### 桌面快捷方式生成
-![img_4.png](img_4.png)
+![img_4.png](image/img_4.png)
 
 ## 使用说明
 
 ### 桌面UI说明
 #### 首页
 连接并选中要使用生成代码的数据库
-![img_5.png](img_5.png)
+![img_5.png](image/img_5.png)
 #### 实体表配置页
 选中并配置要生成代码的实体表
-![img_6.png](img_6.png)
+![img_6.png](image/img_6.png)
 字段类型为tinyint/int/bigint等，以下以数字型字段代替
 字段类型为varchar/text等，以下以字符串型字段代替
 
@@ -116,17 +116,17 @@ Python接口项目代码生成器桌面应用程序
 RSA公私钥请在config/security.conf中配置。
 #### 视图表配置页
 选中并配置要生成代码的视图表
-![img_7.png](img_7.png)
+![img_7.png](image/img_7.png)
 #### 数据库配置确认
 确认先前实体表和视图表的配置是否正确
-![img_8.png](img_8.png)
+![img_8.png](image/img_8.png)
 #### 要生成的目标基本接口项目配置
 配置将要生成的目标项目代码，并可以保存本次生成的配置信息，下次使用
-![img_9.png](img_9.png)
+![img_9.png](image/img_9.png)
 
 ## 参与贡献
 
-![img_10.png](img_10.png)
+![img_10.png](image/img_10.png)
 
 
 ## 产品特性
