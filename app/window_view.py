@@ -43,6 +43,8 @@ def view_config_init(self):
 
     self.view_field_number = 0  # 记录视图字段序号
 
+    self.viwe_selected_itme = None  # 被选中的数据库视图item
+
     # 清空按钮并添加新按钮
     del_view_button_list = self.ui.listWidget_view.findChildren(QPushButton)
     for del_widget in del_view_button_list:
@@ -204,6 +206,12 @@ def view_pushButton_clicked(self,button_text):
         self.ui.stackedWidget_3.setCurrentIndex(0)
     else:
         self.ui.stackedWidget_3.setCurrentIndex(1)
+
+        # 设置数据库表列表选中样式
+        if self.viwe_selected_itme:
+            self.viwe_selected_itme.setStyleSheet('background-color: #f4f4f5;border: 2px solid #f4f4f5;')
+        self.viwe_selected_itme = self.ui.centralwidget.findChild(QWidget, u"horizontalLayoutWidget_" + button_text)
+        self.viwe_selected_itme.setStyleSheet('background-color: #b3d8ff;border: 2px solid #b3d8ff;')
 
         # 匹配视图
 

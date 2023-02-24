@@ -111,7 +111,7 @@ def table_config_init(self):
     self.field_encryptable = []  # 可加密的字段组成一个列表，目前字段类型为字符允许加密
     self.encrypt_type_list = ['rsa', 'aes']  # 加密方式
 
-    selected_itme = None  # 数据库表被选中的item
+    self.table_selected_itme = None  # 数据库表被选中的item
 
     self.table_number = 0
 
@@ -272,6 +272,12 @@ def table_pushButton_clicked(self, button_text):
         self.ui.stackedWidget_right.setCurrentIndex(0)
     else:
         self.ui.stackedWidget_right.setCurrentIndex(1)
+
+        # 设置数据库表列表选中样式
+        if self.table_selected_itme:
+            self.table_selected_itme.setStyleSheet('background-color: #f4f4f5;border: 2px solid #f4f4f5;')
+        self.table_selected_itme = self.ui.centralwidget.findChild(QWidget, u"horizontalLayoutWidget_" + button_text)
+        self.table_selected_itme.setStyleSheet('background-color: #b3d8ff;border: 2px solid #b3d8ff;')
 
         # 保存上个表配置的数据
 
