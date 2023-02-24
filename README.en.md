@@ -61,7 +61,7 @@ The basic interface has been generated, and the user only needs to expand and ad
 ## Installation
 
 ### Download address
-暂定
+tentative
 ### Installation
 #### Run the installer
 ![img_1.png](image/img_1.png)
