@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2022-10-12 16:13:18
 '''
-this is function description
+数据库配置页面主要操作
 '''
 
 import configparser

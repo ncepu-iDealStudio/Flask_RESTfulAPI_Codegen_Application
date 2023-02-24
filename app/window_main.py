@@ -2,7 +2,7 @@
 # coding=utf-8
 # @project : Flask_RESTfulAPI_Codegen_Application
 # @author  : ChengKai
-# @file   : window.py
+# @file   : window_main.py
 # @ide    : PyCharm
 # @time   : 2022-10-06 09:17:22
 '''
@@ -29,19 +29,10 @@ from app.widgets import CustomGrip
 
 GLOBAL_STATE = False
 
+
 class MainWindow(QMainWindow):
 
     def __init__(self):
-        # # 从.ui文件中加载UI定义
-        # qfile_main = QFile('app/ui/MainWindow.ui')
-        # qfile_main.open(QFile.ReadOnly)
-        # qfile_main.close()
-        #
-        # # 从 UI 定义中动态 创建一个相应的窗口对象
-        # # 注意：里面的控件对象也成为窗口对象的属性了
-        # # 比如 self.ui.button , self.ui.textEdit
-        # self.ui = QUiLoader().load(qfile_main)
-
         QMainWindow.__init__(self)
 
         # 从.py文件加载UI定义
@@ -105,33 +96,9 @@ class MainWindow(QMainWindow):
 
         self.ui.titleRightInfo.mouseMoveEvent = moveWindow
 
-        # 使用 self.setWindowFlags(Qt.CustomizeWindowHint) 这里可以不用单独添加窗口伸缩的代码
-        # 窗口可伸缩
-        # # CUSTOM GRIPS
-        # self.left_grip = CustomGrip(self, Qt.LeftEdge, True)
-        # self.right_grip = CustomGrip(self, Qt.RightEdge, True)
-        # self.top_grip = CustomGrip(self, Qt.TopEdge, True)
-        # self.bottom_grip = CustomGrip(self, Qt.BottomEdge, True)
-
-        # # DROP SHADOW
-        # self.shadow = QGraphicsDropShadowEffect(self)
-        # self.shadow.setBlurRadius(17)
-        # self.shadow.setXOffset(0)
-        # self.shadow.setYOffset(0)
-        # self.shadow.setColor(QColor(0, 0, 0, 150))
-        # self.ui.centralwidget.setGraphicsEffect(self.shadow)
-
-        # # RESIZE WINDOW
-        # self.sizegrip = QSizeGrip(self.ui.frame_size_grip)
-        # self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
-
         # MINIMIZE
         # 最小化
         self.ui.minimizeAppBtn.clicked.connect(lambda: self.showMinimized())
-
-        # MAXIMIZE/RESTORE
-        # 最大化
-        # self.ui.maximizeRestoreAppBtn.clicked.connect(lambda: self.maximize_restore())
 
         # CLOSE APPLICATION
         # 关闭
@@ -198,7 +165,6 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_next.clicked.connect(self.button_next)
         self.ui.pushButton_last.clicked.connect(self.button_last)
 
-
     def button_next(self):
         '''
         下一步按钮点击函数
@@ -254,7 +220,6 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget_step.setCurrentIndex(0)
             return
 
-    # 当前页面的操作完成后，调用该函数进入下一步
     def next_step(self):
         '''
         通过判断当前所在页面，进行相应操作并跳转到对应页面
@@ -290,6 +255,10 @@ class MainWindow(QMainWindow):
             return
 
     def maximize_restore(self):
+        '''
+        最大化按钮点击函数
+        :return:
+        '''
         global GLOBAL_STATE
         status = GLOBAL_STATE
         if status == False:
@@ -317,6 +286,11 @@ class MainWindow(QMainWindow):
             # self.bottom_grip.show()
 
     def mousePressEvent(self, event):
+        '''
+        鼠标点击事件
+        :param event:
+        :return:
+        '''
         # SET DRAG POS WINDOW
         self.dragPos = event.globalPos()
 
@@ -332,18 +306,6 @@ class MainWindow(QMainWindow):
         self.load_thread.wait()
         del self.load_thread
         self.close()
-
-    # def resize_grips(self):
-    #     self.left_grip.setGeometry(0, 10, 10, self.height())
-    #     self.right_grip.setGeometry(self.width() - 10, 10, 10, self.height())
-    #     self.top_grip.setGeometry(0, 0, self.width(), 10)
-    #     self.bottom_grip.setGeometry(0, self.height() - 10, self.width(), 10)
-
-    # RESIZE EVENTS
-    # ///////////////////////////////////////////////////////////////
-    # def resizeEvent(self, event):
-    #     # Update Size Grips
-    #     self.resize_grips()
 
 
 def start():

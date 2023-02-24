@@ -6,7 +6,7 @@
 # @ide    : PyCharm
 # @time   : 2022-10-12 16:14:53
 '''
-this is function description
+
 '''
 
 from PySide6.QtCore import Qt

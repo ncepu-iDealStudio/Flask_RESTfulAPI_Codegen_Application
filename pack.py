@@ -15,16 +15,14 @@ import os
 
 def nuitaka_pack():
     # nuitka打包
-<<<<<<< HEAD
-<<<<<<< HEAD
-    cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
-=======
-    cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-disable-console --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
->>>>>>> 1e4cc9842fb4b747de3fb7d4d0ae9ab44cbf9ffb
-=======
-    cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
->>>>>>> 3fafd1d9eae4804bfa93342a5080a3546817eba3
+
+    # 参数详情见：https://blog.csdn.net/qq_38830593/article/details/123092470
+    # 去除控制台：--windows-disable-console
+    # 目标程序包含的该目录--include-plugin-directory=app
+    cmd = 'python -m nuitka --windows-disable-console --include-plugin-directory=app,config --follow-imports --standalone --show-progress --enable-plugin=pyside6 --include-plugin-directory=app --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
     os.system(cmd)
+    # 目前无法正确打包资源文件，打包后需要手动复制到相应目录
+
 
 
 def cx_Freeze_pack():
