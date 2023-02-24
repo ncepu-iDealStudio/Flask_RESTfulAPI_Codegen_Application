@@ -583,50 +583,6 @@ background-color:transparent;</string>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="maximizeRestoreAppBtn">
-            <property name="minimumSize">
-             <size>
-              <width>28</width>
-              <height>28</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>28</width>
-              <height>28</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>12</pointsize>
-              <italic>false</italic>
-              <bold>false</bold>
-              <stylestrategy>PreferDefault</stylestrategy>
-             </font>
-            </property>
-            <property name="cursor">
-             <cursorShape>PointingHandCursor</cursorShape>
-            </property>
-            <property name="toolTip">
-             <string>Maximize</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="resources.qrc">
-              <normaloff>:/icons/images/icons/icon_maximize.png</normaloff>:/icons/images/icons/icon_maximize.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>20</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item>
            <widget class="QPushButton" name="closeAppBtn">
             <property name="minimumSize">
              <size>

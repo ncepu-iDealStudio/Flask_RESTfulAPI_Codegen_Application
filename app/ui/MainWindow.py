@@ -479,33 +479,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_12.addWidget(self.minimizeAppBtn)
 
-        self.maximizeRestoreAppBtn = QPushButton(self.rightButtons)
-        self.maximizeRestoreAppBtn.setObjectName(u"maximizeRestoreAppBtn")
-        self.maximizeRestoreAppBtn.setMinimumSize(QSize(28, 28))
-        self.maximizeRestoreAppBtn.setMaximumSize(QSize(28, 28))
-        font1 = QFont()
-        font1.setFamilies([u"Segoe UI"])
-        font1.setPointSize(12)
-        font1.setBold(False)
-        font1.setItalic(False)
-        font1.setStyleStrategy(QFont.PreferDefault)
-        self.maximizeRestoreAppBtn.setFont(font1)
-        self.maximizeRestoreAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon1 = QIcon()
-        icon1.addFile(u":/icons/images/icons/icon_maximize.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.maximizeRestoreAppBtn.setIcon(icon1)
-        self.maximizeRestoreAppBtn.setIconSize(QSize(20, 20))
-
-        self.horizontalLayout_12.addWidget(self.maximizeRestoreAppBtn)
-
         self.closeAppBtn = QPushButton(self.rightButtons)
         self.closeAppBtn.setObjectName(u"closeAppBtn")
         self.closeAppBtn.setMinimumSize(QSize(28, 28))
         self.closeAppBtn.setMaximumSize(QSize(28, 28))
         self.closeAppBtn.setCursor(QCursor(Qt.PointingHandCursor))
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.closeAppBtn.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/images/icons/icon_close.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.closeAppBtn.setIcon(icon1)
         self.closeAppBtn.setIconSize(QSize(20, 20))
 
         self.horizontalLayout_12.addWidget(self.closeAppBtn)
@@ -1120,18 +1101,18 @@ class Ui_MainWindow(object):
         self.label_db_4 = QLabel(self.scrollAreaWidgetContents_1)
         self.label_db_4.setObjectName(u"label_db_4")
         self.label_db_4.setGeometry(QRect(60, -10, 141, 41))
-        font2 = QFont()
-        font2.setFamilies([u"Microsoft YaHei"])
-        font2.setPointSize(12)
-        font2.setBold(True)
-        self.label_db_4.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Microsoft YaHei"])
+        font1.setPointSize(12)
+        font1.setBold(True)
+        self.label_db_4.setFont(font1)
         self.label_9 = QLabel(self.scrollAreaWidgetContents_1)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setGeometry(QRect(60, 20, 931, 51))
-        font3 = QFont()
-        font3.setFamilies([u"Microsoft YaHei"])
-        font3.setBold(True)
-        self.label_9.setFont(font3)
+        font2 = QFont()
+        font2.setFamilies([u"Microsoft YaHei"])
+        font2.setBold(True)
+        self.label_9.setFont(font2)
         self.label_9.setStyleSheet(u"font-size:20px;")
         self.label_9.setFrameShape(QFrame.NoFrame)
         self.label_9.setFrameShadow(QFrame.Plain)
@@ -1150,7 +1131,7 @@ class Ui_MainWindow(object):
         self.label_db_type_5.setObjectName(u"label_db_type_5")
         sizePolicy3.setHeightForWidth(self.label_db_type_5.sizePolicy().hasHeightForWidth())
         self.label_db_type_5.setSizePolicy(sizePolicy3)
-        self.label_db_type_5.setFont(font2)
+        self.label_db_type_5.setFont(font1)
 
         self.horizontalLayout_27.addWidget(self.label_db_type_5)
 
@@ -1174,7 +1155,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
         self.label_db_host_5 = QLabel(self.layoutWidget)
         self.label_db_host_5.setObjectName(u"label_db_host_5")
-        self.label_db_host_5.setFont(font2)
+        self.label_db_host_5.setFont(font1)
         self.label_db_host_5.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
 
         self.horizontalLayout_28.addWidget(self.label_db_host_5)
@@ -1199,7 +1180,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
         self.label_db_port_5 = QLabel(self.layoutWidget)
         self.label_db_port_5.setObjectName(u"label_db_port_5")
-        self.label_db_port_5.setFont(font2)
+        self.label_db_port_5.setFont(font1)
         self.label_db_port_5.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
 
         self.horizontalLayout_29.addWidget(self.label_db_port_5)
@@ -1219,7 +1200,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
         self.label_db_user_5 = QLabel(self.layoutWidget)
         self.label_db_user_5.setObjectName(u"label_db_user_5")
-        self.label_db_user_5.setFont(font2)
+        self.label_db_user_5.setFont(font1)
 
         self.horizontalLayout_30.addWidget(self.label_db_user_5)
 
@@ -1238,7 +1219,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
         self.label_db_password_5 = QLabel(self.layoutWidget)
         self.label_db_password_5.setObjectName(u"label_db_password_5")
-        self.label_db_password_5.setFont(font2)
+        self.label_db_password_5.setFont(font1)
 
         self.horizontalLayout_31.addWidget(self.label_db_password_5)
 
@@ -1260,7 +1241,7 @@ class Ui_MainWindow(object):
         self.label_tables_5.setObjectName(u"label_tables_5")
         sizePolicy3.setHeightForWidth(self.label_tables_5.sizePolicy().hasHeightForWidth())
         self.label_tables_5.setSizePolicy(sizePolicy3)
-        self.label_tables_5.setFont(font2)
+        self.label_tables_5.setFont(font1)
 
         self.horizontalLayout_32.addWidget(self.label_tables_5)
 
@@ -1331,7 +1312,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_page1_7.setContentsMargins(0, 0, 0, 0)
         self.label_15 = QLabel(self.verticalLayoutWidget_20)
         self.label_15.setObjectName(u"label_15")
-        self.label_15.setFont(font2)
+        self.label_15.setFont(font1)
 
         self.verticalLayout_page1_7.addWidget(self.label_15)
 
@@ -1706,7 +1687,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_page1_8.setContentsMargins(0, 0, 0, 0)
         self.label_12 = QLabel(self.verticalLayoutWidget_22)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setFont(font2)
+        self.label_12.setFont(font1)
 
         self.verticalLayout_page1_8.addWidget(self.label_12)
 
@@ -1733,7 +1714,7 @@ class Ui_MainWindow(object):
         self.label_view = QLabel(self.scrollAreaWidgetContents_4)
         self.label_view.setObjectName(u"label_view")
         self.label_view.setGeometry(QRect(30, 20, 221, 61))
-        self.label_view.setFont(font2)
+        self.label_view.setFont(font1)
         self.label_14 = QLabel(self.scrollAreaWidgetContents_4)
         self.label_14.setObjectName(u"label_14")
         self.label_14.setGeometry(QRect(30, 90, 191, 31))
@@ -1871,7 +1852,7 @@ class Ui_MainWindow(object):
         self.label_11 = QLabel(self.scrollAreaWidgetContents_9)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setGeometry(QRect(70, 0, 431, 71))
-        self.label_11.setFont(font2)
+        self.label_11.setFont(font1)
         self.verticalLayoutWidget_4 = QWidget(self.scrollAreaWidgetContents_9)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
         self.verticalLayoutWidget_4.setGeometry(QRect(120, 110, 751, 321))
@@ -1882,7 +1863,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
         self.label_5 = QLabel(self.verticalLayoutWidget_4)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setFont(font2)
+        self.label_5.setFont(font1)
 
         self.horizontalLayout_34.addWidget(self.label_5)
 
@@ -1899,9 +1880,9 @@ class Ui_MainWindow(object):
         self.toolButton_file.setFont(font)
         self.toolButton_file.setCursor(QCursor(Qt.PointingHandCursor))
         self.toolButton_file.setStyleSheet(u"")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.toolButton_file.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/images/icons/cil-folder-open.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.toolButton_file.setIcon(icon2)
 
         self.horizontalLayout_34.addWidget(self.toolButton_file)
 
@@ -1915,7 +1896,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
         self.label_8 = QLabel(self.verticalLayoutWidget_4)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setFont(font2)
+        self.label_8.setFont(font1)
 
         self.horizontalLayout_35.addWidget(self.label_8)
 
@@ -1935,7 +1916,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
         self.label_10 = QLabel(self.verticalLayoutWidget_4)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setFont(font2)
+        self.label_10.setFont(font1)
 
         self.horizontalLayout_36.addWidget(self.label_10)
 
@@ -2000,11 +1981,11 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        font4 = QFont()
-        font4.setFamilies([u"Segoe UI"])
-        font4.setBold(False)
-        font4.setItalic(False)
-        self.creditsLabel.setFont(font4)
+        font3 = QFont()
+        font3.setFamilies([u"Segoe UI"])
+        font3.setBold(False)
+        font3.setItalic(False)
+        self.creditsLabel.setFont(font3)
         self.creditsLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_8.addWidget(self.creditsLabel)
@@ -2051,10 +2032,6 @@ class Ui_MainWindow(object):
         self.minimizeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
 #endif // QT_CONFIG(tooltip)
         self.minimizeAppBtn.setText("")
-#if QT_CONFIG(tooltip)
-        self.maximizeRestoreAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Maximize", None))
-#endif // QT_CONFIG(tooltip)
-        self.maximizeRestoreAppBtn.setText("")
 #if QT_CONFIG(tooltip)
         self.closeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close", None))
 #endif // QT_CONFIG(tooltip)
