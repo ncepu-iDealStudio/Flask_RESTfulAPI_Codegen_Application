@@ -32,9 +32,17 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.centralwidget.setStyleSheet(u"/*\u4e3b\u9875\u9762stackedWidget\u4ee5\u53ca\u5b50\u63a7\u4ef6\u80cc\u666f\u8272*/\n"
+        self.centralwidget.setStyleSheet(u"/*\u767d\u8272*/\n"
+"/*\u6574\u4f53\u80cc\u666f\u8272*/\n"
+"QWidget\n"
+"{\n"
+"    background-color: #e4e7ed; /*\u80cc\u666f\u8272*/\n"
+"    color: black;  /*\u5b57\u4f53\u989c\u8272*/\n"
+"}\n"
+"\n"
+"/*\u4e3b\u9875\u9762stackedWidget\u4ee5\u53ca\u5b50\u63a7\u4ef6\u80cc\u666f\u8272*/\n"
 "#stackedWidget *{\n"
-"	background-color: #f4f4f5;\n"
+"	background-color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
 "/*\u6b65\u9aa4\u6761\u80cc\u666f*/\n"
@@ -42,6 +50,11 @@ class Ui_MainWindow(object):
 "	background-color: #e4e7ed;\n"
 "}\n"
 "\n"
+"/*\u7edf\u4e00\u8bbe\u7f6e\u5b57\u4f53*/\n"
+"*{\n"
+"	/*font-family:SimSun;*/\n"
+"	font: 10pt \"Microsoft YaHei UI\";\n"
+"}\n"
 "\n"
 "/*top*/\n"
 "#contentTopBg{\n"
@@ -63,18 +76,11 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "/* Top Buttons */\n"
-"#rightButtons .QPushButton { background-color: rgba(255, 255, 255, 0); border: none;  border-radius: 5px; }\n"
+"#rightButtons .QPushButton { background-color: rgba(255, 255, 2"
+                        "55, 0); border: none;  border-radius: 5px; }\n"
 "#rightButtons .QPushButton:hover { background-color: #bd93f9; border-style: solid; border-radius: 4px; }\n"
 "#rightButtons .QPushButton:pressed { background-color: #ff79c6; border-style: solid; border-radius: 4px; }\n"
 "\n"
-"/*\u7070\u8272\u767d\u8272*/\n"
-"/*\u6574\u4f53\u80cc\u666f\u8272"
-                        "*/\n"
-"QWidget\n"
-"{\n"
-"    background-color: rgb(255, 255, 255); /*\u80cc\u666f\u8272*/\n"
-"    color: black;  /*\u5b57\u4f53\u989c\u8272*/\n"
-"}\n"
 "/*\u6309\u94ae\u6b63\u5e38\u72b6\u6001*/\n"
 "QPushButton {\n"
 "	border: 2px solid #1a73e8;\n"
@@ -104,16 +110,12 @@ class Ui_MainWindow(object):
 "QLineEdit:hover {\n"
 "	border: 2px solid #909399;\n"
 "}\n"
-"QLineEdit:focus {\n"
+"QLineE"
+                        "dit:focus {\n"
 "	/*border: 2px solid #ff79c6;*/\n"
 "	border: 2px solid #409eff;\n"
 "}\n"
-"QCheckBox\n"
-"{\n"
-"    color:bl"
-                        "ack;/*\u5b57\u4f53\u989c\u8272*/\n"
-"    background-color:rgb(240,240,240);/*\u80cc\u666f\u8272*/\n"
-"}\n"
+"\n"
 "QComboBox{\n"
 "	background-color: #6272a4;\n"
 "	border-radius: 5px;\n"
@@ -150,8 +152,8 @@ class Ui_MainWindow(object):
 "QLabel\n"
 "{\n"
 "text-align:justify;\n"
-""
-                        "color: black;/*\u5b57\u4f53\u989c\u8272*/\n"
+"color: blac"
+                        "k;/*\u5b57\u4f53\u989c\u8272*/\n"
 "font-size:12pt;\n"
 "border:none;/*\u8fb9\u6846\u6837\u5f0f*/\n"
 "}\n"
@@ -188,8 +190,8 @@ class Ui_MainWindow(object):
 "    color: white;/*\u6587\u5b57\u989c\u8272*/\n"
 "    background-color:rgb(240,240,240);/*\u80cc\u666f\u8272*/\n"
 "    border: 5px solid rgb(240,240,240);/*\u8fb9\u6846*/\n"
-"    border-radius:0px;/*\u8fb9\u6846"
-                        "\u5706\u89d2*/\n"
+"    border-radius:0px;/*\u8fb9\u6846\u5706\u89d2"
+                        "*/\n"
 "    border-color: rgb(240,240,240);/*\u8fb9\u6846\u989c\u8272*/\n"
 "    font: bold 11pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "    padding:12px 0 0 10px;/*\u5185\u8fb9\u8ddd*/\n"
@@ -212,10 +214,10 @@ class Ui_MainWindow(object):
 "{\n"
 "    background-color: rgb(198,198,208); /*\u80cc\u666f\u8272*/\n"
 "}\n"
-"QTabBar::tab:sel"
-                        "ected\n"
+"QTabBar::tab:selected\n"
 "{\n"
-"    background-color: rgb(198,198,198); /*\u80cc\u666f\u8272*/\n"
+""
+                        "    background-color: rgb(198,198,198); /*\u80cc\u666f\u8272*/\n"
 "}\n"
 "QTableView,QTableWidget{\n"
 "    background-color: rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
@@ -229,8 +231,8 @@ class Ui_MainWindow(object):
 "QHeaderView::section{\n"
 "    background-color:rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
 "    border:0px solid #E0DDDC;/*\u5148\u628a\u8fb9\u6846\u5bbd\u5ea6\u8bbe\u4e3a0\uff0c\u5373\u9690\u85cf\u6240\u6709\u8868\u5934\u8fb9\u6846*/\n"
-"    border-bottom:1px solid #E0DDDC;/*\u7136\u540e\u53ea\u663e\u793a\u4e0b\u8fb9\u6846\uff0c\u56e0"
-                        "\u4e3a\u4e0a\u8fb9\u6846\u548c\u5de6\u53f3\u8fb9\u6846\u662f\u6574\u4e2aTable\u7684\u8fb9\u6846\uff0c\u90fd\u663e\u793a\u4f1a\u67092px\u7684\u8fb9\u6846\u5bbd\u5ea6*/\n"
+"    border-bottom:1px solid #E0DDDC;/*\u7136\u540e\u53ea\u663e\u793a\u4e0b\u8fb9\u6846\uff0c\u56e0\u4e3a\u4e0a\u8fb9"
+                        "\u6846\u548c\u5de6\u53f3\u8fb9\u6846\u662f\u6574\u4e2aTable\u7684\u8fb9\u6846\uff0c\u90fd\u663e\u793a\u4f1a\u67092px\u7684\u8fb9\u6846\u5bbd\u5ea6*/\n"
 "    min-height:30px;;/*\u8868\u5934\u9ad8\u5ea6*/\n"
 "    font-size:12pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
@@ -242,7 +244,7 @@ class Ui_MainWindow(object):
 "    font-size:12pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
 "\n"
-"#label_table_name_7,#label_set_key_13{font-size:30px;}\n"
+"/*#label_table_name_7,#label_set_key_13{font-size:12px;}*/\n"
 "\n"
 "#pushButton_last{}\n"
 "\n"
@@ -258,8 +260,8 @@ class Ui_MainWindow(object):
 "}\n"
 "QRadioButton::indicator:checked {\n"
 "    background: 3px solid #bd93f9;\n"
-"	border: "
-                        "3px solid #bd93f9;\n"
+"	border: 3px solid #bd9"
+                        "3f9;\n"
 "}\n"
 "\n"
 "\n"
@@ -295,8 +297,8 @@ class Ui_MainWindow(object):
 "    width: 20px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-bottom-left-radius: 4px;\n"
-"    su"
-                        "bcontrol-position: left;\n"
+"    subcontrol-posit"
+                        "ion: left;\n"
 "    subcontrol-origin: margin;\n"
 "}\n"
 "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
@@ -333,8 +335,8 @@ class Ui_MainWindow(object):
 " QScrollBar::sub-line:vertical {\n"
 "	border: none;\n"
 "    /*background: rgb(55, 63, 77);*/\n"
-"	backg"
-                        "round: #909399;\n"
+"	background: #909399"
+                        ";\n"
 "     height: 20px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-top-right-radius: 4px;\n"
@@ -372,9 +374,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#main_page QPushButton:pressed {\n"
-"	border: 2px solid #409eff;"
-                        "\n"
-"	background-color: #409eff;\n"
+"	border: 2px solid #409eff;\n"
+"	backgrou"
+                        "nd-color: #409eff;\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
@@ -386,8 +388,8 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator {\n"
 "    border: 1px solid #c0c4cc;\n"
-"	width: 15px;\n"
-"	height: 15px;\n"
+"	width: 12px;\n"
+"	height: 12px;\n"
 "	border-radius: 8px;\n"
 "    background: transparent;\n"
 "}\n"
@@ -446,7 +448,7 @@ class Ui_MainWindow(object):
         self.titleRightInfo.setSizePolicy(sizePolicy1)
         self.titleRightInfo.setMaximumSize(QSize(16777215, 45))
         font = QFont()
-        font.setFamilies([u"Segoe UI"])
+        font.setFamilies([u"Microsoft YaHei UI"])
         font.setPointSize(12)
         font.setBold(False)
         font.setItalic(False)
@@ -1101,18 +1103,15 @@ class Ui_MainWindow(object):
         self.label_db_4 = QLabel(self.scrollAreaWidgetContents_1)
         self.label_db_4.setObjectName(u"label_db_4")
         self.label_db_4.setGeometry(QRect(60, -10, 141, 41))
-        font1 = QFont()
-        font1.setFamilies([u"Microsoft YaHei"])
-        font1.setPointSize(12)
-        font1.setBold(True)
-        self.label_db_4.setFont(font1)
+        self.label_db_4.setFont(font)
         self.label_9 = QLabel(self.scrollAreaWidgetContents_1)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setGeometry(QRect(60, 20, 931, 51))
-        font2 = QFont()
-        font2.setFamilies([u"Microsoft YaHei"])
-        font2.setBold(True)
-        self.label_9.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Microsoft YaHei UI"])
+        font1.setBold(False)
+        font1.setItalic(False)
+        self.label_9.setFont(font1)
         self.label_9.setStyleSheet(u"font-size:20px;")
         self.label_9.setFrameShape(QFrame.NoFrame)
         self.label_9.setFrameShadow(QFrame.Plain)
@@ -1131,7 +1130,7 @@ class Ui_MainWindow(object):
         self.label_db_type_5.setObjectName(u"label_db_type_5")
         sizePolicy3.setHeightForWidth(self.label_db_type_5.sizePolicy().hasHeightForWidth())
         self.label_db_type_5.setSizePolicy(sizePolicy3)
-        self.label_db_type_5.setFont(font1)
+        self.label_db_type_5.setFont(font)
 
         self.horizontalLayout_27.addWidget(self.label_db_type_5)
 
@@ -1155,7 +1154,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_28.setObjectName(u"horizontalLayout_28")
         self.label_db_host_5 = QLabel(self.layoutWidget)
         self.label_db_host_5.setObjectName(u"label_db_host_5")
-        self.label_db_host_5.setFont(font1)
+        self.label_db_host_5.setFont(font)
         self.label_db_host_5.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
 
         self.horizontalLayout_28.addWidget(self.label_db_host_5)
@@ -1180,7 +1179,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
         self.label_db_port_5 = QLabel(self.layoutWidget)
         self.label_db_port_5.setObjectName(u"label_db_port_5")
-        self.label_db_port_5.setFont(font1)
+        self.label_db_port_5.setFont(font)
         self.label_db_port_5.setAlignment(Qt.AlignJustify|Qt.AlignVCenter)
 
         self.horizontalLayout_29.addWidget(self.label_db_port_5)
@@ -1200,7 +1199,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
         self.label_db_user_5 = QLabel(self.layoutWidget)
         self.label_db_user_5.setObjectName(u"label_db_user_5")
-        self.label_db_user_5.setFont(font1)
+        self.label_db_user_5.setFont(font)
 
         self.horizontalLayout_30.addWidget(self.label_db_user_5)
 
@@ -1219,7 +1218,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
         self.label_db_password_5 = QLabel(self.layoutWidget)
         self.label_db_password_5.setObjectName(u"label_db_password_5")
-        self.label_db_password_5.setFont(font1)
+        self.label_db_password_5.setFont(font)
 
         self.horizontalLayout_31.addWidget(self.label_db_password_5)
 
@@ -1241,7 +1240,7 @@ class Ui_MainWindow(object):
         self.label_tables_5.setObjectName(u"label_tables_5")
         sizePolicy3.setHeightForWidth(self.label_tables_5.sizePolicy().hasHeightForWidth())
         self.label_tables_5.setSizePolicy(sizePolicy3)
-        self.label_tables_5.setFont(font1)
+        self.label_tables_5.setFont(font)
 
         self.horizontalLayout_32.addWidget(self.label_tables_5)
 
@@ -1301,7 +1300,7 @@ class Ui_MainWindow(object):
         self.label_2.setGeometry(QRect(390, 70, 171, 20))
         self.stackedWidget_right = QStackedWidget(self.scrollAreaWidgetContents_2)
         self.stackedWidget_right.setObjectName(u"stackedWidget_right")
-        self.stackedWidget_right.setGeometry(QRect(280, 0, 711, 641))
+        self.stackedWidget_right.setGeometry(QRect(280, 0, 711, 551))
         self.page_23 = QWidget()
         self.page_23.setObjectName(u"page_23")
         self.verticalLayoutWidget_20 = QWidget(self.page_23)
@@ -1312,7 +1311,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_page1_7.setContentsMargins(0, 0, 0, 0)
         self.label_15 = QLabel(self.verticalLayoutWidget_20)
         self.label_15.setObjectName(u"label_15")
-        self.label_15.setFont(font1)
+        self.label_15.setFont(font)
+        self.label_15.setStyleSheet(u"")
 
         self.verticalLayout_page1_7.addWidget(self.label_15)
 
@@ -1335,17 +1335,17 @@ class Ui_MainWindow(object):
         self.scrollArea_right_7.setWidgetResizable(True)
         self.scrollAreaWidgetContents_right_7 = QWidget()
         self.scrollAreaWidgetContents_right_7.setObjectName(u"scrollAreaWidgetContents_right_7")
-        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 699, 1000))
-        self.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 1000))
+        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 707, 547))
+        self.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 0))
         self.pushButton_add_field_encrypt = QPushButton(self.scrollAreaWidgetContents_right_7)
         self.pushButton_add_field_encrypt.setObjectName(u"pushButton_add_field_encrypt")
-        self.pushButton_add_field_encrypt.setGeometry(QRect(560, 450, 100, 31))
+        self.pushButton_add_field_encrypt.setGeometry(QRect(580, 290, 100, 31))
         self.label_code_7 = QLabel(self.scrollAreaWidgetContents_right_7)
         self.label_code_7.setObjectName(u"label_code_7")
         self.label_code_7.setGeometry(QRect(20, 360, 660, 41))
         self.layoutWidget1 = QWidget(self.scrollAreaWidgetContents_right_7)
         self.layoutWidget1.setObjectName(u"layoutWidget1")
-        self.layoutWidget1.setGeometry(QRect(20, 10, 311, 121))
+        self.layoutWidget1.setGeometry(QRect(20, 10, 311, 91))
         self.verticalLayout_9 = QVBoxLayout(self.layoutWidget1)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
@@ -1358,6 +1358,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.label_isDelete_7 = QLabel(self.layoutWidget1)
         self.label_isDelete_7.setObjectName(u"label_isDelete_7")
+        self.label_isDelete_7.setFont(font)
 
         self.verticalLayout_8.addWidget(self.label_isDelete_7)
 
@@ -1372,14 +1373,14 @@ class Ui_MainWindow(object):
 
         self.layoutWidget2 = QWidget(self.scrollAreaWidgetContents_right_7)
         self.layoutWidget2.setObjectName(u"layoutWidget2")
-        self.layoutWidget2.setGeometry(QRect(20, 160, 481, 121))
+        self.layoutWidget2.setGeometry(QRect(20, 120, 481, 92))
         self.verticalLayout_10 = QVBoxLayout(self.layoutWidget2)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.label_set_key_13 = QLabel(self.layoutWidget2)
-        self.label_set_key_13.setObjectName(u"label_set_key_13")
+        self.label_table_name_8 = QLabel(self.layoutWidget2)
+        self.label_table_name_8.setObjectName(u"label_table_name_8")
 
-        self.verticalLayout_10.addWidget(self.label_set_key_13)
+        self.verticalLayout_10.addWidget(self.label_table_name_8)
 
         self.horizontalLayout_5 = QHBoxLayout()
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
@@ -1420,7 +1421,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayoutWidget_2 = QWidget(self.scrollAreaWidgetContents_right_7)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(9, 520, 671, 451))
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 340, 671, 201))
         self.verticalLayout_13 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -1433,10 +1434,11 @@ class Ui_MainWindow(object):
 
         self.label_code_8 = QLabel(self.scrollAreaWidgetContents_right_7)
         self.label_code_8.setObjectName(u"label_code_8")
-        self.label_code_8.setGeometry(QRect(20, 390, 660, 51))
+        self.label_code_8.setGeometry(QRect(20, 260, 660, 21))
+        self.label_code_8.setFont(font)
         self.label_set_key_15 = QLabel(self.scrollAreaWidgetContents_right_7)
         self.label_set_key_15.setObjectName(u"label_set_key_15")
-        self.label_set_key_15.setGeometry(QRect(20, 350, 479, 31))
+        self.label_set_key_15.setGeometry(QRect(20, 230, 479, 31))
         self.scrollArea_right_7.setWidget(self.scrollAreaWidgetContents_right_7)
 
         self.verticalLayout_page2_7.addWidget(self.scrollArea_right_7)
@@ -1444,7 +1446,7 @@ class Ui_MainWindow(object):
         self.stackedWidget_right.addWidget(self.page_24)
         self.layoutWidget3 = QWidget(self.scrollAreaWidgetContents_2)
         self.layoutWidget3.setObjectName(u"layoutWidget3")
-        self.layoutWidget3.setGeometry(QRect(0, 0, 279, 551))
+        self.layoutWidget3.setGeometry(QRect(0, 0, 281, 551))
         self.verticalLayout_left_6 = QVBoxLayout(self.layoutWidget3)
         self.verticalLayout_left_6.setObjectName(u"verticalLayout_left_6")
         self.verticalLayout_left_6.setContentsMargins(0, 0, 0, 0)
@@ -1550,8 +1552,8 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator {\n"
 "    border: 1px solid #c0c4cc;\n"
-"	width: 15px;\n"
-"	height: 15px;\n"
+"	width: 12px;\n"
+"	height: 12px;\n"
 "	border-radius: 8px;\n"
 "    background: transparent;\n"
 "}\n"
@@ -1658,8 +1660,8 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator {\n"
 "    border: 1px solid #c0c4cc;\n"
-"	width: 15px;\n"
-"	height: 15px;\n"
+"	width: 12px;\n"
+"	height: 12px;\n"
 "	border-radius: 8px;\n"
 "    background: transparent;\n"
 "}\n"
@@ -1681,13 +1683,13 @@ class Ui_MainWindow(object):
         self.page.setObjectName(u"page")
         self.verticalLayoutWidget_22 = QWidget(self.page)
         self.verticalLayoutWidget_22.setObjectName(u"verticalLayoutWidget_22")
-        self.verticalLayoutWidget_22.setGeometry(QRect(20, 0, 522, 91))
+        self.verticalLayoutWidget_22.setGeometry(QRect(10, 0, 522, 91))
         self.verticalLayout_page1_8 = QVBoxLayout(self.verticalLayoutWidget_22)
         self.verticalLayout_page1_8.setObjectName(u"verticalLayout_page1_8")
         self.verticalLayout_page1_8.setContentsMargins(0, 0, 0, 0)
         self.label_12 = QLabel(self.verticalLayoutWidget_22)
         self.label_12.setObjectName(u"label_12")
-        self.label_12.setFont(font1)
+        self.label_12.setFont(font)
 
         self.verticalLayout_page1_8.addWidget(self.label_12)
 
@@ -1701,7 +1703,7 @@ class Ui_MainWindow(object):
         self.page_6.setObjectName(u"page_6")
         self.verticalLayoutWidget_3 = QWidget(self.page_6)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(0, 0, 711, 551))
+        self.verticalLayoutWidget_3.setGeometry(QRect(-10, 0, 721, 551))
         self.verticalLayout_6 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -1710,17 +1712,17 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 707, 547))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 717, 547))
         self.label_view = QLabel(self.scrollAreaWidgetContents_4)
         self.label_view.setObjectName(u"label_view")
-        self.label_view.setGeometry(QRect(30, 20, 221, 61))
-        self.label_view.setFont(font1)
+        self.label_view.setGeometry(QRect(20, 10, 221, 31))
+        self.label_view.setFont(font)
         self.label_14 = QLabel(self.scrollAreaWidgetContents_4)
         self.label_14.setObjectName(u"label_14")
-        self.label_14.setGeometry(QRect(30, 90, 191, 31))
+        self.label_14.setGeometry(QRect(20, 40, 191, 31))
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents_4)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(30, 150, 651, 271))
+        self.tableWidget.setGeometry(QRect(10, 90, 701, 391))
         self.tableWidget.setStyleSheet(u"")
         self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_4)
 
@@ -1851,8 +1853,8 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents_9.setGeometry(QRect(0, 0, 991, 641))
         self.label_11 = QLabel(self.scrollAreaWidgetContents_9)
         self.label_11.setObjectName(u"label_11")
-        self.label_11.setGeometry(QRect(70, 0, 431, 71))
-        self.label_11.setFont(font1)
+        self.label_11.setGeometry(QRect(120, 20, 431, 51))
+        self.label_11.setFont(font)
         self.verticalLayoutWidget_4 = QWidget(self.scrollAreaWidgetContents_9)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
         self.verticalLayoutWidget_4.setGeometry(QRect(120, 110, 751, 321))
@@ -1863,7 +1865,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
         self.label_5 = QLabel(self.verticalLayoutWidget_4)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setFont(font1)
+        self.label_5.setFont(font)
 
         self.horizontalLayout_34.addWidget(self.label_5)
 
@@ -1877,7 +1879,12 @@ class Ui_MainWindow(object):
         self.toolButton_file = QPushButton(self.verticalLayoutWidget_4)
         self.toolButton_file.setObjectName(u"toolButton_file")
         self.toolButton_file.setMinimumSize(QSize(150, 30))
-        self.toolButton_file.setFont(font)
+        font2 = QFont()
+        font2.setFamilies([u"Microsoft YaHei UI"])
+        font2.setPointSize(10)
+        font2.setBold(False)
+        font2.setItalic(False)
+        self.toolButton_file.setFont(font2)
         self.toolButton_file.setCursor(QCursor(Qt.PointingHandCursor))
         self.toolButton_file.setStyleSheet(u"")
         icon2 = QIcon()
@@ -1896,7 +1903,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
         self.label_8 = QLabel(self.verticalLayoutWidget_4)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setFont(font1)
+        self.label_8.setFont(font)
 
         self.horizontalLayout_35.addWidget(self.label_8)
 
@@ -1916,7 +1923,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
         self.label_10 = QLabel(self.verticalLayoutWidget_4)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setFont(font1)
+        self.label_10.setFont(font)
 
         self.horizontalLayout_36.addWidget(self.label_10)
 
@@ -1981,11 +1988,7 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        font3 = QFont()
-        font3.setFamilies([u"Segoe UI"])
-        font3.setBold(False)
-        font3.setItalic(False)
-        self.creditsLabel.setFont(font3)
+        self.creditsLabel.setFont(font1)
         self.creditsLabel.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
 
         self.horizontalLayout_8.addWidget(self.creditsLabel)
@@ -2016,7 +2019,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.stackedWidget_step.setCurrentIndex(1)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_right.setCurrentIndex(1)
         self.stackedWidget_3.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
@@ -2061,8 +2064,8 @@ class Ui_MainWindow(object):
         self.label_step3_8.setText(QCoreApplication.translate("MainWindow", u"\u2462\u89c6\u56fe\u914d\u7f6e", None))
         self.label_step4_8.setText(QCoreApplication.translate("MainWindow", u"\u2463\u914d\u7f6e\u786e\u8ba4", None))
         self.label_step5_8.setText(QCoreApplication.translate("MainWindow", u"\u2464\u4ee3\u7801\u751f\u6210", None))
-        self.label_db_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">\u6570\u636e\u5e93\u914d\u7f6e</span></p></body></html>", None))
-        self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:400;\">\u8bf7\u9009\u62e9\u8981\u751f\u6210\u63a5\u53e3\u9879\u76ee\u4ee3\u7801\u7684\u76ee\u6807\u6570\u636e\u5e93\uff0c\u751f\u6210\u5668\u5c06\u9488\u5bf9\u6b64\u6570\u636e\u5e93\uff0c\u751f\u6210\u4e00\u4e2a\u5206\u5c42\u8bbe\u8ba1\u57fa\u4e8eRestful\u98ce\u683c\u7684Web\u63a5\u53e3\u9879\u76ee</span></p></body></html>", None))
+        self.label_db_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u6570\u636e\u5e93\u914d\u7f6e</p></body></html>", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt;\">\u8bf7\u9009\u62e9\u8981\u751f\u6210\u63a5\u53e3\u9879\u76ee\u4ee3\u7801\u7684\u76ee\u6807\u6570\u636e\u5e93\uff0c\u751f\u6210\u5668\u5c06\u9488\u5bf9\u6b64\u6570\u636e\u5e93\uff0c\u751f\u6210\u4e00\u4e2a\u5206\u5c42\u8bbe\u8ba1\u57fa\u4e8eRestful\u98ce\u683c\u7684Web\u63a5\u53e3\u9879\u76ee</span></p></body></html>", None))
         self.label_db_type_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\">\u6570\u636e\u5e93\u7c7b\u578b</p></body></html>", None))
         self.comboBox_db_type.setItemText(0, QCoreApplication.translate("MainWindow", u"mysql", None))
 
@@ -2087,11 +2090,11 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(accessibility)
         self.pushButton_add_field_encrypt.setText(QCoreApplication.translate("MainWindow", u"\u6dfb\u52a0\u5b57\u6bb5", None))
         self.label_code_7.setText("")
-        self.label_table_name_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt; font-weight:600;\">\u8fd9\u662f\u8868\u540d</span></p></body></html>", None))
+        self.label_table_name_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u8fd9\u662f\u8868\u540d</p></body></html>", None))
         self.label_isDelete_7.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u662f\u5426\u903b\u8f91\u5220\u9664", None))
         self.comboBox_select_table_logicaldeletemark.setItemText(0, QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u903b\u8f91\u5220\u9664\u6807\u8bc6\u5b57\u6bb5", None))
 
-        self.label_set_key_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">\u4e1a\u52a1\u4e3b\u952e\u8bbe\u7f6e</span></p></body></html>", None))
+        self.label_table_name_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u4e1a\u52a1\u4e3b\u952e\u8bbe\u7f6e</p></body></html>", None))
         self.label_select_key_7.setText(QCoreApplication.translate("MainWindow", u"\u4e1a\u52a1\u4e3b\u952e\u5b57\u6bb5\u9009\u62e9", None))
         self.comboBox_select_table_businesskeyname.setItemText(0, QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u4e1a\u52a1\u4e3b\u952e", None))
 
@@ -2099,7 +2102,7 @@ class Ui_MainWindow(object):
         self.comboBox_select_table_businesskeyrule.setItemText(0, QCoreApplication.translate("MainWindow", u"\u9009\u62e9\u4e1a\u52a1\u4e3b\u952e\u751f\u6210\u89c4\u5219", None))
 
         self.label_code_8.setText(QCoreApplication.translate("MainWindow", u"\u4e3a\u6ee1\u8db3\u5b89\u5168\u5ba1\u8ba1\u9700\u8981,\u4e00\u4e9b\u654f\u611f\u5b57\u6bb5\u53ef\u80fd\u9700\u8981\u5728\u6570\u636e\u5e93\u4e2d\u52a0\u5bc6\u5b58\u50a8\u3002\u5982\u7528\u6237\u8eab\u4efd\u8bc1\u53f7\uff0c\u624b\u673a\u53f7\u7b49", None))
-        self.label_set_key_15.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt; font-weight:600;\">\u52a0\u5bc6\u5b58\u50a8\u5b57\u6bb5\u8bbe\u7f6e</span></p></body></html>", None))
+        self.label_set_key_15.setText(QCoreApplication.translate("MainWindow", u"\u52a0\u5bc6\u5b58\u50a8\u5b57\u6bb5\u8bbe\u7f6e", None))
 
         __sortingEnabled = self.listWidget_table.isSortingEnabled()
         self.listWidget_table.setSortingEnabled(False)
@@ -2181,9 +2184,9 @@ class Ui_MainWindow(object):
 
         self.label_12.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">\u89c6\u56fe\u51c6\u5907</span></p></body></html>", None))
         self.label_13.setText(QCoreApplication.translate("MainWindow", u"\u8bf7\u9009\u62e9\u7528\u4e8e\u751f\u6210\u4ee3\u7801\u7684\u89c6\u56fe\uff0c\u5e76\u4e3a\u6bcf\u5f20\u8868\u8fdb\u884c\u76f8\u5e94\u914d\u7f6e\u3002", None))
-        self.label_view.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:18pt; font-weight:400;\">TextLabel</span></p></body></html>", None))
-        self.label_14.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:14pt;\">\u63a5\u53e3\u67e5\u8be2\u5b57\u6bb5\u9009\u62e9</span></p></body></html>", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:22pt; font-weight:600;\">\u6570\u636e\u5e93\u914d\u7f6e</span></p></body></html>", None))
+        self.label_view.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>TextLabel</p></body></html>", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u63a5\u53e3\u67e5\u8be2\u5b57\u6bb5\u9009\u62e9</p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u6570\u636e\u5e93\u914d\u7f6e</p></body></html>", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u8bf7\u68c0\u67e5\u8981\u751f\u6210\u63a5\u53e3\u9879\u76ee\u4ee3\u7801\u7684\u76ee\u6807\u6570\u636e\u5e93\uff0c\u751f\u6210\u5668\u5c06\u9488\u5bf9\u6b64\u6570\u636e\u5e93\u751f\u6210\u4e00\u4e2a\u5206\u5c42\u8bbe\u8ba1\u7684\u63a5\u53e3\u9879\u76ee", None))
         ___qtablewidgetitem = self.tableWidget_DB.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"\u8868\u540d", None));
@@ -2201,7 +2204,7 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem6 = self.tableWidget_View.horizontalHeaderItem(1)
         ___qtablewidgetitem6.setText(QCoreApplication.translate("MainWindow", u"\u63a5\u53e3\u67e5\u8be2\u5b57\u6bb5", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"\u89c6\u56fe", None))
-        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:16pt;\">\u8981\u751f\u6210\u7684\u76ee\u6807\u63a5\u53e3\u9879\u76ee\u57fa\u672c\u914d\u7f6e</span></p></body></html>", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>\u8981\u751f\u6210\u7684\u76ee\u6807\u63a5\u53e3\u9879\u76ee\u57fa\u672c\u914d\u7f6e</p></body></html>", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u76ee\u6807\u4ee3\u7801\u8def\u5f84", None))
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))

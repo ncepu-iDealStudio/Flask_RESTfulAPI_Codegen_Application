@@ -18,9 +18,17 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">/*主页面stackedWidget以及子控件背景色*/
+    <string notr="true">/*白色*/
+/*整体背景色*/
+QWidget
+{
+    background-color: #e4e7ed; /*背景色*/
+    color: black;  /*字体颜色*/
+}
+
+/*主页面stackedWidget以及子控件背景色*/
 #stackedWidget *{
-	background-color: #f4f4f5;
+	background-color: rgb(255, 255, 255);
 }
 
 /*步骤条背景*/
@@ -28,6 +36,11 @@
 	background-color: #e4e7ed;
 }
 
+/*统一设置字体*/
+*{
+	/*font-family:SimSun;*/
+	font: 10pt &quot;Microsoft YaHei UI&quot;;
+}
 
 /*top*/
 #contentTopBg{
@@ -53,13 +66,6 @@
 #rightButtons .QPushButton:hover { background-color: #bd93f9; border-style: solid; border-radius: 4px; }
 #rightButtons .QPushButton:pressed { background-color: #ff79c6; border-style: solid; border-radius: 4px; }
 
-/*灰色白色*/
-/*整体背景色*/
-QWidget
-{
-    background-color: rgb(255, 255, 255); /*背景色*/
-    color: black;  /*字体颜色*/
-}
 /*按钮正常状态*/
 QPushButton {
 	border: 2px solid #1a73e8;
@@ -93,11 +99,7 @@ QLineEdit:focus {
 	/*border: 2px solid #ff79c6;*/
 	border: 2px solid #409eff;
 }
-QCheckBox
-{
-    color:black;/*字体颜色*/
-    background-color:rgb(240,240,240);/*背景色*/
-}
+
 QComboBox{
 	background-color: #6272a4;
 	border-radius: 5px;
@@ -222,7 +224,7 @@ QTreeWidget,QTreeView
     font-size:12pt;/*字体大小*/
 }
 
-#label_table_name_7,#label_set_key_13{font-size:30px;}
+/*#label_table_name_7,#label_set_key_13{font-size:12px;}*/
 
 #pushButton_last{}
 
@@ -362,8 +364,8 @@ QCheckBox{
 
 QCheckBox::indicator {
     border: 1px solid #c0c4cc;
-	width: 15px;
-	height: 15px;
+	width: 12px;
+	height: 12px;
 	border-radius: 8px;
     background: transparent;
 }
@@ -500,7 +502,7 @@ background-color:transparent;</string>
             </property>
             <property name="font">
              <font>
-              <family>Segoe UI</family>
+              <family>Microsoft YaHei UI</family>
               <pointsize>12</pointsize>
               <italic>false</italic>
               <bold>false</bold>
@@ -1467,7 +1469,7 @@ QLabel {
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="page_1">
           <widget class="QScrollArea" name="scrollArea_1">
@@ -1505,13 +1507,14 @@ QLabel {
              </property>
              <property name="font">
               <font>
-               <family>Microsoft YaHei</family>
+               <family>Microsoft YaHei UI</family>
                <pointsize>12</pointsize>
-               <bold>true</bold>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;数据库配置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据库配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
             <widget class="QLabel" name="label_9">
@@ -1525,9 +1528,10 @@ QLabel {
              </property>
              <property name="font">
               <font>
-               <family>Microsoft YaHei</family>
+               <family>Microsoft YaHei UI</family>
                <pointsize>-1</pointsize>
-               <bold>true</bold>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="styleSheet">
@@ -1543,7 +1547,7 @@ QLabel {
               <number>2</number>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:400;&quot;&gt;请选择要生成接口项目代码的目标数据库，生成器将针对此数据库，生成一个分层设计基于Restful风格的Web接口项目&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;请选择要生成接口项目代码的目标数据库，生成器将针对此数据库，生成一个分层设计基于Restful风格的Web接口项目&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
              <property name="textFormat">
               <enum>Qt::AutoText</enum>
@@ -1574,9 +1578,10 @@ QLabel {
                   </property>
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -1607,9 +1612,10 @@ QLabel {
                  <widget class="QLabel" name="label_db_host_5">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -1641,9 +1647,10 @@ QLabel {
                  <widget class="QLabel" name="label_db_port_5">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -1669,9 +1676,10 @@ QLabel {
                  <widget class="QLabel" name="label_db_user_5">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -1694,9 +1702,10 @@ QLabel {
                  <widget class="QLabel" name="label_db_password_5">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -1731,9 +1740,10 @@ QLabel {
                   </property>
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -1837,7 +1847,7 @@ QLabel {
                <x>280</x>
                <y>0</y>
                <width>711</width>
-               <height>641</height>
+               <height>551</height>
               </rect>
              </property>
              <property name="currentIndex">
@@ -1858,10 +1868,14 @@ QLabel {
                  <widget class="QLabel" name="label_15">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;表准备&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1905,21 +1919,21 @@ QLabel {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>699</width>
-                     <height>1000</height>
+                     <width>707</width>
+                     <height>547</height>
                     </rect>
                    </property>
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>1000</height>
+                     <height>0</height>
                     </size>
                    </property>
                    <widget class="QPushButton" name="pushButton_add_field_encrypt">
                     <property name="geometry">
                      <rect>
-                      <x>560</x>
-                      <y>450</y>
+                      <x>580</x>
+                      <y>290</y>
                       <width>100</width>
                       <height>31</height>
                      </rect>
@@ -1947,14 +1961,14 @@ QLabel {
                       <x>20</x>
                       <y>10</y>
                       <width>311</width>
-                      <height>121</height>
+                      <height>91</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_9">
                      <item>
                       <widget class="QLabel" name="label_table_name_7">
                        <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;这是表名&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;这是表名&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -1962,6 +1976,14 @@ QLabel {
                       <layout class="QVBoxLayout" name="verticalLayout_8">
                        <item>
                         <widget class="QLabel" name="label_isDelete_7">
+                         <property name="font">
+                          <font>
+                           <family>Microsoft YaHei UI</family>
+                           <pointsize>12</pointsize>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>数据是否逻辑删除</string>
                          </property>
@@ -1984,16 +2006,16 @@ QLabel {
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>160</y>
+                      <y>120</y>
                       <width>481</width>
-                      <height>121</height>
+                      <height>92</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_10">
                      <item>
-                      <widget class="QLabel" name="label_set_key_13">
+                      <widget class="QLabel" name="label_table_name_8">
                        <property name="text">
-                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;业务主键设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;业务主键设置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                        </property>
                       </widget>
                      </item>
@@ -2046,10 +2068,10 @@ QLabel {
                    <widget class="QWidget" name="verticalLayoutWidget_2">
                     <property name="geometry">
                      <rect>
-                      <x>9</x>
-                      <y>520</y>
+                      <x>10</x>
+                      <y>340</y>
                       <width>671</width>
-                      <height>451</height>
+                      <height>201</height>
                      </rect>
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -2069,10 +2091,18 @@ QLabel {
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>390</y>
+                      <y>260</y>
                       <width>660</width>
-                      <height>51</height>
+                      <height>21</height>
                      </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Microsoft YaHei UI</family>
+                      <pointsize>12</pointsize>
+                      <italic>false</italic>
+                      <bold>false</bold>
+                     </font>
                     </property>
                     <property name="text">
                      <string>为满足安全审计需要,一些敏感字段可能需要在数据库中加密存储。如用户身份证号，手机号等</string>
@@ -2082,13 +2112,13 @@ QLabel {
                     <property name="geometry">
                      <rect>
                       <x>20</x>
-                      <y>350</y>
+                      <y>230</y>
                       <width>479</width>
                       <height>31</height>
                      </rect>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;加密存储字段设置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>加密存储字段设置</string>
                     </property>
                    </widget>
                   </widget>
@@ -2103,7 +2133,7 @@ QLabel {
               <rect>
                <x>0</x>
                <y>0</y>
-               <width>279</width>
+               <width>281</width>
                <height>551</height>
               </rect>
              </property>
@@ -2176,8 +2206,8 @@ QCheckBox{
 
 QCheckBox::indicator {
     border: 1px solid #c0c4cc;
-	width: 15px;
-	height: 15px;
+	width: 12px;
+	height: 12px;
 	border-radius: 8px;
     background: transparent;
 }
@@ -2482,8 +2512,8 @@ QCheckBox{
 
 QCheckBox::indicator {
     border: 1px solid #c0c4cc;
-	width: 15px;
-	height: 15px;
+	width: 12px;
+	height: 12px;
 	border-radius: 8px;
     background: transparent;
 }
@@ -2526,7 +2556,7 @@ QCheckBox::indicator:checked {
               <widget class="QWidget" name="verticalLayoutWidget_22">
                <property name="geometry">
                 <rect>
-                 <x>20</x>
+                 <x>10</x>
                  <y>0</y>
                  <width>522</width>
                  <height>91</height>
@@ -2537,9 +2567,10 @@ QCheckBox::indicator:checked {
                  <widget class="QLabel" name="label_12">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -2561,9 +2592,9 @@ QCheckBox::indicator:checked {
               <widget class="QWidget" name="verticalLayoutWidget_3">
                <property name="geometry">
                 <rect>
-                 <x>0</x>
+                 <x>-10</x>
                  <y>0</y>
-                 <width>711</width>
+                 <width>721</width>
                  <height>551</height>
                 </rect>
                </property>
@@ -2578,50 +2609,51 @@ QCheckBox::indicator:checked {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>707</width>
+                     <width>717</width>
                      <height>547</height>
                     </rect>
                    </property>
                    <widget class="QLabel" name="label_view">
                     <property name="geometry">
                      <rect>
-                      <x>30</x>
-                      <y>20</y>
+                      <x>20</x>
+                      <y>10</y>
                       <width>221</width>
-                      <height>61</height>
+                      <height>31</height>
                      </rect>
                     </property>
                     <property name="font">
                      <font>
-                      <family>Microsoft YaHei</family>
+                      <family>Microsoft YaHei UI</family>
                       <pointsize>12</pointsize>
-                      <bold>true</bold>
+                      <italic>false</italic>
+                      <bold>false</bold>
                      </font>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:400;&quot;&gt;TextLabel&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                    <widget class="QLabel" name="label_14">
                     <property name="geometry">
                      <rect>
-                      <x>30</x>
-                      <y>90</y>
+                      <x>20</x>
+                      <y>40</y>
                       <width>191</width>
                       <height>31</height>
                      </rect>
                     </property>
                     <property name="text">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;接口查询字段选择&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;接口查询字段选择&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                     </property>
                    </widget>
                    <widget class="QTableWidget" name="tableWidget">
                     <property name="geometry">
                      <rect>
-                      <x>30</x>
-                      <y>150</y>
-                      <width>651</width>
-                      <height>271</height>
+                      <x>10</x>
+                      <y>90</y>
+                      <width>701</width>
+                      <height>391</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -2676,7 +2708,7 @@ QCheckBox::indicator:checked {
               <item>
                <widget class="QLabel" name="label_6">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; font-weight:600;&quot;&gt;数据库配置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;数据库配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                </widget>
               </item>
@@ -2866,21 +2898,22 @@ QTableWidget::horizontalHeader {
             <widget class="QLabel" name="label_11">
              <property name="geometry">
               <rect>
-               <x>70</x>
-               <y>0</y>
+               <x>120</x>
+               <y>20</y>
                <width>431</width>
-               <height>71</height>
+               <height>51</height>
               </rect>
              </property>
              <property name="font">
               <font>
-               <family>Microsoft YaHei</family>
+               <family>Microsoft YaHei UI</family>
                <pointsize>12</pointsize>
-               <bold>true</bold>
+               <italic>false</italic>
+               <bold>false</bold>
               </font>
              </property>
              <property name="text">
-              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt;&quot;&gt;要生成的目标接口项目基本配置&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;要生成的目标接口项目基本配置&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
             <widget class="QWidget" name="verticalLayoutWidget_4">
@@ -2899,9 +2932,10 @@ QTableWidget::horizontalHeader {
                  <widget class="QLabel" name="label_5">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -2938,8 +2972,8 @@ QTableWidget::horizontalHeader {
                   </property>
                   <property name="font">
                    <font>
-                    <family>Segoe UI</family>
-                    <pointsize>12</pointsize>
+                    <family>Microsoft YaHei UI</family>
+                    <pointsize>10</pointsize>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -2967,9 +3001,10 @@ QTableWidget::horizontalHeader {
                  <widget class="QLabel" name="label_8">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -3004,9 +3039,10 @@ QTableWidget::horizontalHeader {
                  <widget class="QLabel" name="label_10">
                   <property name="font">
                    <font>
-                    <family>Microsoft YaHei</family>
+                    <family>Microsoft YaHei UI</family>
                     <pointsize>12</pointsize>
-                    <bold>true</bold>
+                    <italic>false</italic>
+                    <bold>false</bold>
                    </font>
                   </property>
                   <property name="text">
@@ -3134,7 +3170,7 @@ height:30px;</string>
          </property>
          <property name="font">
           <font>
-           <family>Segoe UI</family>
+           <family>Microsoft YaHei UI</family>
            <pointsize>-1</pointsize>
            <italic>false</italic>
            <bold>false</bold>

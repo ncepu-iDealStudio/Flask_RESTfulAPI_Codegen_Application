@@ -216,7 +216,7 @@ def view_pushButton_clicked(self,button_text):
 
         # 设置数据库表列表选中样式
         if self.viwe_selected_itme:
-            self.viwe_selected_itme.setStyleSheet('background-color: #f4f4f5;border: 2px solid #f4f4f5;')
+            self.viwe_selected_itme.setStyleSheet('background-color: rgb(255, 255, 255);border: 2px solid rgb(255, 255, 255);')
         self.viwe_selected_itme = self.ui.centralwidget.findChild(QWidget, u"horizontalLayoutWidget_" + button_text)
         self.viwe_selected_itme.setStyleSheet('background-color: #b3d8ff;border: 2px solid #b3d8ff;')
 
