@@ -1634,6 +1634,9 @@ QLabel {
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="placeholderText">
+                   <string>请输入服务器地址，如：127.0.0.1</string>
+                  </property>
                   <property name="clearButtonEnabled">
                    <bool>true</bool>
                   </property>
@@ -1663,6 +1666,9 @@ QLabel {
                 </item>
                 <item>
                  <widget class="QLineEdit" name="text_port">
+                  <property name="placeholderText">
+                   <string>请输入端口号，如：3306</string>
+                  </property>
                   <property name="clearButtonEnabled">
                    <bool>true</bool>
                   </property>
@@ -1689,6 +1695,9 @@ QLabel {
                 </item>
                 <item>
                  <widget class="QLineEdit" name="text_user">
+                  <property name="placeholderText">
+                   <string>请输入用户名，如：root</string>
+                  </property>
                   <property name="clearButtonEnabled">
                    <bool>true</bool>
                   </property>
@@ -1715,11 +1724,17 @@ QLabel {
                 </item>
                 <item>
                  <widget class="QLineEdit" name="text_password">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
                   <property name="inputMask">
                    <string/>
                   </property>
                   <property name="echoMode">
                    <enum>QLineEdit::PasswordEchoOnEdit</enum>
+                  </property>
+                  <property name="placeholderText">
+                   <string>请输入密码</string>
                   </property>
                   <property name="clearButtonEnabled">
                    <bool>true</bool>

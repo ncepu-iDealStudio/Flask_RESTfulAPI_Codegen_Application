@@ -1224,6 +1224,7 @@ class Ui_MainWindow(object):
 
         self.text_password = QLineEdit(self.layoutWidget)
         self.text_password.setObjectName(u"text_password")
+        self.text_password.setStyleSheet(u"")
         self.text_password.setEchoMode(QLineEdit.PasswordEchoOnEdit)
         self.text_password.setClearButtonEnabled(True)
 
@@ -2070,10 +2071,14 @@ class Ui_MainWindow(object):
         self.comboBox_db_type.setItemText(0, QCoreApplication.translate("MainWindow", u"mysql", None))
 
         self.label_db_host_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\">\u4e3b\u673a </p></body></html>", None))
+        self.text_host.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u8f93\u5165\u670d\u52a1\u5668\u5730\u5740\uff0c\u5982\uff1a127.0.0.1", None))
         self.label_db_port_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\">\u7aef\u53e3</p></body></html>", None))
+        self.text_port.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u8f93\u5165\u7aef\u53e3\u53f7\uff0c\u5982\uff1a3306", None))
         self.label_db_user_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\">\u8d26\u53f7</p></body></html>", None))
+        self.text_user.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u8f93\u5165\u7528\u6237\u540d\uff0c\u5982\uff1aroot", None))
         self.label_db_password_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"justify\">\u5bc6\u7801</p></body></html>", None))
         self.text_password.setInputMask("")
+        self.text_password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u8bf7\u8f93\u5165\u5bc6\u7801", None))
         self.label_tables_5.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u5e93", None))
         self.comboBox_database.setItemText(0, QCoreApplication.translate("MainWindow", u"\u8bf7\u5148\u83b7\u53d6\u6570\u636e\u5e93\u540d", None))
 
