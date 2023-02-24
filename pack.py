@@ -15,15 +15,8 @@ import os
 
 def nuitaka_pack():
     # nuitka打包
-<<<<<<< HEAD
-<<<<<<< HEAD
+    # 去除控制台
     cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
-=======
-    cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-disable-console --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
->>>>>>> 1e4cc9842fb4b747de3fb7d4d0ae9ab44cbf9ffb
-=======
-    cmd = 'python -m nuitka --follow-imports --standalone --show-progress --enable-plugin=pyside6 --windows-icon-from-ico=icon.ico --include-package=sqlalchemy  start.py'
->>>>>>> 3fafd1d9eae4804bfa93342a5080a3546817eba3
     os.system(cmd)
 
 
