@@ -216,9 +216,9 @@ def view_pushButton_clicked(self,button_text):
 
         # 设置数据库表列表选中样式
         if self.viwe_selected_itme:
-            self.viwe_selected_itme.setStyleSheet('background-color: rgb(255, 255, 255);border: 2px solid rgb(255, 255, 255);')
+            self.viwe_selected_itme.setStyleSheet('background-color: rgb(255, 255, 255);border: 0px solid rgb(255, 255, 255);')
         self.viwe_selected_itme = self.ui.centralwidget.findChild(QWidget, u"horizontalLayoutWidget_" + button_text)
-        self.viwe_selected_itme.setStyleSheet('background-color: #b3d8ff;border: 2px solid #b3d8ff;')
+        self.viwe_selected_itme.setStyleSheet('')
 
         # 匹配视图
 
@@ -357,6 +357,10 @@ def add_view_list_item(self,view_name):
     self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
 
     self.view_number += 1
+
+    # 设置间距
+    self.ui.horizontalLayout_1.setContentsMargins(10, 0, 0, 0)
+    self.ui.horizontalLayout_1.setSpacing(15)
 
     # 把组件添加到面板
 

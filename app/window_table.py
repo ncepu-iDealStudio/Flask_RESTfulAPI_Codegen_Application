@@ -278,9 +278,9 @@ def table_pushButton_clicked(self, button_text):
 
         # 设置数据库表列表选中样式
         if self.table_selected_itme:
-            self.table_selected_itme.setStyleSheet('background-color: rgb(255, 255, 255); border: 2px solid rgb(255, 255, 255);')
+            self.table_selected_itme.setStyleSheet('background-color: rgb(255, 255, 255); border: 0px solid rgb(255, 255, 255);')
         self.table_selected_itme = self.ui.centralwidget.findChild(QWidget, u"horizontalLayoutWidget_" + button_text)
-        self.table_selected_itme.setStyleSheet('background-color: #b3d8ff;border: 2px solid #b3d8ff;')
+        self.table_selected_itme.setStyleSheet('')
 
         # 保存上个表配置的数据
 
@@ -721,6 +721,10 @@ def add_table_list_item(self,table_name):
     self.ui.pushButton_1.setSizePolicy(sizePolicy1)
 
     self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
+
+    # 设置间距
+    self.ui.horizontalLayout_1.setContentsMargins(10, 0, 0, 0)
+    self.ui.horizontalLayout_1.setSpacing(15)
 
     # 把组件添加到面板
 

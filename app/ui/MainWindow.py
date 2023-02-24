@@ -388,9 +388,9 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator {\n"
 "    border: 1px solid #c0c4cc;\n"
-"	width: 12px;\n"
-"	height: 12px;\n"
-"	border-radius: 8px;\n"
+"	width: 14px;\n"
+"	height: 14px;\n"
+"	border-radius: 2px;\n"
 "    background: transparent;\n"
 "}\n"
 "QCheckBox::indicator:hover {\n"
@@ -1290,53 +1290,60 @@ class Ui_MainWindow(object):
         self.page_2.setObjectName(u"page_2")
         self.scrollArea_2 = QScrollArea(self.page_2)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
-        self.scrollArea_2.setGeometry(QRect(0, 0, 991, 641))
+        self.scrollArea_2.setGeometry(QRect(0, 0, 1000, 641))
         self.scrollArea_2.setFrameShape(QFrame.NoFrame)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 991, 641))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1000, 641))
         self.label_2 = QLabel(self.scrollAreaWidgetContents_2)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(390, 70, 171, 20))
         self.stackedWidget_right = QStackedWidget(self.scrollAreaWidgetContents_2)
         self.stackedWidget_right.setObjectName(u"stackedWidget_right")
-        self.stackedWidget_right.setGeometry(QRect(280, 0, 711, 551))
+        self.stackedWidget_right.setGeometry(QRect(250, 0, 741, 551))
         self.page_23 = QWidget()
         self.page_23.setObjectName(u"page_23")
         self.verticalLayoutWidget_20 = QWidget(self.page_23)
         self.verticalLayoutWidget_20.setObjectName(u"verticalLayoutWidget_20")
-        self.verticalLayoutWidget_20.setGeometry(QRect(20, 0, 522, 91))
+        self.verticalLayoutWidget_20.setGeometry(QRect(0, 0, 751, 551))
         self.verticalLayout_page1_7 = QVBoxLayout(self.verticalLayoutWidget_20)
         self.verticalLayout_page1_7.setObjectName(u"verticalLayout_page1_7")
         self.verticalLayout_page1_7.setContentsMargins(0, 0, 0, 0)
-        self.label_15 = QLabel(self.verticalLayoutWidget_20)
+        self.scrollArea_7 = QScrollArea(self.verticalLayoutWidget_20)
+        self.scrollArea_7.setObjectName(u"scrollArea_7")
+        self.scrollArea_7.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_5 = QWidget()
+        self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 747, 547))
+        self.label_15 = QLabel(self.scrollAreaWidgetContents_5)
         self.label_15.setObjectName(u"label_15")
+        self.label_15.setGeometry(QRect(20, 10, 520, 27))
         self.label_15.setFont(font)
         self.label_15.setStyleSheet(u"")
-
-        self.verticalLayout_page1_7.addWidget(self.label_15)
-
-        self.label_18 = QLabel(self.verticalLayoutWidget_20)
+        self.label_18 = QLabel(self.scrollAreaWidgetContents_5)
         self.label_18.setObjectName(u"label_18")
+        self.label_18.setGeometry(QRect(20, 40, 520, 21))
+        self.scrollArea_7.setWidget(self.scrollAreaWidgetContents_5)
 
-        self.verticalLayout_page1_7.addWidget(self.label_18)
+        self.verticalLayout_page1_7.addWidget(self.scrollArea_7)
 
         self.stackedWidget_right.addWidget(self.page_23)
         self.page_24 = QWidget()
         self.page_24.setObjectName(u"page_24")
         self.verticalLayoutWidget_21 = QWidget(self.page_24)
         self.verticalLayoutWidget_21.setObjectName(u"verticalLayoutWidget_21")
-        self.verticalLayoutWidget_21.setGeometry(QRect(0, 0, 711, 551))
+        self.verticalLayoutWidget_21.setGeometry(QRect(0, 0, 751, 551))
         self.verticalLayout_page2_7 = QVBoxLayout(self.verticalLayoutWidget_21)
         self.verticalLayout_page2_7.setObjectName(u"verticalLayout_page2_7")
         self.verticalLayout_page2_7.setContentsMargins(0, 0, 0, 0)
         self.scrollArea_right_7 = QScrollArea(self.verticalLayoutWidget_21)
         self.scrollArea_right_7.setObjectName(u"scrollArea_right_7")
+        self.scrollArea_right_7.setMinimumSize(QSize(0, 0))
         self.scrollArea_right_7.setWidgetResizable(True)
         self.scrollAreaWidgetContents_right_7 = QWidget()
         self.scrollAreaWidgetContents_right_7.setObjectName(u"scrollAreaWidgetContents_right_7")
-        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 707, 547))
+        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 747, 547))
         self.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 0))
         self.pushButton_add_field_encrypt = QPushButton(self.scrollAreaWidgetContents_right_7)
         self.pushButton_add_field_encrypt.setObjectName(u"pushButton_add_field_encrypt")
@@ -1377,7 +1384,7 @@ class Ui_MainWindow(object):
         self.layoutWidget2.setGeometry(QRect(20, 120, 481, 92))
         self.verticalLayout_10 = QVBoxLayout(self.layoutWidget2)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
-        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_10.setContentsMargins(5, 0, 0, 0)
         self.label_table_name_8 = QLabel(self.layoutWidget2)
         self.label_table_name_8.setObjectName(u"label_table_name_8")
 
@@ -1422,7 +1429,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayoutWidget_2 = QWidget(self.scrollAreaWidgetContents_right_7)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(10, 340, 671, 201))
+        self.verticalLayoutWidget_2.setGeometry(QRect(20, 340, 661, 201))
         self.verticalLayout_13 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
@@ -1447,7 +1454,7 @@ class Ui_MainWindow(object):
         self.stackedWidget_right.addWidget(self.page_24)
         self.layoutWidget3 = QWidget(self.scrollAreaWidgetContents_2)
         self.layoutWidget3.setObjectName(u"layoutWidget3")
-        self.layoutWidget3.setGeometry(QRect(0, 0, 281, 551))
+        self.layoutWidget3.setGeometry(QRect(0, 0, 251, 551))
         self.verticalLayout_left_6 = QVBoxLayout(self.layoutWidget3)
         self.verticalLayout_left_6.setObjectName(u"verticalLayout_left_6")
         self.verticalLayout_left_6.setContentsMargins(0, 0, 0, 0)
@@ -1530,15 +1537,16 @@ class Ui_MainWindow(object):
 "	border:none;\n"
 "    color: black;\n"
 "	background: transparent;\n"
+"	text-align:left;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {	\n"
 "	border-radius: 5px;	\n"
 "	background-color: #6272a4;\n"
 "    color: #f8f8f2;\n"
-"	background: transparent;\n"
-""
-                        "}\n"
+"	back"
+                        "ground: transparent;\n"
+"}\n"
 "\n"
 "QPushButton:hover {\n"
 "	background: transparent;\n"
@@ -1553,9 +1561,9 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator {\n"
 "    border: 1px solid #c0c4cc;\n"
-"	width: 12px;\n"
-"	height: 12px;\n"
-"	border-radius: 8px;\n"
+"	width: 14px;\n"
+"	height: 14px;\n"
+"	border-radius: 2px;\n"
 "    background: transparent;\n"
 "}\n"
 "QCheckBox::indicator:hover {\n"
@@ -1587,7 +1595,7 @@ class Ui_MainWindow(object):
         self.label_3.setGeometry(QRect(350, 70, 171, 20))
         self.verticalLayoutWidget = QWidget(self.scrollAreaWidgetContents_6)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(0, 0, 281, 551))
+        self.verticalLayoutWidget.setGeometry(QRect(0, 0, 251, 551))
         self.verticalLayout_left_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_left_2.setObjectName(u"verticalLayout_left_2")
         self.verticalLayout_left_2.setContentsMargins(0, 0, 0, 0)
@@ -1638,15 +1646,16 @@ class Ui_MainWindow(object):
 "	border:none;\n"
 "    color: black;\n"
 "	background: transparent;\n"
+"	text-align:left;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {	\n"
 "	border-radius: 5px;	\n"
 "	background-color: #6272a4;\n"
 "    color: #f8f8f2;\n"
-"	background: transparent;\n"
-""
-                        "}\n"
+"	back"
+                        "ground: transparent;\n"
+"}\n"
 "\n"
 "QPushButton:hover {\n"
 "	background: transparent;\n"
@@ -1661,9 +1670,9 @@ class Ui_MainWindow(object):
 "\n"
 "QCheckBox::indicator {\n"
 "    border: 1px solid #c0c4cc;\n"
-"	width: 12px;\n"
-"	height: 12px;\n"
-"	border-radius: 8px;\n"
+"	width: 14px;\n"
+"	height: 14px;\n"
+"	border-radius: 2px;\n"
 "    background: transparent;\n"
 "}\n"
 "QCheckBox::indicator:hover {\n"
@@ -1679,32 +1688,38 @@ class Ui_MainWindow(object):
 
         self.stackedWidget_3 = QStackedWidget(self.scrollAreaWidgetContents_6)
         self.stackedWidget_3.setObjectName(u"stackedWidget_3")
-        self.stackedWidget_3.setGeometry(QRect(290, 0, 701, 641))
+        self.stackedWidget_3.setGeometry(QRect(250, 0, 741, 641))
         self.page = QWidget()
         self.page.setObjectName(u"page")
         self.verticalLayoutWidget_22 = QWidget(self.page)
         self.verticalLayoutWidget_22.setObjectName(u"verticalLayoutWidget_22")
-        self.verticalLayoutWidget_22.setGeometry(QRect(10, 0, 522, 91))
+        self.verticalLayoutWidget_22.setGeometry(QRect(0, 0, 751, 551))
         self.verticalLayout_page1_8 = QVBoxLayout(self.verticalLayoutWidget_22)
         self.verticalLayout_page1_8.setObjectName(u"verticalLayout_page1_8")
         self.verticalLayout_page1_8.setContentsMargins(0, 0, 0, 0)
-        self.label_12 = QLabel(self.verticalLayoutWidget_22)
+        self.scrollArea = QScrollArea(self.verticalLayoutWidget_22)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 747, 547))
+        self.label_12 = QLabel(self.scrollAreaWidgetContents_3)
         self.label_12.setObjectName(u"label_12")
+        self.label_12.setGeometry(QRect(20, 10, 520, 27))
         self.label_12.setFont(font)
-
-        self.verticalLayout_page1_8.addWidget(self.label_12)
-
-        self.label_13 = QLabel(self.verticalLayoutWidget_22)
+        self.label_13 = QLabel(self.scrollAreaWidgetContents_3)
         self.label_13.setObjectName(u"label_13")
+        self.label_13.setGeometry(QRect(20, 40, 520, 21))
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_3)
 
-        self.verticalLayout_page1_8.addWidget(self.label_13)
+        self.verticalLayout_page1_8.addWidget(self.scrollArea)
 
         self.stackedWidget_3.addWidget(self.page)
         self.page_6 = QWidget()
         self.page_6.setObjectName(u"page_6")
         self.verticalLayoutWidget_3 = QWidget(self.page_6)
         self.verticalLayoutWidget_3.setObjectName(u"verticalLayoutWidget_3")
-        self.verticalLayoutWidget_3.setGeometry(QRect(-10, 0, 721, 551))
+        self.verticalLayoutWidget_3.setGeometry(QRect(0, 0, 751, 551))
         self.verticalLayout_6 = QVBoxLayout(self.verticalLayoutWidget_3)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -1713,7 +1728,7 @@ class Ui_MainWindow(object):
         self.scrollArea_6.setWidgetResizable(True)
         self.scrollAreaWidgetContents_4 = QWidget()
         self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
-        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 717, 547))
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 747, 547))
         self.label_view = QLabel(self.scrollAreaWidgetContents_4)
         self.label_view.setObjectName(u"label_view")
         self.label_view.setGeometry(QRect(20, 10, 221, 31))
@@ -1723,7 +1738,7 @@ class Ui_MainWindow(object):
         self.label_14.setGeometry(QRect(20, 40, 191, 31))
         self.tableWidget = QTableWidget(self.scrollAreaWidgetContents_4)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(10, 90, 701, 391))
+        self.tableWidget.setGeometry(QRect(10, 90, 721, 391))
         self.tableWidget.setStyleSheet(u"")
         self.scrollArea_6.setWidget(self.scrollAreaWidgetContents_4)
 
@@ -2019,10 +2034,10 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget_step.setCurrentIndex(1)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget_step.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(1)
         self.stackedWidget_right.setCurrentIndex(1)
-        self.stackedWidget_3.setCurrentIndex(1)
+        self.stackedWidget_3.setCurrentIndex(0)
         self.tabWidget.setCurrentIndex(0)
 
 
