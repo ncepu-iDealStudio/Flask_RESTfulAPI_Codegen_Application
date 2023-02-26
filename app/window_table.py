@@ -148,7 +148,7 @@ def table_config_init(self):
         pushButton.clicked.connect(partial(self.table_pushButton_clicked, pushButton.text()))
 
 
-def table_config(self):
+def set_table_config(self):
     '''
     数据库表配置页主要代码，进入下一步前调用
     :return:
@@ -171,71 +171,6 @@ def table_config(self):
 
     # 显示加载中弹窗
     self.dialog_fault.open()
-
-
-def add_table_button_group_init(self):
-    '''
-    表格按钮初始化
-    :return:
-    '''
-
-    self.ui.verticalLayoutWidget_add_table_button = QWidget(self.ui.scrollAreaWidgetContents_left_6)
-
-    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 31))
-
-    self.ui.add_table_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_table_button)
-
-    # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 60))
-
-
-def add_table_button_group(self, table_name):
-    '''
-    添加单个按钮组件组，用于表配置页面
-    :param table_name: 表名
-    :return:
-    '''
-
-    self.ui.horizontalLayoutWidget1 = QWidget()
-    self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + table_name)
-    self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.table_number * 31, 281, 31))
-
-    self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
-    self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + table_name)
-    self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
-    self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget_6)
-    self.ui.checkBox_1.setObjectName(u"checkBox_" + table_name)
-
-    sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-    sizePolicy.setHorizontalStretch(0)
-    sizePolicy.setVerticalStretch(0)
-    sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
-    self.ui.checkBox_1.setSizePolicy(sizePolicy)
-    self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
-
-    self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
-
-    self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget_6)
-    self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
-    self.ui.pushButton_1.setText(table_name)
-    sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-    sizePolicy1.setHorizontalStretch(0)
-    sizePolicy1.setVerticalStretch(0)
-    sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
-    self.ui.pushButton_1.setSizePolicy(sizePolicy1)
-
-    self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
-
-    # 把组件添加到面板
-    self.ui.add_table_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
-
-    self.table_number += 1
-
-    # 设置scrollAreaWidgetContents大小
-    self.ui.scrollAreaWidgetContents_left_6.setMinimumSize(QSize(0, 45 + self.table_number * 31))
-
-    # 设置面板大小
-    self.ui.verticalLayoutWidget_add_table_button.setGeometry(QRect(0, 0, 281, 45 + self.table_number * 31))
 
 
 def checkBox_all_select_clicked(self):
@@ -774,9 +709,7 @@ def add_func(self):
     '''
     self.window_init_for_table = MethodType(window_init_for_table, self)
     self.table_config_init = MethodType(table_config_init, self)
-    self.table_config = MethodType(table_config, self)
-    self.add_table_button_group_init = MethodType(add_table_button_group_init, self)
-    self.add_table_button_group = MethodType(add_table_button_group, self)
+    self.set_table_config = MethodType(set_table_config, self)
     self.checkBox_all_select_clicked = MethodType(checkBox_all_select_clicked, self)
     self.table_pushButton_clicked = MethodType(table_pushButton_clicked, self)
     self.comboBob_logicaldeletemark_currentIndexChanged = MethodType(comboBob_logicaldeletemark_currentIndexChanged, self)

@@ -9,7 +9,6 @@
 视图配置页面主要操作
 '''
 # import module your need
-import sys
 
 from PySide6 import QtCore, QtWidgets
 from PySide6.QtCore import QRect, QSize
@@ -24,10 +23,8 @@ from types import MethodType
 # 将自己负责的函数复制到此处
 def window_init_for_view(self):
     # 添加表按钮等组件初始化
-    self.add_view_button_group_init()
-    self.view_number = -1
-    self.add_view_button_group('select_all')
     self.view_is_config = False
+
 
 def view_config_init(self):
     '''
@@ -88,7 +85,8 @@ def view_config_init(self):
 
     self.view_is_config = True
 
-def view_config(self):
+
+def set_view_config(self):
     '''
     视图配置页主要代码
     :return:
@@ -97,72 +95,6 @@ def view_config(self):
 
     # 进入下一步前，完成相关配置并完成对主要数据sql_data的修改
 
-def add_view_button_group_init(self):
-    '''
-    表格按钮初始化
-    :return:
-    '''
-    # self.ui.verticalLayoutWidget_add_view_button = QWidget(self.ui.scrollAreaWidgetContents_left_2)
-    # # self.ui.verticalLayoutWidget_add.setGeometry(QRect(20, 320 + 41 * self.encrypt_group_number, 497, 41))
-    #
-    # self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 31))
-    #
-    # self.ui.add_view_button_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add_view_button)
-    #
-    # # # 初始化滚动面板容量
-    # # self.ui.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 400 + 41 * self.encrypt_group_count))
-    #
-    # # 设置scrollAreaWidgetContents大小
-    # self.ui.scrollAreaWidgetContents_left_2.setMinimumSize(QSize(0, 60))
-
-def add_view_button_group(self,view_name):
-    '''
-    视图页添加按钮
-    :param view_name: 视图名
-    :return:
-    '''
-    # self.ui.horizontalLayoutWidget1 = QWidget()
-    # self.ui.horizontalLayoutWidget1.setObjectName(u"horizontalLayoutWidget_" + view_name)
-    # self.ui.horizontalLayoutWidget1.setGeometry(QRect(0, 31 + self.view_number * 31, 281, 31))
-    #
-    # self.ui.horizontalLayout_1 = QHBoxLayout(self.ui.horizontalLayoutWidget1)
-    # self.ui.horizontalLayout_1.setObjectName(u"horizontalLayout_" + view_name)
-    # self.ui.horizontalLayout_1.setContentsMargins(0, 0, 0, 0)
-    # self.ui.checkBox_1 = QCheckBox(self.ui.horizontalLayoutWidget)
-    # self.ui.checkBox_1.setObjectName(u"checkBox_" + view_name)
-    # self.ui.checkBox_1.setText(view_name)
-    #
-    # sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-    # sizePolicy.setHorizontalStretch(0)
-    # sizePolicy.setVerticalStretch(0)
-    # sizePolicy.setHeightForWidth(self.ui.checkBox_1.sizePolicy().hasHeightForWidth())
-    # self.ui.checkBox_1.setSizePolicy(sizePolicy)
-    # self.ui.checkBox_1.setMinimumSize(QSize(0, 0))
-    # self.ui.checkBox_1.setMaximumSize(QSize(13, 13))
-    #
-    # self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
-    #
-    # self.ui.pushButton_1 = QPushButton(self.ui.horizontalLayoutWidget)
-    # self.ui.pushButton_1.setObjectName(u"pushButton_" + view_name)
-    # self.ui.pushButton_1.setText(view_name)
-    # sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
-    # sizePolicy1.setHorizontalStretch(0)
-    # sizePolicy1.setVerticalStretch(0)
-    # sizePolicy1.setHeightForWidth(self.ui.pushButton_1.sizePolicy().hasHeightForWidth())
-    # self.ui.pushButton_1.setSizePolicy(sizePolicy1)
-    #
-    # self.ui.horizontalLayout_1.addWidget(self.ui.pushButton_1)
-    #
-    # # 把组件添加到面板
-    # self.ui.add_view_button_encrypt_group_layout.addWidget(self.ui.horizontalLayoutWidget1)
-    #
-    # self.view_number += 1
-    #
-    # # 设置scrollAreaWidgetContents大小
-    # self.ui.scrollAreaWidgetContents_left_2.setMinimumSize(QSize(0, 45 + self.view_number * 31))
-    #
-    # # 设置面板大小
-    # self.ui.verticalLayoutWidget_add_view_button.setGeometry(QRect(0, 0, 281, 45 + self.view_number * 31))
 
 def view_checkBox_clicked(self, checkbox, index = -1):
     '''
@@ -180,6 +112,7 @@ def view_checkBox_clicked(self, checkbox, index = -1):
     else:
         self.sql_data_view_ischecked_update(checkbox, False)
 
+
 def sql_data_view_ischecked_update(self, checkbox, bool):
     '''
     视图选择框里的checkbox事件注册实现方法
@@ -188,6 +121,7 @@ def sql_data_view_ischecked_update(self, checkbox, bool):
     for view_num in range(len(self.sql_data['view'])):
         if self.sql_data['view'][view_num]['view'] == checkbox.objectName().replace('checkBox_', ''):
                 self.sql_data['view'][view_num]['ischecked'] = bool
+
 
 def view_checkBox_all_select_clicked(self):
     '''
@@ -201,6 +135,7 @@ def view_checkBox_all_select_clicked(self):
     else:
         for checkBox in self.ui.listWidget_view.findChildren(QCheckBox):
             checkBox.setChecked(False)
+
 
 def view_pushButton_clicked(self,button_text):
     '''
@@ -281,8 +216,8 @@ def tableWidget_init(self):
     #删除当前表
     self.ui.tableWidget.clearContents()
 
-    row = 4 #行数
-    column = 4 # 列数
+    row = 4  # 行数
+    column = 4  # 列数
     self.ui.tableWidget.setRowCount(row)
     self.ui.tableWidget.setColumnCount(column)
     self.ui.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
@@ -394,9 +329,7 @@ def add_func(self):
     '''
     self.window_init_for_view = MethodType(window_init_for_view, self)
     self.view_config_init = MethodType(view_config_init, self)
-    self.view_config = MethodType(view_config, self)
-    self.add_view_button_group_init = MethodType(add_view_button_group_init, self)
-    self.add_view_button_group = MethodType(add_view_button_group, self)
+    self.set_view_config = MethodType(set_view_config, self)
     self.view_checkBox_clicked = MethodType(view_checkBox_clicked, self)
     self.sql_data_view_ischecked_update = MethodType(sql_data_view_ischecked_update, self)
     self.view_checkBox_all_select_clicked = MethodType(view_checkBox_all_select_clicked, self)

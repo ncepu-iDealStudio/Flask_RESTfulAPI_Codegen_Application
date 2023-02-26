@@ -42,8 +42,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # 加载主窗口样式
-        self.setStyleSheet('')  # 这里不设计样式就会出现bug,因为主窗口已经在qtDesigner中设计过样式了
+        # # 加载主窗口样式
+        # self.setStyleSheet('')  # 这里不设计样式就会出现bug,因为主窗口已经在qtDesigner中设计过样式了
 
         # 加载样式
         # file = "app/themes/style.qss"
@@ -82,8 +82,8 @@ class MainWindow(QMainWindow):
         self.ui.titleRightInfo.mouseDoubleClickEvent = dobleClickMaximizeRestore
 
 
-
         # MOVE WINDOW / MAXIMIZE / RESTORE
+        # 移动窗口
         def moveWindow(event):
             # IF MAXIMIZED CHANGE TO NORMAL
             if GLOBAL_STATE:
@@ -97,13 +97,12 @@ class MainWindow(QMainWindow):
         self.ui.titleRightInfo.mouseMoveEvent = moveWindow
 
         # MINIMIZE
-        # 最小化
+        # 最小化窗口
         self.ui.minimizeAppBtn.clicked.connect(lambda: self.showMinimized())
 
         # CLOSE APPLICATION
-        # 关闭
+        # 关闭窗口
         self.ui.closeAppBtn.clicked.connect(lambda: self.close_window())
-
 
         # 初始化加载中弹窗
         self.dialog_fault = QDialog()
@@ -120,12 +119,10 @@ class MainWindow(QMainWindow):
         pic.setScaledSize(QSize(label_pic.width(), label_pic.height()))
         pic.start()
         label_pic.setMovie(pic)
-
-        # 去除标题栏
+        # 去除弹窗标题栏
         self.dialog_fault.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
 
         # 初始化数据处理线程
-
         from .load_data import LoadData
         self.loadData = LoadData()
         self.load_thread = QThread()
@@ -166,10 +163,10 @@ class MainWindow(QMainWindow):
         框架初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:
         '''
-        self.ui.pushButton_next.clicked.connect(self.button_next)
-        self.ui.pushButton_last.clicked.connect(self.button_last)
+        self.ui.pushButton_next.clicked.connect(self.button_next_clicked)
+        self.ui.pushButton_last.clicked.connect(self.button_last_clicked)
 
-    def button_next(self):
+    def button_next_clicked(self):
         '''
         下一步按钮点击函数
         :return:
@@ -181,11 +178,11 @@ class MainWindow(QMainWindow):
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
-            self.table_config()
+            self.set_table_config()
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
-            self.view_config()
+            self.set_view_config()
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
@@ -197,7 +194,7 @@ class MainWindow(QMainWindow):
             self.generate()
             return
 
-    def button_last(self):
+    def button_last_clicked(self):
         '''
         上一步按钮点击函数
         :return:
@@ -307,10 +304,19 @@ class MainWindow(QMainWindow):
         #     print('Mouse click: RIGHT CLICK')
 
     def close_window(self):
+        '''
+        关闭窗口
+        :return:
+        '''
+        # 关闭弹窗
         self.dialog_fault.close()
+
+        # 关闭线程
         self.load_thread.quit()
         self.load_thread.wait()
         del self.load_thread
+
+        # 关闭主窗口
         self.close()
 
 
