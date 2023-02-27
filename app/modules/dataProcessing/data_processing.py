@@ -2,7 +2,7 @@
 # coding=utf-8
 # @project : Flask_RESTfulAPI_Codegen_Application
 # @author  : ChengKai
-# @file   : load_data.py
+# @file   : data_processing.py
 # @ide    : PyCharm
 # @time   : 2023-01-17 21:20:49
 '''
@@ -17,10 +17,10 @@ from PySide6 import QtCore
 from PySide6.QtCore import QObject, QThread, Signal
 
 from utils.checkSqlLink import SQLHandler
-
+from app.modules.windows import MainWindow
 
 # 创建该类的实例后，通过moveToThread使得其方法可以通过多线程的方式进行
-class LoadData(QObject):
+class DataProcessing(QObject):
 
     # 实例化信号
     sig_load_dbname = Signal(str, str, str, str)  # 开始获取数据库名信号

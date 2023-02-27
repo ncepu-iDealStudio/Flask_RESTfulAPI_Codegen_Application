@@ -9,23 +9,17 @@
 窗口主文件，负责对窗口进行初始化以及对各个子页面的整体调度
 '''
 import configparser
+import datetime
 import os
 import sys
 
-from PySide6.QtCore import QFile, QSize, QThread, QEvent, QTimer
-from PySide6.QtWidgets import QApplication, QFrame, QLabel, QPushButton, QDialog, QMainWindow, QSizeGrip, \
-    QGraphicsDropShadowEffect
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtGui import QIcon, QMovie, Qt, QColor
+from PySide6.QtCore import QSize, QThread, QEvent, QTimer
+from PySide6.QtWidgets import QApplication, QLabel, QDialog, QMainWindow
+from PySide6.QtGui import QIcon, QMovie, Qt
 
 # 以下为各页面模块
-from app import window_database
-from app import window_table
-from app import window_view
-from app import window_confirm
-from app import window_generate
+import config.setting
 from app.ui.MainWindow import Ui_MainWindow
-from app.widgets import CustomGrip
 
 GLOBAL_STATE = False
 
@@ -105,12 +99,12 @@ class MainWindow(QMainWindow):
         self.ui.closeAppBtn.clicked.connect(lambda: self.close_window())
 
         # 初始化加载中弹窗
-        self.dialog_fault = QDialog()
-        self.label_loading = QLabel(self.dialog_fault)  # 弹窗
+        self.dialog_loading = QDialog()
+        self.label_loading = QLabel(self.dialog_loading)  # 弹窗
         self.label_loading.setText('')
         self.label_loading.setGeometry(0, 0, 330, 230)
 
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        base_dir = config.setting.BASE_DIR
         image_path = os.path.join(base_dir, 'app', 'ui', 'static', 'loading.gif')
         label_pic = QLabel(self.label_loading)  # loading动图label
         label_pic.setStyleSheet("background-color:transparent")
@@ -120,14 +114,14 @@ class MainWindow(QMainWindow):
         pic.start()
         label_pic.setMovie(pic)
         # 去除弹窗标题栏
-        self.dialog_fault.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.dialog_loading.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
 
         # 初始化数据处理线程
-        from .load_data import LoadData
-        self.loadData = LoadData()
-        self.load_thread = QThread()
-        self.loadData.moveToThread(self.load_thread)
-        self.load_thread.start()
+        from app.modules.dataProcessing.data_processing import DataProcessing
+        self.dataProcessing = DataProcessing()
+        self.data_thread = QThread()
+        self.dataProcessing.moveToThread(self.data_thread)
+        self.data_thread.start()
 
         # 定义主要数据sql_data
         self.sql_data = {
@@ -135,20 +129,22 @@ class MainWindow(QMainWindow):
             'view': []
         }
 
+        self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+
         # 加载各模块的函数
-        window_database.add_func(self)
-        window_table.add_func(self)
-        window_view.add_func(self)
-        window_confirm.add_func(self)
-        window_generate.add_func(self)
+        # window_database.add_func(self)
+        # window_table.add_func(self)
+        # window_view.add_func(self)
+        # window_confirm.add_func(self)
+        # window_generate.add_func(self)
 
         # 对各个页面进行初始化
-        self.frame_init()
-        self.window_init_for_database()
-        self.window_init_for_table()
-        self.window_init_for_view()
-        self.window_init_for_confirm()
-        self.window_init_for_generate()
+        # self.frame_init()
+        # self.window_init_for_database()
+        # self.window_init_for_table()
+        # self.window_init_for_view()
+        # self.window_init_for_confirm()
+        # self.window_init_for_generate()
 
         # 设置初始页面为第一页
         self.ui.stackedWidget.setCurrentIndex(0)
@@ -158,11 +154,20 @@ class MainWindow(QMainWindow):
         self.last_db = ''  # 上一次使用的数据库名
         self.this_db = ''  # 本次使用的数据库名
 
-    def frame_init(self):
+    def window_init(self):
         '''
         框架初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:
         '''
+        # 初始化各个子页面
+        from app.modules.windows.pages import PageDatabase, PageTable, PageView, PageConfirm, PageGenerate
+        self.page_database = PageDatabase(self)
+        self.page_database.db_config_init()
+        self.page_table = PageTable(self)
+        self.page_view = PageView(self)
+        self.page_confirm = PageConfirm(self)
+        self.page_generate = PageGenerate(self)
+
         self.ui.pushButton_next.clicked.connect(self.button_next_clicked)
         self.ui.pushButton_last.clicked.connect(self.button_last_clicked)
 
@@ -174,24 +179,25 @@ class MainWindow(QMainWindow):
 
         # 对不同页面给出不同的操作分支，各自完善相关方法
         if self.ui.stackedWidget.currentIndex() == 0:
-            self.db_config()
+
+            self.page_database.set_db_config()
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
-            self.set_table_config()
+            self.page_table.set_table_config()
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
-            self.set_view_config()
+            self.page_view.set_view_config()
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
-            self.confirm_config()
+            self.page_confirm.set_confirm_config()
             self.ui.pushButton_next.setText('生成代码')
             return
 
         if self.ui.stackedWidget.currentIndex() == 4:
-            self.generate()
+            self.page_generate.code_generate()
             return
 
     def button_last_clicked(self):
@@ -223,39 +229,39 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget_step.setCurrentIndex(0)
             return
 
-    def next_step(self):
+    def next_step(self, **kwargs):
         '''
         通过判断当前所在页面，进行相应操作并跳转到对应页面
         :return:
         '''
         if self.ui.stackedWidget.currentIndex() == 0:
-            self.table_config_init()
+            self.page_table.table_config_init(self.sql_data)
             self.ui.stackedWidget.setCurrentIndex(1)
             self.ui.stackedWidget_step.setCurrentIndex(1)
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
-            self.view_config_init()
+            self.page_view.view_config_init()
             self.ui.stackedWidget.setCurrentIndex(2)
             self.ui.stackedWidget_step.setCurrentIndex(2)
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
-            self.confirm_config_init()
+            self.page_confirm.confirm_config_init()
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.stackedWidget_step.setCurrentIndex(3)
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
-            self.generate_init()
+            self.page_generate.generate_init()
             self.ui.pushButton_next.setText('生成代码')
             self.ui.stackedWidget.setCurrentIndex(4)
             self.ui.stackedWidget_step.setCurrentIndex(4)
             return
 
-        if self.ui.stackedWidget.currentIndex() == 4:
-            self.generate()
-            return
+        # if self.ui.stackedWidget.currentIndex() == 4:
+            # self.generate()
+            # return
 
     def maximize_restore(self):
         '''
@@ -309,12 +315,12 @@ class MainWindow(QMainWindow):
         :return:
         '''
         # 关闭弹窗
-        self.dialog_fault.close()
+        self.dialog_loading.close()
 
         # 关闭线程
-        self.load_thread.quit()
-        self.load_thread.wait()
-        del self.load_thread
+        self.data_thread.quit()
+        self.data_thread.wait()
+        del self.data_thread
 
         # 关闭主窗口
         self.close()

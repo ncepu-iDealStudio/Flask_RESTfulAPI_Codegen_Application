@@ -16,6 +16,7 @@ from urllib import parse
 
 os.chdir(os.path.dirname(os.path.dirname(__file__)))
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class Settings(object):
 
