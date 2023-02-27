@@ -8,23 +8,12 @@
 '''
 数据库配置页面主要操作
 '''
-
 import configparser
-import datetime
 import os
-import time
-
-import pymysql
-from PySide6 import QtCore
-from PySide6.QtCore import QSize, QThread, QObject
-from PySide6.QtGui import QPixmap, QMovie
-from PySide6.QtWidgets import QMessageBox, QDialog, QLabel, QPushButton, QFrame
-
+from PySide6.QtWidgets import QMessageBox
 import config.setting
 from utils.checkSqlLink import SQLHandler
-from types import MethodType
 from app.modules.windows import MainWindow
-from threading import Thread
 
 
 class PageDatabase(MainWindow):
@@ -32,6 +21,10 @@ class PageDatabase(MainWindow):
     数据库配置页
     '''
     def __init__(self, mainWindow):
+        '''
+        页面初始化
+        :param mainWindow:
+        '''
         MainWindow.__init__(self)
         self.dialog_loading = mainWindow.dialog_loading
         self.ui = mainWindow.ui
@@ -40,13 +33,12 @@ class PageDatabase(MainWindow):
         self.next_step = mainWindow.next_step
         self.id = mainWindow.id
 
-    def db_config_init(self):
+    def refresh_db_page(self):
         '''
-        数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
+        刷新页面
         :return:
         '''
         self.ui.button_get_db_names.clicked.connect(self.get_dbname)
-        # self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
         # 初始化多线程信号与槽
         self.dataProcessing.sig_load_table.connect(self.dataProcessing.load_tables)
@@ -68,7 +60,7 @@ class PageDatabase(MainWindow):
 
     def set_db_config(self):
         """
-        数据库配置页面主要代码，
+        配置数据库完成
         """
         base_dir = config.setting.BASE_DIR
         f = open(base_dir + r"/config/config_" + str(self.id) + ".conf", "w")
@@ -156,8 +148,12 @@ class PageDatabase(MainWindow):
 
         self.dialog_loading.open()  # 阻塞当前窗口，避免用户违规操作
 
-    # 获取dbname完成
     def load_dbname_comp(self, result):
+        '''
+        加载数据库名完成
+        :param result: 加载数据库名返回值
+        :return:
+        '''
         self.dialog_loading.close()
         if result.get('code') == 2000:
             # 清空下拉框
@@ -167,12 +163,16 @@ class PageDatabase(MainWindow):
             # 将数据库名添加到下拉框中
             for dbname in dbnames:
                 self.ui.comboBox_database.addItem(dbname[0])
-
         else:
             QMessageBox.critical(self, '错误', str(result))
             QMessageBox.critical(self, '错误', '数据库连接失败!')
 
     def load_table_comp(self, tables_info):
+        '''
+        加载表数据完成
+        :param tables_info:表数据
+        :return:
+        '''
         if tables_info.get('code'):
             self.sql_data['table'] = tables_info['data']['table']
             kwargs = {}

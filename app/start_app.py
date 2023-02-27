@@ -15,10 +15,10 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication
 from app.modules.windows.app_windows import AppWindows
 
-def start():
 
+def start_app():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon('app/ui/ncepu.jpg'))
-    Windows = AppWindows()
-    Windows.main_window.show()
+    app_windows = AppWindows()
+    app_windows.main_window.show()
     sys.exit(app.exec())

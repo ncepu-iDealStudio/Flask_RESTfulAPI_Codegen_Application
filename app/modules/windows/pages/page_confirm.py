@@ -6,15 +6,12 @@
 # @ide    : PyCharm
 # @time   : 2022-10-12 16:14:53
 '''
-
+确认配置页面
 '''
-
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QTableWidgetItem, QAbstractItemView
-
-
-from types import MethodType
 from app.modules.windows import MainWindow
+
 
 class PageConfirm(MainWindow):
     def __init__(self, mainWindow):
@@ -26,10 +23,7 @@ class PageConfirm(MainWindow):
         self.next_step = mainWindow.next_step
         self.id = mainWindow.id
 
-    def window_init_for_confirm(self):
-        pass
-
-    def confirm_config_init(self):
+    def refresh_confirm_page(self):
         '''
         确认配置页初始化初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:
@@ -52,8 +46,6 @@ class PageConfirm(MainWindow):
             str2 = new_table[i]['logicaldeletemark']
             if new_table[i]['logicaldeletemark'] == '':
                 str2 = "/"
-
-            print()
             str3 = new_table[i]['businesskeyname']
             if new_table[i]['businesskeyname'] == '':
                 str3 = "/"

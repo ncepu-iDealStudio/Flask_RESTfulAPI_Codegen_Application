@@ -11,16 +11,10 @@
 import configparser
 import datetime
 import os
-import sys
-
-from PySide6.QtCore import QSize, QThread, QEvent, QTimer
-from PySide6.QtWidgets import QApplication, QLabel, QDialog, QMainWindow
-from PySide6.QtGui import QIcon, QMovie, Qt
-
-# 以下为各页面模块
-import config.setting
+from PySide6.QtCore import QThread, QEvent, QTimer
+from PySide6.QtWidgets import QMainWindow
+from PySide6.QtGui import Qt
 from app.ui.MainWindow import Ui_MainWindow
-
 GLOBAL_STATE = False
 
 
@@ -35,9 +29,6 @@ class MainWindow(QMainWindow):
         # # ///////////////////////////////////////////////////////////////
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-
-        # # 加载主窗口样式
-        # self.setStyleSheet('')  # 这里不设计样式就会出现bug,因为主窗口已经在qtDesigner中设计过样式了
 
         # 加载样式
         # file = "app/themes/style.qss"
@@ -98,24 +89,6 @@ class MainWindow(QMainWindow):
         # 关闭窗口
         self.ui.closeAppBtn.clicked.connect(lambda: self.close_window())
 
-        # 初始化加载中弹窗
-        self.dialog_loading = QDialog()
-        self.label_loading = QLabel(self.dialog_loading)  # 弹窗
-        self.label_loading.setText('')
-        self.label_loading.setGeometry(0, 0, 330, 230)
-
-        base_dir = config.setting.BASE_DIR
-        image_path = os.path.join(base_dir, 'app', 'ui', 'static', 'loading.gif')
-        label_pic = QLabel(self.label_loading)  # loading动图label
-        label_pic.setStyleSheet("background-color:transparent")
-        label_pic.setGeometry(0, 0, 330, 230)
-        pic = QMovie(image_path)  # loading动图
-        pic.setScaledSize(QSize(label_pic.width(), label_pic.height()))
-        pic.start()
-        label_pic.setMovie(pic)
-        # 去除弹窗标题栏
-        self.dialog_loading.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-
         # 初始化数据处理线程
         from app.modules.dataProcessing.data_processing import DataProcessing
         self.dataProcessing = DataProcessing()
@@ -131,28 +104,9 @@ class MainWindow(QMainWindow):
 
         self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
-        # 加载各模块的函数
-        # window_database.add_func(self)
-        # window_table.add_func(self)
-        # window_view.add_func(self)
-        # window_confirm.add_func(self)
-        # window_generate.add_func(self)
-
-        # 对各个页面进行初始化
-        # self.frame_init()
-        # self.window_init_for_database()
-        # self.window_init_for_table()
-        # self.window_init_for_view()
-        # self.window_init_for_confirm()
-        # self.window_init_for_generate()
-
         # 设置初始页面为第一页
         self.ui.stackedWidget.setCurrentIndex(0)
         self.ui.stackedWidget_step.setCurrentIndex(0)
-
-        # 定义所有页面公有变量
-        self.last_db = ''  # 上一次使用的数据库名
-        self.this_db = ''  # 本次使用的数据库名
 
     def window_init(self):
         '''
@@ -162,7 +116,7 @@ class MainWindow(QMainWindow):
         # 初始化各个子页面
         from app.modules.windows.pages import PageDatabase, PageTable, PageView, PageConfirm, PageGenerate
         self.page_database = PageDatabase(self)
-        self.page_database.db_config_init()
+        self.page_database.refresh_db_page()
         self.page_table = PageTable(self)
         self.page_view = PageView(self)
         self.page_confirm = PageConfirm(self)
@@ -223,8 +177,6 @@ class MainWindow(QMainWindow):
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
-            self.last_db = self.this_db
-            self.view_is_config = False
             self.ui.stackedWidget.setCurrentIndex(0)
             self.ui.stackedWidget_step.setCurrentIndex(0)
             return
@@ -235,64 +187,29 @@ class MainWindow(QMainWindow):
         :return:
         '''
         if self.ui.stackedWidget.currentIndex() == 0:
-            self.page_table.table_config_init(self.sql_data)
+            self.page_table.refresh_table_page(self.sql_data)
             self.ui.stackedWidget.setCurrentIndex(1)
             self.ui.stackedWidget_step.setCurrentIndex(1)
             return
 
         if self.ui.stackedWidget.currentIndex() == 1:
-            self.page_view.view_config_init()
+            self.page_view.refresh_view_page()
             self.ui.stackedWidget.setCurrentIndex(2)
             self.ui.stackedWidget_step.setCurrentIndex(2)
             return
 
         if self.ui.stackedWidget.currentIndex() == 2:
-            self.page_confirm.confirm_config_init()
+            self.page_confirm.refresh_confirm_page()
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.stackedWidget_step.setCurrentIndex(3)
             return
 
         if self.ui.stackedWidget.currentIndex() == 3:
-            self.page_generate.generate_init()
+            self.page_generate.refresh_generate_page()
             self.ui.pushButton_next.setText('生成代码')
             self.ui.stackedWidget.setCurrentIndex(4)
             self.ui.stackedWidget_step.setCurrentIndex(4)
             return
-
-        # if self.ui.stackedWidget.currentIndex() == 4:
-            # self.generate()
-            # return
-
-    def maximize_restore(self):
-        '''
-        最大化按钮点击函数
-        :return:
-        '''
-        global GLOBAL_STATE
-        status = GLOBAL_STATE
-        if status == False:
-            self.showMaximized()
-            GLOBAL_STATE = True
-            # self.ui.appMargins.setContentsMargins(0, 0, 0, 0)
-            self.ui.maximizeRestoreAppBtn.setToolTip("Restore")
-            self.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_restore.png"))
-            self.ui.frame_size_grip.hide()
-            # self.left_grip.hide()
-            # self.right_grip.hide()
-            # self.top_grip.hide()
-            # self.bottom_grip.hide()
-        else:
-            GLOBAL_STATE = False
-            self.showNormal()
-            self.resize(self.width() + 1, self.height() + 1)
-            # self.ui.appMargins.setContentsMargins(10, 10, 10, 10)
-            self.ui.maximizeRestoreAppBtn.setToolTip("Maximize")
-            self.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_maximize.png"))
-            self.ui.frame_size_grip.show()
-            # self.left_grip.show()
-            # self.right_grip.show()
-            # self.top_grip.show()
-            # self.bottom_grip.show()
 
     def mousePressEvent(self, event):
         '''
@@ -324,12 +241,3 @@ class MainWindow(QMainWindow):
 
         # 关闭主窗口
         self.close()
-
-
-def start():
-
-    app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon('app/ui/ncepu.jpg'))
-    main_window = MainWindow()
-    main_window.show()
-    sys.exit(app.exec())

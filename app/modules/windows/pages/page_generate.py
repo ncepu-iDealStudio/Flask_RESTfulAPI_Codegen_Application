@@ -8,24 +8,15 @@
 '''
 代码生成页面主要操作
 '''
-# import module your need
 import configparser
 import os
-
 from PySide6 import QtWidgets
 from PySide6.QtCore import QDir
 from PySide6.QtWidgets import QMessageBox, QFileDialog
-
-from types import MethodType
-
 import config.setting
 from app.modules.windows import MainWindow
-
-#!/usr/bin/env python
-# -*- coding:utf-8 -*-
-from tkinter import messagebox
-
 from utils.checkChinese import is_chinese
+
 
 class PageGenerate(MainWindow):
     def __init__(self, mainWindow):
@@ -38,21 +29,11 @@ class PageGenerate(MainWindow):
         self.id = mainWindow.id
         self.close_window = mainWindow.close_window
 
-        self.window_init_for_generate()
-
-
-    def window_init_for_generate(self):
-        '''
-        数据库配置页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
-        :return:
-        '''
-
         # 初始化多线程信号与槽
         self.dataProcessing.sig_load_generate.connect(self.dataProcessing.load_generate)
         self.dataProcessing.sig_load_generate_comp.connect(self.load_generate_comp)
-        return
 
-    def generate_init(self):
+    def refresh_generate_page(self):
         '''
         代码生成页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:

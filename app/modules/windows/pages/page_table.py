@@ -8,56 +8,34 @@
 '''
 表配置页面主要操作
 '''
-# import module your need
-
-# 表配置页导入的包
-from PySide6.QtWidgets import QPushButton, QWidget, QCheckBox, QVBoxLayout, QSizePolicy, QHBoxLayout, QComboBox, QLabel, \
+from PySide6.QtWidgets import QPushButton, QWidget, QCheckBox, QSizePolicy, QHBoxLayout, QComboBox, QLabel, \
     QListWidgetItem, QListWidget
-from PySide6.QtCore import QSize, QRect
+from PySide6.QtCore import QSize
 from functools import partial
-
-from types import MethodType
 from app.modules.windows import MainWindow
+
 
 class PageTable(MainWindow):
 
     def __init__(self, mainWindow):
         MainWindow.__init__(self)
+        # 加载主窗口mainWindow的部分成员
         self.dialog_loading = mainWindow.dialog_loading
         self.ui = mainWindow.ui
         self.dataProcessing = mainWindow.dataProcessing
         self.sql_data = mainWindow.sql_data
         self.next_step = mainWindow.next_step
 
-        self.window_init_for_table()
-
-    def window_init_for_table(self):
-        '''
-        针对表配置页面，对窗口进行初始化，在程序启动时执行
-        :param self:
-        :return:
-        '''
-        # 添加表按钮等组件初始化
-        # self.add_table_button_group_init()
-        self.table_number = -1
-        # self.add_table_button_group('table_select_all')
-
-        # 加密组件初始化
-        self.add_field_encrypt_group_init()
-
         # 初始化多线程信号与槽
         self.dataProcessing.sig_load_view.connect(self.dataProcessing.load_views)
         self.dataProcessing.sig_load_view_comp.connect(self.load_view_comp)
 
-        # 初始化表配置页使用的全域变量
-
-    def table_config_init(self, sql_data):
+    def refresh_table_page(self, sql_data):
         '''
-        数据库表页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义，在进入当前页面前执行
+        表配置页面刷新
         :return:
         '''
         self.sql_data = sql_data
-
         # 进页面前调整控件初始状态
         self.ui.stackedWidget_right.setCurrentIndex(0)
 
@@ -123,10 +101,7 @@ class PageTable(MainWindow):
         self.encrypt_group_number = 0  # 字段加密组件当前组件编号
         self.field_encryptable = []  # 可加密的字段组成一个列表，目前字段类型为字符允许加密
         self.encrypt_type_list = ['rsa', 'aes']  # 加密方式
-
         self.table_selected_itme = None  # 数据库表被选中的item
-
-        self.table_number = 0
 
         # 此处存在第二次加载时上一个组件没有销毁，同时存在多个同名组件的问题，最终会导致多选按钮的点击事件无效
         # 先通过改变组件名解决问题
@@ -134,14 +109,10 @@ class PageTable(MainWindow):
             self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").setObjectName(u"checkBox_tsall1")
 
         # 添加list_items
-        self.add_table_list()
+        self.refresh_table_list()
         self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").itemClicked.connect(
             self.table_list_item_clicked)
 
-        # 初始化全选按钮
-        # 全选按钮已经在添加时初始化，此处初始化取消
-
-        #  事件初始化
         # 全选CheckBox事件添加
         self.ui.centralwidget.findChild(QCheckBox, u"checkBox_tsall").clicked.connect(self.checkBox_all_select_clicked)
 
@@ -162,7 +133,7 @@ class PageTable(MainWindow):
 
     def set_table_config(self):
         '''
-        数据库表配置页主要代码，进入下一步前调用
+        配置数据库表完成
         :return:
         '''
 
@@ -228,8 +199,6 @@ class PageTable(MainWindow):
                                                                        u"horizontalLayoutWidget_" + button_text)
             self.table_selected_itme.setStyleSheet('')
 
-            # 保存上个表配置的数据
-
             # 清空数据缓存
             self.field_encryptable = []
 
@@ -249,7 +218,6 @@ class PageTable(MainWindow):
             self.ui.comboBox_select_table_businesskeyname.addItem('选择业务主键')
 
             # 加载数据到配置框
-
             for table in self.sql_data['table']:
                 if table['table'] == button_text:
                     self.selected_table = table
@@ -427,14 +395,15 @@ class PageTable(MainWindow):
         :return:
         '''
 
-        # 添加一个选择加密字段组
+        # 添加一个空白的选择加密字段组
         self.add_field_encrypt_group()
 
-        # 绑定事件,初始化数据
+        # 绑定事件
         button_delete = self.ui.listWidget_encrypt.findChild(QWidget, u"pushButton_delete_field_encrypt_add" + str(
             self.encrypt_group_number - 1))
         button_delete.clicked.connect(partial(self.del_field_encrypt_group, button_delete))
 
+        # 根据field_encryptable添加没有设置加密的字段到comboBox
         comboBox_field = self.ui.listWidget_encrypt.findChild(QComboBox,
                                                               u"comboBox_select_table_field_encrypt_add" + str(
                                                                   self.encrypt_group_number - 1))
@@ -443,6 +412,7 @@ class PageTable(MainWindow):
                 comboBox_field.addItem(field['field_name'])
         comboBox_field.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
+        # 根据encrypt_type_list添加加密方法到comboBox
         comboBox_encrypt_type = self.ui.listWidget_encrypt.findChild(QComboBox,
                                                                      u"comboBox_select_table_encrypt_type_add" + str(
                                                                          self.encrypt_group_number - 1))
@@ -450,12 +420,9 @@ class PageTable(MainWindow):
             comboBox_encrypt_type.addItem(encrypt_type)
         comboBox_encrypt_type.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
-        # 更新加密组件，这里可以不更新
-        # self.comboBox_field_update()
-
     def add_field_encrypt_group(self):
         '''
-        添加加密字段配置组件
+        添加加密字段配置组件,在QListWidgetItem中添加一个item然后使用自定义的加密组替换
         :param
         :return:
         '''
@@ -514,15 +481,6 @@ class PageTable(MainWindow):
         self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_encrypt").setItemWidget(table_item,
                                                                                          self.ui.encrypt_widget)
 
-    def add_field_encrypt_group_init(self):
-        '''
-        加密字段组件面板初始化，（这里是由于添加组件时遇到无法显示bug不得已而使用）
-        :return:
-        '''
-
-        self.ui.verticalLayoutWidget_add = QWidget(self.ui.scrollAreaWidgetContents_right_7)
-        self.ui.add_encrypt_group_layout = QVBoxLayout(self.ui.verticalLayoutWidget_add)
-
     def del_field_encrypt_group(self, Qobject):
         '''
         删除一个加密组
@@ -534,11 +492,6 @@ class PageTable(MainWindow):
 
         # 删除加密组
         widget_del = self.ui.listWidget_encrypt.findChild(QHBoxLayout, u"horizontalLayout_add" + str(index))
-
-        # ”deleteLater()“依赖于Qt的event loop机制。
-        # 如果在event loop启用前被调用, 那么event loop启用后对象才会被销毁;
-        # 如果在event loop结束后被调用, 那么对象不会被销毁;
-        # 如果在没有event loop的thread使用, 那么thread结束后销毁对象。
         while widget_del.count():
             item = widget_del.takeAt(0)
             widget = item.widget()
@@ -621,6 +574,11 @@ class PageTable(MainWindow):
                 comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
     def add_table_list_item(self, table_name):
+        '''
+        添加table_list的一个item,在QListWidgetItem中添加一个item然后使用自定义的加密组替换
+        :param table_name:
+        :return:
+        '''
         table_item = QListWidgetItem()
         table_item.setSizeHint(QSize(0, 40))
 
@@ -628,7 +586,6 @@ class PageTable(MainWindow):
         table_checkBox = QCheckBox()
         table_checkBox.setText(table_name)
         self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").addItem(table_item)
-        # self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item, table_checkBox)
 
         self.ui.horizontalLayoutWidget1 = QWidget()
 
@@ -650,7 +607,6 @@ class PageTable(MainWindow):
         self.ui.horizontalLayout_1.addWidget(self.ui.checkBox_1)
 
         self.ui.pushButton_1 = QPushButton()
-        # self.ui.pushButton_1.setFlat(True)
         self.ui.pushButton_1.setObjectName(u"pushButton_" + table_name)
 
         self.ui.pushButton_1.setText(table_name)
@@ -669,14 +625,13 @@ class PageTable(MainWindow):
         self.ui.horizontalLayout_1.setContentsMargins(10, 0, 0, 0)
         self.ui.horizontalLayout_1.setSpacing(15)
 
-        # 把组件添加到面板
-
+        # 把item替换为自定义的组件组
         self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_table").setItemWidget(table_item,
                                                                                        self.ui.horizontalLayoutWidget1)
 
-    def add_table_list(self):
+    def refresh_table_list(self):
         '''
-        添加数据库表列表
+        刷新数据库表列表
         :param self:
         :return:
         '''
@@ -693,7 +648,8 @@ class PageTable(MainWindow):
         '''
 
         # 调用按钮点击方法，使得点击不同的位置效果相同
-        self.table_pushButton_clicked(self, self.ui.centralwidget.findChild(QPushButton, 'pushButton_' + item.text()).text())
+        text = self.ui.centralwidget.findChild(QPushButton, 'pushButton_' + item.text()).text()
+        self.table_pushButton_clicked(text)
 
     def load_view_comp(self, view_info):
         '''
@@ -705,4 +661,3 @@ class PageTable(MainWindow):
         self.sql_data['view'] = view_info['data']['view']
         self.next_step()
         self.dialog_loading.close()
-

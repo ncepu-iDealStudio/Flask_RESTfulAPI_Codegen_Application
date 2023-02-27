@@ -8,10 +8,7 @@
 '''
 this is function description
 '''
-# import module your need
-# from app import window_main
-from app.start_app import start
+from app import start_app
 
 if __name__ == '__main__':
-    # window_main.start()
-    start()
+    start_app.start_app()

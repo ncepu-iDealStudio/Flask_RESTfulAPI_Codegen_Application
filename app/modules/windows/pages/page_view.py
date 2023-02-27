@@ -8,16 +8,11 @@
 '''
 视图配置页面主要操作
 '''
-# import module your need
-
 from PySide6 import QtCore, QtWidgets
-from PySide6.QtCore import QRect, QSize
+from PySide6.QtCore import QSize
 from PySide6.QtWidgets import QCheckBox, QPushButton, QWidget, QHBoxLayout, QSizePolicy, QVBoxLayout, QListWidgetItem, \
     QListWidget
-
 from functools import partial
-
-from types import MethodType
 from app.modules.windows import MainWindow
 
 
@@ -31,13 +26,9 @@ class PageView(MainWindow):
         self.next_step = mainWindow.next_step
         self.id = mainWindow.id
 
-
-    # 将自己负责的函数复制到此处
-    def window_init_for_view(self):
-        # 添加表按钮等组件初始化
         self.view_is_config = False
 
-    def view_config_init(self):
+    def refresh_view_page(self):
         '''
         视图页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:
@@ -76,7 +67,7 @@ class PageView(MainWindow):
             self.ui.listWidget_view.findChild(QCheckBox, u"checkBox_vsall").setObjectName(u"checkBox_vsall1")
 
         # 添加视图选择按钮
-        self.add_view_list()
+        self.refresh_view_list()
         self.ui.centralwidget.findChild(QListWidget, u"listWidget_view").itemClicked.connect(
             self.view_list_item_clicked)
 
@@ -305,7 +296,7 @@ class PageView(MainWindow):
         self.ui.centralwidget.findChild(QListWidget, u"listWidget_view").setItemWidget(view_item,
                                                                                        self.ui.horizontalLayoutWidget1)
 
-    def add_view_list(self):
+    def refresh_view_list(self):
         self.ui.centralwidget.findChild(QListWidget, u"listWidget_view").clear()
         self.add_view_list_item("vsall")
         for view in self.sql_data['view']:
