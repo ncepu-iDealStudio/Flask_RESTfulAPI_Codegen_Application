@@ -12,7 +12,7 @@ import os
 from PySide6.QtCore import QSize
 from PySide6.QtGui import QMovie, Qt
 from PySide6.QtWidgets import QDialog, QLabel
-import config
+from config import setting
 
 
 class DialogLoading(QDialog):
@@ -24,7 +24,7 @@ class DialogLoading(QDialog):
         self.label_loading.setText('')
         self.label_loading.setGeometry(0, 0, 330, 230)
 
-        base_dir = config.setting.BASE_DIR
+        base_dir = setting.BASE_DIR
         image_path = os.path.join(base_dir, 'app', 'ui', 'static', 'loading.gif')
         label_pic = QLabel(self.label_loading)  # loading动图label
         label_pic.setStyleSheet("background-color:transparent")
