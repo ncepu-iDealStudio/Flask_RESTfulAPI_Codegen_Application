@@ -1,4 +1,4 @@
-# Flask_RESTfulAPI_Codegen_Application
+# Flask RESTful风格接口生成器桌面版
 
 ## 介绍
 ### 项目名称
