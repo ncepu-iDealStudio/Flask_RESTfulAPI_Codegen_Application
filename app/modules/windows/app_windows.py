@@ -10,7 +10,7 @@ this is function description
 '''
 from PySide6.QtWidgets import QMainWindow
 from .window_main import MainWindow
-from .windows_dialog import Dialog
+from .window_dialog import Dialog
 
 
 class AppWindows(QMainWindow):
