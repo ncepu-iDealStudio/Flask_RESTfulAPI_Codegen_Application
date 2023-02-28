@@ -33,6 +33,14 @@ class PageGenerate(MainWindow):
         self.dataProcessing.sig_load_generate.connect(self.dataProcessing.load_generate)
         self.dataProcessing.sig_load_generate_comp.connect(self.load_generate_comp)
 
+        # 设置提示文字颜色
+        from app.modules.windows.widgets import Palette
+        palette = Palette()
+        palette.set_placeholder_color('gray')
+        self.ui.lineEdit.setPalette(palette)
+        self.ui.lineEdit_2.setPalette(palette)
+        self.ui.lineEdit_3.setPalette(palette)
+
     def refresh_generate_page(self):
         '''
         代码生成页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义

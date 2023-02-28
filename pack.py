@@ -40,5 +40,5 @@ def convert_ui_to_py():
 
 
 if __name__ == "__main__":
-    pass
-    nuitaka_pack()
+    # nuitaka_pack()
+    convert_ui_to_py()

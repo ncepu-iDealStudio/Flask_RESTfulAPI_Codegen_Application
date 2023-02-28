@@ -33,6 +33,15 @@ class PageDatabase(MainWindow):
         self.next_step = mainWindow.next_step
         self.id = mainWindow.id
 
+        # 设置提示文字颜色
+        from app.modules.windows.widgets import Palette
+        palette = Palette()
+        palette.set_placeholder_color('gray')
+        self.ui.text_host.setPalette(palette)
+        self.ui.text_port.setPalette(palette)
+        self.ui.text_user.setPalette(palette)
+        self.ui.text_password.setPalette(palette)
+
     def refresh_db_page(self):
         '''
         刷新页面

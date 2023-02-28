@@ -1469,7 +1469,7 @@ QLabel {
           <string notr="true"/>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>4</number>
          </property>
          <widget class="QWidget" name="page_1">
           <widget class="QScrollArea" name="scrollArea_1">
@@ -1889,8 +1889,8 @@ QLabel {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>747</width>
-                     <height>547</height>
+                     <width>98</width>
+                     <height>28</height>
                     </rect>
                    </property>
                    <widget class="QLabel" name="label_15">
@@ -2693,8 +2693,8 @@ QCheckBox::indicator:checked {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>747</width>
-                     <height>547</height>
+                     <width>98</width>
+                     <height>28</height>
                     </rect>
                    </property>
                    <widget class="QLabel" name="label_view">
@@ -3042,7 +3042,7 @@ QTableWidget::horizontalHeader {
                    <string/>
                   </property>
                   <property name="placeholderText">
-                   <string>Type here</string>
+                   <string>请选择目标代码路径</string>
                   </property>
                  </widget>
                 </item>
@@ -3111,7 +3111,7 @@ QTableWidget::horizontalHeader {
                    <string/>
                   </property>
                   <property name="placeholderText">
-                   <string>Type here</string>
+                   <string>请输入项目名称</string>
                   </property>
                  </widget>
                 </item>
@@ -3149,7 +3149,7 @@ QTableWidget::horizontalHeader {
                    <string/>
                   </property>
                   <property name="placeholderText">
-                   <string>Type here</string>
+                   <string>请输入接口版本号</string>
                   </property>
                  </widget>
                 </item>
