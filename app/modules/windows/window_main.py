@@ -32,8 +32,8 @@ class MainWindow(QMainWindow):
 
         # 加载样式
         # file = "app/themes/style.qss"
-        # str = open(file, 'r', encoding='UTF-8').read()
-        # self.ui.centralwidget.setStyleSheet(str)
+        # style = open(file, 'r', encoding='UTF-8').read()
+        # self.ui.centralwidget.setStyleSheet(style)
 
 
         # STANDARD TITLE BAR 去除窗口标题栏
@@ -96,17 +96,31 @@ class MainWindow(QMainWindow):
         self.dataProcessing.moveToThread(self.data_thread)
         self.data_thread.start()
 
+        # 设置初始页面为第一页
+        self.ui.stackedWidget.setCurrentIndex(0)
+        self.ui.stackedWidget_step.setCurrentIndex(0)
+
         # 定义主要数据sql_data
         self.sql_data = {
             'table': [],
             'view': []
         }
+        self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")  # 初始化self.id
 
-        self.id = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-
-        # 设置初始页面为第一页
-        self.ui.stackedWidget.setCurrentIndex(0)
-        self.ui.stackedWidget_step.setCurrentIndex(0)
+        # 全局变量the_db和last_db用于判断数据库是否已经完成配置，
+        self.the_db = {
+            'host': '',
+            'database': ''
+        }
+        self.last_db = {
+            'host': '',
+            'database': ''
+        }
+        self.db_changed = {
+            'db_is_changed': True,
+            'view_is_config': False,
+            'table_is_config': False
+        }  # 记录数据库是否改变
 
     def window_init(self):
         '''
@@ -181,13 +195,13 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget_step.setCurrentIndex(0)
             return
 
-    def next_step(self, **kwargs):
+    def next_step(self):
         '''
         通过判断当前所在页面，进行相应操作并跳转到对应页面
         :return:
         '''
         if self.ui.stackedWidget.currentIndex() == 0:
-            self.page_table.refresh_table_page(self.sql_data)
+            self.page_table.refresh_table_page()
             self.ui.stackedWidget.setCurrentIndex(1)
             self.ui.stackedWidget_step.setCurrentIndex(1)
             return

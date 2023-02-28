@@ -88,7 +88,7 @@ QLineEdit {
 	border: 1px solid #909399;
 	padding-left: 10px;
 	selection-color: rgb(255, 255, 255);
-	selection-background-color: rgb(255, 121, 198);
+	selection-background-color:#409eff;
     color: black;
 	highth:10px;
 }
@@ -1969,8 +1969,8 @@ QLabel {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>747</width>
-                     <height>547</height>
+                     <width>98</width>
+                     <height>28</height>
                     </rect>
                    </property>
                    <property name="minimumSize">
@@ -2628,8 +2628,8 @@ QCheckBox::indicator:checked {
                     <rect>
                      <x>0</x>
                      <y>0</y>
-                     <width>747</width>
-                     <height>547</height>
+                     <width>98</width>
+                     <height>28</height>
                     </rect>
                    </property>
                    <widget class="QLabel" name="label_12">

@@ -25,17 +25,22 @@ class PageTable(MainWindow):
         self.dataProcessing = mainWindow.dataProcessing
         self.sql_data = mainWindow.sql_data
         self.next_step = mainWindow.next_step
+        self.db_changed = mainWindow.db_changed
 
         # 初始化多线程信号与槽
         self.dataProcessing.sig_load_view.connect(self.dataProcessing.load_views)
         self.dataProcessing.sig_load_view_comp.connect(self.load_view_comp)
 
-    def refresh_table_page(self, sql_data):
+    def refresh_table_page(self):
         '''
         表配置页面刷新
         :return:
         '''
-        self.sql_data = sql_data
+        # 如果数据库没有改变，不刷新页面
+        if self.db_changed.get('table_is_config'):
+            return
+        self.db_changed['table_is_config'] = True
+
         # 进页面前调整控件初始状态
         self.ui.stackedWidget_right.setCurrentIndex(0)
 
@@ -149,11 +154,14 @@ class PageTable(MainWindow):
                         if table['table'] == table_name:
                             table['ischecked'] = True
 
-        # 发送加载视图信号，通过多线程加载数据
-        self.dataProcessing.sig_load_view.emit()
+        if not self.db_changed.get('view_is_config'):
+            # 发送加载视图信号，通过多线程加载数据
+            self.dataProcessing.sig_load_view.emit()
 
-        # 显示加载中弹窗
-        self.dialog_loading.open()
+            # 显示加载中弹窗
+            self.dialog_loading.open()
+        else:
+            self.next_step()
 
     def checkBox_all_select_clicked(self):
         '''
@@ -396,26 +404,21 @@ class PageTable(MainWindow):
         '''
 
         # 添加一个空白的选择加密字段组
-        self.add_field_encrypt_group()
+        encrypy_widget = self.add_field_encrypt_group()
 
         # 绑定事件
-        button_delete = self.ui.listWidget_encrypt.findChild(QWidget, u"pushButton_delete_field_encrypt_add" + str(
-            self.encrypt_group_number - 1))
+        button_delete = encrypy_widget.findChildren(QPushButton)[0]
         button_delete.clicked.connect(partial(self.del_field_encrypt_group, button_delete))
 
         # 根据field_encryptable添加没有设置加密的字段到comboBox
-        comboBox_field = self.ui.listWidget_encrypt.findChild(QComboBox,
-                                                              u"comboBox_select_table_field_encrypt_add" + str(
-                                                                  self.encrypt_group_number - 1))
+        comboBox_field = encrypy_widget.findChildren(QComboBox)[0]
         for field in self.field_encryptable:
             if field['field_encrypt'] == False:
                 comboBox_field.addItem(field['field_name'])
         comboBox_field.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
         # 根据encrypt_type_list添加加密方法到comboBox
-        comboBox_encrypt_type = self.ui.listWidget_encrypt.findChild(QComboBox,
-                                                                     u"comboBox_select_table_encrypt_type_add" + str(
-                                                                         self.encrypt_group_number - 1))
+        comboBox_encrypt_type = encrypy_widget.findChildren(QComboBox)[1]
         for encrypt_type in self.encrypt_type_list:
             comboBox_encrypt_type.addItem(encrypt_type)
         comboBox_encrypt_type.currentIndexChanged.connect(partial(self.comboBox_field_update))
@@ -480,6 +483,7 @@ class PageTable(MainWindow):
         # 将整个按钮组添加到listWidget_encrypt
         self.ui.scrollArea_2.findChild(QListWidget, u"listWidget_encrypt").setItemWidget(table_item,
                                                                                          self.ui.encrypt_widget)
+        return self.ui.encrypt_widget
 
     def del_field_encrypt_group(self, Qobject):
         '''
@@ -517,10 +521,9 @@ class PageTable(MainWindow):
 
     def comboBox_field_update(self, comboBox_item_index=0, layout_index=-1):
         '''
-        更新已有comboBox组件,同步组件数据与后台数据
+        更新已有comboBox组件,同步组件数据与后台数据,避免选中相同的字段进行加密
         :return:
         '''
-
         # 重置加密字段
         for field in self.field_encryptable:
             field['field_encrypt'] = False
@@ -532,46 +535,44 @@ class PageTable(MainWindow):
                 QComboBox_list1.append(combobox)
         QComboBox_list = QComboBox_list1
 
-        # 更新加密字段
+        # comboBox数据同步到后台数据
         comboBox_index = 0
         for comboBox in QComboBox_list:
             comboBox_index += 1
-            # if comboBox_index % 2 != 0:
-            if True:
 
-                # 排除待删除的组件造成的影响
-                if layout_index != -1 and layout_index == int(
-                        comboBox.objectName().replace('comboBox_select_table_field_encrypt_add', '')):
-                    continue
-                if comboBox.currentText() != '选择需要加密的字段':
-                    for field in self.field_encryptable:
-                        if comboBox.currentText() == field['field_name']:
-                            field['field_encrypt'] = True
-                            field['encrypt_type'] = comboBox.currentText()
-
-        comboBox_index = 0
-        for comboBox in QComboBox_list:
-            comboBox_index += 1
-            if comboBox_index % 2 != 0:
-
-                # 清除事件，避免循环
-                comboBox.currentIndexChanged.disconnect()
-
-                text = comboBox.currentText()
-
-                # 更新comboBox
-                comboBox.clear()
-                if text != '选择需要加密的字段':
-                    comboBox.addItem('选择需要加密的字段')
-                comboBox.addItem(text)
+            # 排除待删除的组件造成的影响
+            if layout_index != -1 and layout_index == int(
+                    comboBox.objectName().replace('comboBox_select_table_field_encrypt_add', '')):
+                continue
+            if comboBox.currentText() != '选择需要加密的字段':
                 for field in self.field_encryptable:
-                    if field['field_encrypt'] == False:
-                        comboBox.addItem(field['field_name'])
-                if comboBox.itemText(1) == text:
-                    comboBox.setCurrentIndex(1)
+                    if comboBox.currentText() == field['field_name']:
+                        field['field_encrypt'] = True
+                        field['encrypt_type'] = comboBox.currentText()
 
-                # 重新绑定事件
-                comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
+        # 根据后台数据加载加密数据
+        comboBox_index = 0
+        for comboBox in QComboBox_list:
+            comboBox_index += 1
+
+            # 清除事件，避免循环
+            comboBox.currentIndexChanged.disconnect()
+
+            text = comboBox.currentText()
+
+            # 更新comboBox
+            comboBox.clear()
+            if text != '选择需要加密的字段':
+                comboBox.addItem('选择需要加密的字段')
+            comboBox.addItem(text)
+            for field in self.field_encryptable:
+                if field['field_encrypt'] == False:
+                    comboBox.addItem(field['field_name'])
+            if comboBox.itemText(1) == text:
+                comboBox.setCurrentIndex(1)
+
+            # 重新绑定事件
+            comboBox.currentIndexChanged.connect(partial(self.comboBox_field_update))
 
     def add_table_list_item(self, table_name):
         '''

@@ -103,16 +103,16 @@ class Ui_MainWindow(object):
 "	border: 1px solid #909399;\n"
 "	padding-left: 10px;\n"
 "	selection-color: rgb(255, 255, 255);\n"
-"	selection-background-color: rgb(255, 121, 198);\n"
+"	selection-background-color:#409eff;\n"
 "    color: black;\n"
 "	highth:10px;\n"
 "}\n"
 "QLineEdit:hover {\n"
 "	border: 2px solid #909399;\n"
 "}\n"
-"QLineE"
-                        "dit:focus {\n"
-"	/*border: 2px solid #ff79c6;*/\n"
+"QLineEdit:focus {\n"
+""
+                        "	/*border: 2px solid #ff79c6;*/\n"
 "	border: 2px solid #409eff;\n"
 "}\n"
 "\n"
@@ -152,8 +152,8 @@ class Ui_MainWindow(object):
 "QLabel\n"
 "{\n"
 "text-align:justify;\n"
-"color: blac"
-                        "k;/*\u5b57\u4f53\u989c\u8272*/\n"
+"color: black;/*\u5b57\u4f53"
+                        "\u989c\u8272*/\n"
 "font-size:12pt;\n"
 "border:none;/*\u8fb9\u6846\u6837\u5f0f*/\n"
 "}\n"
@@ -190,9 +190,9 @@ class Ui_MainWindow(object):
 "    color: white;/*\u6587\u5b57\u989c\u8272*/\n"
 "    background-color:rgb(240,240,240);/*\u80cc\u666f\u8272*/\n"
 "    border: 5px solid rgb(240,240,240);/*\u8fb9\u6846*/\n"
-"    border-radius:0px;/*\u8fb9\u6846\u5706\u89d2"
-                        "*/\n"
-"    border-color: rgb(240,240,240);/*\u8fb9\u6846\u989c\u8272*/\n"
+"    border-radius:0px;/*\u8fb9\u6846\u5706\u89d2*/\n"
+"    bo"
+                        "rder-color: rgb(240,240,240);/*\u8fb9\u6846\u989c\u8272*/\n"
 "    font: bold 11pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "    padding:12px 0 0 10px;/*\u5185\u8fb9\u8ddd*/\n"
 " }\n"
@@ -216,8 +216,8 @@ class Ui_MainWindow(object):
 "}\n"
 "QTabBar::tab:selected\n"
 "{\n"
-""
-                        "    background-color: rgb(198,198,198); /*\u80cc\u666f\u8272*/\n"
+"    backg"
+                        "round-color: rgb(198,198,198); /*\u80cc\u666f\u8272*/\n"
 "}\n"
 "QTableView,QTableWidget{\n"
 "    background-color: rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
@@ -231,8 +231,8 @@ class Ui_MainWindow(object):
 "QHeaderView::section{\n"
 "    background-color:rgb(240,240,240); /*\u80cc\u666f\u8272*/\n"
 "    border:0px solid #E0DDDC;/*\u5148\u628a\u8fb9\u6846\u5bbd\u5ea6\u8bbe\u4e3a0\uff0c\u5373\u9690\u85cf\u6240\u6709\u8868\u5934\u8fb9\u6846*/\n"
-"    border-bottom:1px solid #E0DDDC;/*\u7136\u540e\u53ea\u663e\u793a\u4e0b\u8fb9\u6846\uff0c\u56e0\u4e3a\u4e0a\u8fb9"
-                        "\u6846\u548c\u5de6\u53f3\u8fb9\u6846\u662f\u6574\u4e2aTable\u7684\u8fb9\u6846\uff0c\u90fd\u663e\u793a\u4f1a\u67092px\u7684\u8fb9\u6846\u5bbd\u5ea6*/\n"
+"    border-bottom:1px solid #E0DDDC;/*\u7136\u540e\u53ea\u663e\u793a\u4e0b\u8fb9\u6846\uff0c\u56e0\u4e3a\u4e0a\u8fb9\u6846\u548c"
+                        "\u5de6\u53f3\u8fb9\u6846\u662f\u6574\u4e2aTable\u7684\u8fb9\u6846\uff0c\u90fd\u663e\u793a\u4f1a\u67092px\u7684\u8fb9\u6846\u5bbd\u5ea6*/\n"
 "    min-height:30px;;/*\u8868\u5934\u9ad8\u5ea6*/\n"
 "    font-size:12pt;/*\u5b57\u4f53\u5927\u5c0f*/\n"
 "}\n"
@@ -260,10 +260,10 @@ class Ui_MainWindow(object):
 "}\n"
 "QRadioButton::indicator:checked {\n"
 "    background: 3px solid #bd93f9;\n"
-"	border: 3px solid #bd9"
-                        "3f9;\n"
+"	border: 3px solid #bd93f9;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
 "ScrollBars */\n"
@@ -297,9 +297,9 @@ class Ui_MainWindow(object):
 "    width: 20px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-bottom-left-radius: 4px;\n"
-"    subcontrol-posit"
-                        "ion: left;\n"
-"    subcontrol-origin: margin;\n"
+"    subcontrol-position: left;\n"
+""
+                        "    subcontrol-origin: margin;\n"
 "}\n"
 "QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
 "{\n"
@@ -335,9 +335,9 @@ class Ui_MainWindow(object):
 " QScrollBar::sub-line:vertical {\n"
 "	border: none;\n"
 "    /*background: rgb(55, 63, 77);*/\n"
-"	background: #909399"
-                        ";\n"
-"     height: 20px;\n"
+"	background: #909399;\n"
+"     heig"
+                        "ht: 20px;\n"
 "	border-top-left-radius: 4px;\n"
 "    border-top-right-radius: 4px;\n"
 "     subcontrol-position: top;\n"
@@ -375,8 +375,8 @@ class Ui_MainWindow(object):
 "\n"
 "#main_page QPushButton:pressed {\n"
 "	border: 2px solid #409eff;\n"
-"	backgrou"
-                        "nd-color: #409eff;\n"
+"	background-color: #409e"
+                        "ff;\n"
 "}\n"
 "\n"
 "/* /////////////////////////////////////////////////////////////////////////////////////////////////\n"
@@ -1343,7 +1343,7 @@ class Ui_MainWindow(object):
         self.scrollArea_right_7.setWidgetResizable(True)
         self.scrollAreaWidgetContents_right_7 = QWidget()
         self.scrollAreaWidgetContents_right_7.setObjectName(u"scrollAreaWidgetContents_right_7")
-        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 747, 547))
+        self.scrollAreaWidgetContents_right_7.setGeometry(QRect(0, 0, 98, 28))
         self.scrollAreaWidgetContents_right_7.setMinimumSize(QSize(0, 0))
         self.pushButton_add_field_encrypt = QPushButton(self.scrollAreaWidgetContents_right_7)
         self.pushButton_add_field_encrypt.setObjectName(u"pushButton_add_field_encrypt")
@@ -1702,7 +1702,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 747, 547))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 98, 28))
         self.label_12 = QLabel(self.scrollAreaWidgetContents_3)
         self.label_12.setObjectName(u"label_12")
         self.label_12.setGeometry(QRect(20, 10, 520, 27))

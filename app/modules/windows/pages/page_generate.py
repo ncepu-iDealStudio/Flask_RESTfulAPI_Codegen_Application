@@ -46,6 +46,7 @@ class PageGenerate(MainWindow):
         代码生成页初始化，完善qt designer不能完成的内容，包括组件添加，事件添加，变量定义
         :return:
         '''
+
         self.ui.dig = QFileDialog()
         self.ui.dig.setFileMode(QFileDialog.AnyFile)
         self.ui.dig.setFilter(QDir.Files)

@@ -32,6 +32,7 @@ class PageDatabase(MainWindow):
         self.sql_data = mainWindow.sql_data
         self.next_step = mainWindow.next_step
         self.id = mainWindow.id
+        self.db_changed = mainWindow.db_changed
 
         # 设置提示文字颜色
         from app.modules.windows.widgets import Palette
@@ -89,7 +90,6 @@ class PageDatabase(MainWindow):
             QMessageBox.information(self, '提示', '请填写密码')
             return
         if self.ui.comboBox_database.currentText() == '请先获取数据库名':
-            print(self.ui.comboBox_database.currentText())
             QMessageBox.information(self, '提示', '请先获取数据库名')
             return
 
@@ -122,10 +122,23 @@ class PageDatabase(MainWindow):
             with open(configfile, "w") as f:
                 conf.write(f)
 
-            self.this_db = database
-            self.dataProcessing.sig_load_table.emit()  # 启用多线程加载数据
+            # 判断数据库是否改变，更新db_is_changed
+            self.the_db['host'] = host
+            self.the_db['database'] = database
+            if self.the_db.get('host') == self.last_db.get('host') and self.the_db.get('database') == self.last_db.get('database'):
+                self.db_changed['db_is_changed'] = False
+            else:
+                self.db_changed['db_is_changed'] = True
+                self.db_changed['view_is_config'] = False
+                self.db_changed['table_is_config'] = False
+            self.last_db['host'] = self.the_db['host']
+            self.last_db['database'] = self.the_db['database']
+            if not self.db_changed.get('table_is_config'):
+                self.dataProcessing.sig_load_table.emit()  # 启用多线程加载数据
 
-            self.dialog_loading.open()  # 阻塞当前窗口，避免用户违规操作
+                self.dialog_loading.open()  # 阻塞当前窗口，避免用户违规操作
+            else:
+                self.next_step()
             return
 
         else:
@@ -184,9 +197,7 @@ class PageDatabase(MainWindow):
         '''
         if tables_info.get('code'):
             self.sql_data['table'] = tables_info['data']['table']
-            kwargs = {}
-            kwargs['sql_data'] = self.sql_data
-            self.next_step(**kwargs)
+            self.next_step()
             self.dialog_loading.close()
         else:
             self.dialog_loading.close()

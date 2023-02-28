@@ -25,8 +25,7 @@ class PageView(MainWindow):
         self.sql_data = mainWindow.sql_data
         self.next_step = mainWindow.next_step
         self.id = mainWindow.id
-
-        self.view_is_config = False
+        self.db_changed = mainWindow.db_changed
 
     def refresh_view_page(self):
         '''
@@ -34,9 +33,10 @@ class PageView(MainWindow):
         :return:
         '''
 
-        # 如果本次需要配置的数据库与上一次配置的相同，则跳过初始化操作，直接开始配置
-        # if self.view_is_config:
-        #     return
+        # 如果数据库没有改变，不刷新页面
+        if self.db_changed.get('view_is_config'):
+            return
+        self.db_changed['view_is_config'] = True
 
         # 进页面前调整控件初始状态
         self.ui.stackedWidget_3.setCurrentIndex(0)
