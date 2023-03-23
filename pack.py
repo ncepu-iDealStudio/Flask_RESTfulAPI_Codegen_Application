@@ -13,7 +13,7 @@
 import os
 
 
-def nuitaka_pack():
+def nuitka_pack():
     # nuitka打包
 
     # 参数详情见：https://blog.csdn.net/qq_38830593/article/details/123092470
