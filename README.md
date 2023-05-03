@@ -60,6 +60,10 @@ Python接口项目代码生成器桌面应用程序
 
 ### 下载地址
 暂定
+
+## 使用指南
+- <a href="https://idealstudio-ncepu.yuque.com/kgagg7/prnusl?# 《Python接口项目代码生成器（桌面版）》" target="_blank">使用指南</a>
+
 ### 安装
 #### 运行安装程序
 ![img_1.png](image/img_1.png)
