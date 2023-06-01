@@ -3,6 +3,8 @@
 ## 介绍
 ### 项目名称
 Python接口项目代码生成器桌面应用程序
+### 下载
+<a href="https://gitee.com/ncepu-bj/Flask_RESTfulAPI_Codegen_Application/releases/tag/v1.0" target="_blank">代码生成器桌面版v1.0</a>
 ### 项目代码风格及基本结构
 能根据已有数据库表结构，自动生成Python完整的基础接口项目(包含接口的文档)；
 生成的目标项目基于Flask+sqlalchemy框架；所生成的接口符合restful风格规范；
